@@ -52,4 +52,15 @@ public class Algoformer {
             this.morir(); //para avisarle al Tablero que lo borre, etc
             }
     }
+
+	private void morir() {
+		this.vida= 0;
+		//avisar a la vista que mate al transformer
+	}
+	public boolean estaVivo() {
+		return (this.vida>0);
+	}
+	public void mover(Coordenada destino) {
+		this.ubicacion=ubicacion;
+	}
 }
