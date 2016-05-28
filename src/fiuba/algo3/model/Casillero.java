@@ -12,21 +12,30 @@ package model;
 public class Casillero {
     //private TerrenoAire aire;
     //private TerrenoTierra tierra;
-    private Algoformer ocupante; //debiera ser un algoformer o un "interactuable"? En este tp solo se
+    private Object ocupante;      //Object hasta definir clase de interactuables 
+    //debiera ser un algoformer o un "interactuable"? En este tp solo se
                                  //usan algoformers para ocupar casilleros
                                  //LA CHISPA ES OTRO INTERACTUABLE
     
     public Casillero(/*TerrenoAire aire, TerrenoTierra tierra*/) {
         /*this.aire = aire;
         this.tierra = tierra;*/
-        this.ocupante = null;
+        this.ocupante = new CasilleroVacio();
     }
     
-    public void ubicarElemento(Algoformer ocupanteNuevo){
+    public void ubicarElemento(Object ocupante){
         //si esta ocupado resolver
-        this.ocupante = ocupanteNuevo;
+        this.ocupante = ocupante;
     }
+
+	public Object devolverElemento() {
+		return this.ocupante;
+		
+	}
     
+	public void removerElemento() {
+		this.ocupante = new CasilleroVacio();	
+	}
     /*
     public bool/void? accederCasillero(Algoformer algof){
         ->si esta ocupado no dejar entrar

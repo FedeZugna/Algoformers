@@ -11,12 +11,12 @@ package model;
  */
 public class Coordenada {
 
-    private final int X;
-    private final int Y;
+    private final int largo;
+    private final int alto;
 
     public Coordenada(int x, int y) {
-        this.X = x;
-        this.Y = y;
+        this.largo = x;
+        this.alto = y;
     }
 
 
@@ -32,10 +32,10 @@ public class Coordenada {
             return false;
         }
         final Coordenada other = (Coordenada) obj;
-        if (this.X != other.X) {
+        if (this.largo != other.largo) {
             return false;
         }
-        if (this.Y != other.Y) {
+        if (this.alto != other.alto) {
             return false;
         }
         return true;
@@ -44,22 +44,22 @@ public class Coordenada {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + this.X;
-        hash = 79 * hash + this.Y;
+        hash = 79 * hash + this.largo;
+        hash = 79 * hash + this.alto;
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Coordenada{" + "x=" + X + ", y=" + Y + '}';
+        return "Coordenada{" + "x=" + this.largo + ", y=" + this.alto + '}';
     }
     
     public int getX(){
-        return this.X;
+        return this.largo;
     }
     
     public int getY(){
-        return this.Y;
+        return this.alto;
     }
             
 }

@@ -5,22 +5,21 @@
  */
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Algoformer {
-    private EstadoAlgoFormer estadoActual;
-    private List<EstadoAlgoFormer> estados; //A reemplazar si el Estado se ocupa de esto
-    private Coordenada ubicacion; //El bicho tiene que saber donde esta parado
-    private String nombre;
-    private int vida;
+    protected EstadoAlgoFormer estadoActual;
+    protected ListaCircular estados; //A reemplazar si el Estado se ocupa de esto
+    protected Coordenada ubicacion; //El bicho tiene que saber donde esta parado
+    protected String nombre;
+    protected int vida;
     
-    public Algoformer(String nombre, int vida, List<EstadoAlgoFormer> estados){
+    /*
+     public Algoformer(String nombre, int vida, ListaCircular estados){
         this.nombre = nombre;
         this.vida = vida;
         this.estadoActual = estados.get(0);//El primer estado del iterable será el de invocacion
-        this.estados = new ArrayList<>(estados);
+        this.estados = new ListaCircular();
     }
+     */
     
     public Coordenada getUbicacion(){
         return this.ubicacion;
@@ -60,7 +59,12 @@ public class Algoformer {
 	public boolean estaVivo() {
 		return (this.vida>0);
 	}
-	public void mover(Coordenada destino) {
-		this.ubicacion=ubicacion;
+	public void mover(Tablero tablero, Coordenada destino) {
+		this.notificarCambios(tablero,destino);
+		this.ubicacion=destino;
+	}
+
+	private void notificarCambios(Tablero tablero, Coordenada destino) {
+		tablero.cambiar(this,this.ubicacion,destino);
 	}
 }
