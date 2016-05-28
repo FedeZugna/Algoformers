@@ -24,14 +24,9 @@ public class PrimerEntregaTests {
 	
 	
     public PrimerEntregaTests() {
+    	
     }
-    @Test
-    public void testPrueba(){
-    	int uno =1;
-    	Assert.assertTrue(uno==1);
-    }
-}
-    
+        
     @Test
     public void test01agregarAlgoformerHumanoideYMoverlo(){
         String NOMBRE_ALGOF1 = "Autobot1";
@@ -40,25 +35,16 @@ public class PrimerEntregaTests {
         Coordenada coord1 = new Coordenada(HORIZ1,VERT1);
         Coordenada coord2 = new Coordenada(HORIZ2,VERT2);
         Tablero tablero1 =  new Tablero(ANCHO,LARGO);
+        Jugador pablo = new Jugador(tablero1,"sin equipo");
         EstadoAlgoFormer estadoHumanoide1 = new EstadoHumanoide(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1);
         ArrayList<EstadoAlgoFormer> estadosPosibles = new ArrayList<>();
         estadosPosibles.add(estadoHumanoide1);
         Algoformer algof1 = new AlgoformerGenerico(NOMBRE_ALGOF1,VIDA1,estadosPosibles);
         tablero1.ubicarElemento(algof1,coord1);//nombre semánticamente correcto? o una interfaz Jugable/Interactuable?
-        
-        //CON COMMAND
-        /*
-        Accion mover1 = new AccionMover(coord2); //AccionMover,AccionAtacar,AccionTransformar,AccionCombinar, etc.
-        algof1.ejecutar(mover1);
-        */
-        
-        //SIN COMMAND 
-
-        algof1.mover(coord2);
-        
-        
+        pablo.mover(algof1,coord2);                
         assertTrue(algof1.getUbicacion().equals(coord2));
         }
+    
     /*
     @Test
     public void test02transformarAlgoformerIdaYVuelta(){
@@ -186,3 +172,5 @@ public class PrimerEntregaTests {
         algof1.atacar(coord2);       
     } 
 } */
+    
+    }

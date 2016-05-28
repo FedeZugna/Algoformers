@@ -22,12 +22,6 @@ public class Tablero {
         		casilleros.put(new Coordenada(i,j), new Casillero());
         	}
         }
-    	/*for x in ancho{for y in largo{new Coordenada(x,y)}}? 
-        o hago un método static de Coordenada que devuelva un List<Coordenada>
-        List<Coordenada> coordenadas =/* O LO SACO DE ACA O LO SIGUIENTE VA EN UN FOR ANIDADO
-        for (Coordenada coordenada : coordenadas){
-            
-        }*/
     }
 
     public void ubicarElemento(Algoformer algof1, Coordenada coord1) {

@@ -12,15 +12,6 @@ public class Algoformer {
     protected String nombre;
     protected int vida;
     
-    /*
-     public Algoformer(String nombre, int vida, ListaCircular estados){
-        this.nombre = nombre;
-        this.vida = vida;
-        this.estadoActual = estados.get(0);//El primer estado del iterable será el de invocacion
-        this.estados = new ListaCircular();
-    }
-     */
-    
     public Coordenada getUbicacion(){
         return this.ubicacion;
     }
@@ -29,12 +20,6 @@ public class Algoformer {
         return this.estadoActual;
     }
     
-    //COMMAND
-    /*
-    ?
-    */
-    
-    //SIN COMMAND?
     public boolean esMovimientoPosible(Coordenada coordObjetivo){
         Coordenada coordOrigen = this.getUbicacion();
         return this.getEstadoActual().esMovimientoPosible(coordOrigen,coordObjetivo);
@@ -60,11 +45,6 @@ public class Algoformer {
 		return (this.vida>0);
 	}
 	public void mover(Tablero tablero, Coordenada destino) {
-		this.notificarCambios(tablero,destino);
 		this.ubicacion=destino;
-	}
-
-	private void notificarCambios(Tablero tablero, Coordenada destino) {
-		tablero.cambiar(this,this.ubicacion,destino);
 	}
 }
