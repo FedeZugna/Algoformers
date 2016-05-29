@@ -1,14 +1,18 @@
 package model;
 
 public class Ratchet extends Algoformer {
+	
+	String nombre= "Ratchet";
+	int vidaRatchet= 150;
+	int ataqueHumanoide= 5;
+	int distanciaAtaqueHumanoide= 5;
+	int velocidadHumanoide= 1;
+	int ataqueAlterno= 35;
+	int distanciaAtaqueAlterno= 2;
+	int velocidadAlterno= 8;
+	
 	public Ratchet (){
-		this.vida=150;
-		this.nombre="RATCHET";
-		EstadoAlgoFormer estadoHumanoide = new EstadoHumanoide(5,5,1); //ataque, dist ataque, velocidad
-		EstadoAlgoFormer estadoAlterno = new EstadoAlterno(35,2,8);//ataque, dist ataque, velocidad
-	    ListaCircular estadosPosibles = new ListaCircular();
-	    estadosPosibles.add(estadoHumanoide);
-	    estadosPosibles.add(estadoAlterno);
-	    this.estados=estadosPosibles;	
+		
+		inicializarAlgoformer (nombre, vidaRatchet, ataqueHumanoide, distanciaAtaqueHumanoide, velocidadHumanoide, ataqueAlterno, distanciaAtaqueAlterno, velocidadAlterno);
 	}
 }

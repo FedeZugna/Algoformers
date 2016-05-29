@@ -1,16 +1,20 @@
 package model;
 
 public class Optimus extends Algoformer{
+	
+	String nombre= "Optimus";
+	int vidaOptimus= 500;
+	int ataqueHumanoide= 50;
+	int distanciaAtaqueHumanoide= 2;
+	int velocidadHumanoide= 2;
+	int ataqueAlterno= 15;
+	int distanciaAtaqueAlterno= 4;
+	int velocidadAlterno= 5;
 
 	public Optimus() {
-		this.vida=500;
-		this.nombre="OPTIMUS";
-		EstadoAlgoFormer estadoHumanoide = new EstadoHumanoide(50,2,2);//ataque, dist ataque, velocidad
-		EstadoAlgoFormer estadoAlterno = new EstadoAlterno(15,4,5);//ataque, dist ataque, velocidad
-	    ListaCircular estadosPosibles = new ListaCircular();
-	    estadosPosibles.add(estadoHumanoide);
-	    estadosPosibles.add(estadoAlterno);
-	    this.estados=estadosPosibles;	
+		
+		inicializarAlgoformer (nombre, vidaOptimus, ataqueHumanoide, distanciaAtaqueHumanoide, velocidadHumanoide, ataqueAlterno, distanciaAtaqueAlterno, velocidadAlterno);
 	}
+
 	
 }

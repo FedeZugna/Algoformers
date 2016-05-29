@@ -1,14 +1,18 @@
 package model;
 
 public class BoneCrusher extends Algoformer {
+	
+	String nombre= "BoneCrusher";
+	int vidaBoneCrusher= 200;
+	int ataqueHumanoide= 30;
+	int distanciaAtaqueHumanoide= 3;
+	int velocidadHumanoide= 1;
+	int ataqueAlterno= 30;
+	int distanciaAtaqueAlterno= 3;
+	int velocidadAlterno= 8;
+	
 	public BoneCrusher(){
-		this.vida=200;
-		this.nombre="BONECRUSHER";
-		EstadoAlgoFormer estadoHumanoide = new EstadoHumanoide(30,3,1);//ataque, dist ataque, velocidad
-		EstadoAlgoFormer estadoAlterno = new EstadoAlterno(30,3,8);//ataque, dist ataque, velocidad
-	    ListaCircular estadosPosibles = new ListaCircular();
-	    estadosPosibles.add(estadoHumanoide);
-	    estadosPosibles.add(estadoAlterno);
-	    this.estados=estadosPosibles;	
+		
+		inicializarAlgoformer (nombre, vidaBoneCrusher, ataqueHumanoide, distanciaAtaqueHumanoide, velocidadHumanoide, ataqueAlterno, distanciaAtaqueAlterno, velocidadAlterno);
 	}
 }

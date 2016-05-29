@@ -12,6 +12,18 @@ public class Algoformer {
     protected String nombre;
     protected int vida;
     
+    public void inicializarAlgoformer (String nombre, int vidaPropia, int ataqueHumanoide, int distanciaAtaqueHumanoide, int velocidadHumanoide, int ataqueAlterno, int distanciaAtaqueAlterno, int velocidadAlterno) {
+    	
+    	this.nombre= nombre;
+    	this.vida= vidaPropia;
+		EstadoAlgoFormer estadoHumanoide = new EstadoHumanoide(ataqueHumanoide, distanciaAtaqueHumanoide, velocidadHumanoide);//ataque, dist ataque, velocidad
+		EstadoAlgoFormer estadoAlterno = new EstadoAlterno(ataqueAlterno, distanciaAtaqueAlterno, velocidadAlterno);//ataque, dist ataque, velocidad
+	    ListaCircular estadosPosibles = new ListaCircular();
+	    estadosPosibles.add(estadoHumanoide);
+	    estadosPosibles.add(estadoAlterno);
+	    this.estados=estadosPosibles;
+    }
+    
     public Coordenada getUbicacion(){
         return this.ubicacion;
     }
