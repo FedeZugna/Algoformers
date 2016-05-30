@@ -21,11 +21,6 @@ import static org.junit.Assert.*;
  */ 
 @SuppressWarnings("unused")
 public class PrimerEntregaTests {
-	
-	
-    public PrimerEntregaTests() {
-    	
-    }
         
     @Test
     public void test01agregarAlgoformerHumanoideYMoverlo(){
@@ -35,66 +30,53 @@ public class PrimerEntregaTests {
         Coordenada coord1 = new Coordenada(HORIZ1,VERT1);
         Coordenada coord2 = new Coordenada(HORIZ2,VERT2);
         Tablero tablero1 =  new Tablero(ANCHO,LARGO);
-        Jugador pablo = new Jugador(tablero1,"sin equipo");
+        Jugador jug1 = new Jugador(tablero1,"sin equipo");
         EstadoAlgoFormer estadoHumanoide1 = new EstadoHumanoide(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1);
         ArrayList<EstadoAlgoFormer> estadosPosibles = new ArrayList<>();
         estadosPosibles.add(estadoHumanoide1);
         Algoformer algof1 = new AlgoformerGenerico(NOMBRE_ALGOF1,VIDA1,estadosPosibles);
-        tablero1.ubicarElemento(algof1,coord1);//nombre semánticamente correcto? o una interfaz Jugable/Interactuable?
-        pablo.mover(algof1,coord2);                
+        jug1.ubicarElemento(algof1,coord1);
+        jug1.mover(algof1,coord2);                
         assertTrue(algof1.getUbicacion().equals(coord2));
         }
     
-    /*
     @Test
     public void test02transformarAlgoformerIdaYVuelta(){
-        String NOMBRE_ALGOF1 = "Autobot1";
+    	String NOMBRE_ALGOF1 = "Autobot1";
         int ANCHO = 100, LARGO = 100, VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2,VELOCIDAD_DESP1 = 10;
         int HORIZ1 = 10, VERT1 = 10;
-        Coordenada coord1 = new Coordenada(HORIZ1,VERT1);
+        
         Tablero tablero1 =  new Tablero(ANCHO,LARGO);
-        EstadoAlgoFormer estadoHumanoide1 = new EstadoHumanoide(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1);
-        EstadoAlgoFormer estadoAlterno1 = new EstadoAlterno(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1);
-        List<EstadoAlgoFormer> estadosPosibles = new ArrayList<>();
-        estadosPosibles.add(estadoHumanoide1);
-        estadosPosibles.add(estadoAlterno1);
-        Algoformer algof1 = new Algoformer(NOMBRE_ALGOF1,VIDA1,estadosPosibles);
-        tablero1.ubicarElemento(algof1,coord1);
+        Jugador jug1 = new Jugador(tablero1,"sin equipo");
+        ArrayList<EstadoAlgoFormer> estadosPosibles = new ArrayList<>();
+        estadosPosibles.add( new EstadoHumanoide(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1) );
+        estadosPosibles.add( new EstadoAlterno(ATAQUE1+1,DISTANCIA_ATK1+1,VELOCIDAD_DESP1+1) );
+        Algoformer algof1 = new AlgoformerGenerico(NOMBRE_ALGOF1,VIDA1,estadosPosibles);
         
-        //como probar que se transforma? override de toString?
-        algof1.transformar();//tiene que saber a que se transforma?
-        
+        jug1.ubicarElemento(algof1,new Coordenada(HORIZ1,VERT1));
+        jug1.OrdenaQueSeTranforme(algof1);
+        //Assert.assertTrue(algof1.getAtaque()>ATAQUE1);
+        System.out.println( algof1.getEstadoActual().getAtaque() );
     }
     
     @Test
     public void test03agregarAlgoformerAlternoYMoverlo(){
-        String NOMBRE_ALGOF1 = "Autobot1";
+    	String NOMBRE_ALGOF1 = "Autobot1";
         int ANCHO = 100, LARGO = 100, VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2,VELOCIDAD_DESP1 = 10;
         int HORIZ1 = 10, HORIZ2 = 11,VERT1 = 10, VERT2 = 12;
         Coordenada coord1 = new Coordenada(HORIZ1,VERT1);
         Coordenada coord2 = new Coordenada(HORIZ2,VERT2);
         Tablero tablero1 =  new Tablero(ANCHO,LARGO);
-        EstadoAlgoFormer estadoAlterno1 = new EstadoAlterno(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1);
-        List<EstadoAlgoFormer> estadosPosibles = new ArrayList<>();
-        estadosPosibles.add(estadoAlterno1);
-        Algoformer algof1 = new Algoformer(NOMBRE_ALGOF1,VIDA1,estadosPosibles);
-        tablero1.ubicarElemento(algof1,coord1);//nombre semánticamente correcto? o una interfaz Jugable/Interactuable?
-        
-        //CON COMMAND
-        /*
-        Accion mover1 = new AccionMover(coord2); //AccionMover,AccionAtacar,AccionTransformar,AccionCombinar, etc.
-        algof1.ejecutar(mover1);//MAL?
-        mover1.ejecutar(algof1);//BIEN?
-        */
-        
-        //SIN COMMAND
-/*
-        algof1.mover(coord2);
-        
-        
+        Jugador jug1 = new Jugador(tablero1,"sin equipo");
+        EstadoAlgoFormer estadoAlterno = new EstadoHumanoide(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1);
+        ArrayList<EstadoAlgoFormer> estadosPosibles = new ArrayList<>();
+        estadosPosibles.add(estadoAlterno);
+        Algoformer algof1 = new AlgoformerGenerico(NOMBRE_ALGOF1,VIDA1,estadosPosibles);
+        jug1.ubicarElemento(algof1,coord1);
+        jug1.mover(algof1,coord2);                
         assertTrue(algof1.getUbicacion().equals(coord2));
     }
-    
+    /*
     @Test
     public void test04InicializacionDeJuego(){
         int ANCHO = 100, LARGO = 100;

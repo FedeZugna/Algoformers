@@ -26,7 +26,9 @@ public class ListaCircular {
 	}
 	
 	public EstadoAlgoFormer get(){
-		return (EstadoAlgoFormer)this.corriente.getDato();
+		EstadoAlgoFormer estadoActual = (EstadoAlgoFormer) this.corriente.getDato();
+		this.corriente = this.corriente.next();
+		return estadoActual;
 	}
 	
 	public EstadoAlgoFormer get(int pos) throws Exception{

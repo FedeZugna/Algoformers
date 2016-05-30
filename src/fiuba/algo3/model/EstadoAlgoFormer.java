@@ -29,5 +29,9 @@ public class EstadoAlgoFormer {
     boolean esAtaquePosible(Coordenada coordOrigen, Coordenada coordObjetivo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+	public int getAtaque() {
+		return this.ataque;
+	}
     
 }

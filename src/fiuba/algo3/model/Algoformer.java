@@ -22,13 +22,14 @@ public class Algoformer {
 	    estadosPosibles.add(estadoHumanoide);
 	    estadosPosibles.add(estadoAlterno);
 	    this.estados=estadosPosibles;
+	    this.estadoActual = this.estados.get();
     }
     
     public Coordenada getUbicacion(){
         return this.ubicacion;
     }
     
-    private EstadoAlgoFormer getEstadoActual(){ //por ahora private
+    public EstadoAlgoFormer getEstadoActual(){ //por ahora private
         return this.estadoActual;
     }
     
@@ -58,5 +59,20 @@ public class Algoformer {
 	}
 	public void mover(Tablero tablero, Coordenada destino) {
 		this.ubicacion=destino;
+	}
+
+	public String getNombre() {
+		return this.nombre;
+	}
+	public void transformar(){
+		this.estadoActual = this.estados.get();
+	}
+
+	public int getAtaque() {
+		return this.estadoActual.getAtaque();
+	}
+
+	public ListaCircular getEstados() {
+		return this.estados;
 	}
 }
