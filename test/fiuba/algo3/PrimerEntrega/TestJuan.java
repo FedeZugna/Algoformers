@@ -1,4 +1,4 @@
-package PrimerEntrega;
+package primerEntrega;
 
 import java.util.ArrayList;
 
