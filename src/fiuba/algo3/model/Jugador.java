@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 public class Jugador {
@@ -43,8 +44,8 @@ public class Jugador {
 	}
 	public void ubicarElemento(Algoformer algoformer, Coordenada coord) {
 		this.tablero.ubicarElemento(algoformer, coord);
-		
 	}
+	
 	public void OrdenaQueSeTranforme(Algoformer algoformer) {
 		Iterator<Algoformer> iterador = this.equipo.iterator();
 		while(iterador.hasNext()){
@@ -54,5 +55,18 @@ public class Jugador {
 				this.equipo.remove(this.equipo.indexOf(algoformer)+1);
 			}
 		}
+	}
+	public ArrayList<Algoformer> devolverAlgoformersVivos() {
+		ArrayList<Algoformer> algoformersVivos= new ArrayList<Algoformer>();
+		Iterator<Algoformer> iterador = equipo.iterator();
+		while(iterador.hasNext()){
+			if (iterador.next().estaVivo()){
+				algoformersVivos.add(iterador.next() );
+			}
+		}
+		return algoformersVivos;
+	}
+	public ArrayList<Algoformer> devolverEquipo() {
+		return equipo;
 	}
 }

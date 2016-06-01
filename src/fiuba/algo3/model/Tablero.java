@@ -14,8 +14,12 @@ import java.util.HashMap;
 public class Tablero {
    
     private HashMap<Coordenada,Casillero> casilleros;
+    private int largoTablero;
+    private int altoTablero;
     
     public Tablero(int largo, int alto){
+    	largoTablero= largo;
+    	altoTablero= alto;
     	this.casilleros= new HashMap<Coordenada,Casillero>();
         for (int i=1; i<largo; i++) {
         	for (int j=1; j< alto ; j++){
@@ -24,15 +28,15 @@ public class Tablero {
         }
     }
 
-    public void ubicarElemento(Algoformer algof1, Coordenada coord1) {
+    public void ubicarElemento(Interactuable algof1, Coordenada coord1) {
         this.casilleros.get(coord1).ubicarElemento(algof1);
     }
     
-    public Object devolverElemeno(Coordenada coord){
+    public Interactuable devolverElemeno(Coordenada coord){
     	return this.casilleros.get(coord).devolverElemento();
     }
 
-	public void cambiar(Object ocupante, Coordenada origen, Coordenada destino) {
+	public void cambiar(Interactuable ocupante, Coordenada origen, Coordenada destino) {
 		Casillero casillero = this.casilleros.get(origen);
 		//casillero.removerElemento();
 		Casillero casillero2 = new Casillero();
@@ -43,4 +47,14 @@ public class Tablero {
 		
 		
 	}
+
+	public int devolverLargo() {
+		return largoTablero;
+	}
+
+	public int devolverAlto() {
+		return altoTablero;
+	}
+
+
 }
