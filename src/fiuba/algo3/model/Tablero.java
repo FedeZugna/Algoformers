@@ -26,10 +26,11 @@ public class Tablero {
         		casilleros.put(new Coordenada(i,j), new Casillero());
         	}
         }
+//        this.posicionarChispaEnElMedio();
     }
 
-    public void ubicarElemento(Interactuable algof1, Coordenada coord1) {
-        this.casilleros.get(coord1).ubicarElemento(algof1);
+	public void ubicarElemento(Interactuable algof1, Coordenada coord1) {
+    	this.casilleros.get(coord1).ubicarElemento(algof1);
     }
     
     public Interactuable devolverElemeno(Coordenada coord){

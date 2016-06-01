@@ -23,12 +23,12 @@ public class Casillero {
         /*this.aire = aire;
         this.tierra = tierra;*/
     	//        this.ocupante = new CasilleroVacio();
-    	this.ocupante= null;
+    	//this.ocupante= null;
     }
     
-    public void ubicarElemento(Interactuable ocupante){
+    public void ubicarElemento(Interactuable ocupanteAAgregar){
         //si esta ocupado resolver
-        this.ocupante = ocupante;
+        this.ocupante = ocupanteAAgregar;
     }
 
 	public Interactuable devolverElemento() {

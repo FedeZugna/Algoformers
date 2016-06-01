@@ -3,15 +3,26 @@ package model;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+
 public class Juego {
 	
 	Tablero tableroGeneral;
 	public Jugador jugador1;
 	public Jugador jugador2;
+	public Interactuable chispa= new Chispa();
 	
 	
 	public void tamanoDeMapa(int largo, int alto) {
 		tableroGeneral= new Tablero (largo, alto);
+		this.posicionarChispaEnElMedio();
+	}
+	
+	private void posicionarChispaEnElMedio() {
+		int largo= tableroGeneral.devolverLargo();
+		int alto= tableroGeneral.devolverAlto();
+
+		Coordenada coordenadaMedio= new Coordenada (largo/2, alto/2);	
+		tableroGeneral.ubicarElemento(chispa, coordenadaMedio);
 	}
 
 	public Tablero devolverTablero() {
@@ -19,10 +30,10 @@ public class Juego {
 	}
 
 	public void agregarJugador(String nombreDeEquipo) {
-		if (nombreDeEquipo== "AUTOBOTS"){
-			jugador1= new Jugador (tableroGeneral, nombreDeEquipo);
+	if (nombreDeEquipo== "AUTOBOTS"){
+			jugador1= new Jugador (tableroGeneral, "AUTOBOTS");
 		}else{
-			jugador2= new Jugador (tableroGeneral, nombreDeEquipo);
+			jugador2= new Jugador (tableroGeneral, "DECEPTICONS");
 		}
 	}
 
@@ -42,7 +53,7 @@ public class Juego {
 		}
 	}
 
-	private void posicionar(Jugador jugador, Coordenada coord1,
+	public void posicionar(Jugador jugador, Coordenada coord1,
 			Coordenada coord2, Coordenada coord3) {
 		
 		ArrayList<Coordenada> coordenadas= new ArrayList<Coordenada>();
@@ -75,11 +86,17 @@ public class Juego {
 	public void posicionarDecepticons() {
 		int i= tableroGeneral.devolverLargo();
 		int j= tableroGeneral.devolverAlto();
-		Coordenada coord1= new Coordenada(i, j);
-		Coordenada coord2= new Coordenada(i, j-1);
-		Coordenada coord3= new Coordenada(i, j-2);
+		Coordenada coord1= new Coordenada(i-1, j-1);	//Seria imposible
+		Coordenada coord2= new Coordenada(i-1, j-2);	//testearlo con
+		Coordenada coord3= new Coordenada(i-1, j-3);	//un random
 		this.posicionar(jugador2, coord1, coord2, coord3);
 	}
 	
+	public void inicializarTablero() {
+		this.agregarJugador("AUTOBOTS");
+		this.agregarJugador("DECEPTICONS");
+		this.posicionarChispaEnElMedio();
+
+	}
 
 }

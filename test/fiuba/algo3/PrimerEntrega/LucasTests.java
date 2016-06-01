@@ -44,7 +44,7 @@ public class LucasTests {
 	public void test03CrearJuegoConUnSoloJugadorYEquipoAutobots(){
 		Juego juego= new Juego();
 		juego.tamanoDeMapa(10, 15);
-		
+//		juego.agregarJugadores();
 		juego.agregarJugador("AUTOBOTS");
 		
 		ArrayList<Algoformer> equipo;
@@ -59,7 +59,7 @@ public class LucasTests {
 	public void test04CrearJuegoConUnSoloJugadorYEquipoDecepticons(){
 		Juego juego= new Juego();
 		juego.tamanoDeMapa(10, 15);
-		
+//		juego.agregarJugadores();
 		juego.agregarJugador("DECEPTICONS");
 		
 		ArrayList<Algoformer> equipo= new ArrayList<Algoformer>();
@@ -74,7 +74,7 @@ public class LucasTests {
 	public void test05InicializarTableroParaUnJugador(){
 		Juego juego= new Juego();
 		juego.tamanoDeMapa(10, 15);
-		
+//		juego.agregarJugadores();
 		juego.agregarJugador("AUTOBOTS");
 		juego.posicionarAutobots();
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(1, 1)).getNombre()== "Optimus");
@@ -82,27 +82,30 @@ public class LucasTests {
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(1, 3)).getNombre()== "Ratchet");
 	}
 
-	/*PULIR ESTE TEST
 	@Test
-	public void test06InicializarTableroParaDosJugadores(){
+	public void test06CrearChispaEnMedioDelMapa(){		
 		Juego juego= new Juego();
 		juego.tamanoDeMapa(10, 15);
 		
-		juego.agregarJugador("AUTOBOTS");
-		juego.posicionarAutobots();
-		Assert.assertTrue((juego.devolverElementoEnCoordenada(1, 1)).getNombre()== "Optimus");
-		Assert.assertTrue((juego.devolverElementoEnCoordenada(1, 2)).getNombre()== "Bumblebee");
-		Assert.assertTrue((juego.devolverElementoEnCoordenada(1, 3)).getNombre()== "Ratchet");
+		Assert.assertTrue((juego.devolverElementoEnCoordenada(5, 7)).getNombre()== "Chispa");
+	}
 
+
+	@Test
+	public void test07InicializarTableroParaUnJugadorD(){
+		
+		Juego juego= new Juego();
+		juego.tamanoDeMapa(10, 15);
+		
+//		juego.agregarJugadores();
 		juego.agregarJugador("DECEPTICONS");
 		juego.posicionarDecepticons();
-		Assert.assertTrue((juego.devolverElementoEnCoordenada(10, 15)).getNombre()== "Megatron");
-		Assert.assertTrue((juego.devolverElementoEnCoordenada(10, 14)).getNombre()== "BoneCrusher");
-		Assert.assertTrue((juego.devolverElementoEnCoordenada(10, 13)).getNombre()== "Frenzy");
-		
+		Assert.assertTrue((juego.devolverElementoEnCoordenada(9, 14)).getNombre()== "Megatron");
+		Assert.assertTrue((juego.devolverElementoEnCoordenada(9, 13)).getNombre()== "BoneCrusher");
+		Assert.assertTrue((juego.devolverElementoEnCoordenada(9, 12)).getNombre()== "Frenzy");
 	}
-*/
 
+	
 //TESTS DE MARTIN	
 	@Test
 	public void test01agregarAlgoformerHumanoideYMoverlo(){
