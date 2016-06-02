@@ -13,7 +13,7 @@ public class LucasTests {
 
 	@Test
 	public void test01InicializarTableroConUnOptimus () {
-		Tablero tablero= new Tablero (10, 10);
+		Tablero tablero= Tablero.getInstancia();
 		Algoformer optimus= new Optimus();
 		Interactuable algoformer;
 		Coordenada coordenadaOcupada= new Coordenada(1, 1);
@@ -28,14 +28,9 @@ public class LucasTests {
 	
 	@Test
 	public void test02CrearJuegoYCreaUnMapa(){
-		Juego juego= new Juego();
-		juego.tamanoDeMapa(10, 15);
-		
-		Tablero tablero;
-		tablero= juego.devolverTablero();
-		
-		Assert.assertTrue(tablero.devolverLargo()== 10);
-		Assert.assertTrue(tablero.devolverAlto()== 15);
+				
+		Assert.assertTrue(Tablero.getInstancia().devolverLargo()== 20);
+		Assert.assertTrue(Tablero.getInstancia().devolverAlto()== 20);
 	}
 	
 	
@@ -43,7 +38,6 @@ public class LucasTests {
 	@Test
 	public void test03CrearJuegoConUnSoloJugadorYEquipoAutobots(){
 		Juego juego= new Juego();
-		juego.tamanoDeMapa(10, 15);
 		juego.agregarJugador("AUTOBOTS");
 		
 		ArrayList<Algoformer> equipo;
@@ -58,7 +52,6 @@ public class LucasTests {
 	@Test
 	public void test04CrearJuegoConUnSoloJugadorYEquipoDecepticons(){
 		Juego juego= new Juego();
-		juego.tamanoDeMapa(10, 15);
 		juego.agregarJugador("DECEPTICONS");
 		
 		ArrayList<Algoformer> equipo= new ArrayList<Algoformer>();
@@ -73,7 +66,6 @@ public class LucasTests {
 	@Test
 	public void test05InicializarTableroParaUnJugador(){
 		Juego juego= new Juego();
-		juego.tamanoDeMapa(10, 15);
 		juego.agregarJugador("AUTOBOTS");
 		juego.posicionarAutobots();
 		
@@ -85,7 +77,6 @@ public class LucasTests {
 	@Test
 	public void test06CrearChispaEnMedioDelMapa(){		
 		Juego juego= new Juego();
-		juego.tamanoDeMapa(10, 15);
 		juego.posicionarChispaEnElMedio();
 		
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(5, 7)).getNombre()== "Chispa");
@@ -95,7 +86,6 @@ public class LucasTests {
 	@Test
 	public void test07InicializarTableroParaUnJugadorD(){
 		Juego juego= new Juego();
-		juego.tamanoDeMapa(10, 15);
 		
 		juego.agregarJugador("DECEPTICONS");
 		juego.posicionarDecepticons();
@@ -107,7 +97,6 @@ public class LucasTests {
 	@Test
 	public void test08InicializarJuegoCompleto() {
 		Juego juego= new Juego();
-		juego.tamanoDeMapa(10, 10);
 		juego.inicializarTablero();
 		
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(5, 5)).getNombre()== "Chispa");
@@ -132,11 +121,11 @@ public class LucasTests {
 	@Test
 	public void test01agregarAlgoformerHumanoideYMoverlo(){
 		String NOMBRE_ALGOF1 = "Autobot1";
-	    int ANCHO = 100, LARGO = 100, VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2,VELOCIDAD_DESP1 = 10;
+	    int  VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2,VELOCIDAD_DESP1 = 10;
 	    int HORIZ1 = 10, HORIZ2 = 11,VERT1 = 10, VERT2 = 12;
 	    Coordenada coord1 = new Coordenada(HORIZ1,VERT1);
 	    Coordenada coord2 = new Coordenada(HORIZ2,VERT2);
-	    Tablero tablero1 =  new Tablero(ANCHO,LARGO);
+	    Tablero tablero1 =  Tablero.getInstancia();
 	    Jugador jug1 = new Jugador(tablero1,"sin equipo");
 	    EstadoAlgoFormer estadoHumanoide1 = new EstadoHumanoide(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1);
 	    ArrayList<EstadoAlgoFormer> estadosPosibles = new ArrayList<>();
@@ -150,11 +139,11 @@ public class LucasTests {
 	 @Test
 	    public void test03agregarAlgoformerAlternoYMoverlo(){
 	    	String NOMBRE_ALGOF1 = "Autobot1";
-	        int ANCHO = 100, LARGO = 100, VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2,VELOCIDAD_DESP1 = 10;
+	        int  VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2,VELOCIDAD_DESP1 = 10;
 	        int HORIZ1 = 10, HORIZ2 = 11,VERT1 = 10, VERT2 = 12;
 	        Coordenada coord1 = new Coordenada(HORIZ1,VERT1);
 	        Coordenada coord2 = new Coordenada(HORIZ2,VERT2);
-	        Tablero tablero1 =  new Tablero(ANCHO,LARGO);
+	        Tablero tablero1 =  Tablero.getInstancia();
 	        Jugador jug1 = new Jugador(tablero1,"sin equipo");
 	        EstadoAlgoFormer estadoAlterno = new EstadoHumanoide(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1);
 	        ArrayList<EstadoAlgoFormer> estadosPosibles = new ArrayList<>();
@@ -173,7 +162,7 @@ public class LucasTests {
 	        int ANCHO = 100, LARGO = 100, VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2,VELOCIDAD_DESP1 = 10;
 	        int HORIZ1 = 10,VERT1 = 10;
 	        Coordenada coord1 = new Coordenada(HORIZ1,VERT1);
-	        Tablero tablero =  new Tablero(ANCHO,LARGO);
+	        Tablero tablero =  Tablero.getInstancia();
 	        EstadoAlgoFormer estadoHumanoide1 = new EstadoHumanoide(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1);
 	        ArrayList<EstadoAlgoFormer> estadosPosibles = new ArrayList<>();
 	        estadosPosibles.add(estadoHumanoide1);
@@ -189,7 +178,7 @@ public class LucasTests {
 	        int ANCHO = 100, LARGO = 100, VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2,VELOCIDAD_DESP1 = 10;
 	        int HORIZ1 = 10,VERT1 = 10;
 	        Coordenada coord1 = new Coordenada(HORIZ1,VERT1);
-	        Tablero tablero =  new Tablero(ANCHO,LARGO);
+	        Tablero tablero =  Tablero.getInstancia();
 	        EstadoAlgoFormer estadoHumanoide1 = new EstadoHumanoide(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1);
 	        ArrayList<EstadoAlgoFormer> estadosPosibles = new ArrayList<>();
 	        estadosPosibles.add(estadoHumanoide1);

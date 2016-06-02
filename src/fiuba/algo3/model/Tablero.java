@@ -14,15 +14,15 @@ import java.util.HashMap;
 public class Tablero {
    
     private HashMap<Coordenada,Casillero> casilleros;
-    private int largoTablero;
-    private int altoTablero;
+    private int largoTablero = 20;
+    private int altoTablero= 20;
+    private static Tablero instancia = new Tablero();
     
-    public Tablero(int largo, int alto){
-    	largoTablero= largo;
-    	altoTablero= alto;
+    private Tablero(){
+    	
     	this.casilleros= new HashMap<Coordenada,Casillero>();
-        for (int i=1; i<=largo; i++) {
-        	for (int j=1; j<= alto ; j++){
+        for (int i=1; i<=largoTablero; i++) {
+        	for (int j=1; j<= altoTablero ; j++){
         		casilleros.put(new Coordenada(i,j), new Casillero());
         	}
         }
@@ -55,6 +55,10 @@ public class Tablero {
 
 	public int devolverAlto() {
 		return altoTablero;
+	}
+
+	public static Tablero getInstancia() {
+		return instancia;
 	}
 
 

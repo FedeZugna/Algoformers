@@ -6,16 +6,12 @@ import java.util.Iterator;
 
 public class Juego {
 	
-	Tablero tableroGeneral;
+	Tablero tableroGeneral= Tablero.getInstancia();
 	public Jugador jugador1;
 	public Jugador jugador2;
 	public Interactuable chispa= new Chispa();
 	public ListaCircular turnos= new ListaCircular();
 	
-	
-	public void tamanoDeMapa(int largo, int alto) {
-		tableroGeneral= new Tablero (largo, alto);
-	}
 	
 	public void posicionarChispaEnElMedio() {
 		int largo= tableroGeneral.devolverLargo();
