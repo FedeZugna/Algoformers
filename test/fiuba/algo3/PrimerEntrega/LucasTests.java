@@ -115,6 +115,16 @@ public class LucasTests {
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(10, 10)).getNombre()== "Megatron");
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(1, 2)).estaVivo());
 	}
+	
+	@Test(expected=NombreDeEquipoNoExisteException.class)
+	public void test09SeIngresaUnNombreDeEquipoInvalido() {
+		Juego juego= new Juego();
+		juego.tamanoDeMapa(10, 15);
+		
+		juego.agregarJugador("AUTOBOTS");
+		
+		juego.agregarJugador("ALGOFORMERS");//FALLA YA QUE POR DEFAULT ASIGNA A DECEPTICONS
+	}
 
 	
 //TESTS DE MARTIN	

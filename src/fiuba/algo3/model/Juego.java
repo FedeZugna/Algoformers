@@ -28,11 +28,15 @@ public class Juego {
 		return tableroGeneral;
 	}
 
-	public void agregarJugador(String nombreDeEquipo) {
-	if (nombreDeEquipo== "AUTOBOTS"){
-			jugador1= new Jugador (tableroGeneral, "AUTOBOTS");
-		}else{
-			jugador2= new Jugador (tableroGeneral, "DECEPTICONS");
+	public void agregarJugador(String nombreDeEquipo) throws NombreDeEquipoNoExisteException {
+		try{
+			if (nombreDeEquipo== "AUTOBOTS"){
+				jugador1= new Jugador (tableroGeneral, "AUTOBOTS");
+			}else{
+				jugador2= new Jugador (tableroGeneral, "DECEPTICONS");
+			}	
+		}catch (NombreDeEquipoNoExisteException e){
+			
 		}
 	}
 
