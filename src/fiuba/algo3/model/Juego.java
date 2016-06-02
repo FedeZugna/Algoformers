@@ -80,12 +80,12 @@ public class Juego {
 
 	public Interactuable devolverElementoEnCoordenada(int i, int j) {
 		Coordenada coordenadaABuscar= new Coordenada (i, j);
-		return tableroGeneral.devolverElemeno (coordenadaABuscar);
+		return tableroGeneral.devolverElemento (coordenadaABuscar);
 	}
 
 	public void posicionarDecepticons() {
-		int i= tableroGeneral.devolverLargo();
-		int j= tableroGeneral.devolverAlto();
+		int i= Tablero.LIMITELARGO;
+		int j= Tablero.LIMITEALTO;
 		Coordenada coord1= new Coordenada(i, j);	//Seria imposible
 		Coordenada coord2= new Coordenada(i, j-1);	//testearlo con
 		Coordenada coord3= new Coordenada(i, j-2);	//un random

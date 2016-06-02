@@ -13,16 +13,16 @@ import java.util.HashMap;
  */
 public class Tablero {
    
-    private HashMap<Coordenada,Casillero> casilleros;
-    private int largoTablero = 20;
-    private int altoTablero= 20;
+    public static final int LIMITEALTO = 20;
+    public static final int LIMITELARGO = 20;
+	private HashMap<Coordenada,Casillero> casilleros;
     private static Tablero instancia = new Tablero();
     
     private Tablero(){
     	
     	this.casilleros= new HashMap<Coordenada,Casillero>();
-        for (int i=1; i<=largoTablero; i++) {
-        	for (int j=1; j<= altoTablero ; j++){
+        for (int i=1; i<=Tablero.LIMITEALTO; i++) {
+        	for (int j=1; j<= Tablero.LIMITELARGO; j++){
         		casilleros.put(new Coordenada(i,j), new Casillero());
         	}
         }
@@ -33,7 +33,7 @@ public class Tablero {
     	this.casilleros.get(coord1).ubicarElemento(algof1);
     }
     
-    public Interactuable devolverElemeno(Coordenada coord){
+    public Interactuable devolverElemento(Coordenada coord){
     	return this.casilleros.get(coord).devolverElemento();
     }
 
@@ -50,11 +50,11 @@ public class Tablero {
 	}
 
 	public int devolverLargo() {
-		return largoTablero;
+		return Tablero.LIMITELARGO; //A REFACTORIZAR
 	}
 
 	public int devolverAlto() {
-		return altoTablero;
+		return Tablero.LIMITEALTO;  //A REFACTORIZAR
 	}
 
 	public static Tablero getInstancia() {

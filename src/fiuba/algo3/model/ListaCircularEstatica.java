@@ -29,9 +29,8 @@ public class ListaCircularEstatica {
        return this.iterador.next();
     }
 
-	public void add(EstadoAlgoFormer next) {
-		// TODO Auto-generated method stub
-		
+	public boolean isEmpty() {
+		return lista.isEmpty();
 	}
 
 }

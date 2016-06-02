@@ -22,12 +22,23 @@ public class EstadoAlgoFormer {
     }
     
     //SIN COMMAND
+    boolean esAlcanzable(Coordenada origen, Coordenada destino, int alcance){
+    	if (destino.getX() - origen.getX() > alcance){
+    		return false;
+    	}
+    	if (destino.getY() - destino.getY() > alcance){
+    		return false;
+    	}
+    	return true;
+    	
+    }
+    
     boolean esMovimientoPosible(Coordenada coordOrigen, Coordenada coordObjetivo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	return esAlcanzable(coordOrigen, coordObjetivo, this.velocidad_despl);
     }
 
     boolean esAtaquePosible(Coordenada coordOrigen, Coordenada coordObjetivo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	return esAlcanzable(coordOrigen, coordObjetivo, this.distancia_ataque);    
     }
 
 	public int getAtaque() {

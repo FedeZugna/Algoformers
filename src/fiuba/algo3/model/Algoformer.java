@@ -19,11 +19,21 @@ public class Algoformer implements Interactuable{
     	this.vida= vidaPropia;
 		EstadoAlgoFormer estadoHumanoide = new EstadoHumanoide(ataqueHumanoide, distanciaAtaqueHumanoide, velocidadHumanoide);//ataque, dist ataque, velocidad
 		EstadoAlgoFormer estadoAlterno = new EstadoAlterno(ataqueAlterno, distanciaAtaqueAlterno, velocidadAlterno);//ataque, dist ataque, velocidad
-	    ListaCircular estadosPosibles = new ListaCircular();
+	    
+		ListaCircular estadosPosibles = new ListaCircular();
 	    estadosPosibles.add(estadoHumanoide);
 	    estadosPosibles.add(estadoAlterno);
 	    this.estados=estadosPosibles;
 	    this.estadoActual = this.estados.get();
+	    
+	    
+	    /*
+	     estadosPosibles.add(estadoHumanoide);
+	    estadosPosibles.add(estadoAlterno);
+	    this.estados = new ListaCircularEstatica(estadosPosibles);
+	    
+	    this.estadoActual = this.estados.get(); 
+	     */
     }
     
     @Override
@@ -81,5 +91,17 @@ public class Algoformer implements Interactuable{
 
 	public ListaCircular getEstados() {
 		return this.estados;
+	}
+
+	public void atacar(Algoformer enemigo){
+		if(!esAtaquePosible(enemigo.getUbicacion())){
+			throw new AlcanceExcedidoException();
+		}
+		enemigo.recibirAtaque(this.getAtaque());
+		
+	}
+
+	public int getVida() {
+		return this.vida;
 	}
 }

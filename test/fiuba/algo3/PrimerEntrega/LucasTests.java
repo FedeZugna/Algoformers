@@ -19,7 +19,7 @@ public class LucasTests {
 		Coordenada coordenadaOcupada= new Coordenada(1, 1);
 
 		tablero.ubicarElemento(optimus, coordenadaOcupada);
-		algoformer= tablero.devolverElemeno(coordenadaOcupada);
+		algoformer= tablero.devolverElemento(coordenadaOcupada);
 		
 		Assert.assertTrue (algoformer.getNombre()=="Optimus");
 		Assert.assertTrue (algoformer.estaVivo());
@@ -78,8 +78,10 @@ public class LucasTests {
 	public void test06CrearChispaEnMedioDelMapa(){		
 		Juego juego= new Juego();
 		juego.posicionarChispaEnElMedio();
+		int x= Tablero.LIMITELARGO /2; 
+		int y= Tablero.LIMITEALTO/2;
 		
-		Assert.assertTrue((juego.devolverElementoEnCoordenada(5, 7)).getNombre()== "Chispa");
+		Assert.assertTrue((juego.devolverElementoEnCoordenada(x, y)).getNombre()== "Chispa");
 	}
 
 
@@ -89,19 +91,19 @@ public class LucasTests {
 		
 		juego.agregarJugador("DECEPTICONS");
 		juego.posicionarDecepticons();
-		Assert.assertTrue((juego.devolverElementoEnCoordenada(10, 15)).getNombre()== "Megatron");
-		Assert.assertTrue((juego.devolverElementoEnCoordenada(10, 14)).getNombre()== "BoneCrusher");
-		Assert.assertTrue((juego.devolverElementoEnCoordenada(10, 13)).getNombre()== "Frenzy");
+		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO, Tablero.LIMITEALTO)).getNombre()== "Megatron");
+		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO, Tablero.LIMITEALTO-1)).getNombre()== "BoneCrusher");
+		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO, Tablero.LIMITEALTO-2)).getNombre()== "Frenzy");
 	}
 	
 	@Test
 	public void test08InicializarJuegoCompleto() {
 		Juego juego= new Juego();
 		juego.inicializarTablero();
-		
-		Assert.assertTrue((juego.devolverElementoEnCoordenada(5, 5)).getNombre()== "Chispa");
+				
+		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO/2, Tablero.LIMITEALTO/2)).getNombre()== "Chispa");
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(1, 1)).getNombre()== "Optimus");
-		Assert.assertTrue((juego.devolverElementoEnCoordenada(10, 10)).getNombre()== "Megatron");
+		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO, Tablero.LIMITEALTO)).getNombre()== "Megatron");
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(1, 2)).estaVivo());
 	}
 	
@@ -159,7 +161,7 @@ public class LucasTests {
 	 @Test
 		public void testSePuedeColocarUnTransformerEnUnCasillero(){
 			String NOMBRE_ALGOF1 = "Autobot1";
-	        int ANCHO = 100, LARGO = 100, VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2,VELOCIDAD_DESP1 = 10;
+	        int VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2,VELOCIDAD_DESP1 = 10;
 	        int HORIZ1 = 10,VERT1 = 10;
 	        Coordenada coord1 = new Coordenada(HORIZ1,VERT1);
 	        Tablero tablero =  Tablero.getInstancia();
@@ -168,14 +170,14 @@ public class LucasTests {
 	        estadosPosibles.add(estadoHumanoide1);
 	        Algoformer algof1 = new AlgoformerGenerico(NOMBRE_ALGOF1,VIDA1,estadosPosibles);
 	        tablero.ubicarElemento(algof1,coord1);
-	        Assert.assertTrue(tablero.devolverElemeno(coord1)==algof1);
+	        Assert.assertTrue(tablero.devolverElemento(coord1)==algof1);
 	        
 		}
 	 
 	 @Test
 		public void AlgoformerSePuedeMoverUnCasillero(){
 			String NOMBRE_ALGOF1 = "Autobot1";
-	        int ANCHO = 100, LARGO = 100, VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2,VELOCIDAD_DESP1 = 10;
+	        int VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2,VELOCIDAD_DESP1 = 10;
 	        int HORIZ1 = 10,VERT1 = 10;
 	        Coordenada coord1 = new Coordenada(HORIZ1,VERT1);
 	        Tablero tablero =  Tablero.getInstancia();
@@ -184,9 +186,9 @@ public class LucasTests {
 	        estadosPosibles.add(estadoHumanoide1);
 	        Algoformer algof1 = new AlgoformerGenerico(NOMBRE_ALGOF1,VIDA1,estadosPosibles);
 	        tablero.ubicarElemento(algof1,coord1);
-	        Assert.assertTrue(tablero.devolverElemeno(coord1)==algof1);
+	        Assert.assertTrue(tablero.devolverElemento(coord1)==algof1);
 	        algof1.mover(tablero, new Coordenada(10,10));
-	        Assert.assertTrue(algof1==tablero.devolverElemeno(new Coordenada(10,10)));
+	        Assert.assertTrue(algof1==tablero.devolverElemento(new Coordenada(10,10)));
 		}
 	 
 	 @Test
@@ -207,7 +209,36 @@ public class LucasTests {
 	 
 	 @Test
 		public void pruebaListaCircularSeCreaVacia(){
-			ListaCircular lista = new ListaCircular();
-			Assert.assertTrue(lista.isEmpty() );
+		 	ArrayList<EstadoAlgoFormer> lista = new ArrayList<EstadoAlgoFormer>();
+		 	ListaCircularEstatica listaCirc = new ListaCircularEstatica(lista);
+			Assert.assertTrue(listaCirc.isEmpty() );
 		}
+	 
+	 @Test
+	 public void pruebaListaCircularSeLlena(){
+		 	ArrayList<EstadoAlgoFormer> lista = new ArrayList<EstadoAlgoFormer>();
+		 	EstadoAlgoFormer pruebaUno = new EstadoAlgoFormer(1,1,1);
+		 	lista.add(pruebaUno);
+		 	ListaCircularEstatica listaCirc = new ListaCircularEstatica(lista);
+			Assert.assertFalse(listaCirc.isEmpty() );
+		}
+	 
+	 @Test
+	 public void pruebaListaCircularEsCircular(){
+		 	ArrayList<EstadoAlgoFormer> lista = new ArrayList<EstadoAlgoFormer>();
+		 	EstadoAlgoFormer pruebaUno = new EstadoAlgoFormer(1,1,1);
+		 	lista.add(pruebaUno);
+		 	EstadoAlgoFormer pruebaDos = new EstadoAlgoFormer(2,2,2);
+		 	lista.add(pruebaDos);
+		 	ListaCircularEstatica listaCirc = new ListaCircularEstatica(lista);
+			Assert.assertTrue(listaCirc.get()==pruebaUno);
+			Assert.assertTrue(listaCirc.get()==pruebaDos);
+			Assert.assertTrue(listaCirc.get()==pruebaUno);
+		} 
+	 	
+// Pruebas Nicolas
+	 
+	 
+	 	
+	 
 }

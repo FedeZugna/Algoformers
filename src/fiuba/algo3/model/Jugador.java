@@ -2,12 +2,10 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Scanner;
 
 public class Jugador {
 
-	Tablero tablero;
+	Tablero tablero ;
 	ArrayList<Algoformer> equipo;
 	public Jugador(Tablero tablero, String equipo){
 		
@@ -42,6 +40,15 @@ public class Jugador {
 		
 		
 	}
+	
+	public void atacar(Algoformer algoTransf, Coordenada objetivo) throws AtaqueInvalidoException {
+		if(this.equipo.contains (this.tablero.devolverElemento(objetivo) ) ){ /*|| objetivo.equals(algoTransf.getUbicacion()))*/
+			throw new AtaqueInvalidoException();
+			
+		}
+		algoTransf.atacar((Algoformer)this.tablero.devolverElemento(objetivo));	
+	}
+	
 	public void ubicarElemento(Algoformer algoformer, Coordenada coord) {
 		this.tablero.ubicarElemento(algoformer, coord);
 	}
