@@ -14,10 +14,9 @@ public class Juego {
 	
 	public void tamanoDeMapa(int largo, int alto) {
 		tableroGeneral= new Tablero (largo, alto);
-		this.posicionarChispaEnElMedio();
 	}
 	
-	private void posicionarChispaEnElMedio() {
+	public void posicionarChispaEnElMedio() {
 		int largo= tableroGeneral.devolverLargo();
 		int alto= tableroGeneral.devolverAlto();
 
@@ -94,9 +93,10 @@ public class Juego {
 	
 	public void inicializarTablero() {
 		this.agregarJugador("AUTOBOTS");
+		this.posicionarAutobots();
 		this.agregarJugador("DECEPTICONS");
+		this.posicionarDecepticons();
 		this.posicionarChispaEnElMedio();
-
 	}
 
 }

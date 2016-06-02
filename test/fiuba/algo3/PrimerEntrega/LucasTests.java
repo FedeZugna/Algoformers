@@ -86,6 +86,7 @@ public class LucasTests {
 	public void test06CrearChispaEnMedioDelMapa(){		
 		Juego juego= new Juego();
 		juego.tamanoDeMapa(10, 15);
+		juego.posicionarChispaEnElMedio();
 		
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(5, 7)).getNombre()== "Chispa");
 	}
@@ -101,6 +102,18 @@ public class LucasTests {
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(10, 15)).getNombre()== "Megatron");
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(10, 14)).getNombre()== "BoneCrusher");
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(10, 13)).getNombre()== "Frenzy");
+	}
+	
+	@Test
+	public void test08InicializarJuegoCompleto() {
+		Juego juego= new Juego();
+		juego.tamanoDeMapa(10, 10);
+		juego.inicializarTablero();
+		
+		Assert.assertTrue((juego.devolverElementoEnCoordenada(5, 5)).getNombre()== "Chispa");
+		Assert.assertTrue((juego.devolverElementoEnCoordenada(1, 1)).getNombre()== "Optimus");
+		Assert.assertTrue((juego.devolverElementoEnCoordenada(10, 10)).getNombre()== "Megatron");
+		Assert.assertTrue((juego.devolverElementoEnCoordenada(1, 2)).estaVivo());
 	}
 
 	
