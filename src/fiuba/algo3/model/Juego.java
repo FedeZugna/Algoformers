@@ -86,9 +86,9 @@ public class Juego {
 	public void posicionarDecepticons() {
 		int i= tableroGeneral.devolverLargo();
 		int j= tableroGeneral.devolverAlto();
-		Coordenada coord1= new Coordenada(i-1, j-1);	//Seria imposible
-		Coordenada coord2= new Coordenada(i-1, j-2);	//testearlo con
-		Coordenada coord3= new Coordenada(i-1, j-3);	//un random
+		Coordenada coord1= new Coordenada(i, j);	//Seria imposible
+		Coordenada coord2= new Coordenada(i, j-1);	//testearlo con
+		Coordenada coord3= new Coordenada(i, j-2);	//un random
 		this.posicionar(jugador2, coord1, coord2, coord3);
 	}
 	

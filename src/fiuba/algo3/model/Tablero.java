@@ -21,8 +21,8 @@ public class Tablero {
     	largoTablero= largo;
     	altoTablero= alto;
     	this.casilleros= new HashMap<Coordenada,Casillero>();
-        for (int i=1; i<largo; i++) {
-        	for (int j=1; j< alto ; j++){
+        for (int i=1; i<=largo; i++) {
+        	for (int j=1; j<= alto ; j++){
         		casilleros.put(new Coordenada(i,j), new Casillero());
         	}
         }
