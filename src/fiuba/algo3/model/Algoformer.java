@@ -5,43 +5,36 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 public class Algoformer implements Interactuable{
-    protected EstadoAlgoFormer estadoActual;
-    protected ListaCircular estados; //A reemplazar si el Estado se ocupa de esto
-    protected Coordenada ubicacion; //El bicho tiene que saber donde esta parado
+    protected EstadoAlgoformer estadoActual;
+    protected ListaCircularEstatica estados;
+    protected Coordenada ubicacion; 
     protected String nombre;
     protected int vida;
     
     
-    public void inicializarAlgoformer (String nombre, int vidaPropia, int ataqueHumanoide, int distanciaAtaqueHumanoide, int velocidadHumanoide, int ataqueAlterno, int distanciaAtaqueAlterno, int velocidadAlterno) {
-    	
-    	this.nombre= nombre;
-    	this.vida= vidaPropia;
-		EstadoAlgoFormer estadoHumanoide = new EstadoHumanoide(ataqueHumanoide, distanciaAtaqueHumanoide, velocidadHumanoide);//ataque, dist ataque, velocidad
-		EstadoAlgoFormer estadoAlterno = new EstadoAlterno(ataqueAlterno, distanciaAtaqueAlterno, velocidadAlterno);//ataque, dist ataque, velocidad
-	    
-		ListaCircular estadosPosibles = new ListaCircular();
-	    estadosPosibles.add(estadoHumanoide);
-	    estadosPosibles.add(estadoAlterno);
-	    this.estados=estadosPosibles;
-	    this.estadoActual = this.estados.get();
-	    
-	    
-	    /*
-	     estadosPosibles.add(estadoHumanoide);
-	    estadosPosibles.add(estadoAlterno);
-	    this.estados = new ListaCircularEstatica(estadosPosibles);
-	    
-	    this.estadoActual = this.estados.get(); 
-	     */
-    }
+   public void inicializarAlgoformer(String nombre, int vidaPropia, int ataqueHumanoide, int distanciaAtaqueHumanoide, int velocidadHumanoide, int ataqueAlterno, int distanciaAtaqueAlterno, int velocidadAlterno ) {
+	   this.nombre=nombre;
+	   this.vida=vidaPropia;
+	   EstadoAlgoformer estadoHumanoide = new EstadoHumanoide (ataqueHumanoide,distanciaAtaqueHumanoide,velocidadHumanoide);
+	   EstadoAlgoformer estadoAlterno = new EstadoAlterno(ataqueAlterno,distanciaAtaqueAlterno,velocidadAlterno);
+	   ArrayList<EstadoAlgoformer> lista = new ArrayList<EstadoAlgoformer>();
+	   lista.add(estadoHumanoide);
+	   lista.add(estadoAlterno);
+	   ListaCircularEstatica estados = new ListaCircularEstatica(lista);
+	   this.estados = estados;
+	   this.estadoActual = this.estados.get();
+   }
+    
     
     @Override
     public Coordenada getUbicacion(){
         return this.ubicacion;
     }
     
-    public EstadoAlgoFormer getEstadoActual(){ //por ahora private
+    public EstadoAlgoformer getEstadoActual(){
         return this.estadoActual;
     }
     
@@ -89,7 +82,7 @@ public class Algoformer implements Interactuable{
 		return this.estadoActual.getAtaque();
 	}
 
-	public ListaCircular getEstados() {
+	public ListaCircularEstatica getEstados() {
 		return this.estados;
 	}
 

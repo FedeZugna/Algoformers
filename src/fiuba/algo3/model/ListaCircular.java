@@ -25,13 +25,13 @@ public class ListaCircular {
 	    this.corriente=nuevo;
 	}
 	
-	public EstadoAlgoFormer get(){
-		EstadoAlgoFormer estadoActual = (EstadoAlgoFormer) this.corriente.getDato();
+	public EstadoAlgoformer get(){
+		EstadoAlgoformer estadoActual = (EstadoAlgoformer) this.corriente.getDato();
 		this.corriente = this.corriente.next();
 		return estadoActual;
 	}
 	
-	public EstadoAlgoFormer get(int pos) throws Exception{
+	public EstadoAlgoformer get(int pos) throws Exception{
 		ContListaCircular current = primero;
 		int contador=1;
 		while ((current.getPos()<pos) && (contador <= this.posAbs)){
@@ -40,7 +40,7 @@ public class ListaCircular {
 		if (current.getPos()<pos){
 			throw new Exception();
 		}
-		return (EstadoAlgoFormer) current.getDato();
+		return (EstadoAlgoformer) current.getDato();
 	}
 
 }

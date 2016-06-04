@@ -9,13 +9,13 @@ package model;
  *
  * @author Martin
  */
-public class EstadoAlgoFormer {
+public class EstadoAlgoformer {
     
     private int ataque;
     private int distancia_ataque;
     private int velocidad_despl;
 
-    public EstadoAlgoFormer(int ataque, int distancia_ataque, int velocidad_despl) {
+    public EstadoAlgoformer(int ataque, int distancia_ataque, int velocidad_despl) {
         this.ataque = ataque;
         this.distancia_ataque = distancia_ataque;
         this.velocidad_despl = velocidad_despl;

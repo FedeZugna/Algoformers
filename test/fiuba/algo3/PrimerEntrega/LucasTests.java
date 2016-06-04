@@ -129,8 +129,8 @@ public class LucasTests {
 	    Coordenada coord2 = new Coordenada(HORIZ2,VERT2);
 	    Tablero tablero1 =  Tablero.getInstancia();
 	    Jugador jug1 = new Jugador(tablero1,"sin equipo");
-	    EstadoAlgoFormer estadoHumanoide1 = new EstadoHumanoide(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1);
-	    ArrayList<EstadoAlgoFormer> estadosPosibles = new ArrayList<>();
+	    EstadoAlgoformer estadoHumanoide1 = new EstadoHumanoide(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1);
+	    ArrayList<EstadoAlgoformer> estadosPosibles = new ArrayList<>();
 	    estadosPosibles.add(estadoHumanoide1);
 	    Algoformer algof1 = new AlgoformerGenerico(NOMBRE_ALGOF1,VIDA1,estadosPosibles);
 	    jug1.ubicarElemento(algof1,coord1);
@@ -147,8 +147,8 @@ public class LucasTests {
 	        Coordenada coord2 = new Coordenada(HORIZ2,VERT2);
 	        Tablero tablero1 =  Tablero.getInstancia();
 	        Jugador jug1 = new Jugador(tablero1,"sin equipo");
-	        EstadoAlgoFormer estadoAlterno = new EstadoHumanoide(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1);
-	        ArrayList<EstadoAlgoFormer> estadosPosibles = new ArrayList<>();
+	        EstadoAlgoformer estadoAlterno = new EstadoHumanoide(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1);
+	        ArrayList<EstadoAlgoformer> estadosPosibles = new ArrayList<>();
 	        estadosPosibles.add(estadoAlterno);
 	        Algoformer algof1 = new AlgoformerGenerico(NOMBRE_ALGOF1,VIDA1,estadosPosibles);
 	        jug1.ubicarElemento(algof1,coord1);
@@ -165,8 +165,8 @@ public class LucasTests {
 	        int HORIZ1 = 10,VERT1 = 10;
 	        Coordenada coord1 = new Coordenada(HORIZ1,VERT1);
 	        Tablero tablero =  Tablero.getInstancia();
-	        EstadoAlgoFormer estadoHumanoide1 = new EstadoHumanoide(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1);
-	        ArrayList<EstadoAlgoFormer> estadosPosibles = new ArrayList<>();
+	        EstadoAlgoformer estadoHumanoide1 = new EstadoHumanoide(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1);
+	        ArrayList<EstadoAlgoformer> estadosPosibles = new ArrayList<>();
 	        estadosPosibles.add(estadoHumanoide1);
 	        Algoformer algof1 = new AlgoformerGenerico(NOMBRE_ALGOF1,VIDA1,estadosPosibles);
 	        tablero.ubicarElemento(algof1,coord1);
@@ -181,8 +181,8 @@ public class LucasTests {
 	        int HORIZ1 = 10,VERT1 = 10;
 	        Coordenada coord1 = new Coordenada(HORIZ1,VERT1);
 	        Tablero tablero =  Tablero.getInstancia();
-	        EstadoAlgoFormer estadoHumanoide1 = new EstadoHumanoide(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1);
-	        ArrayList<EstadoAlgoFormer> estadosPosibles = new ArrayList<>();
+	        EstadoAlgoformer estadoHumanoide1 = new EstadoHumanoide(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1);
+	        ArrayList<EstadoAlgoformer> estadosPosibles = new ArrayList<>();
 	        estadosPosibles.add(estadoHumanoide1);
 	        Algoformer algof1 = new AlgoformerGenerico(NOMBRE_ALGOF1,VIDA1,estadosPosibles);
 	        tablero.ubicarElemento(algof1,coord1);
@@ -197,8 +197,8 @@ public class LucasTests {
 	        int  VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2,VELOCIDAD_DESP1 = 10;
 	        
 	        Casillero casillero =  new Casillero();
-	        EstadoAlgoFormer estadoHumanoide1 = new EstadoHumanoide(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1);
-	        ArrayList<EstadoAlgoFormer> estadosPosibles = new ArrayList<>();
+	        EstadoAlgoformer estadoHumanoide1 = new EstadoHumanoide(ATAQUE1,DISTANCIA_ATK1,VELOCIDAD_DESP1);
+	        ArrayList<EstadoAlgoformer> estadosPosibles = new ArrayList<>();
 	        estadosPosibles.add(estadoHumanoide1);
 	        Algoformer algof1 = new AlgoformerGenerico(NOMBRE_ALGOF1,VIDA1,estadosPosibles);
 	        casillero.ubicarElemento(algof1);
@@ -209,15 +209,15 @@ public class LucasTests {
 	 
 	 @Test
 		public void pruebaListaCircularSeCreaVacia(){
-		 	ArrayList<EstadoAlgoFormer> lista = new ArrayList<EstadoAlgoFormer>();
+		 	ArrayList<EstadoAlgoformer> lista = new ArrayList<EstadoAlgoformer>();
 		 	ListaCircularEstatica listaCirc = new ListaCircularEstatica(lista);
 			Assert.assertTrue(listaCirc.isEmpty() );
 		}
 	 
 	 @Test
 	 public void pruebaListaCircularSeLlena(){
-		 	ArrayList<EstadoAlgoFormer> lista = new ArrayList<EstadoAlgoFormer>();
-		 	EstadoAlgoFormer pruebaUno = new EstadoAlgoFormer(1,1,1);
+		 	ArrayList<EstadoAlgoformer> lista = new ArrayList<EstadoAlgoformer>();
+		 	EstadoAlgoformer pruebaUno = new EstadoAlgoformer(1,1,1);
 		 	lista.add(pruebaUno);
 		 	ListaCircularEstatica listaCirc = new ListaCircularEstatica(lista);
 			Assert.assertFalse(listaCirc.isEmpty() );
@@ -225,10 +225,10 @@ public class LucasTests {
 	 
 	 @Test
 	 public void pruebaListaCircularEsCircular(){
-		 	ArrayList<EstadoAlgoFormer> lista = new ArrayList<EstadoAlgoFormer>();
-		 	EstadoAlgoFormer pruebaUno = new EstadoAlgoFormer(1,1,1);
+		 	ArrayList<EstadoAlgoformer> lista = new ArrayList<EstadoAlgoformer>();
+		 	EstadoAlgoformer pruebaUno = new EstadoAlgoformer(1,1,1);
 		 	lista.add(pruebaUno);
-		 	EstadoAlgoFormer pruebaDos = new EstadoAlgoFormer(2,2,2);
+		 	EstadoAlgoformer pruebaDos = new EstadoAlgoformer(2,2,2);
 		 	lista.add(pruebaDos);
 		 	ListaCircularEstatica listaCirc = new ListaCircularEstatica(lista);
 			Assert.assertTrue(listaCirc.get()==pruebaUno);

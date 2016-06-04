@@ -14,15 +14,15 @@ import java.util.List;
  * @author Martin
  */
 public class ListaCircularEstatica {
-    private final List<EstadoAlgoFormer> lista;
-    private Iterator<EstadoAlgoFormer> iterador;
+    private final List<EstadoAlgoformer> lista;
+    private Iterator<EstadoAlgoformer> iterador;
     
-    public ListaCircularEstatica(ArrayList<EstadoAlgoFormer> estadosPosibles){
+    public ListaCircularEstatica(ArrayList<EstadoAlgoformer> estadosPosibles){
         this.lista = estadosPosibles;
         this.iterador = this.lista.listIterator();
     }
     
-    public EstadoAlgoFormer get(){
+    public EstadoAlgoformer get(){
        if (!this.iterador.hasNext()){
            this.iterador = this.lista.listIterator();
        }
