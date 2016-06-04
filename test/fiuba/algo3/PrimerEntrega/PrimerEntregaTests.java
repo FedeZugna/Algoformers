@@ -120,7 +120,7 @@ public class PrimerEntregaTests {
 	 }
 	 
 	 @Test (expected = AtaqueInvalidoException.class)
-	 public void test02algoformerNoPuedeAtacarCompaniero() {
+	 public void test06algoformerNoPuedeAtacarCompaniero() {
 		    int HORIZ1 = 10, HORIZ2 = 13, VERT1 = 10, VERT2 = 13;
 	        Coordenada coord1 = new Coordenada(HORIZ1,VERT1);
 	        Coordenada coord2 = new Coordenada(HORIZ2,VERT2);
@@ -134,7 +134,7 @@ public class PrimerEntregaTests {
 	 
 	 
 	 @Test
-	    public void test03atacarEnemigoYVerificarDistanciaYDanio1(){
+	    public void test07atacarEnemigoYVerificarDistanciaYDanio1(){
 	        String NOMBRE_ALGOF1 = "Autobot1", NOMBRE_ALGOF2 = "Decepticon1";
 	        int ANCHO = 100, LARGO = 100, VIDA = 10, ATAQUE = 1, DISTANCIA_ATK1 = 1,VELOCIDAD_DESP = 10;
 	        int DISTANCIA_ATK2 = 10;
@@ -160,7 +160,7 @@ public class PrimerEntregaTests {
 	    }
 	    
 	    @Test (expected = AlcanceExcedidoException.class)
-	    public void test04atacarEnemigoYVerificarDistanciaYDanio2(){
+	    public void test08atacarEnemigoYVerificarDistanciaYDanio2(){
 	        String NOMBRE_ALGOF1 = "Autobot1", NOMBRE_ALGOF2 = "Decepticon1";
 	        int ANCHO = 100, LARGO = 100, VIDA = 10, ATAQUE = 1, DISTANCIA_ATK1 = 1,VELOCIDAD_DESP = 10;
 	        int DISTANCIA_ATK2 = 10;
@@ -183,80 +183,6 @@ public class PrimerEntregaTests {
 	        
 	        algof1.atacar(algof2);       
 	    }
-	    
-	    
-    
-    /*
-    @Test
-    public void test05atacarEnemigoYVerificarDistanciaYDanio1(){
-        String NOMBRE_ALGOF1 = "Autobot1", NOMBRE_ALGOF2 = "Decepticon1";
-        int ANCHO = 100, LARGO = 100, VIDA = 10, ATAQUE = 1, DISTANCIA_ATK1 = 1,VELOCIDAD_DESP = 10;
-        int DISTANCIA_ATK2 = 10;
-        int HORIZ1 = 10, HORIZ2 = 13, VERT1 = 10, VERT2 = 13;
-        Coordenada coord1 = new Coordenada(HORIZ1,VERT1);
-        Coordenada coord2 = new Coordenada(HORIZ2,VERT2);
-        Tablero tablero1 =  Tablero.getInstancia();
-        EstadoAlgoFormer estadoHumanoide1 = new EstadoHumanoide(ATAQUE,DISTANCIA_ATK1,VELOCIDAD_DESP);
-        EstadoAlgoFormer estadoHumanoide2 = new EstadoHumanoide(ATAQUE,DISTANCIA_ATK2,VELOCIDAD_DESP);
-        ArrayList<EstadoAlgoFormer> estadosPosibles1 = new ArrayList<>();
-        estadosPosibles1.add(estadoHumanoide1);
-        ArrayList<EstadoAlgoFormer> estadosPosibles2 = new ArrayList<>();
-        estadosPosibles2.add(estadoHumanoide2);
-        Algoformer algof1 = new AlgoformerGenerico(NOMBRE_ALGOF1,VIDA,estadosPosibles1);
-        Algoformer algof2 = new AlgoformerGenerico(NOMBRE_ALGOF2,VIDA,estadosPosibles2);
-        tablero1.ubicarElemento(algof1,coord1);
-        tablero1.ubicarElemento(algof2,coord2);
-        
-        assertTrue(algof2.esAtaquePosible(coord1));
-        
-        //CON COMMAND
-        /*
-        Accion atacar1 = new AccionAtacar(coord1);
-        algof2.ejecutar(atacar1);//MAL?
-        atacar1.ejecutar(algof2);//BIEN?
-        assertTrue(algof1.obtenerVida()< VIDA1);
-        */
-        
-        //SIN COMMAND 
-        /*
-        algof2.atacar(coord1);
-        assertTrue(algof1.obtenerVida()< VIDA);   
-    }
-    
-    @Test (expected = AlcanceExcedidoException)
-    public void test05atacarEnemigoYVerificarDistanciaYDanio2(){
-        String NOMBRE_ALGOF1 = "Autobot1", NOMBRE_ALGOF2 = "Decepticon1";
-        int ANCHO = 100, LARGO = 100, VIDA = 10, ATAQUE = 1, DISTANCIA_ATK1 = 1,VELOCIDAD_DESP = 10;
-        int DISTANCIA_ATK2 = 10;
-        int HORIZ1 = 10, HORIZ2 = 13, VERT1 = 10, VERT2 = 13;
-        Coordenada coord1 = new Coordenada(HORIZ1,VERT1);
-        Coordenada coord2 = new Coordenada(HORIZ2,VERT2);
-        Tablero tablero1 =  new Tablero(ANCHO,LARGO);
-        EstadoAlgoFormer estadoHumanoide1 = new EstadoHumanoide(ATAQUE,DISTANCIA_ATK1,VELOCIDAD_DESP);
-        EstadoAlgoFormer estadoHumanoide2 = new EstadoHumanoide(ATAQUE,DISTANCIA_ATK2,VELOCIDAD_DESP);
-        List<EstadoAlgoFormer> estadosPosibles1 = new ArrayList<>();
-        estadosPosibles1.add(estadoHumanoide1);
-        List<EstadoAlgoFormer> estadosPosibles2 = new ArrayList<>();
-        estadosPosibles2.add(estadoHumanoide2);
-        Algoformer algof1 = new Algoformer(NOMBRE_ALGOF1,VIDA,estadosPosibles1);
-        Algoformer algof2 = new Algoformer(NOMBRE_ALGOF2,VIDA,estadosPosibles2);
-        tablero1.ubicarElemento(algof1,coord1);
-        tablero1.ubicarElemento(algof2,coord2);
-        
-        assertFalse(algof1.esAtaquePosible(coord2));
-        
-        //CON COMMAND
-        /*
-        Accion atacar1 = new AccionAtacar(coord2);
-        algof1.ejecutar(atacar1);//MAL?
-        atacar1.ejecutar(algof1);//BIEN?
-        */
-        
-        //SIN COMMAND 
-        /*
-        algof1.atacar(coord2);       
-    } 
-} */
     
     }
 
