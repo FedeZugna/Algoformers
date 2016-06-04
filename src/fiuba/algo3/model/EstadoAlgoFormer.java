@@ -23,13 +23,7 @@ public class EstadoAlgoformer {
     
     //SIN COMMAND
     boolean esAlcanzable(Coordenada origen, Coordenada destino, int alcance){
-    	if (destino.getX() - origen.getX() > alcance){
-    		return false;
-    	}
-    	if (destino.getY() - destino.getY() > alcance){
-    		return false;
-    	}
-    	return true;
+    	return origen.esAlcanzable(destino,alcance);
     	
     }
     

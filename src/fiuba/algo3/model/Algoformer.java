@@ -48,6 +48,11 @@ public class Algoformer implements Interactuable{
         return this.getEstadoActual().esAtaquePosible(coordOrigen,coordObjetivo);
     }
     
+	public void fueUbicadoEn(Coordenada coord1){
+		this.ubicacion = coord1;
+	};
+
+    
     public void recibirAtaque(int danio){
         this.vida -= danio;
         if (this.vida <0){

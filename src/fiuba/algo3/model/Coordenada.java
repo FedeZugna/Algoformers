@@ -54,12 +54,24 @@ public class Coordenada {
         return "Coordenada{" + "x=" + this.largo + ", y=" + this.alto + '}';
     }
     
-    public int getX(){
+    public int getLargo(){
         return this.largo;
     }
     
-    public int getY(){
+    public int getAlto(){
         return this.alto;
     }
+
+
+	public boolean esAlcanzable(Coordenada destino, int alcance) {
+
+    	if (destino.getLargo() - this.getLargo() > alcance){
+    		return false;
+    	}
+    	if (destino.getAlto() - this.getAlto() > alcance){
+    		return false;
+    	}
+    	return true;
+	}
             
 }

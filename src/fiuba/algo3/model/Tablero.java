@@ -30,6 +30,7 @@ public class Tablero {
 
 	public void ubicarElemento(Interactuable algof1, Coordenada coord1) {
     	this.casilleros.get(coord1).ubicarElemento(algof1);
+    	algof1.fueUbicadoEn(coord1);
     }
     
     public Interactuable devolverElemento(Coordenada coord){

@@ -10,6 +10,11 @@ public class Chispa implements Interactuable {
 	public Coordenada getUbicacion() {
 		return ubicacion;
 	}
+	
+	@Override
+	public void fueUbicadoEn(Coordenada coordenada) {
+		this.ubicacion = coordenada;
+	}
 
 	@Override
 	public String getNombre() {
