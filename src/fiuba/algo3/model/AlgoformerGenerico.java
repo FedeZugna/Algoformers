@@ -8,6 +8,7 @@ public class AlgoformerGenerico extends Algoformer{
 		this.nombre=nombre;
 		this.vida=vida;
 		this.estados= new ListaCircularEstatica(estadosPosibles);
+		this.estadoActual = this.estados.get();
 		}
 }
 

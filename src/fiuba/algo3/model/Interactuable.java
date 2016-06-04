@@ -7,4 +7,6 @@ public interface Interactuable {
 	 public String getNombre();
 	 
 	 public boolean estaVivo();
+
+	public void fueUbicadoEn(Coordenada coord1);
 }

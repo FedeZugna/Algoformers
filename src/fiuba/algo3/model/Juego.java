@@ -10,7 +10,7 @@ public class Juego {
 	public Jugador jugador1;
 	public Jugador jugador2;
 	public Interactuable chispa= new Chispa();
-	public ListaCircular turnos= new ListaCircular();
+	//public ListaCircular turnos= new ListaCircular();
 	
 	
 	public void posicionarChispaEnElMedio() {
@@ -98,8 +98,8 @@ public class Juego {
 		this.agregarJugador("DECEPTICONS");
 		this.posicionarDecepticons();
 		this.posicionarChispaEnElMedio();
-		turnos.add(jugador1);
-		turnos.add(jugador2);
+		//turnos.add(jugador1);
+		//turnos.add(jugador2);
 	}
 
 }
