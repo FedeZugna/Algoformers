@@ -56,7 +56,7 @@ public class Algoformer implements Interactuable{
     }
 
 	public void morir() {
-		this.vida= 0;
+		this.vida = 0;
 		//avisar a la vista que mate al transformer
 	}
     
@@ -67,6 +67,7 @@ public class Algoformer implements Interactuable{
     
 	public void mover(Tablero tablero, Coordenada destino) {
 		this.ubicacion=destino;
+		
 	}
 
     @Override

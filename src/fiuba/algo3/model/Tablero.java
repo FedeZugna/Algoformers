@@ -26,7 +26,6 @@ public class Tablero {
         		casilleros.put(new Coordenada(i,j), new Casillero());
         	}
         }
-//        this.posicionarChispaEnElMedio();
     }
 
 	public void ubicarElemento(Interactuable algof1, Coordenada coord1) {
@@ -59,6 +58,10 @@ public class Tablero {
 
 	public static Tablero getInstancia() {
 		return instancia;
+	}
+
+	public Casillero devolverCasillero(Coordenada coordenada) {
+		return casilleros.get(coordenada);
 	}
 
 

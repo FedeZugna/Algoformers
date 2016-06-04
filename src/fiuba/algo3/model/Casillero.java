@@ -16,6 +16,8 @@ public class Casillero {
     //debiera ser un algoformer o un "interactuable"? En este tp solo se
                                  //usan algoformers para ocupar casilleros
                                  //LA CHISPA ES OTRO INTERACTUABLE
+	private SuperficieTerrestre superficieTerrestre;
+	//private superficieAire;
 	private Interactuable ocupante;
 	
 	
@@ -24,6 +26,9 @@ public class Casillero {
         this.tierra = tierra;*/
     	//        this.ocupante = new CasilleroVacio();
     	//this.ocupante= null;
+    }
+    public void setTerrestre(SuperficieTerrestre superficie) {
+    	this.superficieTerrestre = superficie;
     }
     
     public void ubicarElemento(Interactuable ocupanteAAgregar){
