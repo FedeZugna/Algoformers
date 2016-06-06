@@ -16,17 +16,20 @@ public class Casillero {
     //debiera ser un algoformer o un "interactuable"? En este tp solo se
                                  //usan algoformers para ocupar casilleros
                                  //LA CHISPA ES OTRO INTERACTUABLE
+	private Coordenada ubicacion; 
 	private Terreno terreno;
 	//private superficieAire;
 	private Interactuable ocupante;
 	
 	
-    public Casillero(/*TerrenoAire aire, TerrenoTierra tierra*/) {
-        /*this.aire = aire;
+    public Casillero(Terreno terreno/*TerrenoAire aire, TerrenoTierra tierra*/) {
+        this.terreno = terreno;
+    	/*this.aire = aire;
         this.tierra = tierra;*/
     	//        this.ocupante = new CasilleroVacio();
     	//this.ocupante= null;
     }
+    
     public void setTerreno(Terreno superficie) {
     	this.terreno = superficie;
     }
@@ -52,5 +55,21 @@ public class Casillero {
         //RECORDAR LIMPIAR EL OTRO CASILLERO
     }
     */
+	
+	public boolean puedeMoverseAca(Algoformer algo1, Casillero origen) {
+		int valorPasos = algo1.devolverPasosPara(this.terreno);
+		
+		System.out.println(algo1.getVelocidad_despl() );
+		
+		System.out.println(this.getUbicacion().getAlto());
+		
+		System.out.println(origen.getUbicacion().getAlto());
+		
+		return origen.getUbicacion().esAlcanzable(this.getUbicacion(), algo1.getVelocidad_despl()/valorPasos);
+	}
+	public Coordenada getUbicacion() {
+		return this.ubicacion;
+	}
+	
 
 }

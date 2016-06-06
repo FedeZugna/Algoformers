@@ -1,18 +1,16 @@
 package segundaEntrega;
 
-import static org.junit.Assert.*;
-
+import model.*;
 import org.junit.Assert;
 import org.junit.Test;
-
-import model.*;
 
 public class PruebasGeneralesSegEntrega {
 
 	@Test
 	public void test001SeLlenaUnCasilleroDeTerronoRocoso() {
-		Casillero casillero = new Casillero();
-		casillero.setTerreno(new TerrenoRocoso());
+		Casillero casillero = new Casillero(new TerrenoRocoso());
+		
+		Algoformer algof1 = new Optimus();
 		Assert.assertTrue(true);
 		
 	}

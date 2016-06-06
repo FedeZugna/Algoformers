@@ -34,9 +34,10 @@ public class Jugador {
 			this.tablero.ubicarElemento( current, new Coordenada(largo,alto));		
 		}*/
 	}
-	public void mover(Algoformer algoTransf, Coordenada destino) {
+	public void mover(Algoformer algoTransf, Casillero destino) {
+		algoTransf.mover(destino);
 		this.tablero.cambiar(algoTransf, algoTransf.getUbicacion(), destino);
-		algoTransf.mover(this.tablero, destino);
+		
 		
 		
 	}

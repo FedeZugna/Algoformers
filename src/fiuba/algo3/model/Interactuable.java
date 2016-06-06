@@ -2,11 +2,11 @@ package model;
 
 public interface Interactuable {
 	    
-	 public Coordenada getUbicacion();
+	 public Casillero getUbicacion();
 	    	    	    	    	 	
 	 public String getNombre();
 	 
 	 public boolean estaVivo();
 
-	public void fueUbicadoEn(Coordenada coord1);
+	public void fueUbicadoEn(Casillero casillero);
 }

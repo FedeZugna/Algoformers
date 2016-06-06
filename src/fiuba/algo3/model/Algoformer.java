@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Algoformer implements Interactuable{
     protected EstadoAlgoformer estadoActual;
     protected ListaCircularEstatica estados;
-    protected Coordenada ubicacion; 
+    protected Casillero ubicacion; 
     protected String nombre;
     protected int vida;
     
@@ -30,7 +30,7 @@ public class Algoformer implements Interactuable{
     
     
     @Override
-    public Coordenada getUbicacion(){
+    public Casillero getUbicacion(){
         return this.ubicacion;
     }
     
@@ -38,20 +38,11 @@ public class Algoformer implements Interactuable{
         return this.estadoActual;
     }
     
-    public boolean esMovimientoPosible(Coordenada coordObjetivo){
-        Coordenada coordOrigen = this.getUbicacion();
-        return this.getEstadoActual().esMovimientoPosible(coordOrigen,coordObjetivo);
-    }
     
-    public boolean esAtaquePosible(Coordenada coordObjetivo){
-        Coordenada coordOrigen = this.getUbicacion();
-        return this.getEstadoActual().esAtaquePosible(coordOrigen,coordObjetivo);
-    }
     
-	public void fueUbicadoEn(Coordenada coord1){
-		this.ubicacion = coord1;
+	public void fueUbicadoEn(Casillero cas1){
+		this.ubicacion = cas1;
 	};
-
     
     public void recibirAtaque(int danio){
         this.vida -= danio;
@@ -70,12 +61,19 @@ public class Algoformer implements Interactuable{
 		return (this.vida>0);
 	}
     
-	public void mover(Tablero tablero, Coordenada destino) {
+	public void mover(Casillero destino) {
+		if (! this.puedeMoverseA(destino)){
+			throw new NoPuedeMoverseException();
+		}
 		this.ubicacion=destino;
-		
 	}
 
-    @Override
+    private boolean puedeMoverseA(Casillero destino) {
+    	return destino.puedeMoverseAca(this, this.ubicacion);
+	}
+
+
+	@Override
 	public String getNombre() {
 		return this.nombre;
 	}
@@ -93,14 +91,34 @@ public class Algoformer implements Interactuable{
 	}
 
 	public void atacar(Algoformer enemigo){
-		if(!esAtaquePosible(enemigo.getUbicacion())){
+		if(!esAtaquePosible(enemigo.getUbicacion().getUbicacion())){
 			throw new AlcanceExcedidoException();
 		}
 		enemigo.recibirAtaque(this.getAtaque());
 		
 	}
+	
+	public boolean esMovimientoPosible(Coordenada coordObjetivo){
+        Coordenada coordOrigen = this.getUbicacion().getUbicacion();
+        return this.getEstadoActual().esMovimientoPosible(coordOrigen,coordObjetivo);
+    }
+    
+    public boolean esAtaquePosible(Coordenada coordObjetivo){
+        Coordenada coordOrigen = this.getUbicacion().getUbicacion();
+        return this.getEstadoActual().esAtaquePosible(coordOrigen,coordObjetivo);
+    }
 
 	public int getVida() {
 		return this.vida;
+	}
+
+
+	public int devolverPasosPara(Terreno terreno) {
+		return this.estadoActual.devolverPasosPara(terreno);
+	}
+
+
+	public int getVelocidad_despl() {
+		return this.estadoActual.getVelocidad_despl();
 	}
 }

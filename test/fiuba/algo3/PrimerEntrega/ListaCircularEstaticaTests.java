@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PrimerEntrega;
+package primerEntrega;
 
 import org.junit.Test;
 
@@ -34,7 +34,7 @@ public class ListaCircularEstaticaTests {
       	@Test
 	public void pruebaListaCircularSeLlena(){
             ArrayList<EstadoAlgoformer> lista = new ArrayList<>();
-            EstadoAlgoformer pruebaUno = new EstadoAlgoformer(1,1,1);
+            EstadoAlgoformer pruebaUno = new EstadoHumanoide(1,1,1);
             lista.add(pruebaUno);
             ListaCircularEstatica listaCirc = new ListaCircularEstatica(lista);
             Assert.assertFalse(listaCirc.isEmpty() );
@@ -43,7 +43,7 @@ public class ListaCircularEstaticaTests {
         @Test
 	public void pruebaListaCircularEsCircularPara1Elemento(){
             ArrayList<EstadoAlgoformer> lista = new ArrayList<>();
-            EstadoAlgoformer pruebaUno = new EstadoAlgoformer(1,1,1);
+            EstadoAlgoformer pruebaUno = new EstadoHumanoide(1,1,1);
             lista.add(pruebaUno);
             ListaCircularEstatica listaCirc = new ListaCircularEstatica(lista);
             Assert.assertTrue(listaCirc.get()==pruebaUno);
@@ -53,9 +53,9 @@ public class ListaCircularEstaticaTests {
 	@Test
 	public void pruebaListaCircularEsCircularPara2Elementos(){
             ArrayList<EstadoAlgoformer> lista = new ArrayList<>();
-            EstadoAlgoformer pruebaUno = new EstadoAlgoformer(1,1,1);
+            EstadoAlgoformer pruebaUno = new EstadoHumanoide(1,1,1);
             lista.add(pruebaUno);
-            EstadoAlgoformer pruebaDos = new EstadoAlgoformer(2,2,2);
+            EstadoAlgoformer pruebaDos = new EstadoHumanoide(2,2,2);
             lista.add(pruebaDos);
             ListaCircularEstatica listaCirc = new ListaCircularEstatica(lista);
             Assert.assertTrue(listaCirc.get()==pruebaUno);

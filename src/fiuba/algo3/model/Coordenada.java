@@ -65,10 +65,10 @@ public class Coordenada {
 
 	public boolean esAlcanzable(Coordenada destino, int alcance) {
 
-    	if (destino.getLargo() - this.getLargo() > alcance){
+    	if (destino.getLargo() - this.getLargo() >= alcance){
     		return false;
     	}
-    	if (destino.getAlto() - this.getAlto() > alcance){
+    	if (destino.getAlto() - this.getAlto() >= alcance){
     		return false;
     	}
     	return true;

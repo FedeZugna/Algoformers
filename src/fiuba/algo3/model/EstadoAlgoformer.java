@@ -9,18 +9,24 @@ package model;
  *
  * @author Martin
  */
-public class EstadoAlgoformer {
+public abstract class EstadoAlgoformer {
     
     private int ataque;
     private int distancia_ataque;
     private int velocidad_despl;
 
-    public EstadoAlgoformer(int ataque, int distancia_ataque, int velocidad_despl) {
+    
+
+	public EstadoAlgoformer(int ataque, int distancia_ataque, int velocidad_despl) {
         this.ataque = ataque;
         this.distancia_ataque = distancia_ataque;
         this.velocidad_despl = velocidad_despl;
     }
     
+	public int getVelocidad_despl() {
+		return velocidad_despl;
+	}
+	
     //SIN COMMAND
     boolean esAlcanzable(Coordenada origen, Coordenada destino, int alcance){
     	return origen.esAlcanzable(destino,alcance);
@@ -38,5 +44,7 @@ public class EstadoAlgoformer {
 	public int getAtaque() {
 		return this.ataque;
 	}
+
+	public abstract int devolverPasosPara(Terreno terreno);
     
 }

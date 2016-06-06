@@ -3,17 +3,17 @@ package model;
 
 public class Chispa implements Interactuable {
 
-	protected Coordenada ubicacion;
+	protected Casillero ubicacion;
 	protected String nombre= "Chispa";
 	
 	@Override
-	public Coordenada getUbicacion() {
+	public Casillero getUbicacion() {
 		return ubicacion;
 	}
 	
 	@Override
-	public void fueUbicadoEn(Coordenada coordenada) {
-		this.ubicacion = coordenada;
+	public void fueUbicadoEn(Casillero casillero) {
+		this.ubicacion = casillero;
 	}
 
 	@Override
