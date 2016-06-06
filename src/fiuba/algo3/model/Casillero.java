@@ -30,6 +30,10 @@ public class Casillero {
     	//this.ocupante= null;
     }
     
+    public void setUbicacion(Coordenada ubicacion){
+    	this.ubicacion = ubicacion;
+    }
+    
     public void setTerreno(Terreno superficie) {
     	this.terreno = superficie;
     }
@@ -62,8 +66,10 @@ public class Casillero {
 		System.out.println(algo1.getVelocidad_despl() );
 		
 		System.out.println(this.getUbicacion().getAlto());
+		System.out.println(this.getUbicacion().getLargo());
 		
 		System.out.println(origen.getUbicacion().getAlto());
+		System.out.println(origen.getUbicacion().getLargo());
 		
 		return origen.getUbicacion().esAlcanzable(this.getUbicacion(), algo1.getVelocidad_despl()/valorPasos);
 	}

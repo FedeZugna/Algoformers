@@ -120,7 +120,7 @@ public class LucasTests {
 */
 	
 //TESTS DE MARTIN	
-	/*	@Test
+		@Test
 	public void test01agregarAlgoformerHumanoideYMoverlo(){
 		String NOMBRE_ALGOF1 = "Autobot1";
 	    int  VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2,VELOCIDAD_DESP1 = 10;
@@ -134,8 +134,10 @@ public class LucasTests {
 	    estadosPosibles.add(estadoHumanoide1);
 	    Algoformer algof1 = new AlgoformerGenerico(NOMBRE_ALGOF1,VIDA1,estadosPosibles);
 	    jug1.ubicarElemento(algof1,coord1);
+	    Assert.assertTrue(algof1.getUbicacion()==tablero1.devolverCasillero(coord1));
 	    jug1.mover(algof1,tablero1.devolverCasillero(coord2));                
-	    assertTrue(algof1.getUbicacion().equals(coord2));
+	    Assert.assertFalse(algof1.getUbicacion()==tablero1.devolverCasillero(coord1));
+	    assertTrue(algof1.getUbicacion()==(tablero1.devolverCasillero(coord2)));
 	}
 	
 	 @Test
@@ -153,9 +155,8 @@ public class LucasTests {
 	        Algoformer algof1 = new AlgoformerGenerico(NOMBRE_ALGOF1,VIDA1,estadosPosibles);
 	        jug1.ubicarElemento(algof1,coord1);
 	        jug1.mover(algof1,tablero1.devolverCasillero(coord2));                
-	        assertTrue(algof1.getUbicacion().equals(coord2));
-	    }
-*/	 
+	        assertTrue(algof1.getUbicacion()==tablero1.devolverCasillero(coord2));
+	    } 
 	 
 //TESTS DE JUAN
 	 @Test
@@ -173,7 +174,7 @@ public class LucasTests {
 	        Assert.assertTrue(tablero.devolverElemento(coord1)==algof1);
 	        
 		}
-	/* 
+	
 	 @Test
 		public void AlgoformerSePuedeMoverUnCasillero(){
 			String NOMBRE_ALGOF1 = "Autobot1";
@@ -190,7 +191,7 @@ public class LucasTests {
 	        algof1.mover(tablero.devolverCasillero(new Coordenada(10,10)));
 	        Assert.assertTrue(algof1==tablero.devolverElemento(new Coordenada(10,10)));
 		}
-	 */
+	 
 	 @Test
 		public void sePuedeVaciarUnCasillero(){
 			String NOMBRE_ALGOF1 = "Autobot1";

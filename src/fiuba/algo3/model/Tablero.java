@@ -23,7 +23,9 @@ public class Tablero {
     	this.casilleros= new HashMap<Coordenada,Casillero>();
         for (int i=1; i<=Tablero.LIMITEALTO; i++) {
         	for (int j=1; j<= Tablero.LIMITELARGO; j++){
-        		casilleros.put(new Coordenada(i,j), new Casillero(new TerrenoRocoso()));
+        		Casillero cas = new Casillero(new TerrenoRocoso());
+        		cas.setUbicacion( new Coordenada(i,j) );
+        		casilleros.put(cas.getUbicacion(), cas );
         	}
         }
     }
