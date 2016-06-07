@@ -107,6 +107,38 @@ public class LucasTests {
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(1, 2)).estaVivo());
 	}
 	
+	@Test
+	public void test09AutobotsSeCombinanEnUnSuperion () {
+		//crea el terreno
+		TerrenoRocoso terreno1= new TerrenoRocoso();
+		TerrenoRocoso terreno2= new TerrenoRocoso();
+		TerrenoRocoso terreno3= new TerrenoRocoso();
+
+		//crea las coordenadas
+		Coordenada coordenada1= new Coordenada(1,1);
+		Coordenada coordenada2= new Coordenada(1,2);
+		Coordenada coordenada3= new Coordenada(1,3);
+		//crea los casilleros y les da una ubicacion
+		Casillero casillero1= new Casillero(terreno1);
+		casillero1.setUbicacion(coordenada1);
+		Casillero casillero2= new Casillero(terreno2);
+		casillero2.setUbicacion(coordenada2);
+		Casillero casillero3= new Casillero(terreno3);
+		casillero3.setUbicacion(coordenada3);
+		//crea el jugador
+		Tablero tablero =  Tablero.getInstancia();
+		Jugador jugador = new Jugador(tablero, "AUTOBOTS");
+		ArrayList<Algoformer> listaDeAlgoformers= jugador.devolverEquipo();
+		//ubica a los algoformers
+		listaDeAlgoformers.get(0).fueUbicadoEn(casillero1);
+		listaDeAlgoformers.get(1).fueUbicadoEn(casillero2);
+		listaDeAlgoformers.get(2).fueUbicadoEn(casillero3);
+		//combina a los algoformers
+		jugador.combinarAlgoformers(listaDeAlgoformers.get(0), listaDeAlgoformers.get(1), listaDeAlgoformers.get(2));
+			
+			
+	}
+	
 /*
 	@Test(expected=NombreDeEquipoNoExisteException.class)
 	public void test09SeIngresaUnNombreDeEquipoInvalido() {

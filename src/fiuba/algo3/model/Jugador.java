@@ -77,4 +77,17 @@ public class Jugador {
 	public ArrayList<Algoformer> devolverEquipo() {
 		return equipo;
 	}
+	
+	public void combinarAlgoformers(Algoformer algoformer1,
+			Algoformer algoformer2, Algoformer algoformer3) {
+		if (algoformer1.esCombinableCon(algoformer2)){
+			 if (algoformer1.esCombinableCon(algoformer3)) {
+				//null a la posicion de los algformers
+				//crear superalgoformer dependiendo del equipo
+				//agregarlo al equipo
+			 }
+		}		
+	}
+	
+	
 }

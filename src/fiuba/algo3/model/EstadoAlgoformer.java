@@ -14,6 +14,7 @@ public abstract class EstadoAlgoformer {
     private int ataque;
     private int distancia_ataque;
     private int velocidad_despl;
+    private int distanciaDeCombinacion= 3;
 
     
 
@@ -40,11 +41,16 @@ public abstract class EstadoAlgoformer {
     boolean esAtaquePosible(Coordenada coordOrigen, Coordenada coordObjetivo) {
     	return esAlcanzable(coordOrigen, coordObjetivo, this.distancia_ataque);    
     }
+    
+    public boolean esCombinacionPosible(Coordenada coordenadaOrigen,Coordenada coordenadaAmiga) {
+		return esAlcanzable(coordenadaOrigen, coordenadaAmiga, this.distanciaDeCombinacion);
+	}
 
 	public int getAtaque() {
 		return this.ataque;
 	}
 
 	public abstract int devolverPasosPara(Terreno terreno);
+
     
 }
