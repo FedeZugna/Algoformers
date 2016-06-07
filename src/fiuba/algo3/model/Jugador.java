@@ -55,6 +55,9 @@ public class Jugador {
 	}
 	
 	public void OrdenaQueSeTranforme(Algoformer algoformer) {
+		
+//HABRIA QUE AGREGAR UNA EXCEPCION SI ES SUPERION O MENASOR!!!
+		
 		Iterator<Algoformer> iterador = this.equipo.iterator();
 		while(iterador.hasNext()){
 			if (iterador.next() == algoformer){
@@ -80,13 +83,19 @@ public class Jugador {
 	
 	public void combinarAlgoformers(Algoformer algoformer1,
 			Algoformer algoformer2, Algoformer algoformer3) {
-		if (algoformer1.esCombinableCon(algoformer2)){
-			 if (algoformer1.esCombinableCon(algoformer3)) {
-				//null a la posicion de los algformers
+		
+		//algun metodo para buscar el algoformer del medio
+		if (algoformer1.esCombinableCon(algoformer2) &&algoformer1.esCombinableCon(algoformer3)){
+				//null a la posicion de los algoformers
+			if (algoformer1.getNombre()== "Otimus"){
+				equipo.add(new Superion(algoformer1.getVida(), algoformer2.getVida(), algoformer3.getVida()));
+			}
+			if (algoformer1.getNombre()== "Megatron"){     //else
+				equipo.add(new Menasor(algoformer1.getVida(), algoformer2.getVida(), algoformer3.getVida()));
+			}
 				//crear superalgoformer dependiendo del equipo
 				//agregarlo al equipo
-			 }
-		}		
+		}
 	}
 	
 	

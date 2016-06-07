@@ -113,7 +113,6 @@ public class LucasTests {
 		TerrenoRocoso terreno1= new TerrenoRocoso();
 		TerrenoRocoso terreno2= new TerrenoRocoso();
 		TerrenoRocoso terreno3= new TerrenoRocoso();
-
 		//crea las coordenadas
 		Coordenada coordenada1= new Coordenada(1,1);
 		Coordenada coordenada2= new Coordenada(1,2);
