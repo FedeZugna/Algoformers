@@ -54,10 +54,10 @@ public class Jugador {
 		this.tablero.ubicarElemento(algoformer, coord);
 	}
 	
-	public void OrdenaQueSeTranforme(Algoformer algoformer) {
-		
-//HABRIA QUE AGREGAR UNA EXCEPCION SI ES SUPERION O MENASOR!!!
-		
+	public void OrdenaQueSeTranforme(Algoformer algoformer) throws AlgoformerCombinadoNoPuedeTransformarseException {
+		if (algoformer.getNombre()== "Superion" || algoformer.getNombre()== "Menasor"){
+			throw new AlgoformerCombinadoNoPuedeTransformarseException();
+		}
 		Iterator<Algoformer> iterador = this.equipo.iterator();
 		while(iterador.hasNext()){
 			if (iterador.next() == algoformer){
@@ -67,6 +67,7 @@ public class Jugador {
 			}
 		}
 	}
+	
 	public ArrayList<Algoformer> devolverAlgoformersVivos() {
 		ArrayList<Algoformer> algoformersVivos= new ArrayList<Algoformer>();
 		Iterator<Algoformer> iterador = equipo.iterator();
@@ -77,6 +78,7 @@ public class Jugador {
 		}
 		return algoformersVivos;
 	}
+	
 	public ArrayList<Algoformer> devolverEquipo() {
 		return equipo;
 	}
@@ -93,8 +95,6 @@ public class Jugador {
 			if (algoformer1.getNombre()== "Megatron"){     //else
 				equipo.add(new Menasor(algoformer1.getVida(), algoformer2.getVida(), algoformer3.getVida()));
 			}
-				//crear superalgoformer dependiendo del equipo
-				//agregarlo al equipo
 		}
 	}
 	

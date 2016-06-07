@@ -127,17 +127,10 @@ public class Algoformer implements Interactuable{
 		return this.estadoActual.getVelocidad_despl();
 	}
 
-//	public boolean esCombinableCon(Algoformer algoformer2, Algoformer algoformer3) {
 	public boolean esCombinableCon(Algoformer algoformerACombinar) {
-		
-//		if(!esCombinacionPosible(algoformer2.getUbicacion().getUbicacion())){
 		if(!esCombinacionPosible(algoformerACombinar.getUbicacion().getUbicacion())){
-	
 			throw new AlcanceExcedidoException();
 		}
-//		if(!esCombinacionPosible(algoformer3.getUbicacion().getUbicacion())){
-//			throw new AlcanceExcedidoException();
-//		}		
 		return true;		
 	}
 
