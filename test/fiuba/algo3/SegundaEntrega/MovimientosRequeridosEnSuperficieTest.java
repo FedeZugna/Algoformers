@@ -5,14 +5,8 @@
  */
 package SegundaEntrega;
 
-import model.superficies.TerrenoRocoso;
-import model.superficies.TerrenoPantanoso;
-import model.superficies.TerrenoDeEspinas;
-import model.superficies.Superficie;
+import model.superficies.*;
 import model.*;
-import model.superficies.NebulosaDeAndromeda;
-import model.superficies.Nube;
-import model.superficies.TormentaPsionica;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
