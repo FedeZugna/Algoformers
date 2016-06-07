@@ -5,6 +5,7 @@
  */
 package model;
 
+import model.superficies.*;
 /**
  *
  * @author Martin
