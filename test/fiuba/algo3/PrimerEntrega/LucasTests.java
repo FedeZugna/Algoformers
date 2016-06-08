@@ -111,12 +111,52 @@ public class LucasTests {
 	@Test
 	public void test09AutobotsSeCombinanEnUnSuperion () {
 		//crea el terreno
+		TerrenoRocoso terreno= new TerrenoRocoso();
+		//crea las coordenadas
+		Coordenada coordenada1= new Coordenada(1,1);
+		Coordenada coordenada2= new Coordenada(1,2);
+		Coordenada coordenada3= new Coordenada(1,3);
+		Coordenada coordenadaNula= new Coordenada(0,0);
+		//crea los casilleros y les da una ubicacion
+		Casillero casillero1= new Casillero(terreno);
+		casillero1.setUbicacion(coordenada1);
+		Casillero casillero2= new Casillero(terreno);
+		casillero2.setUbicacion(coordenada2);
+		Casillero casillero3= new Casillero(terreno);
+		casillero3.setUbicacion(coordenada3);
+		Casillero casilleroNulo= new Casillero (terreno);
+		casilleroNulo.setUbicacion(coordenadaNula);
+		//crea el jugador
+		Tablero tablero =  Tablero.getInstancia();
+		Jugador jugador = new Jugador(tablero, "AUTOBOTS");
+		ArrayList<Algoformer> listaDeAlgoformers= jugador.devolverEquipo();
+		//para que sea mas comodo de leer
+		Algoformer optimus= listaDeAlgoformers.get(0);
+		Algoformer bumblebee= listaDeAlgoformers.get(1);
+		Algoformer ratchet= listaDeAlgoformers.get(2);
+		//ubica a los algoformers
+		optimus.fueUbicadoEn(casillero1);
+		bumblebee.fueUbicadoEn(casillero2);
+		ratchet.fueUbicadoEn(casillero3);
+		Assert.assertTrue(casillero2.devolverElemento().getNombre()== "Bumblebee");
+		//combina a los algoformers
+		jugador.combinarAlgoformers(optimus, bumblebee, ratchet);
+		Assert.assertTrue(listaDeAlgoformers.get(3).getNombre()== "Superion");	
+		Assert.assertTrue(listaDeAlgoformers.get(3).getVida()== 1000);	
+		Assert.assertTrue(listaDeAlgoformers.get(3).getUbicacion()== casillero1);
+		Assert.assertTrue(casillero2.devolverElemento()== null);
+		Assert.assertTrue(casillero3.devolverElemento()== null);
+	}
+	
+	@Test
+	public void test10DecepticonsSeCombinanEnUnMenasor () {
+		//crea el terreno
 		TerrenoRocoso terreno1= new TerrenoRocoso();
 		TerrenoRocoso terreno2= new TerrenoRocoso();
 		TerrenoRocoso terreno3= new TerrenoRocoso();
 		//crea las coordenadas
-		Coordenada coordenada1= new Coordenada(1,1);
-		Coordenada coordenada2= new Coordenada(1,2);
+		Coordenada coordenada1= new Coordenada(1,4);
+		Coordenada coordenada2= new Coordenada(1,5);
 		Coordenada coordenada3= new Coordenada(1,3);
 		//crea los casilleros y les da una ubicacion
 		Casillero casillero1= new Casillero(terreno1);
@@ -127,7 +167,7 @@ public class LucasTests {
 		casillero3.setUbicacion(coordenada3);
 		//crea el jugador
 		Tablero tablero =  Tablero.getInstancia();
-		Jugador jugador = new Jugador(tablero, "AUTOBOTS");
+		Jugador jugador = new Jugador(tablero, "DECEPTICONS");
 		ArrayList<Algoformer> listaDeAlgoformers= jugador.devolverEquipo();
 		//ubica a los algoformers
 		listaDeAlgoformers.get(0).fueUbicadoEn(casillero1);
@@ -135,8 +175,9 @@ public class LucasTests {
 		listaDeAlgoformers.get(2).fueUbicadoEn(casillero3);
 		//combina a los algoformers
 		jugador.combinarAlgoformers(listaDeAlgoformers.get(0), listaDeAlgoformers.get(1), listaDeAlgoformers.get(2));
-			
-			
+		Assert.assertTrue(listaDeAlgoformers.get(3).getNombre()== "Menasor");	
+		Assert.assertTrue(listaDeAlgoformers.get(3).getVida()== 1150);	
+
 	}
 	
 /*

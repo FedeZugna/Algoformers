@@ -89,13 +89,23 @@ public class Jugador {
 		//algun metodo para buscar el algoformer del medio
 		if (algoformer1.esCombinableCon(algoformer2) &&algoformer1.esCombinableCon(algoformer3)){
 				//null a la posicion de los algoformers
-			if (algoformer1.getNombre()== "Otimus"){
+			if (algoformer1.getNombre()== "Optimus"){
 				equipo.add(new Superion(algoformer1.getVida(), algoformer2.getVida(), algoformer3.getVida()));
+				this.posicionarAlgoformersPorCombinacion(algoformer1, algoformer2, algoformer3, equipo.get(3));
 			}
 			if (algoformer1.getNombre()== "Megatron"){     //else
 				equipo.add(new Menasor(algoformer1.getVida(), algoformer2.getVida(), algoformer3.getVida()));
 			}
 		}
+	}
+	private void posicionarAlgoformersPorCombinacion(Algoformer algoformer1,
+			Algoformer algoformer2, Algoformer algoformer3,
+			Algoformer algoformerCombinado) {
+		algoformerCombinado.fueUbicadoEn(algoformer1.getUbicacion());
+		algoformer1.getUbicacion().removerElemento();//no cambia
+		algoformer2.getUbicacion().removerElemento();//la ubicacion
+		algoformer3.getUbicacion().removerElemento();//que conoce
+													 //el algoformer
 	}
 	
 	

@@ -10,6 +10,5 @@ public class Superion extends Algoformer {
 		this.nombre= "Superion";
 		this.vida= vida1+ vida2+ vida3;
 		this.inicializarAlgoformer(nombre, vida, ataque, distancia, velocidad, ataque, distancia, velocidad);
-		
 	}
 }
