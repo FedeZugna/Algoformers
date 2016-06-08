@@ -5,8 +5,9 @@
  */
 package model;
 
-import model.superficies.*;
 import java.util.ArrayList;
+
+import model.superficies.*;
 
 public class Algoformer implements Interactuable{
     protected EstadoAlgoformer estadoActual;
