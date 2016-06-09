@@ -10,16 +10,16 @@ package model;
  * @author Martin
  */
 public abstract class StatModifier {
-    private StatContainer duenio;
-    
-    public void cambiarDuenio(StatContainer duenio_nuevo) {
-        this.duenio = duenio_nuevo;
-    }
+	private StatContainer duenio;
 
-    public abstract int aplicarModificador(int stat);
-    
-    public void destruir(){
-        this.duenio.quitarModificador(this);
-    }
-    
+	public void cambiarDuenio(StatContainer duenio_nuevo) {
+		this.duenio = duenio_nuevo;
+	}
+
+	public abstract int aplicarModificador(int stat);
+
+	public void destruir() {
+		this.duenio.quitarModificador(this);
+	}
+
 }

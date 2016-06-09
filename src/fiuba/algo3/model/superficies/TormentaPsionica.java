@@ -9,11 +9,11 @@ package model.superficies;
  *
  * @author Martin
  */
-public class TormentaPsionica extends EspacioAereo{
+public class TormentaPsionica extends EspacioAereo {
 
-    @Override
-    public int getPasos_alterno() {
-        return EspacioAereo.CantidadMovimientosEstandarAereo;
-    }
-    
+	@Override
+	public int getPasos_alterno() {
+		return EspacioAereo.CantidadMovimientosEstandarAereo;
+	}
+
 }

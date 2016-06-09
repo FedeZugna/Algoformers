@@ -9,6 +9,6 @@ package model;
  *
  * @author Martin
  */
-public class AlcanceExcedidoException extends RuntimeException{
-    
+public class AlcanceExcedidoException extends RuntimeException {
+
 }

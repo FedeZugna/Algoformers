@@ -9,6 +9,8 @@ import model.superficies.*;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import org.junit.Assert;
+
 /**
  *
  * @author Martin
@@ -29,9 +31,9 @@ public class AplicarEfectosDeSuperficiesTest {
         Algoformer optimus2 = new Optimus();
         Superficie rocoso1 = new TerrenoRocoso();
         rocoso1.aplicarEfectoSuperficie(optimus1);
-        //probar velocidad igual en ambos
-        //probar ataque igual en ambos
-        //probar vida igual en ambos
+        Assert.assertTrue(optimus1.getVelocidad_despl() == optimus2.getVelocidad_despl());
+        Assert.assertTrue(optimus1.getAtaque() == optimus2.getAtaque());
+        Assert.assertTrue(optimus1.getVida() == optimus2.getVida());
     }
     
     public void RocosoConAlternoNoAfecta(){
@@ -41,9 +43,9 @@ public class AplicarEfectosDeSuperficiesTest {
         optimus2.transformar();
         Superficie rocoso1 = new TerrenoRocoso();
         rocoso1.aplicarEfectoSuperficie(optimus1);
-        //probar velocidad igual en ambos
-        //probar ataque igual en ambos
-        //probar vida igual en ambos
+        Assert.assertTrue(optimus1.getVelocidad_despl() == optimus2.getVelocidad_despl());
+        Assert.assertTrue(optimus1.getAtaque() == optimus2.getAtaque());
+        Assert.assertTrue(optimus1.getVida() == optimus2.getVida());
     }
     
     public void EspinosoConHumanoideAplicaDanio(){
@@ -51,9 +53,9 @@ public class AplicarEfectosDeSuperficiesTest {
         Algoformer optimus2 = new Optimus();
         Superficie espinoso1 = new TerrenoDeEspinas();
         espinoso1.aplicarEfectoSuperficie(optimus1);
-        //probar velocidad igual en ambos
-        //probar ataque igual en ambos
-        //probar vida menor en optimus1
+        Assert.assertTrue(optimus1.getVelocidad_despl() == optimus2.getVelocidad_despl());
+        Assert.assertTrue(optimus1.getAtaque() == optimus2.getAtaque());
+        Assert.assertTrue(optimus1.getVida() == optimus2.getVida() - optimus2.getVida()*0.05);
     }
     
     public void EspinosoConAlternoAplicaDanio(){
@@ -63,9 +65,9 @@ public class AplicarEfectosDeSuperficiesTest {
         optimus2.transformar();
         Superficie espinoso1 = new TerrenoDeEspinas();
         espinoso1.aplicarEfectoSuperficie(optimus1);
-        //probar velocidad igual en ambos
-        //probar ataque igual en ambos
-        //probar vida menor en optimus1
+        Assert.assertTrue(optimus1.getVelocidad_despl() == optimus2.getVelocidad_despl());
+        Assert.assertTrue(optimus1.getAtaque() == optimus2.getAtaque());
+        Assert.assertTrue(optimus1.getVida() == optimus2.getVida() - optimus2.getVida()*0.05);
     }
     
     public void PantanosoConAlternoNoAfectaStats(){
@@ -89,10 +91,11 @@ public class AplicarEfectosDeSuperficiesTest {
         ratchet2.transformar();
         Superficie nube1 = new Nube();
         nube1.aplicarEfectoSuperficie(ratchet1);
-        //probar velocidad igual en ambos
-        //probar ataque igual en ambos
-        //probar vida igual en ambos
-    }
+        
+        Assert.assertTrue(ratchet1.getVelocidad_despl() == ratchet2.getVelocidad_despl());
+        Assert.assertTrue(ratchet1.getAtaque() == ratchet2.getAtaque());
+        Assert.assertTrue(ratchet1.getVida() == ratchet2.getVida());
+     }
     
     public void NebulosaConAlternoBajaVelocidad(){
         //Tal vez para este haga falta meter todo en un contexto de tablero (a confirmar)
@@ -102,9 +105,10 @@ public class AplicarEfectosDeSuperficiesTest {
         ratchet2.transformar();
         Superficie nebulosa1 = new NebulosaDeAndromeda();
         nebulosa1.aplicarEfectoSuperficie(ratchet1);
-        //probar velocidad1 = 0
-        //probar ataque igual en ambos
-        //probar vida igual en ambos
+        Assert.assertTrue(ratchet1.getVelocidad_despl() == 0);
+        Assert.assertTrue(ratchet1.getAtaque() == ratchet2.getAtaque());
+        Assert.assertTrue(ratchet1.getVida() == ratchet2.getVida());
+
     }
     
     public void EfectoNebulosaDura3Turnos(){
@@ -115,13 +119,13 @@ public class AplicarEfectosDeSuperficiesTest {
         ratchet2.transformar();
         Superficie nebulosa1 = new NebulosaDeAndromeda();
         nebulosa1.aplicarEfectoSuperficie(ratchet1);
-        //probar velocidad1 = 0
+        Assert.assertTrue(ratchet1.getVelocidad_despl() == 0);
         //pasarTurno
-        //probar velocidad1 = 0
+        Assert.assertTrue(ratchet1.getVelocidad_despl() == 0);
         //pasarTurno
-        //probar velocidad1 = 0
+        Assert.assertTrue(ratchet1.getVelocidad_despl() == 0);
         //pasarTurno
-        //probar velocidad igual en ambos
+        Assert.assertTrue(ratchet1.getVelocidad_despl() == ratchet2.getVelocidad_despl());
     }
     public void TormentaConAlternoBajaAtaque(){
         Algoformer ratchet1 = new Ratchet();
@@ -130,9 +134,9 @@ public class AplicarEfectosDeSuperficiesTest {
         ratchet2.transformar();
         Superficie tormenta1 = new TormentaPsionica();
         tormenta1.aplicarEfectoSuperficie(ratchet1);
-        //probar velocidad igual en ambos
-        //probar ataque1 = 60% ataque2
-        //probar vida igual en ambos
+        Assert.assertTrue(ratchet1.getVelocidad_despl() == 0);
+        Assert.assertTrue(ratchet1.getAtaque() == ratchet2.getAtaque() - ratchet2.getAtaque()*0.4);
+        Assert.assertTrue(ratchet1.getVida() == ratchet2.getVida());
     }
     */
 }

@@ -1,16 +1,15 @@
 package model;
 
-
 public class Chispa implements Interactuable {
 
 	protected Casillero ubicacion;
-	protected String nombre= "Chispa";
-	
+	protected String nombre = "Chispa";
+
 	@Override
 	public Casillero getUbicacion() {
 		return ubicacion;
 	}
-	
+
 	@Override
 	public void fueUbicadoEn(Casillero casillero) {
 		this.ubicacion = casillero;
@@ -26,5 +25,4 @@ public class Chispa implements Interactuable {
 		return true;
 	}
 
-	
 }

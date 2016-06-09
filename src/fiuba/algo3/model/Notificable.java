@@ -10,5 +10,5 @@ package model;
  * @author Martin
  */
 public interface Notificable {
-    public void notificar();
+	public void notificar();
 }

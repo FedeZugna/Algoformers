@@ -9,11 +9,11 @@ package model;
  *
  * @author Martin
  */
-public class DobleCanion extends StatModifierConDuracion{
+public class DobleCanion extends StatModifierConDuracion {
 
-    @Override
-    public int aplicarModificador(int stat) {
-        return 2*stat;
-    }
-    
+	@Override
+	public int aplicarModificador(int stat) {
+		return 2 * stat;
+	}
+
 }

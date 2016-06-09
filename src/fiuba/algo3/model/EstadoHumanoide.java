@@ -12,15 +12,14 @@ import model.superficies.*;
  * @author Martin
  */
 public class EstadoHumanoide extends EstadoAlgoformer {
-    
-	
-    public EstadoHumanoide(int ataque, int distancia_ataque, int velocidad_despl) {
-        super(ataque, distancia_ataque, velocidad_despl);
-    }
+
+	public EstadoHumanoide(int ataque, int distancia_ataque, int velocidad_despl) {
+		super(ataque, distancia_ataque, velocidad_despl);
+	}
 
 	@Override
 	public int devolverPasosPara(Terreno terreno) {
 		return terreno.getPasos_humanoide();
 	}
-    
+
 }

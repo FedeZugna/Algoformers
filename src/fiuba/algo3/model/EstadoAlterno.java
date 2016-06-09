@@ -12,10 +12,10 @@ import model.superficies.*;
  * @author Martin
  */
 public class EstadoAlterno extends EstadoAlgoformer {
-		
-    public EstadoAlterno(int ataque, int distancia_ataque, int velocidad_despl) {
-        super(ataque, distancia_ataque, velocidad_despl);
-    }
+
+	public EstadoAlterno(int ataque, int distancia_ataque, int velocidad_despl) {
+		super(ataque, distancia_ataque, velocidad_despl);
+	}
 
 	@Override
 	public int devolverPasosPara(Terreno terreno) {

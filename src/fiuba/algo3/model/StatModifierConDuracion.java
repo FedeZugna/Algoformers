@@ -9,16 +9,16 @@ package model;
  *
  * @author Martin
  */
-public abstract class StatModifierConDuracion extends StatModifier implements Notificable{
-    
-    private int duracion;
+public abstract class StatModifierConDuracion extends StatModifier implements Notificable {
 
-    @Override
-    public void notificar() {
-        this.duracion--;
-        if (this.duracion==0){
-            this.destruir();
-        }
-    }
-    
+	private int duracion;
+
+	@Override
+	public void notificar() {
+		this.duracion--;
+		if (this.duracion == 0) {
+			this.destruir();
+		}
+	}
+
 }

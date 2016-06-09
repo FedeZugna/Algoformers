@@ -9,11 +9,11 @@ package model.superficies;
  *
  * @author Martin
  */
-public class Nube extends EspacioAereo{
+public class Nube extends EspacioAereo {
 
-    @Override
-    public int getPasos_alterno() {
-        return EspacioAereo.CantidadMovimientosEstandarAereo;
-    }
-    
+	@Override
+	public int getPasos_alterno() {
+		return EspacioAereo.CantidadMovimientosEstandarAereo;
+	}
+
 }

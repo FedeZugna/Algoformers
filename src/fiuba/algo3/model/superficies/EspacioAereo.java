@@ -12,14 +12,13 @@ import model.superficies.Superficie;
  *
  * @author Martin
  */
-public abstract class EspacioAereo extends Superficie{
+public abstract class EspacioAereo extends Superficie {
 
-    protected static int CantidadMovimientosEstandarAereo=1;
+	protected static int CantidadMovimientosEstandarAereo = 1;
 
-    @Override
-    public int getPasos_humanoide(){
-        throw new NoPuedeMoverseException();
-    }
-    
-    
+	@Override
+	public int getPasos_humanoide() {
+		throw new NoPuedeMoverseException();
+	}
+
 }
