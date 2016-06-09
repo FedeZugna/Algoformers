@@ -1,6 +1,6 @@
 package model.superficies;
 
-public abstract class Terreno /*implements */ extends Superficie {
+public abstract class Terreno /* implements */ extends Superficie {
 
     public static final int VELOCIDAD_ROCOSO = 1;
     public static final int VELOCIDAD_ESPINAS = VELOCIDAD_ROCOSO; //POR SUPUESTO

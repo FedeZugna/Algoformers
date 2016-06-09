@@ -310,9 +310,5 @@ public class LucasTests {
 			Assert.assertTrue(listaCirc.get()==pruebaUno);
 		} 
 	 	
-// Pruebas Nicolas
-	 
-	 
-	 	
 	 
 }
