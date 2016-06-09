@@ -20,12 +20,12 @@ public class AplicarEfectosDeSuperficiesTest {
     
     public AplicarEfectosDeSuperficiesTest() {
     }
-    /*
+    
     //NOTA: Sabemos que aplicar efecto afecta Algoformer sin depender de su estado, pero probamos en ambos para garantizarlo.
     
     //    TERRENO
     
-    
+    /*
     public void RocosoConHumanoideNoAfecta(){
         Algoformer optimus1 = new Optimus();
         Algoformer optimus2 = new Optimus();

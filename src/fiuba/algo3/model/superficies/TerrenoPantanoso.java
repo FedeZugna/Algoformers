@@ -1,5 +1,6 @@
 package model.superficies;
 
+import model.Algoformer;
 import model.NoPuedeMoverseException;
 import model.superficies.Terreno;
 
@@ -13,6 +14,11 @@ public class TerrenoPantanoso extends Terreno {
 	@Override
 	public int getPasos_humanoide() {
 		throw new NoPuedeMoverseException();
+	}
+
+	@Override
+	public void aplicarEfectosSuperficie(Algoformer a) {
+		
 	}
 
 }
