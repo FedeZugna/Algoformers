@@ -62,15 +62,6 @@ public class Casillero {
 
 	public boolean puedeMoverseAca(Algoformer algo1, Casillero origen) {
 		int valorPasos = algo1.devolverPasosPara(this.terreno);
-
-		System.out.println(algo1.getVelocidad_despl());
-
-		System.out.println(this.getUbicacion().getAlto());
-		System.out.println(this.getUbicacion().getLargo());
-
-		System.out.println(origen.getUbicacion().getAlto());
-		System.out.println(origen.getUbicacion().getLargo());
-
 		return origen.getUbicacion().esAlcanzable(this.getUbicacion(), algo1.getVelocidad_despl() / valorPasos);
 	}
 
@@ -81,6 +72,11 @@ public class Casillero {
 //agregue esto
 	public Terreno getTerreno() {
 		return this.terreno;
+	}
+
+	public void aplicarEfectosSuperficie(Algoformer algoformer) {
+		//this.terreno.aplicarEfectosSuperficie(this);
+		
 	}
 
 }

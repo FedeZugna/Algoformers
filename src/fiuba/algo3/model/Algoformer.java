@@ -70,11 +70,12 @@ public class Algoformer implements Interactuable {
 		}
 		this.ubicacion = destino;
 		this.movimientosRestantes =- ( this.estadoActual.devolverPasosPara(destino) );
+		//destino.aplicarEfectosSuperficie(this);
 	}
 
 	private boolean puedeMoverseA(Casillero destino) {
-		return destino.puedeMoverseAca(this, this.ubicacion);
-	}
+		return ( ( destino.puedeMoverseAca(this, this.ubicacion) )  );
+	} // (this.estadoActual.devolverPasosPara(destino)<= this.movimientosRestantes) && 
 
 	@Override
 	public String getNombre() {
