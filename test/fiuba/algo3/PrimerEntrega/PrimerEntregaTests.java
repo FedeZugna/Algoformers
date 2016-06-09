@@ -92,7 +92,7 @@ public class PrimerEntregaTests {
 		equipoD = juego.devolverEquipoDe("DECEPTICONS");
 		Assert.assertTrue(equipoD.size() == 3);
 		Assert.assertTrue(equipoD.get(0).getNombre() == "Megatron");
-		Assert.assertTrue(equipoD.get(1).getNombre() == "BoneCrusher");
+		Assert.assertTrue(equipoD.get(1).getNombre() == "Bonecrusher");
 		Assert.assertTrue(equipoD.get(2).getNombre() == "Frenzy");
 
 		ArrayList<Algoformer> equipoA = new ArrayList<Algoformer>();

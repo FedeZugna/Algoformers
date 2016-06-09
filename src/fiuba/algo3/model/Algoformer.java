@@ -131,5 +131,9 @@ public class Algoformer implements Interactuable {
 		}
 		return true;
 	}
+	
+	public void setVidaAlSeparar(int vidaACambiar) {
+		this.vida= vidaACambiar;
+	}
 
 }

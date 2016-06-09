@@ -58,7 +58,7 @@ public class LucasTests {
 
 		Assert.assertTrue(equipo.size() == 3);
 		Assert.assertTrue(equipo.get(0).getNombre() == "Megatron");
-		Assert.assertTrue(equipo.get(1).getNombre() == "BoneCrusher");
+		Assert.assertTrue(equipo.get(1).getNombre() == "Bonecrusher");
 		Assert.assertTrue(equipo.get(2).getNombre() == "Frenzy");
 	}
 
@@ -92,7 +92,7 @@ public class LucasTests {
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO, Tablero.LIMITEALTO))
 				.getNombre() == "Megatron");
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO, Tablero.LIMITEALTO - 1))
-				.getNombre() == "BoneCrusher");
+				.getNombre() == "Bonecrusher");
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO, Tablero.LIMITEALTO - 2))
 				.getNombre() == "Frenzy");
 	}
@@ -118,7 +118,6 @@ public class LucasTests {
 		Coordenada coordenada1 = new Coordenada(1, 1);
 		Coordenada coordenada2 = new Coordenada(1, 2);
 		Coordenada coordenada3 = new Coordenada(1, 3);
-		Coordenada coordenadaNula = new Coordenada(0, 0);
 		// crea los casilleros y les da una ubicacion
 		Casillero casillero1 = new Casillero(terreno);
 		casillero1.setUbicacion(coordenada1);
@@ -126,8 +125,6 @@ public class LucasTests {
 		casillero2.setUbicacion(coordenada2);
 		Casillero casillero3 = new Casillero(terreno);
 		casillero3.setUbicacion(coordenada3);
-		Casillero casilleroNulo = new Casillero(terreno);
-		casilleroNulo.setUbicacion(coordenadaNula);
 		// crea el jugador
 		Tablero tablero = Tablero.getInstancia();
 		Jugador jugador = new Jugador(tablero, "AUTOBOTS");
@@ -153,19 +150,17 @@ public class LucasTests {
 	@Test
 	public void test10DecepticonsSeCombinanEnUnMenasor() {
 		// crea el terreno
-		TerrenoRocoso terreno1 = new TerrenoRocoso();
-		TerrenoRocoso terreno2 = new TerrenoRocoso();
-		TerrenoRocoso terreno3 = new TerrenoRocoso();
+		TerrenoRocoso terreno = new TerrenoRocoso();
 		// crea las coordenadas
 		Coordenada coordenada1 = new Coordenada(1, 4);
 		Coordenada coordenada2 = new Coordenada(1, 5);
 		Coordenada coordenada3 = new Coordenada(1, 3);
 		// crea los casilleros y les da una ubicacion
-		Casillero casillero1 = new Casillero(terreno1);
+		Casillero casillero1 = new Casillero(terreno);
 		casillero1.setUbicacion(coordenada1);
-		Casillero casillero2 = new Casillero(terreno2);
+		Casillero casillero2 = new Casillero(terreno);
 		casillero2.setUbicacion(coordenada2);
-		Casillero casillero3 = new Casillero(terreno3);
+		Casillero casillero3 = new Casillero(terreno);
 		casillero3.setUbicacion(coordenada3);
 		// crea el jugador
 		Tablero tablero = Tablero.getInstancia();
@@ -179,6 +174,50 @@ public class LucasTests {
 		jugador.combinarAlgoformers(listaDeAlgoformers.get(0), listaDeAlgoformers.get(1), listaDeAlgoformers.get(2));
 		Assert.assertTrue(listaDeAlgoformers.get(3).getNombre() == "Menasor");
 		Assert.assertTrue(listaDeAlgoformers.get(3).getVida() == 1150);
+
+	}
+	
+	@Test
+	public void test11SuperionSeDescombina () {
+		//crea el terreno
+		TerrenoRocoso terreno= new TerrenoRocoso();
+		//crea las coordenadas
+		Coordenada coordenada1= new Coordenada(1,1);
+		Coordenada coordenada2= new Coordenada(1,2);
+		Coordenada coordenada3= new Coordenada(1,3);
+		//crea los casilleros y les da una ubicacion
+		Casillero casillero1= new Casillero(terreno);
+		casillero1.setUbicacion(coordenada1);
+		Casillero casillero2= new Casillero(terreno);
+		casillero2.setUbicacion(coordenada2);
+		Casillero casillero3= new Casillero(terreno);
+		casillero3.setUbicacion(coordenada3);
+		//crea el jugador
+		Tablero tablero =  Tablero.getInstancia();
+		Jugador jugador = new Jugador(tablero, "AUTOBOTS");
+		ArrayList<Algoformer> listaDeAlgoformers= jugador.devolverEquipo();
+		//para que sea mas comodo de leer
+		Algoformer optimus= listaDeAlgoformers.get(0);
+		Algoformer bumblebee= listaDeAlgoformers.get(1);
+		Algoformer ratchet= listaDeAlgoformers.get(2);
+		//ubica a los algoformers
+		optimus.fueUbicadoEn(casillero1);
+		bumblebee.fueUbicadoEn(casillero2);
+		ratchet.fueUbicadoEn(casillero3);
+		Assert.assertTrue(casillero2.devolverElemento().getNombre()== "Bumblebee");
+		//combina a los algoformers
+		jugador.combinarAlgoformers(optimus, bumblebee, ratchet);
+		Assert.assertTrue(listaDeAlgoformers.get(3).estaVivo());
+		Assert.assertTrue(listaDeAlgoformers.size()==4);
+		//separa los algoformers
+		jugador.separarAlgoformers();
+		Assert.assertTrue(optimus.getVida()== 500);
+		Assert.assertTrue(bumblebee.getVida()== 350);
+		Assert.assertTrue(ratchet.getVida()== 150);
+		Assert.assertFalse(listaDeAlgoformers.size()==4);//verifica que elimina el Superion
+		Assert.assertTrue(optimus.getUbicacion().getUbicacion().getLargo()== 1);
+		Assert.assertTrue(bumblebee.getUbicacion().getUbicacion().getLargo()== 2);
+		Assert.assertTrue(ratchet.getUbicacion().getUbicacion().getAlto()== 2);
 
 	}
 

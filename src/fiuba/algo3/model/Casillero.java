@@ -78,4 +78,9 @@ public class Casillero {
 		return this.ubicacion;
 	}
 
+//agregue esto
+	public Terreno getTerreno() {
+		return this.terreno;
+	}
+
 }

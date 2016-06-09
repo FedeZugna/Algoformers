@@ -19,7 +19,7 @@ public class Jugador {
 		}
 		if (equipo == "DECEPTICONS") { // else
 			this.equipo.add(new Megatron());
-			this.equipo.add(new BoneCrusher());
+			this.equipo.add(new Bonecrusher());
 			this.equipo.add(new Frenzy());
 		}
 		/*
@@ -89,23 +89,53 @@ public class Jugador {
 		// algun metodo para buscar el algoformer del medio
 		if (algoformer1.esCombinableCon(algoformer2) && algoformer1.esCombinableCon(algoformer3)) {
 			// null a la posicion de los algoformers
-			if (algoformer1.getNombre() == "Optimus") {
-				equipo.add(new Superion(algoformer1.getVida(), algoformer2.getVida(), algoformer3.getVida()));
+			if (algoformer1.getNombre() == "Optimus" || algoformer1.getNombre() == "Bumblebee" || algoformer1.getNombre() == "Ratchet") {
+				equipo.add(new Superion(algoformer1, algoformer2, algoformer3));
 				this.posicionarAlgoformersPorCombinacion(algoformer1, algoformer2, algoformer3, equipo.get(3));
-			}
-			if (algoformer1.getNombre() == "Megatron") { // else
-				equipo.add(new Menasor(algoformer1.getVida(), algoformer2.getVida(), algoformer3.getVida()));
+			}else{
+				equipo.add(new Menasor(algoformer1, algoformer2, algoformer3));
+				this.posicionarAlgoformersPorCombinacion(algoformer1, algoformer2, algoformer3, equipo.get(3));
+
 			}
 		}
 	}
 
 	private void posicionarAlgoformersPorCombinacion(Algoformer algoformer1, Algoformer algoformer2,
 			Algoformer algoformer3, Algoformer algoformerCombinado) {
-		algoformerCombinado.fueUbicadoEn(algoformer1.getUbicacion());
-		algoformer1.getUbicacion().removerElemento();// no cambia
-		algoformer2.getUbicacion().removerElemento();// la ubicacion
-		algoformer3.getUbicacion().removerElemento();// que conoce
-														// el algoformer
+		Casillero casilleroCentral= algoformer1.getUbicacion();
+		algoformer1.getUbicacion().removerElemento();
+		algoformerCombinado.fueUbicadoEn(casilleroCentral);
+		algoformer2.getUbicacion().removerElemento();// no cambia la ubicacion
+		algoformer3.getUbicacion().removerElemento();// que conoce el algoformer
 	}
 
+	public void separarAlgoformers() {
+		
+		AlgoformerGroso algoformerCombinado= (AlgoformerGroso)equipo.get(3);
+		System.out.println("Lucas");
+		equipo.get(0).setVidaAlSeparar(algoformerCombinado.getVida1());
+		equipo.get(1).setVidaAlSeparar(algoformerCombinado.getVida2());
+		equipo.get(2).setVidaAlSeparar(algoformerCombinado.getVida3());
+		this.posicionarAlgoformersPostCombinacion(equipo.get(0), equipo.get(1), equipo.get(2), algoformerCombinado);
+	}
+
+	private void posicionarAlgoformersPostCombinacion(Algoformer algoformer1,
+			Algoformer algoformer2, Algoformer algoformer3,
+			AlgoformerGroso algoformerCombinado) {
+		
+//AGREGAR UNA EXCEPCION POR SI NO SE PUEDE POSICIONAR EN ALGUNA POSICION
+		Casillero casilleroCentral= algoformerCombinado.getUbicacion();
+		algoformerCombinado.getUbicacion().removerElemento();
+		Coordenada coordenadaCentral= algoformerCombinado.getUbicacion().getUbicacion();
+		Coordenada coordenadaDerecha= new Coordenada(coordenadaCentral.getLargo()+1,coordenadaCentral.getAlto());
+		Casillero casilleroDerecho= new Casillero(casilleroCentral.getTerreno());
+		casilleroDerecho.setUbicacion(coordenadaDerecha);
+		Coordenada coordenadaArriba= new Coordenada(coordenadaCentral.getLargo(),coordenadaCentral.getAlto()+1);
+		Casillero casilleroArriba= new Casillero(casilleroCentral.getTerreno());
+		casilleroArriba.setUbicacion(coordenadaArriba);
+		algoformer1.fueUbicadoEn(casilleroCentral);
+		algoformer2.fueUbicadoEn(casilleroDerecho);
+		algoformer3.fueUbicadoEn(casilleroArriba);
+		equipo.remove(equipo.get(3));
+	}
 }
