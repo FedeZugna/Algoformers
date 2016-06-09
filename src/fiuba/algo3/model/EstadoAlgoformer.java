@@ -52,4 +52,8 @@ public abstract class EstadoAlgoformer {
 
 	public abstract int devolverPasosPara(Terreno terreno);
 
+	public int devolverPasosPara(Casillero destino) {
+		return devolverPasosPara(destino.getTerreno());
+	}
+
 }
