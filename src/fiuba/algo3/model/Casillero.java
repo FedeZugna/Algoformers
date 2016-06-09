@@ -12,15 +12,10 @@ import model.superficies.*;
  * @author Martin
  */
 public class Casillero {
-	// private TerrenoAire aire;
-	// private TerrenoTierra tierra;
-	// private Object ocupante; //Object hasta definir clase de interactuables
-	// debiera ser un algoformer o un "interactuable"? En este tp solo se
-	// usan algoformers para ocupar casilleros
-	// LA CHISPA ES OTRO INTERACTUABLE
+
 	private Coordenada ubicacion;
 	private Terreno terreno;
-	// private superficieAire;
+	private EspacioAereo espacioAereo;
 	private Interactuable ocupante;
 
 	public Casillero(Terreno terreno/* TerrenoAire aire, TerrenoTierra tierra */) {
@@ -38,6 +33,14 @@ public class Casillero {
 
 	public void setTerreno(Terreno superficie) {
 		this.terreno = superficie;
+	}
+
+	public EspacioAereo getEspacioAereo() {
+		return espacioAereo;
+	}
+
+	public void setEspacioAereo(EspacioAereo espacioAereo) {
+		this.espacioAereo = espacioAereo;
 	}
 
 	public void ubicarElemento(Interactuable ocupanteAAgregar) {

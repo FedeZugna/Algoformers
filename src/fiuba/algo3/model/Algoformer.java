@@ -141,4 +141,8 @@ public class Algoformer implements Interactuable {
 		this.vida= vidaACambiar;
 	}
 
+	public int getMovimientosRestantes() {
+		return this.movimientosRestantes;
+	}
+
 }
