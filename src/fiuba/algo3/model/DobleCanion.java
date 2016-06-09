@@ -11,6 +11,10 @@ package model;
  */
 public class DobleCanion extends StatModifierConDuracion {
 
+    public DobleCanion(int duracion) {
+        super(duracion);
+    }
+
 	@Override
 	public int aplicarModificador(int stat) {
 		return 2 * stat;

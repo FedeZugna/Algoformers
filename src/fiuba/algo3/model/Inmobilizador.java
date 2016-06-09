@@ -11,6 +11,10 @@ package model;
  */
 public class Inmobilizador extends StatModifierConDuracion {
 
+    public Inmobilizador(int duracion) {
+        super(duracion);
+    }
+
 	@Override
 	public int aplicarModificador(int stat) {
 		throw new NoPuedeMoverseException();

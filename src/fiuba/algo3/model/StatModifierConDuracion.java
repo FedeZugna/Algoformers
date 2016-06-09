@@ -21,4 +21,10 @@ public abstract class StatModifierConDuracion extends StatModifier implements No
 		}
 	}
 
+    public StatModifierConDuracion(int duracion) {
+        this.duracion = duracion;
+    }
+        
+        
+
 }

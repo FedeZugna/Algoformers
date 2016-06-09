@@ -55,7 +55,7 @@ public class AplicarEfectosDeSuperficiesTest {
         espinoso1.aplicarEfectoSuperficie(optimus1);
         Assert.assertTrue(optimus1.getVelocidad_despl() == optimus2.getVelocidad_despl());
         Assert.assertTrue(optimus1.getAtaque() == optimus2.getAtaque());
-        Assert.assertTrue(optimus1.getVida() == optimus2.getVida() - optimus2.getVida()*0.05);
+        Assert.assertTrue(optimus1.getVida() == (optimus2.getVida() - optimus2.getVida()*0.05));
     }
     
     public void EspinosoConAlternoAplicaDanio(){
@@ -67,7 +67,7 @@ public class AplicarEfectosDeSuperficiesTest {
         espinoso1.aplicarEfectoSuperficie(optimus1);
         Assert.assertTrue(optimus1.getVelocidad_despl() == optimus2.getVelocidad_despl());
         Assert.assertTrue(optimus1.getAtaque() == optimus2.getAtaque());
-        Assert.assertTrue(optimus1.getVida() == optimus2.getVida() - optimus2.getVida()*0.05);
+        Assert.assertTrue(optimus1.getVida() == (optimus2.getVida() - optimus2.getVida()*0.05));
     }
     
     public void PantanosoConAlternoNoAfectaStats(){

@@ -5,10 +5,8 @@
  */
 package model;
 
-import java.awt.Desktop.Action;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  *
@@ -22,8 +20,15 @@ public class StatContainer {
 		this.stat_base = stat_base;
 		this.modificadores = new LinkedList<>();
 	}
-
+        /**
+         * Agrega el modificador recibido a los modificadores del contenedor.
+         * IMPORTANTE:
+         * @param modificador no debe pertenecer ya al contenedor.
+         */
 	public void agregarModificador(StatModifier modificador) {
+                if (this.modificadores.contains(modificador)){
+                    return;
+                }
 		modificador.cambiarDuenio(this);
 		this.modificadores.add(modificador);
 	}
