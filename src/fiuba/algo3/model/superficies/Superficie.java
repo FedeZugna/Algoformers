@@ -8,5 +8,5 @@ public abstract class Superficie {
 
 	public abstract int getPasos_alterno();
 
-	// public abstract void aplicarEfectosSuperficie(Algoformer a);
+	public abstract void aplicarEfectosSuperficie(Algoformer a);
 }

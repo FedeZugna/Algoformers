@@ -10,9 +10,13 @@ public class BoneCrusher extends Algoformer {
 	int velocidadAlterno = 8;
 
 	public BoneCrusher() {
+<<<<<<< HEAD
 		this.nombre = "BoneCrusher";
 		this.vida = 200;
 		this.inicializarAlgoformer(nombre, vida, ataqueHumanoide, distanciaAtaqueHumanoide, velocidadHumanoide,
+=======
+		this.inicializarAlgoformer(nombre, vidaDeBonecrusher, ataqueHumanoide, distanciaAtaqueHumanoide, velocidadHumanoide,
+>>>>>>> 78b3ea309fa72b85b48352c47a990a41d79faf71
 				ataqueAlterno, distanciaAtaqueAlterno, velocidadAlterno);
 
 	}

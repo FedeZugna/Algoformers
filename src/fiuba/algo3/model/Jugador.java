@@ -19,7 +19,7 @@ public class Jugador {
 		}
 		if (equipo == "DECEPTICONS") { // else
 			this.equipo.add(new Megatron());
-			this.equipo.add(new Bonecrusher());
+			this.equipo.add(new BoneCrusher());
 			this.equipo.add(new Frenzy());
 		}
 		/*
