@@ -58,7 +58,7 @@ public class LucasTests {
 
 		Assert.assertTrue(equipo.size() == 3);
 		Assert.assertTrue(equipo.get(0).getNombre() == "Megatron");
-		Assert.assertTrue(equipo.get(1).getNombre() == "Bonecrusher");
+		Assert.assertTrue(equipo.get(1).getNombre() == "BoneCrusher");
 		Assert.assertTrue(equipo.get(2).getNombre() == "Frenzy");
 	}
 
@@ -92,7 +92,7 @@ public class LucasTests {
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO, Tablero.LIMITEALTO))
 				.getNombre() == "Megatron");
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO, Tablero.LIMITEALTO - 1))
-				.getNombre() == "Bonecrusher");
+				.getNombre() == "BoneCrusher");
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO, Tablero.LIMITEALTO - 2))
 				.getNombre() == "Frenzy");
 	}
@@ -173,7 +173,7 @@ public class LucasTests {
 		// combina a los algoformers
 		jugador.combinarAlgoformers(listaDeAlgoformers.get(0), listaDeAlgoformers.get(1), listaDeAlgoformers.get(2));
 		Assert.assertTrue(listaDeAlgoformers.get(3).getNombre() == "Menasor");
-		Assert.assertTrue(listaDeAlgoformers.get(3).getVida() == 1150);
+		Assert.assertTrue(listaDeAlgoformers.get(3).getVida() == 950);
 
 	}
 	

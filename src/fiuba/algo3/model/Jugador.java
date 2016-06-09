@@ -112,7 +112,6 @@ public class Jugador {
 	public void separarAlgoformers() {
 		
 		AlgoformerGroso algoformerCombinado= (AlgoformerGroso)equipo.get(3);
-		System.out.println("Lucas");
 		equipo.get(0).setVidaAlSeparar(algoformerCombinado.getVida1());
 		equipo.get(1).setVidaAlSeparar(algoformerCombinado.getVida2());
 		equipo.get(2).setVidaAlSeparar(algoformerCombinado.getVida3());
