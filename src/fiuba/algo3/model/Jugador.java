@@ -19,7 +19,7 @@ public class Jugador {
 		}
 		if (equipo == "DECEPTICONS") { // else
 			this.equipo.add(new Megatron());
-			this.equipo.add(new BoneCrusher());
+			this.equipo.add(new Bonecrusher());
 			this.equipo.add(new Frenzy());
 		}
 		/*
@@ -123,6 +123,7 @@ public class Jugador {
 			AlgoformerGroso algoformerCombinado) {
 		
 //AGREGAR UNA EXCEPCION POR SI NO SE PUEDE POSICIONAR EN ALGUNA POSICION
+/*
 		Casillero casilleroCentral= algoformerCombinado.getUbicacion();
 		algoformerCombinado.getUbicacion().removerElemento();
 		Coordenada coordenadaCentral= algoformerCombinado.getUbicacion().getUbicacion();
@@ -136,5 +137,28 @@ public class Jugador {
 		algoformer2.fueUbicadoEn(casilleroDerecho);
 		algoformer3.fueUbicadoEn(casilleroArriba);
 		equipo.remove(equipo.get(3));
+*/
+		Coordenada coordenadaCentral= algoformerCombinado.getUbicacion().getUbicacion();
+		algoformerCombinado.getUbicacion().removerElemento();
+		equipo.remove(equipo.get(3));
+		this.ubicarPorSeparacion(algoformer1, coordenadaCentral);
+		this.ubicarPorSeparacion(algoformer2, coordenadaCentral);
+		this.ubicarPorSeparacion(algoformer3, coordenadaCentral);
+	}
+
+	private void ubicarPorSeparacion(Algoformer algoformer,
+			Coordenada coordenada) {
+		try{
+			this.tablero.ubicarElemento(algoformer, coordenada);
+		}catch (CasilleroOcupadoException e){
+			Coordenada coordenadaSiguiente= new Coordenada(coordenada.getLargo()+1, coordenada.getAlto());
+			this.ubicarPorSeparacion(algoformer, coordenadaSiguiente);
+		}catch (NullPointerException e){
+			Coordenada coordenadaSiguiente= new Coordenada(coordenada.getLargo()-3, coordenada.getAlto());
+			this.ubicarPorSeparacion(algoformer, coordenadaSiguiente);
+			System.out.println("Lucas");
+			System.out.println(coordenadaSiguiente.getLargo());
+
+		}
 	}
 }

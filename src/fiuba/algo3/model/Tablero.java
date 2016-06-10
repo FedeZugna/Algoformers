@@ -33,6 +33,9 @@ public class Tablero {
 	}
 
 	public void ubicarElemento(Interactuable algof1, Coordenada coord1) {
+		if (this.devolverElemento(coord1)!= null){
+			throw new CasilleroOcupadoException();
+		}
 		this.casilleros.get(coord1).ubicarElemento(algof1);
 		algof1.fueUbicadoEn(casilleros.get(coord1));
 	}
@@ -63,6 +66,11 @@ public class Tablero {
 
 	public Casillero devolverCasillero(Coordenada coordenada) {
 		return casilleros.get(coordenada);
+	}
+	
+	//este metodo lo hice para implementar el tearDown en las pruebas, me parece espantoso
+	public void reiniciarTablero(){
+		instancia= new Tablero();
 	}
 
 }

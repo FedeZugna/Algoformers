@@ -1,7 +1,9 @@
 package model;
 
-public class BoneCrusher extends Algoformer {
+public class Bonecrusher extends Algoformer {
 
+	String nombreDeBonecrusher = "Bonecrusher";
+	int vidaDeBonecrusher = 200;
 	int ataqueHumanoide = 30;
 	int distanciaAtaqueHumanoide = 3;
 	int velocidadHumanoide = 1;
@@ -9,10 +11,8 @@ public class BoneCrusher extends Algoformer {
 	int distanciaAtaqueAlterno = 3;
 	int velocidadAlterno = 8;
 
-	public BoneCrusher() {
-		this.nombre = "BoneCrusher";
-		this.vida = 200;
-		this.inicializarAlgoformer(nombre, vida, ataqueHumanoide, distanciaAtaqueHumanoide, velocidadHumanoide,
+	public Bonecrusher() {
+		this.inicializarAlgoformer(nombreDeBonecrusher, vidaDeBonecrusher, ataqueHumanoide, distanciaAtaqueHumanoide, velocidadHumanoide,
 						ataqueAlterno, distanciaAtaqueAlterno, velocidadAlterno);
 
 	}
