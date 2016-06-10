@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 //import view.*;
 
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -22,6 +24,11 @@ import static org.junit.Assert.*;
 @SuppressWarnings("unused")
 public class PrimerEntregaTests {
 
+	@Before
+	public void before(){
+		Tablero tablero= Tablero.getInstancia();
+	}
+	
 	@Test
 	public void test01agregarAlgoformerHumanoideYMoverlo() {
 		String NOMBRE_ALGOF1 = "Autobot1";
@@ -173,4 +180,10 @@ public class PrimerEntregaTests {
 		algof1.atacar(algof2);
 	}
 
+	@After
+	public void after(){
+		Tablero tablero= Tablero.getInstancia();
+		tablero.reiniciarTablero();
+	}
+	
 }

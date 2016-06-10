@@ -5,11 +5,18 @@ import model.superficies.*;
 
 import java.util.ArrayList;
 
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class PruebasGeneralesSegEntrega {
 
+	@Before
+	public void before(){
+		Tablero tablero= Tablero.getInstancia();
+	}
+	
 	@Test (expected = NoPuedeMoverseException.class)
 	public void AlgoformerHumanoideNoPuedeCaminarEnPantano() {
 		
@@ -79,7 +86,10 @@ public class PruebasGeneralesSegEntrega {
 		algof1.mover(cas1);
 	}
 	
-	
-	
+	@After
+	public void after(){
+		Tablero tablero= Tablero.getInstancia();
+		tablero.reiniciarTablero();
+	}	
 	
 }
