@@ -225,8 +225,31 @@ public class LucasTests {
 		Assert.assertTrue(ratchet.getUbicacion().getUbicacion().getLargo()== 3);
 	}
 	
+	@Test(expected=CasilleroOcupadoException.class)
+	public void test12SeIntentaPosicionarAlgoformerEnCasilleroOcupadoLanzaExcepcion() {
+		//crea el terreno
+		TerrenoRocoso terreno= new TerrenoRocoso();
+		//crea las coordenadas
+		Coordenada coordenada1= new Coordenada(1,1);
+		Coordenada coordenada2= new Coordenada(1,1);
+		//crea los casilleros y les da una ubicacion
+		Casillero casillero1= new Casillero(terreno);
+		casillero1.setUbicacion(coordenada1);
+		Casillero casillero2= new Casillero(terreno);
+		casillero2.setUbicacion(coordenada2);
+		//crea el tablero
+		Tablero tablero= Tablero.getInstancia();
+		//crea dos algoformers distintos
+		Optimus optimus= new Optimus();
+		Megatron megatron= new Megatron();
+		//posiciona
+		tablero.ubicarElemento(optimus, coordenada1);
+		Assert.assertTrue(tablero.devolverElemento(coordenada1).getNombre()== "Optimus");
+		tablero.ubicarElemento(megatron, coordenada2);
+	}
+
 	@Test
-	public void test12SuperionSeDescombinaEnLaEsquinaYNoRompeElPrograma () {
+	public void test13SuperionSeDescombinaEnLaEsquinaYNoRompeElPrograma () {
 		//crea el terreno
 		TerrenoRocoso terreno= new TerrenoRocoso();
 		//crea las coordenadas
@@ -270,10 +293,52 @@ public class LucasTests {
 		Assert.assertTrue(ratchet.getUbicacion().getUbicacion().getLargo()== 19);
 		Assert.assertTrue(ratchet.getUbicacion().getUbicacion().getAlto()== 1);
 	}
+	
+	@Test
+	public void test14SuperionSeDescombinaEnLaEsquinaConCasillerosVecinosOcupados () {
+		//crea las coordenadas
+		Coordenada coordenada1= new Coordenada(16,1);
+		Coordenada coordenada2= new Coordenada(16,2);
+		Coordenada coordenada3= new Coordenada(16,3);
+		Coordenada coordenada4= new Coordenada(17,1);
+		Coordenada coordenada5= new Coordenada(18,1);
+		Coordenada coordenada6= new Coordenada(19,1);
+		Coordenada coordenada7= new Coordenada(20,1);
+		//crea el jugador
+		Tablero tablero =  Tablero.getInstancia();
+		Jugador jugador = new Jugador(tablero, "AUTOBOTS");
+		ArrayList<Algoformer> listaDeAlgoformers= jugador.devolverEquipo();
+		Megatron megatron= new Megatron();
+		Bonecrusher bonecrusher= new Bonecrusher();
+		Frenzy frenzy= new Frenzy();
+		Chispa chispa= new Chispa();
+		//para que sea mas comodo de leer
+		Algoformer optimus= listaDeAlgoformers.get(0);
+		Algoformer bumblebee= listaDeAlgoformers.get(1);
+		Algoformer ratchet= listaDeAlgoformers.get(2);
+		//ubica a los algoformers
+		tablero.ubicarElemento(optimus, coordenada1);
+		tablero.ubicarElemento(bumblebee, coordenada2);
+		tablero.ubicarElemento(ratchet, coordenada3);
+		tablero.ubicarElemento(megatron, coordenada4);
+		tablero.ubicarElemento(bonecrusher, coordenada5);
+		tablero.ubicarElemento(frenzy, coordenada6);
+		tablero.ubicarElemento(chispa, coordenada7);
+		//combina a los algoformers
+		jugador.combinarAlgoformers(optimus, bumblebee, ratchet);
+		//separa los algoformers
+		jugador.separarAlgoformers();
+		Assert.assertTrue(optimus.getUbicacion().getUbicacion().getLargo()== 16);
+		Assert.assertTrue(optimus.getUbicacion().getUbicacion().getAlto()== 1);
+		Assert.assertTrue(bumblebee.getUbicacion().getUbicacion().getLargo()== 14);
+		Assert.assertTrue(bumblebee.getUbicacion().getUbicacion().getAlto()== 1);
+		Assert.assertTrue(ratchet.getUbicacion().getUbicacion().getLargo()== 15);
+		Assert.assertTrue(ratchet.getUbicacion().getUbicacion().getAlto()== 1);
+	}
 
 	/*
 	 * @Test(expected=NombreDeEquipoNoExisteException.class) public void
-	 * test09SeIngresaUnNombreDeEquipoInvalido() { Juego juego= new Juego();
+	 * test0XSeIngresaUnNombreDeEquipoInvalido() { Juego juego= new Juego();
 	 * juego.tamanoDeMapa(10, 15);
 	 * 
 	 * juego.agregarJugador("AUTOBOTS");

@@ -156,9 +156,9 @@ public class Jugador {
 		}catch (NullPointerException e){
 			Coordenada coordenadaSiguiente= new Coordenada(coordenada.getLargo()-3, coordenada.getAlto());
 			this.ubicarPorSeparacion(algoformer, coordenadaSiguiente);
-			System.out.println("Lucas");
-			System.out.println(coordenadaSiguiente.getLargo());
-
+		}catch (StackOverflowError e){
+			Coordenada coordenadaSiguiente= new Coordenada(coordenada.getLargo()-7, coordenada.getAlto());
+			this.ubicarPorSeparacion(algoformer, coordenadaSiguiente);
 		}
 	}
 }
