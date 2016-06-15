@@ -12,7 +12,7 @@ public class TerrenoRocoso extends Terreno {
 
 	@Override
 	public void aplicarEfectosSuperficie(Algoformer a) {
-		
+		//No hace nada
 	}
 
 }

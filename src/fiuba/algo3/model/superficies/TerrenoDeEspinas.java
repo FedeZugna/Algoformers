@@ -13,8 +13,9 @@ public class TerrenoDeEspinas extends Terreno {
 
 	@Override
 	public void aplicarEfectosSuperficie(Algoformer a) {
-		
-		
+		double vidaAux= a.getVida()*0.05;
+		int vidaARestar= (int) vidaAux;
+		a.recibirAtaque(vidaARestar);
 	}
 
 }

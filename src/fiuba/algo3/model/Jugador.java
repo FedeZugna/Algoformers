@@ -86,9 +86,7 @@ public class Jugador {
 
 	public void combinarAlgoformers(Algoformer algoformer1, Algoformer algoformer2, Algoformer algoformer3) {
 
-		// algun metodo para buscar el algoformer del medio
 		if (algoformer1.esCombinableCon(algoformer2) && algoformer1.esCombinableCon(algoformer3)) {
-			// null a la posicion de los algoformers
 			if (algoformer1.getNombre() == "Optimus" || algoformer1.getNombre() == "Bumblebee" || algoformer1.getNombre() == "Ratchet") {
 				equipo.add(new Superion(algoformer1, algoformer2, algoformer3));
 				this.posicionarAlgoformersPorCombinacion(algoformer1, algoformer2, algoformer3, equipo.get(3));
@@ -121,23 +119,7 @@ public class Jugador {
 	private void posicionarAlgoformersPostCombinacion(Algoformer algoformer1,
 			Algoformer algoformer2, Algoformer algoformer3,
 			AlgoformerGroso algoformerCombinado) {
-		
-//AGREGAR UNA EXCEPCION POR SI NO SE PUEDE POSICIONAR EN ALGUNA POSICION
-/*
-		Casillero casilleroCentral= algoformerCombinado.getUbicacion();
-		algoformerCombinado.getUbicacion().removerElemento();
-		Coordenada coordenadaCentral= algoformerCombinado.getUbicacion().getUbicacion();
-		Coordenada coordenadaDerecha= new Coordenada(coordenadaCentral.getLargo()+1,coordenadaCentral.getAlto());
-		Casillero casilleroDerecho= new Casillero(casilleroCentral.getTerreno());
-		casilleroDerecho.setUbicacion(coordenadaDerecha);
-		Coordenada coordenadaArriba= new Coordenada(coordenadaCentral.getLargo(),coordenadaCentral.getAlto()+1);
-		Casillero casilleroArriba= new Casillero(casilleroCentral.getTerreno());
-		casilleroArriba.setUbicacion(coordenadaArriba);
-		algoformer1.fueUbicadoEn(casilleroCentral);
-		algoformer2.fueUbicadoEn(casilleroDerecho);
-		algoformer3.fueUbicadoEn(casilleroArriba);
-		equipo.remove(equipo.get(3));
-*/
+
 		Coordenada coordenadaCentral= algoformerCombinado.getUbicacion().getUbicacion();
 		algoformerCombinado.getUbicacion().removerElemento();
 		equipo.remove(equipo.get(3));
