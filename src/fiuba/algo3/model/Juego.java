@@ -9,7 +9,17 @@ public class Juego {
 	public Jugador jugador1;
 	public Jugador jugador2;
 	public Interactuable chispa = new Chispa();
+//
+	private int jugadas;
+	public Jugador[] turnos= new Jugador[2];
 	// public ListaCircular turnos= new ListaCircular();
+	
+	public Juego(){
+		this.inicializarTablero();
+		jugadas= 0;
+		turnos[0]= this.jugador1;
+		turnos[1]= this.jugador2;
+	}
 
 	public void posicionarChispaEnElMedio() {
 		int largo = tableroGeneral.devolverLargo();
@@ -97,6 +107,14 @@ public class Juego {
 		this.posicionarChispaEnElMedio();
 		// turnos.add(jugador1);
 		// turnos.add(jugador2);
+	}
+	
+	public Jugador pasarTurno() {
+		
+		Jugador jugadorADevolver= turnos[jugadas%2];
+		System.out.println(jugadas%2);
+		this.jugadas++;
+		return jugadorADevolver;
 	}
 
 }

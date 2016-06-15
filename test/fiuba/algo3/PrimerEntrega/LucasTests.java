@@ -71,8 +71,8 @@ public class LucasTests {
 	@Test
 	public void test05InicializarTableroParaUnJugador() {
 		Juego juego = new Juego();
-		juego.agregarJugador("AUTOBOTS");
-		juego.posicionarAutobots();
+//		juego.agregarJugador("AUTOBOTS");
+//		juego.posicionarAutobots();
 
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(1, 1)).getNombre() == "Optimus");
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(1, 2)).getNombre() == "Bumblebee");
@@ -82,7 +82,7 @@ public class LucasTests {
 	@Test
 	public void test06CrearChispaEnMedioDelMapa() {
 		Juego juego = new Juego();
-		juego.posicionarChispaEnElMedio();
+//		juego.posicionarChispaEnElMedio();
 		int x = Tablero.LIMITELARGO / 2;
 		int y = Tablero.LIMITEALTO / 2;
 
@@ -93,8 +93,8 @@ public class LucasTests {
 	public void test07InicializarTableroParaUnJugadorD() {
 		Juego juego = new Juego();
 
-		juego.agregarJugador("DECEPTICONS");
-		juego.posicionarDecepticons();
+//		juego.agregarJugador("DECEPTICONS");
+//		juego.posicionarDecepticons();
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO, Tablero.LIMITEALTO))
 				.getNombre() == "Megatron");
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO, Tablero.LIMITEALTO - 1))
@@ -106,7 +106,7 @@ public class LucasTests {
 	@Test
 	public void test08InicializarJuegoCompleto() {
 		Juego juego = new Juego();
-		juego.inicializarTablero();
+//		juego.inicializarTablero();
 
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO / 2, Tablero.LIMITEALTO / 2))
 				.getNombre() == "Chispa");
@@ -334,6 +334,22 @@ public class LucasTests {
 		Assert.assertTrue(bumblebee.getUbicacion().getUbicacion().getAlto()== 1);
 		Assert.assertTrue(ratchet.getUbicacion().getUbicacion().getLargo()== 15);
 		Assert.assertTrue(ratchet.getUbicacion().getUbicacion().getAlto()== 1);
+	}
+	
+	@Test
+	public void test15PasarTurno() {
+		Juego juego= new Juego();
+//		Jugador jugadorActual;
+//		jugadorActual= juego.pasarTurno();
+//		ArrayList<Algoformer> equipo= jugadorActual.devolverEquipo();
+		Assert.assertTrue(juego.pasarTurno().devolverEquipo().get(0).getNombre()== "Optimus");
+//		jugadorActual= juego.pasarTurno();
+//		ArrayList<Algoformer> equipo= jugadorActual.devolverEquipo();
+//		System.out.println(equipo.get(0).getNombre());
+		Assert.assertTrue(juego.pasarTurno().devolverEquipo().get(0).getNombre()== "Megatron");
+		Assert.assertTrue(juego.pasarTurno().devolverEquipo().get(0).getNombre()== "Optimus");
+		Assert.assertTrue(juego.pasarTurno().devolverEquipo().get(0).getNombre()== "Megatron");
+		Assert.assertFalse(juego.pasarTurno().devolverEquipo().get(0).getNombre()== "Megatron");
 	}
 
 	/*

@@ -91,9 +91,9 @@ public class PrimerEntregaTests {
 	public void test05InicializacionDeJuego() {
 
 		Juego juego = new Juego();
-		juego.agregarJugador("AUTOBOTS");
-		juego.agregarJugador("DECEPTICONS");
-		juego.inicializarTablero();
+//		juego.agregarJugador("AUTOBOTS");
+//		juego.agregarJugador("DECEPTICONS");
+//		juego.inicializarTablero();
 
 		ArrayList<Algoformer> equipoD = new ArrayList<Algoformer>();
 		equipoD = juego.devolverEquipoDe("DECEPTICONS");
