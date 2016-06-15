@@ -339,13 +339,8 @@ public class LucasTests {
 	@Test
 	public void test15PasarTurno() {
 		Juego juego= new Juego();
-//		Jugador jugadorActual;
-//		jugadorActual= juego.pasarTurno();
-//		ArrayList<Algoformer> equipo= jugadorActual.devolverEquipo();
+
 		Assert.assertTrue(juego.pasarTurno().devolverEquipo().get(0).getNombre()== "Optimus");
-//		jugadorActual= juego.pasarTurno();
-//		ArrayList<Algoformer> equipo= jugadorActual.devolverEquipo();
-//		System.out.println(equipo.get(0).getNombre());
 		Assert.assertTrue(juego.pasarTurno().devolverEquipo().get(0).getNombre()== "Megatron");
 		Assert.assertTrue(juego.pasarTurno().devolverEquipo().get(0).getNombre()== "Optimus");
 		Assert.assertTrue(juego.pasarTurno().devolverEquipo().get(0).getNombre()== "Megatron");

@@ -9,10 +9,8 @@ public class Juego {
 	public Jugador jugador1;
 	public Jugador jugador2;
 	public Interactuable chispa = new Chispa();
-//
 	private int jugadas;
 	public Jugador[] turnos= new Jugador[2];
-	// public ListaCircular turnos= new ListaCircular();
 	
 	public Juego(){
 		this.inicializarTablero();
@@ -105,14 +103,11 @@ public class Juego {
 		this.agregarJugador("DECEPTICONS");
 		this.posicionarDecepticons();
 		this.posicionarChispaEnElMedio();
-		// turnos.add(jugador1);
-		// turnos.add(jugador2);
 	}
 	
 	public Jugador pasarTurno() {
 		
 		Jugador jugadorADevolver= turnos[jugadas%2];
-		System.out.println(jugadas%2);
 		this.jugadas++;
 		return jugadorADevolver;
 	}
