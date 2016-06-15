@@ -88,7 +88,8 @@ public class AplicarEfectosDeSuperficiesTest {
     }
     
     //    ESPACIO AEREO
-    
+*/
+
     @Test
     public void NubeConAlternoNoAfectaStats(){
         Algoformer ratchet1 = new Ratchet();
@@ -96,13 +97,13 @@ public class AplicarEfectosDeSuperficiesTest {
         Algoformer ratchet2 = new Ratchet();
         ratchet2.transformar();
         Superficie nube1 = new Nube();
-        nube1.aplicarEfectoSuperficie(ratchet1);
+        nube1.aplicarEfectosSuperficie(ratchet1);
         
         Assert.assertTrue(ratchet1.getVelocidad_despl() == ratchet2.getVelocidad_despl());
         Assert.assertTrue(ratchet1.getAtaque() == ratchet2.getAtaque());
         Assert.assertTrue(ratchet1.getVida() == ratchet2.getVida());
      }
-    
+/*
     @Test
     public void NebulosaConAlternoBajaVelocidad(){
         //Tal vez para este haga falta meter todo en un contexto de tablero (a confirmar)
@@ -117,7 +118,8 @@ public class AplicarEfectosDeSuperficiesTest {
         Assert.assertTrue(ratchet1.getVida() == ratchet2.getVida());
 
     }
-    
+*/
+/*
     @Test
     public void EfectoNebulosaDura3Turnos(){
         //Tal vez para este haga falta meter todo en un contexto de tablero (a confirmar)

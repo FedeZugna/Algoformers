@@ -20,7 +20,7 @@ public class Nube extends EspacioAereo {
 
 	@Override
 	public void aplicarEfectosSuperficie(Algoformer a) {
-		
+		//No hace nada
 	}
 
 }
