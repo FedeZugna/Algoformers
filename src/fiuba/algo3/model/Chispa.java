@@ -32,4 +32,9 @@ public class Chispa implements Interactuable {
 		
 	}
 
+	@Override
+	public boolean fueUbicadoEn(Casillero casillero) {
+		return this.ubicacion == casillero;
+	}
+
 }

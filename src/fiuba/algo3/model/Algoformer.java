@@ -18,7 +18,7 @@ public class Algoformer implements Interactuable {
 	protected int movimientosRestantes;
 
 	public void inicializarAlgoformer(String nombre, int vidaPropia, int ataqueHumanoide, int distanciaAtaqueHumanoide,
-			int velocidadHumanoide, int ataqueAlterno, int distanciaAtaqueAlterno, int velocidadAlterno) {
+		int velocidadHumanoide, int ataqueAlterno, int distanciaAtaqueAlterno, int velocidadAlterno) {
 		this.nombre = nombre;
 		this.vida = vidaPropia;
 		EstadoAlgoformer estadoHumanoide = new EstadoHumanoide(ataqueHumanoide, distanciaAtaqueHumanoide, velocidadHumanoide);
@@ -63,9 +63,7 @@ public class Algoformer implements Interactuable {
 		return (this.vida > 0);
 	}
 
-	public void mover(Casillero destino) {
-		
-		
+	public void mover(Casillero destino) {		
 		int pasosAMoverse = this.estadoActual.devolverPasosPara(destino);
 		if ((this.movimientosRestantes - pasosAMoverse)<0){
 			throw new NoPuedeMoverseException();
@@ -152,6 +150,20 @@ public class Algoformer implements Interactuable {
 	
 	public void aplicarseEfectosSuperficie(Superficie superficie){
 		superficie.aplicarEfectosSuperficieAlgoformer(this);
+	}
+	
+	public void capturarBonus(Bonus bonus){
+		
+	}
+	
+	public void quitarBonus(Bonus bonus){
+		
+	}
+
+	@Override
+	public boolean fueUbicadoEn(Casillero casillero) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

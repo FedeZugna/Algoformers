@@ -35,7 +35,7 @@ public class tercerEntregaTests {
         //antes de capturar el bonus
         int danio_base = optimus.getAtaque();
         int vidaEsperadaEnemigo = megatron.getVida();
-        optimus.capturar(dobleCanion); //capturar toma 1 turno
+        optimus.capturarBonus(dobleCanion); //capturar toma 1 turno
         optimus.atacar(megatron);   //primer turno con buff
         vidaEsperadaEnemigo = vidaEsperadaEnemigo - 2*danio_base;
         assertTrue(vidaEsperadaEnemigo == megatron.getVida());
@@ -74,7 +74,7 @@ public class tercerEntregaTests {
         //antes de capturar el bonus
         int danio_base = optimus.getAtaque();
         int vidaEsperadaEnemigo = megatron.getVida();
-        optimus.capturar(dobleCanion); //capturar toma 1 turno
+        optimus.capturarBonus(dobleCanion); //capturar toma 1 turno
         optimus.atacar(megatron);   //primer turno con buff
         vidaEsperadaEnemigo = vidaEsperadaEnemigo - 2*danio_base;
         assertTrue(vidaEsperadaEnemigo == megatron.getVida());
@@ -103,7 +103,7 @@ public class tercerEntregaTests {
         Tablero tablero = Tablero.getInstancia();
         Algoformer optimus = new Optimus();
         Algoformer megatron = new Megatron();
-        BurbujaMagica burbuja = new BurbujaMagica(2); //DEVNOTE: Falta hardcodear el 2
+        BurbujaInmaculada burbuja = new BurbujaInmaculada(2); //DEVNOTE: Falta hardcodear el 2
         tablero.ubicarElemento(optimus, coord1);
         tablero.ubicarElemento(megatron, coord2);
         tablero.ubicarElemento(burbuja, coord3);
@@ -111,7 +111,7 @@ public class tercerEntregaTests {
         int danio_base = optimus.getAtaque();
         int vidaEsperadaEnemigo = megatron.getVida();
         
-        megatron.capturar(burbuja); //capturar toma 1 turno
+        megatron.capturarBonus(burbuja); //capturar toma 1 turno
         optimus.atacar(megatron);   //primer turno con buff
         assertTrue(vidaEsperadaEnemigo == megatron.getVida());
         burbuja.notificar(); //pasa el primer turno
@@ -133,7 +133,7 @@ public class tercerEntregaTests {
         Tablero tablero = Tablero.getInstancia();
         Algoformer optimus = new Optimus();
         Algoformer megatron = new Megatron();
-        BurbujaMagica burbuja = new BurbujaMagica(2); //DEVNOTE: Falta hardcodear el 2
+        BurbujaInmaculada burbuja = new BurbujaInmaculada(2); //DEVNOTE: Falta hardcodear el 2
         tablero.ubicarElemento(optimus, coord1);
         tablero.ubicarElemento(megatron, coord2);
         tablero.ubicarElemento(burbuja, coord3);
@@ -143,7 +143,7 @@ public class tercerEntregaTests {
         int danio_base = optimus.getAtaque();
         int vidaEsperadaEnemigo = megatron.getVida();
         
-        megatron.capturar(burbuja); //capturar toma 1 turno
+        megatron.capturarBonus(burbuja); //capturar toma 1 turno
         optimus.atacar(megatron);   //primer turno con buff
         assertTrue(vidaEsperadaEnemigo == megatron.getVida());
         burbuja.notificar(); //pasa el primer turno
@@ -169,7 +169,7 @@ public class tercerEntregaTests {
         //antes de capturar el bonus
         int velocidad_base = optimus.getVelocidad_despl();
         
-        optimus.capturar(flash);
+        optimus.capturarBonus(flash);
         
         assertTrue(optimus.getVelocidad_despl()==(3*velocidad_base));
     }
@@ -188,7 +188,7 @@ public class tercerEntregaTests {
         //antes de capturar el bonus
         int velocidad_base = optimus.getVelocidad_despl();
         
-        optimus.capturar(flash);
+        optimus.capturarBonus(flash);
         
         assertTrue(optimus.getVelocidad_despl()==(3*velocidad_base));
     }
