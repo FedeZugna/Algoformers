@@ -1,6 +1,7 @@
 package segundaEntrega;
 
 import model.*;
+import model.algoformers.*;
 import model.superficies.*;
 
 import org.junit.After;

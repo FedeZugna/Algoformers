@@ -1,9 +1,11 @@
 package primerEntrega;
 
 import org.junit.Assert;
+
 import org.junit.Test;
 
 import model.*;
+import model.algoformers.*;
 import model.superficies.*;
 
 public class CasilleroTests {

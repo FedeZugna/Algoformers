@@ -2,11 +2,12 @@ package primerEntrega;
 
 import static org.junit.Assert.assertTrue;
 
+
 import java.util.ArrayList;
 
 import model.*;
 import model.superficies.*;
-
+import model.algoformers.*; 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

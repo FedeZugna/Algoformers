@@ -6,6 +6,7 @@
 package segundaEntrega;
 
 import org.junit.Test;
+import model.algoformers.*;
 import static org.junit.Assert.*;
 import model.*;
 

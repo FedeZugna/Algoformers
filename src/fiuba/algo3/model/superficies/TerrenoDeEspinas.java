@@ -1,6 +1,7 @@
 package model.superficies;
 
-import model.Algoformer;
+
+import model.algoformers.*;
 import model.superficies.Terreno;
 
 public class TerrenoDeEspinas extends Terreno {

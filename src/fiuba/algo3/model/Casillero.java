@@ -6,6 +6,7 @@
 package model;
 
 import model.superficies.*;
+import model.algoformers.*;
 
 /**
  *
@@ -53,7 +54,7 @@ public class Casillero {
 			throw new CasilleroOcupadoException();
 		}
 		this.ocupante = ocupanteAAgregar;
-                ocupanteAAgregar.fueUbicadoEn(this);
+        ocupanteAAgregar.fueUbicadoEn(this);
 		this.aplicarEfectosSuperficie(ocupanteAAgregar);
 	}
 

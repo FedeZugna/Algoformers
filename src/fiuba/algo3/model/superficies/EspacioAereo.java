@@ -5,8 +5,7 @@
  */
 package model.superficies;
 
-import model.NoPuedeMoverseException;
-
+import model.algoformers.*;
 /**
  *
  * @author Martin

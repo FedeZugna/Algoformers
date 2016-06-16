@@ -5,17 +5,27 @@
  */
 package primerEntrega;
 
-import model.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 //import controller.*;
 import java.util.ArrayList;
-import java.util.List;
-//import view.*;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import model.Coordenada;
+import model.Juego;
+import model.Jugador;
+import model.Tablero;
+import model.algoformers.AlcanceExcedidoException;
+import model.algoformers.Algoformer;
+import model.algoformers.AtaqueInvalidoException;
+import model.algoformers.Megatron;
+import model.algoformers.NoPuedeMoverseException;
+import model.algoformers.Optimus;
 
 /**
  *

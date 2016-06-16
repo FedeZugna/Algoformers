@@ -2,6 +2,7 @@
 package model.superficies;
 
 import model.*;
+import model.algoformers.Algoformer;
 
 public abstract class Superficie {
 
@@ -13,7 +14,7 @@ public abstract class Superficie {
 		a.aplicarseEfectosSuperficie(this);
 	}
 
-	public void aplicarEfectosSuperficieAlgoformer(Algoformer algoformer) {
+	public void aplicarEfectosSuperficieAlgoformer(Algoformer a) {
 		
 	}
 }

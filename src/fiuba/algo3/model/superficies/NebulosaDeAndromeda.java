@@ -5,7 +5,7 @@
  */
 package model.superficies;
 
-import model.Algoformer;
+import model.algoformers.*;
 
 /**
  *

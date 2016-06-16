@@ -7,9 +7,13 @@ package primerEntrega;
 
 import org.junit.Test;
 
+
 import java.util.ArrayList;
 
 import model.*;
+import model.algoformers.EstadoAlgoformer;
+import model.algoformers.EstadoHumanoide;
+
 import org.junit.Assert;
 
 /**

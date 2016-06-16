@@ -6,7 +6,8 @@
 package tercerEntrega;
 
 import model.*;
-import model.superficies.*;
+import model.algoformers.*;
+import model.bonus.*;
 
 import org.junit.Test;
 import static org.junit.Assert.*;

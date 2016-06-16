@@ -1,5 +1,7 @@
 package model;
 
+import model.algoformers.EstadoAlgoformer;
+
 public class ListaCircular {
 	ContListaCircular primero;
 	ContListaCircular ultimo;
