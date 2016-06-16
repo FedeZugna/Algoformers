@@ -21,6 +21,11 @@ public abstract class Bonus implements Notificable, Interactuable {
 	}
 
 	@Override
+	public void setUbicacion(Casillero ubicacion) {
+		this.ubicacion = ubicacion;
+		
+	}
+	@Override
 	public String getNombre() {
 		return this.nombre;
 	}

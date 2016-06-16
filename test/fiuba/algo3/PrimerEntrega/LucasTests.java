@@ -1,8 +1,5 @@
 package primerEntrega;
 
-import static org.junit.Assert.assertTrue;
-
-
 import java.util.ArrayList;
 
 import model.*;
@@ -17,7 +14,7 @@ public class LucasTests {
 
 	@Before
 	public void before(){
-		Tablero tablero= Tablero.getInstancia();
+		Tablero.getInstancia().reiniciarTablero();
 	}
 	
 	@Test
@@ -221,9 +218,13 @@ public class LucasTests {
 		Assert.assertTrue(bumblebee.getVida()== 350);
 		Assert.assertTrue(ratchet.getVida()== 150);
 		Assert.assertFalse(listaDeAlgoformers.size()==4);//verifica que elimina el Superion
-		Assert.assertTrue(optimus.getUbicacion().getUbicacion().getLargo()== 1);
-		Assert.assertTrue(bumblebee.getUbicacion().getUbicacion().getLargo()== 2);
-		Assert.assertTrue(ratchet.getUbicacion().getUbicacion().getLargo()== 3);
+		Assert.assertTrue(optimus.getUbicacion().getUbicacion().getAlto()== 1);
+		System.out.println(bumblebee.getUbicacion().getUbicacion().getLargo());
+		System.out.println(bumblebee.getUbicacion().getUbicacion().getAlto());
+		System.out.println(ratchet.getUbicacion().getUbicacion().getLargo());
+		System.out.println(ratchet.getUbicacion().getUbicacion().getAlto());
+		Assert.assertTrue(bumblebee.getUbicacion().getUbicacion().getAlto()== 2);
+		Assert.assertTrue(ratchet.getUbicacion().getUbicacion().getAlto()== 3);
 	}
 	
 	@Test(expected=CasilleroOcupadoException.class)
@@ -360,92 +361,11 @@ public class LucasTests {
 	 */
 
 	// TESTS DE MARTIN
-	@Test
-	public void test01agregarAlgoformerHumanoideYMoverlo() {
-		String NOMBRE_ALGOF1 = "Autobot1";
-		int VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2, VELOCIDAD_DESP1 = 10;
-		int HORIZ1 = 10, HORIZ2 = 11, VERT1 = 10, VERT2 = 12;
-		Coordenada coord1 = new Coordenada(HORIZ1, VERT1);
-		Coordenada coord2 = new Coordenada(HORIZ2, VERT2);
-		Tablero tablero1 = Tablero.getInstancia();
-		Jugador jug1 = new Jugador(tablero1, "sin equipo");
-		EstadoAlgoformer estadoHumanoide1 = new EstadoHumanoide(ATAQUE1, DISTANCIA_ATK1, VELOCIDAD_DESP1);
-		ArrayList<EstadoAlgoformer> estadosPosibles = new ArrayList<>();
-		estadosPosibles.add(estadoHumanoide1);
-		Algoformer algof1 = new AlgoformerGenerico(NOMBRE_ALGOF1, VIDA1, estadosPosibles);
-		jug1.ubicarElemento(algof1, coord1);
-		Assert.assertTrue(algof1.getUbicacion() == tablero1.devolverCasillero(coord1));
-		jug1.mover(algof1, tablero1.devolverCasillero(coord2));
-		Assert.assertFalse(algof1.getUbicacion() == tablero1.devolverCasillero(coord1));
-		assertTrue(algof1.getUbicacion() == (tablero1.devolverCasillero(coord2)));
-	}
 
-	@Test
-	public void test03agregarAlgoformerAlternoYMoverlo() {
-		String NOMBRE_ALGOF1 = "Autobot1";
-		int VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2, VELOCIDAD_DESP1 = 10;
-		int HORIZ1 = 10, HORIZ2 = 11, VERT1 = 10, VERT2 = 12;
-		Coordenada coord1 = new Coordenada(HORIZ1, VERT1);
-		Coordenada coord2 = new Coordenada(HORIZ2, VERT2);
-		Tablero tablero1 = Tablero.getInstancia();
-		Jugador jug1 = new Jugador(tablero1, "sin equipo");
-		EstadoAlgoformer estadoAlterno = new EstadoHumanoide(ATAQUE1, DISTANCIA_ATK1, VELOCIDAD_DESP1);
-		ArrayList<EstadoAlgoformer> estadosPosibles = new ArrayList<>();
-		estadosPosibles.add(estadoAlterno);
-		Algoformer algof1 = new AlgoformerGenerico(NOMBRE_ALGOF1, VIDA1, estadosPosibles);
-		jug1.ubicarElemento(algof1, coord1);
-		jug1.mover(algof1, tablero1.devolverCasillero(coord2));
-		assertTrue(algof1.getUbicacion() == tablero1.devolverCasillero(coord2));
-	}
 
 	// TESTS DE JUAN
-	@Test
-	public void testSePuedeColocarUnTransformerEnUnCasillero() {
-		String NOMBRE_ALGOF1 = "Autobot1";
-		int VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2, VELOCIDAD_DESP1 = 10;
-		int HORIZ1 = 10, VERT1 = 10;
-		Coordenada coord1 = new Coordenada(HORIZ1, VERT1);
-		Tablero tablero = Tablero.getInstancia();
-		EstadoAlgoformer estadoHumanoide1 = new EstadoHumanoide(ATAQUE1, DISTANCIA_ATK1, VELOCIDAD_DESP1);
-		ArrayList<EstadoAlgoformer> estadosPosibles = new ArrayList<>();
-		estadosPosibles.add(estadoHumanoide1);
-		Algoformer algof1 = new AlgoformerGenerico(NOMBRE_ALGOF1, VIDA1, estadosPosibles);
-		tablero.ubicarElemento(algof1, coord1);
-		Assert.assertTrue(tablero.devolverElemento(coord1) == algof1);
-	}
+	
 
-	@Test
-	public void AlgoformerSePuedeMoverUnCasillero() {
-		String NOMBRE_ALGOF1 = "Autobot1";
-		int VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2, VELOCIDAD_DESP1 = 10;
-		int HORIZ1 = 10, VERT1 = 10;
-		Coordenada coord1 = new Coordenada(HORIZ1, VERT1);
-		Tablero tablero = Tablero.getInstancia();
-		EstadoAlgoformer estadoHumanoide1 = new EstadoHumanoide(ATAQUE1, DISTANCIA_ATK1, VELOCIDAD_DESP1);
-		ArrayList<EstadoAlgoformer> estadosPosibles = new ArrayList<>();
-		estadosPosibles.add(estadoHumanoide1);
-		Algoformer algof1 = new AlgoformerGenerico(NOMBRE_ALGOF1, VIDA1, estadosPosibles);
-		tablero.ubicarElemento(algof1, coord1);
-		Assert.assertTrue(tablero.devolverElemento(coord1) == algof1);
-		algof1.mover(tablero.devolverCasillero(new Coordenada(10, 10)));
-		Assert.assertTrue(algof1 == tablero.devolverElemento(new Coordenada(10, 10)));
-	}
-
-	@Test
-	public void sePuedeVaciarUnCasillero() {
-		String NOMBRE_ALGOF1 = "Autobot1";
-		int VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2, VELOCIDAD_DESP1 = 10;
-
-		Casillero casillero = new Casillero(new TerrenoRocoso());
-		EstadoAlgoformer estadoHumanoide1 = new EstadoHumanoide(ATAQUE1, DISTANCIA_ATK1, VELOCIDAD_DESP1);
-		ArrayList<EstadoAlgoformer> estadosPosibles = new ArrayList<>();
-		estadosPosibles.add(estadoHumanoide1);
-		Algoformer algof1 = new AlgoformerGenerico(NOMBRE_ALGOF1, VIDA1, estadosPosibles);
-		casillero.ubicarElemento(algof1);
-		Assert.assertTrue(casillero.devolverElemento() == algof1);
-		casillero.removerElemento();
-		Assert.assertFalse(casillero.devolverElemento() == algof1);
-	}
 
 	@Test
 	public void pruebaListaCircularSeCreaVacia() {
@@ -478,7 +398,5 @@ public class LucasTests {
 
 	@After
 	public void after(){
-		Tablero tablero= Tablero.getInstancia();
-		tablero.reiniciarTablero();
 	}
 }

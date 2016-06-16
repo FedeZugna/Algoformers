@@ -54,7 +54,7 @@ public class Casillero {
 			throw new CasilleroOcupadoException();
 		}
 		this.ocupante = ocupanteAAgregar;
-        ocupanteAAgregar.fueUbicadoEn(this);
+        ocupanteAAgregar.ubicarEn(this);
 		this.aplicarEfectosSuperficie(ocupanteAAgregar);
 	}
 
@@ -64,6 +64,7 @@ public class Casillero {
 	}
 
 	public void removerElemento() {
+		ocupante.setUbicacion( null);
 		ocupante = null;
 		// this.ocupante = new CasilleroVacio();
 	}

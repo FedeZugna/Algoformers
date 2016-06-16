@@ -1,6 +1,5 @@
 package model.bonus;
 
-import model.superficies.Superficie;
 
 public class Flash extends Bonus {
 

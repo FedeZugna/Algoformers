@@ -5,7 +5,6 @@ import model.algoformers.*;
 import model.superficies.*;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,7 +12,7 @@ public class PruebasGeneralesSegEntrega {
 
 	@Before
 	public void before(){
-		Tablero tablero= Tablero.getInstancia();
+		Tablero.getInstancia().reiniciarTablero();
 	}
 	
 	@Test (expected = NoPuedeMoverseException.class)
@@ -87,8 +86,7 @@ public class PruebasGeneralesSegEntrega {
 	
 	@After
 	public void after(){
-		Tablero tablero= Tablero.getInstancia();
-		tablero.reiniciarTablero();
+		
 	}	
 	
 }

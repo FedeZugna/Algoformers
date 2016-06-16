@@ -1,5 +1,6 @@
 package model.bonus;
 
+
 public class BurbujaInmaculada extends Bonus {
 	
 	public BurbujaInmaculada(int duracion){
@@ -11,5 +12,7 @@ public class BurbujaInmaculada extends Bonus {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	
 
 }

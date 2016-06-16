@@ -134,7 +134,7 @@ public class Jugador {
 		try{
 			this.tablero.ubicarElemento(algoformer, coordenada);
 		}catch (CasilleroOcupadoException e){
-			Coordenada coordenadaSiguiente= new Coordenada(coordenada.getLargo()+1, coordenada.getAlto());
+			Coordenada coordenadaSiguiente= new Coordenada(1 + coordenada.getLargo(), coordenada.getAlto());
 			this.ubicarPorSeparacion(algoformer, coordenadaSiguiente);
 		}catch (NullPointerException e){
 			Coordenada coordenadaSiguiente= new Coordenada(coordenada.getLargo()-3, coordenada.getAlto());

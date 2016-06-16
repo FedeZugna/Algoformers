@@ -33,9 +33,6 @@ public class Tablero {
 	}
 
 	public void ubicarElemento(Interactuable algof1, Coordenada coord1) {
-                /*if (this.devolverElemento(coord1)!= null){
-			throw new CasilleroOcupadoException();
-		}*/
 		this.casilleros.get(coord1).ubicarElemento(algof1);
 	}
 

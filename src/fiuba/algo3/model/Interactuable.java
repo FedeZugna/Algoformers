@@ -4,6 +4,8 @@ import model.superficies.*;
 
 public interface Interactuable {
 
+	public void setUbicacion(Casillero ubicacion);
+
 	public Casillero getUbicacion();
 
 	public String getNombre();
@@ -11,8 +13,6 @@ public interface Interactuable {
 	public boolean estaVivo();
 
 	public void ubicarEn(Casillero casillero);
-	
-	public boolean fueUbicadoEn(Casillero casillero);
 
 	public void aplicarseEfectosSuperficie(Superficie superficie);
 }

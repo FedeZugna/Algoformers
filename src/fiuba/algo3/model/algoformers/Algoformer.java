@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 
 import model.*;
-import model.algoformers.*;
+
 import model.bonus.*;
 import model.superficies.*;
 
@@ -165,9 +165,9 @@ public class Algoformer implements Interactuable {
 	}
 
 	@Override
-	public boolean fueUbicadoEn(Casillero casillero) {
+	public void setUbicacion(Casillero ubicacion) {
 		// TODO Auto-generated method stub
-		return false;
+		
 	}
 
 }
