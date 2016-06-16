@@ -53,10 +53,6 @@ public abstract class EstadoAlgoformer {
 	public int getAtaque() {
 		return this.ataque;
 	}
-	
-	public void setAtaque(int nuevoAtaque){
-		this.ataque = nuevoAtaque;
-	}
 
 	public abstract int devolverPasosPara(Terreno terreno);
 
