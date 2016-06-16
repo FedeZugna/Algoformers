@@ -6,7 +6,6 @@
 package model.superficies;
 
 import model.Algoformer;
-
 /**
  *
  * @author Martin
@@ -19,7 +18,7 @@ public class Nube extends EspacioAereo {
 	}
 
 	@Override
-	public void aplicarEfectosSuperficie(Algoformer a) {
+	public void aplicarEfectosSuperficieAlgoformer(Algoformer a) {
 		//No hace nada
 	}
 

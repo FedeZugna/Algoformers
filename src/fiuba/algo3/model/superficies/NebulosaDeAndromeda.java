@@ -18,9 +18,8 @@ public class NebulosaDeAndromeda extends EspacioAereo {
 		return EspacioAereo.CantidadMovimientosEstandarAereo;
 	}
 	
-	@Override
-	public void aplicarEfectosSuperficie(Algoformer a){
-		
+	public void aplicarEfectosSuperficieAlgoformer(Algoformer a){	
+		// to do
 	}
 
 }

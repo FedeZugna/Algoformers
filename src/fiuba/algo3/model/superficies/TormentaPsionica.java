@@ -17,10 +17,9 @@ public class TormentaPsionica extends EspacioAereo {
 	public int getPasos_alterno() {
 		return EspacioAereo.CantidadMovimientosEstandarAereo;
 	}
-
-	@Override
-	public void aplicarEfectosSuperficie(Algoformer a) {
-				
+	
+	public void aplicarEfectosSuperficieAlgoformer(Algoformer a){	
+		// to do
 	}
 
 }

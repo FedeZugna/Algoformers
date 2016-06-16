@@ -1,7 +1,5 @@
 package model.superficies;
 
-import model.Algoformer;
-
 public class TerrenoRocoso extends Terreno {
 
 	public TerrenoRocoso() {
@@ -9,10 +7,4 @@ public class TerrenoRocoso extends Terreno {
 		super.setPasos_alterno(VELOCIDAD_ROCOSO);
 		super.setPasos_humanoide(VELOCIDAD_ROCOSO);
 	}
-
-	@Override
-	public void aplicarEfectosSuperficie(Algoformer a) {
-		//No hace nada
-	}
-
 }

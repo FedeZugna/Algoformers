@@ -1,3 +1,4 @@
+
 package model.superficies;
 
 import model.*;
@@ -8,5 +9,11 @@ public abstract class Superficie {
 
 	public abstract int getPasos_alterno();
 
-	public abstract void aplicarEfectosSuperficie(Algoformer a);
+	public void aplicarEfectosSuperficie(Interactuable a){
+		a.aplicarseEfectosSuperficie(this);
+	}
+
+	public void aplicarEfectosSuperficieAlgoformer(Algoformer algoformer) {
+		
+	}
 }

@@ -149,5 +149,9 @@ public class Algoformer implements Interactuable {
 	public int getMovimientosRestantes() {
 		return this.movimientosRestantes;
 	}
+	
+	public void aplicarseEfectosSuperficie(Superficie superficie){
+		superficie.aplicarEfectosSuperficieAlgoformer(this);
+	}
 
 }

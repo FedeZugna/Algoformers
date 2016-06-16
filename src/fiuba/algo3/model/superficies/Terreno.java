@@ -1,7 +1,5 @@
 package model.superficies;
 
-import model.Algoformer;
-
 public abstract class Terreno /* implements */ extends Superficie {
 
 	public static final int VELOCIDAD_ROCOSO = 1;
@@ -28,9 +26,6 @@ public abstract class Terreno /* implements */ extends Superficie {
 	protected void setPasos_alterno(int pasos) {
 		this.pasos_alterno = pasos;
 	}
-	
-	@Override
-	public abstract void aplicarEfectosSuperficie(Algoformer a);
 				
 
 }

@@ -86,8 +86,8 @@ public class Casillero {
 		return this.terreno;
 	}
 
-	public void aplicarEfectosSuperficie(Interactuable ocupanteAAgregar) {
-		//this.terreno.aplicarEfectosSuperficie(this);
+	public void aplicarEfectosSuperficie(Interactuable ocupante) {
+		this.terreno.aplicarEfectosSuperficie(ocupante);
 		
 	}
 

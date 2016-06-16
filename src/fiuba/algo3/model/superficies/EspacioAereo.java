@@ -6,7 +6,6 @@
 package model.superficies;
 
 import model.NoPuedeMoverseException;
-import model.superficies.Superficie;
 
 /**
  *
@@ -20,5 +19,6 @@ public abstract class EspacioAereo extends Superficie {
 	public int getPasos_humanoide() {
 		throw new NoPuedeMoverseException();
 	}
+
 
 }

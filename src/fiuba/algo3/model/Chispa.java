@@ -1,5 +1,7 @@
 package model;
 
+import model.superficies.Superficie;
+
 public class Chispa implements Interactuable {
 
 	protected Casillero ubicacion;
@@ -23,6 +25,11 @@ public class Chispa implements Interactuable {
 	@Override
 	public boolean estaVivo() {
 		return true;
+	}
+
+	@Override
+	public void aplicarseEfectosSuperficie(Superficie superficie) {
+		
 	}
 
 }

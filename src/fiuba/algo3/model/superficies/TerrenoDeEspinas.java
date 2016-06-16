@@ -11,11 +11,11 @@ public class TerrenoDeEspinas extends Terreno {
 		super.setPasos_humanoide(VELOCIDAD_ESPINAS);
 	}
 
-	@Override
-	public void aplicarEfectosSuperficie(Algoformer a) {
+	public void aplicarEfectosSuperficieAlgoformer(Algoformer a){	
 		double vidaAux= a.getVida()*0.05;
 		int vidaARestar= (int) vidaAux;
 		a.recibirAtaque(vidaARestar);
 	}
+	
 
 }
