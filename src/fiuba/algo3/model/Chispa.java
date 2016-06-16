@@ -13,7 +13,7 @@ public class Chispa implements Interactuable {
 	}
 
 	@Override
-	public void fueUbicadoEn(Casillero casillero) {
+	public void ubicarEn(Casillero casillero) {
 		this.ubicacion = casillero;
 	}
 

@@ -33,11 +33,8 @@ public class Tablero {
 	}
 
 	public void ubicarElemento(Interactuable algof1, Coordenada coord1) {
-		if (this.devolverElemento(coord1)!= null){
-			throw new CasilleroOcupadoException();
-		}
+		algof1.ubicarEn(casilleros.get(coord1));
 		this.casilleros.get(coord1).ubicarElemento(algof1);
-		algof1.fueUbicadoEn(casilleros.get(coord1));
 	}
 
 	public Interactuable devolverElemento(Coordenada coord) {

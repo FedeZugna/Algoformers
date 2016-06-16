@@ -16,15 +16,12 @@ public class Casillero {
 	private Coordenada ubicacion;
 	private Terreno terreno;
 	private EspacioAereo espacioAereo;
-	private Interactuable ocupante = null;
+	private Interactuable ocupante;
 
 	public Casillero(Terreno terreno/* TerrenoAire aire, TerrenoTierra tierra */) {
 		this.terreno = terreno;
-		/*
-		 * this.aire = aire; this.tierra = tierra;
-		 */
-		// this.ocupante = new CasilleroVacio();
-		// this.ocupante= null;
+		this.espacioAereo = new Nube();
+		this.ocupante= null;
 	}
 
 	public void setUbicacion(Coordenada ubicacion) {

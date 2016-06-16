@@ -10,7 +10,7 @@ public interface Interactuable {
 
 	public boolean estaVivo();
 
-	public void fueUbicadoEn(Casillero casillero);
+	public void ubicarEn(Casillero casillero);
 
 	public void aplicarseEfectosSuperficie(Superficie superficie);
 }

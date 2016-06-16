@@ -102,7 +102,7 @@ public class Jugador {
 			Algoformer algoformer3, Algoformer algoformerCombinado) {
 		Casillero casilleroCentral= algoformer1.getUbicacion();
 		algoformer1.getUbicacion().removerElemento();
-		algoformerCombinado.fueUbicadoEn(casilleroCentral);
+		algoformerCombinado.ubicarEn(casilleroCentral);
 		algoformer2.getUbicacion().removerElemento();// no cambia la ubicacion
 		algoformer3.getUbicacion().removerElemento();// que conoce el algoformer
 	}

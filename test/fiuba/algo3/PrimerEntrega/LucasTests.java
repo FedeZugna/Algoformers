@@ -140,9 +140,9 @@ public class LucasTests {
 		Algoformer bumblebee = listaDeAlgoformers.get(1);
 		Algoformer ratchet = listaDeAlgoformers.get(2);
 		// ubica a los algoformers
-		optimus.fueUbicadoEn(casillero1);
-		bumblebee.fueUbicadoEn(casillero2);
-		ratchet.fueUbicadoEn(casillero3);
+		optimus.ubicarEn(casillero1);
+		bumblebee.ubicarEn(casillero2);
+		ratchet.ubicarEn(casillero3);
 		Assert.assertTrue(casillero2.devolverElemento().getNombre() == "Bumblebee");
 		// combina a los algoformers
 		jugador.combinarAlgoformers(optimus, bumblebee, ratchet);
@@ -173,9 +173,9 @@ public class LucasTests {
 		Jugador jugador = new Jugador(tablero, "DECEPTICONS");
 		ArrayList<Algoformer> listaDeAlgoformers = jugador.devolverEquipo();
 		// ubica a los algoformers
-		listaDeAlgoformers.get(0).fueUbicadoEn(casillero1);
-		listaDeAlgoformers.get(1).fueUbicadoEn(casillero2);
-		listaDeAlgoformers.get(2).fueUbicadoEn(casillero3);
+		listaDeAlgoformers.get(0).ubicarEn(casillero1);
+		listaDeAlgoformers.get(1).ubicarEn(casillero2);
+		listaDeAlgoformers.get(2).ubicarEn(casillero3);
 		// combina a los algoformers
 		jugador.combinarAlgoformers(listaDeAlgoformers.get(0), listaDeAlgoformers.get(1), listaDeAlgoformers.get(2));
 		Assert.assertTrue(listaDeAlgoformers.get(3).getNombre() == "Menasor");
@@ -206,9 +206,9 @@ public class LucasTests {
 		Algoformer bumblebee= listaDeAlgoformers.get(1);
 		Algoformer ratchet= listaDeAlgoformers.get(2);
 		//ubica a los algoformers
-		optimus.fueUbicadoEn(casillero1);
-		bumblebee.fueUbicadoEn(casillero2);
-		ratchet.fueUbicadoEn(casillero3);
+		optimus.ubicarEn(casillero1);
+		bumblebee.ubicarEn(casillero2);
+		ratchet.ubicarEn(casillero3);
 		Assert.assertTrue(casillero2.devolverElemento().getNombre()== "Bumblebee");
 		//combina a los algoformers
 		jugador.combinarAlgoformers(optimus, bumblebee, ratchet);
@@ -272,9 +272,9 @@ public class LucasTests {
 		Algoformer bumblebee= listaDeAlgoformers.get(1);
 		Algoformer ratchet= listaDeAlgoformers.get(2);
 		//ubica a los algoformers
-		optimus.fueUbicadoEn(casillero1);
-		bumblebee.fueUbicadoEn(casillero2);
-		ratchet.fueUbicadoEn(casillero3);
+		optimus.ubicarEn(casillero1);
+		bumblebee.ubicarEn(casillero2);
+		ratchet.ubicarEn(casillero3);
 		Assert.assertTrue(casillero2.devolverElemento().getNombre()== "Bumblebee");
 		//combina a los algoformers
 		jugador.combinarAlgoformers(optimus, bumblebee, ratchet);
