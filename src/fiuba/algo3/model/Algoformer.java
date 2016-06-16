@@ -29,7 +29,7 @@ public class Algoformer implements Interactuable {
 		ListaCircularEstatica estados = new ListaCircularEstatica(lista);
 		this.estados = estados;
 		this.estadoActual = this.estados.get();
-		this.movimientosRestantes = estadoActual.getVelocidad_despl();
+		this.movimientosRestantes = estadoActual.getVelocidadDespl();
 	}
 
 	@Override
@@ -87,7 +87,7 @@ public class Algoformer implements Interactuable {
 
 	public void transformar() {
 		this.estadoActual = this.estados.get();
-		this.movimientosRestantes = this.estadoActual.getVelocidad_despl();
+		this.movimientosRestantes = this.estadoActual.getVelocidadDespl();
 	}
 
 	public int getAtaque() {
@@ -130,7 +130,7 @@ public class Algoformer implements Interactuable {
 	}
 
 	public int getVelocidad_despl() {
-		return this.estadoActual.getVelocidad_despl();
+		return this.estadoActual.getVelocidadDespl();
 	}
 
 	public boolean esCombinableCon(Algoformer algoformerACombinar) {
