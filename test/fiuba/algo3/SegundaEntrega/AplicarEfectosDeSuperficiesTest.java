@@ -73,7 +73,7 @@ public class AplicarEfectosDeSuperficiesTest {
         Assert.assertTrue(optimus1.getAtaque() == optimus2.getAtaque());
         Assert.assertTrue(optimus1.getVida() == (optimus2.getVida() - optimus2.getVida()*0.05));
     }
-/*
+
     @Test
     public void PantanosoConAlternoNoAfectaStats(){
         Algoformer optimus1 = new Optimus();
@@ -82,13 +82,14 @@ public class AplicarEfectosDeSuperficiesTest {
         optimus2.transformar();
         Superficie pantanoso1 = new TerrenoPantanoso();
         pantanoso1.aplicarEfectosSuperficie(optimus1);
-        //probar velocidad igual en ambos
-        //probar ataque igual en ambos
-        //probar vida igual en ambos
+        Assert.assertTrue(optimus1.getVelocidad_despl() == optimus2.getVelocidad_despl());
+        Assert.assertTrue(optimus1.getVida() == optimus2.getVida());
+        Assert.assertTrue(optimus1.getAtaque() == optimus2.getAtaque());
+       
     }
     
     //    ESPACIO AEREO
-*/
+
 
     @Test
     public void NubeConAlternoNoAfectaStats(){
@@ -103,7 +104,7 @@ public class AplicarEfectosDeSuperficiesTest {
         Assert.assertTrue(ratchet1.getAtaque() == ratchet2.getAtaque());
         Assert.assertTrue(ratchet1.getVida() == ratchet2.getVida());
      }
-/*
+
     @Test
     public void NebulosaConAlternoBajaVelocidad(){
         //Tal vez para este haga falta meter todo en un contexto de tablero (a confirmar)
@@ -118,7 +119,7 @@ public class AplicarEfectosDeSuperficiesTest {
         Assert.assertTrue(ratchet1.getVida() == ratchet2.getVida());
 
     }
-*/
+
 /*
     @Test
     public void EfectoNebulosaDura3Turnos(){

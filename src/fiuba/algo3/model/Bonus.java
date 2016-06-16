@@ -3,41 +3,51 @@ package model;
 import model.superficies.Superficie;
 
 public abstract class Bonus implements Notificable, Interactuable {
-
+	
+	private String nombre;
+	private Casillero ubicacion;
+	private int duracion;
+	private Algoformer duenio;
+	
+	public Bonus(int duracion){
+		this.duracion = duracion;
+	}
+	
 	@Override
 	public Casillero getUbicacion() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.ubicacion;
 	}
 
 	@Override
 	public String getNombre() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean estaVivo() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.nombre;
 	}
 
 	@Override
 	public void ubicarEn(Casillero casillero) {
-		// TODO Auto-generated method stub
-
+		this.ubicacion = casillero;
+		casillero.ubicarElemento(this);
 	}
-
-	@Override
-	public void aplicarseEfectosSuperficie(Superficie superficie) {
-		// TODO Auto-generated method stub
-
+	
+	public boolean fueUbicadoEn(Casillero casillero){
+		return this.ubicacion == casillero;
 	}
+	
+	public abstract int aplicarBonus(int factor);
 
 	@Override
 	public void notificar() {
-		// TODO Auto-generated method stub
-
+		this.duracion--;
+		if (this.duracion == 0) {
+			this.destruir();
+		}
 	}
-
+	
+	public void cambiarDuenio(Algoformer duenio){
+		this.duenio = duenio;
+	}
+	public void destruir() {
+		this.duenio.quitarBonus(this);
+	}
+	
 }
