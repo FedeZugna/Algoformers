@@ -21,8 +21,7 @@ public class Algoformer implements Interactuable {
 			int velocidadHumanoide, int ataqueAlterno, int distanciaAtaqueAlterno, int velocidadAlterno) {
 		this.nombre = nombre;
 		this.vida = vidaPropia;
-		EstadoAlgoformer estadoHumanoide = new EstadoHumanoide(ataqueHumanoide, distanciaAtaqueHumanoide,
-				velocidadHumanoide);
+		EstadoAlgoformer estadoHumanoide = new EstadoHumanoide(ataqueHumanoide, distanciaAtaqueHumanoide, velocidadHumanoide);
 		EstadoAlgoformer estadoAlterno = new EstadoAlterno(ataqueAlterno, distanciaAtaqueAlterno, velocidadAlterno);
 		ArrayList<EstadoAlgoformer> lista = new ArrayList<EstadoAlgoformer>();
 		lista.add(estadoHumanoide);
@@ -65,17 +64,23 @@ public class Algoformer implements Interactuable {
 	}
 
 	public void mover(Casillero destino) {
-		if (!this.puedeMoverseA(destino)) {
+		
+		
+		int pasosAMoverse = this.estadoActual.devolverPasosPara(destino);
+		if ((this.movimientosRestantes - pasosAMoverse)<0){
 			throw new NoPuedeMoverseException();
 		}
+		destino.ubicarElemento(this);
 		this.ubicacion = destino;
-		this.movimientosRestantes =- ( this.estadoActual.devolverPasosPara(destino) );
-		//destino.aplicarEfectosSuperficie(this);
+		this.movimientosRestantes =- pasosAMoverse;
 	}
-
-	private boolean puedeMoverseA(Casillero destino) {
+	
+	/*
+	 private boolean puedeMoverseA(Casillero destino) {
 		return ( ( destino.puedeMoverseAca(this, this.ubicacion) )  );
 	} // (this.estadoActual.devolverPasosPara(destino)<= this.movimientosRestantes) && 
+	 */
+	 
 
 	@Override
 	public String getNombre() {

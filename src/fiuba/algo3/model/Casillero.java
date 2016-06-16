@@ -16,7 +16,7 @@ public class Casillero {
 	private Coordenada ubicacion;
 	private Terreno terreno;
 	private EspacioAereo espacioAereo;
-	private Interactuable ocupante;
+	private Interactuable ocupante = null;
 
 	public Casillero(Terreno terreno/* TerrenoAire aire, TerrenoTierra tierra */) {
 		this.terreno = terreno;
@@ -43,9 +43,18 @@ public class Casillero {
 		this.espacioAereo = espacioAereo;
 	}
 
+	public boolean casilleroOcupado(){
+		return (this.ocupante != null);
+	}
+	
+	
 	public void ubicarElemento(Interactuable ocupanteAAgregar) {
-		// si esta ocupado resolver
+		
+		if (casilleroOcupado()){
+			throw new CasilleroOcupadoException();
+		}
 		this.ocupante = ocupanteAAgregar;
+		this.aplicarEfectosSuperficie(ocupanteAAgregar);
 	}
 
 	public Interactuable devolverElemento() {
@@ -77,7 +86,7 @@ public class Casillero {
 		return this.terreno;
 	}
 
-	public void aplicarEfectosSuperficie(Algoformer algoformer) {
+	public void aplicarEfectosSuperficie(Interactuable ocupanteAAgregar) {
 		//this.terreno.aplicarEfectosSuperficie(this);
 		
 	}
