@@ -51,6 +51,7 @@ public class Casillero {
 	
 	public void ubicarElemento(Interactuable ocupanteAAgregar) {
 		if (this.casilleroOcupado()){
+			System.out.println(this.ocupante.getNombre());
 			throw new CasilleroOcupadoException();
 		}
 		this.ocupante = ocupanteAAgregar;

@@ -58,7 +58,7 @@ public class PrimerEntregaTests {
 	public void test02agregarAlgoformerHumanoideYIntentaMoverloFueraDeRango() {
 		String NOMBRE_ALGOF1 = "Autobot1";
 		int ANCHO = 100, LARGO = 100, VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2, VELOCIDAD_DESP1 = 10;
-		int HORIZ1 = 10, HORIZ2 = 11, VERT1 = 10, VERT2 = 12;
+		int HORIZ1 = 10, HORIZ2 = 11, VERT1 = 19, VERT2 = 20;
 		Coordenada coord1 = new Coordenada(HORIZ1, VERT1);
 		Coordenada coord2 = new Coordenada(HORIZ2, VERT2);
 		Tablero tablero1 = Tablero.getInstancia();

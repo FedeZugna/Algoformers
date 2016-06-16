@@ -138,15 +138,23 @@ public class LucasTests {
 		Algoformer bumblebee = listaDeAlgoformers.get(1);
 		Algoformer ratchet = listaDeAlgoformers.get(2);
 		// ubica a los algoformers
+		tablero.ubicarElemento(optimus, coordenada1);
+		tablero.ubicarElemento(bumblebee, coordenada2);
+		tablero.ubicarElemento(ratchet, coordenada3);
+
+/*
 		optimus.ubicarEn(casillero1);
 		bumblebee.ubicarEn(casillero2);
 		ratchet.ubicarEn(casillero3);
-		Assert.assertTrue(casillero2.devolverElemento().getNombre() == "Bumblebee");
+*/
+//		Assert.assertTrue(casillero2.devolverElemento().getNombre() == "Bumblebee");
 		// combina a los algoformers
 		jugador.combinarAlgoformers(optimus, bumblebee, ratchet);
 		Assert.assertTrue(listaDeAlgoformers.get(3).getNombre() == "Superion");
 		Assert.assertTrue(listaDeAlgoformers.get(3).getVida() == 1000);
-		Assert.assertTrue(listaDeAlgoformers.get(3).getUbicacion() == casillero1);
+		Assert.assertTrue(listaDeAlgoformers.get(3).getUbicacion().getUbicacion().getLargo() == 1);
+		Assert.assertTrue(listaDeAlgoformers.get(3).getUbicacion().getUbicacion().getAlto() == 1);
+
 		Assert.assertTrue(casillero2.devolverElemento() == null);
 		Assert.assertTrue(casillero3.devolverElemento() == null);
 	}
@@ -170,10 +178,19 @@ public class LucasTests {
 		Tablero tablero = Tablero.getInstancia();
 		Jugador jugador = new Jugador(tablero, "DECEPTICONS");
 		ArrayList<Algoformer> listaDeAlgoformers = jugador.devolverEquipo();
+		// para que sea mas comodo de leer
+		Algoformer megatron = listaDeAlgoformers.get(0);
+		Algoformer bonecrusher = listaDeAlgoformers.get(1);
+		Algoformer frenzy = listaDeAlgoformers.get(2);
 		// ubica a los algoformers
+		tablero.ubicarElemento(megatron, coordenada1);
+		tablero.ubicarElemento(bonecrusher, coordenada2);
+		tablero.ubicarElemento(frenzy, coordenada3);
+/*
 		listaDeAlgoformers.get(0).ubicarEn(casillero1);
 		listaDeAlgoformers.get(1).ubicarEn(casillero2);
 		listaDeAlgoformers.get(2).ubicarEn(casillero3);
+*/	
 		// combina a los algoformers
 		jugador.combinarAlgoformers(listaDeAlgoformers.get(0), listaDeAlgoformers.get(1), listaDeAlgoformers.get(2));
 		Assert.assertTrue(listaDeAlgoformers.get(3).getNombre() == "Menasor");
@@ -204,10 +221,17 @@ public class LucasTests {
 		Algoformer bumblebee= listaDeAlgoformers.get(1);
 		Algoformer ratchet= listaDeAlgoformers.get(2);
 		//ubica a los algoformers
+		// ubica a los algoformers
+		tablero.ubicarElemento(optimus, coordenada1);
+		tablero.ubicarElemento(bumblebee, coordenada2);
+		tablero.ubicarElemento(ratchet, coordenada3);
+
+/*		
 		optimus.ubicarEn(casillero1);
 		bumblebee.ubicarEn(casillero2);
 		ratchet.ubicarEn(casillero3);
-		Assert.assertTrue(casillero2.devolverElemento().getNombre()== "Bumblebee");
+*/
+//		Assert.assertTrue(casillero2.devolverElemento().getNombre()== "Bumblebee");
 		//combina a los algoformers
 		jugador.combinarAlgoformers(optimus, bumblebee, ratchet);
 		Assert.assertTrue(listaDeAlgoformers.get(3).estaVivo());
@@ -219,12 +243,8 @@ public class LucasTests {
 		Assert.assertTrue(ratchet.getVida()== 150);
 		Assert.assertFalse(listaDeAlgoformers.size()==4);//verifica que elimina el Superion
 		Assert.assertTrue(optimus.getUbicacion().getUbicacion().getAlto()== 1);
-		System.out.println(bumblebee.getUbicacion().getUbicacion().getLargo());
-		System.out.println(bumblebee.getUbicacion().getUbicacion().getAlto());
-		System.out.println(ratchet.getUbicacion().getUbicacion().getLargo());
-		System.out.println(ratchet.getUbicacion().getUbicacion().getAlto());
-		Assert.assertTrue(bumblebee.getUbicacion().getUbicacion().getAlto()== 2);
-		Assert.assertTrue(ratchet.getUbicacion().getUbicacion().getAlto()== 3);
+		Assert.assertTrue(bumblebee.getUbicacion().getUbicacion().getAlto()== 1);
+		Assert.assertTrue(ratchet.getUbicacion().getUbicacion().getAlto()== 1);
 	}
 	
 	@Test(expected=CasilleroOcupadoException.class)
@@ -274,10 +294,15 @@ public class LucasTests {
 		Algoformer bumblebee= listaDeAlgoformers.get(1);
 		Algoformer ratchet= listaDeAlgoformers.get(2);
 		//ubica a los algoformers
+		tablero.ubicarElemento(optimus, coordenada1);
+		tablero.ubicarElemento(bumblebee, coordenada2);
+		tablero.ubicarElemento(ratchet, coordenada3);
+/*		
 		optimus.ubicarEn(casillero1);
 		bumblebee.ubicarEn(casillero2);
 		ratchet.ubicarEn(casillero3);
-		Assert.assertTrue(casillero2.devolverElemento().getNombre()== "Bumblebee");
+*/
+//		Assert.assertTrue(casillero2.devolverElemento().getNombre()== "Bumblebee");
 		//combina a los algoformers
 		jugador.combinarAlgoformers(optimus, bumblebee, ratchet);
 		Assert.assertTrue(listaDeAlgoformers.get(3).estaVivo());

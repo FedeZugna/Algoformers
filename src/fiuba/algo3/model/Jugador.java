@@ -103,7 +103,10 @@ public class Jugador {
 			Algoformer algoformer3, Algoformer algoformerCombinado) {
 		Casillero casilleroCentral= algoformer1.getUbicacion();
 		algoformer1.getUbicacion().removerElemento();
-		algoformerCombinado.ubicarEn(casilleroCentral);
+//cambio aca		
+		this.tablero.ubicarElemento(algoformerCombinado, casilleroCentral.getUbicacion());
+
+//		algoformerCombinado.ubicarEn(casilleroCentral);
 		algoformer2.getUbicacion().removerElemento();// no cambia la ubicacion
 		algoformer3.getUbicacion().removerElemento();// que conoce el algoformer
 	}
@@ -134,7 +137,7 @@ public class Jugador {
 		try{
 			this.tablero.ubicarElemento(algoformer, coordenada);
 		}catch (CasilleroOcupadoException e){
-			Coordenada coordenadaSiguiente= new Coordenada(1 + coordenada.getLargo(), coordenada.getAlto());
+			Coordenada coordenadaSiguiente= new Coordenada(coordenada.getLargo()+1, coordenada.getAlto());
 			this.ubicarPorSeparacion(algoformer, coordenadaSiguiente);
 		}catch (NullPointerException e){
 			Coordenada coordenadaSiguiente= new Coordenada(coordenada.getLargo()-3, coordenada.getAlto());

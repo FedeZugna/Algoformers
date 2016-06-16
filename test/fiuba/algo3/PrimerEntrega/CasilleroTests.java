@@ -30,7 +30,7 @@ public class CasilleroTests {
 		Assert.assertFalse(cas.casilleroOcupado());
 		Algoformer algo1 = new Optimus();
 		algo1.ubicarEn(cas);
-		Assert.assertTrue(cas.casilleroOcupado());
+		Assert.assertTrue(algo1.getUbicacion()==cas);
 		algo1.ubicarEn(cas);
 	}
 	

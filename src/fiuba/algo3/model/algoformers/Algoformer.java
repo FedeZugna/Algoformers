@@ -47,8 +47,7 @@ public class Algoformer implements Interactuable {
 
 	public void ubicarEn(Casillero cas1) {
 		this.ubicacion = cas1;
-		cas1.ubicarElemento(this);// agregue esto
-	};
+	}
 
 	public void recibirAtaque(int danio) {
 		this.vida -= danio;
