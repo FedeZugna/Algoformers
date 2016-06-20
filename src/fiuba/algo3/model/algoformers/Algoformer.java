@@ -5,6 +5,8 @@
  */
 package model.algoformers;
 
+import model.excepciones.NoPuedeMoverseException;
+import model.excepciones.AlcanceExcedidoException;
 import java.util.ArrayList;
 
 

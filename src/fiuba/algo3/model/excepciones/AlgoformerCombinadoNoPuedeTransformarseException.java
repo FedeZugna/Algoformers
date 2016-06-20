@@ -1,4 +1,4 @@
-package model.algoformers;
+package model.excepciones;
 
 public class AlgoformerCombinadoNoPuedeTransformarseException extends Exception {
 

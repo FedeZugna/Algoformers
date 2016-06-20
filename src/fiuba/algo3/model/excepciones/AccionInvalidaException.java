@@ -1,4 +1,4 @@
-package model;
+package model.excepciones;
 
 public class AccionInvalidaException extends RuntimeException{
 

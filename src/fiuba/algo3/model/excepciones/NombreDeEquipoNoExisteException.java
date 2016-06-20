@@ -1,4 +1,4 @@
-package model.algoformers;
+package model.excepciones;
 
 public class NombreDeEquipoNoExisteException extends RuntimeException {
 

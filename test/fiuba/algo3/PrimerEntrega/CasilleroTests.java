@@ -1,5 +1,6 @@
 package primerEntrega;
 
+import model.excepciones.CasilleroOcupadoException;
 import org.junit.Assert;
 
 import org.junit.Test;

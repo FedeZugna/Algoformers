@@ -5,6 +5,9 @@
  */
 package segundaEntrega;
 
+import model.bonus.StatContainer;
+import model.bonus.ModificadorPorcentualPermanente;
+import model.bonus.StatModifier;
 import org.junit.Test;
 import model.algoformers.*;
 import static org.junit.Assert.*;

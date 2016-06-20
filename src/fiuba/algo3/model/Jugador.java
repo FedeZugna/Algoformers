@@ -1,5 +1,8 @@
 package model;
 
+import model.excepciones.AlgoformerCombinadoNoPuedeTransformarseException;
+import model.excepciones.CasilleroOcupadoException;
+import model.excepciones.AtaqueInvalidoException;
 import java.util.ArrayList;
 import model.algoformers.*;
 import java.util.Iterator;

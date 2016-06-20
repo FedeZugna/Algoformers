@@ -1,5 +1,6 @@
 package segundaEntrega;
 
+import model.excepciones.NoPuedeMoverseException;
 import model.*;
 import model.algoformers.*;
 import model.superficies.*;

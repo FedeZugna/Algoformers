@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.algoformers;
+package model.bonus;
 
-import model.algoformers.NoPuedeMoverseException;
-import model.algoformers.StatModifierConDuracion;
+import model.excepciones.NoPuedeMoverseException;
+import model.bonus.StatModifierConDuracion;
 
 /**
  *

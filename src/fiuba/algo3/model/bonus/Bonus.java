@@ -1,5 +1,6 @@
 package model.bonus;
 
+import model.excepciones.AccionInvalidaException;
 import model.*;
 import model.algoformers.Algoformer;
 import model.superficies.Superficie;

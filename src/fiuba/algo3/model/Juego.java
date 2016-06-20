@@ -1,5 +1,6 @@
 package model;
 
+import model.excepciones.NombreDeEquipoNoExisteException;
 import java.util.ArrayList;
 import model.algoformers.*;
 import java.util.Iterator;

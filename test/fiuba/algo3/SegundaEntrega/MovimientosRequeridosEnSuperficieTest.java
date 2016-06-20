@@ -6,7 +6,7 @@
 package segundaEntrega;
 
 
-import model.algoformers.NoPuedeMoverseException;
+import model.excepciones.NoPuedeMoverseException;
 import model.superficies.*;
 
 import org.junit.Test;

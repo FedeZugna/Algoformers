@@ -20,11 +20,11 @@ import model.Coordenada;
 import model.Juego;
 import model.Jugador;
 import model.Tablero;
-import model.algoformers.AlcanceExcedidoException;
+import model.excepciones.AlcanceExcedidoException;
 import model.algoformers.Algoformer;
-import model.algoformers.AtaqueInvalidoException;
+import model.excepciones.AtaqueInvalidoException;
 import model.algoformers.Megatron;
-import model.algoformers.NoPuedeMoverseException;
+import model.excepciones.NoPuedeMoverseException;
 import model.algoformers.Optimus;
 
 /**

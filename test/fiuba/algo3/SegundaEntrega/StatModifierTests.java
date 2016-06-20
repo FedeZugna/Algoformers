@@ -5,6 +5,10 @@
  */
 package segundaEntrega;
 
+import model.bonus.ModificadorPorcentualPermanente;
+import model.bonus.StatModifier;
+import model.bonus.Inmobilizador;
+import model.excepciones.NoPuedeMoverseException;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

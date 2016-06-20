@@ -5,6 +5,7 @@
  */
 package model;
 
+import model.excepciones.CasilleroOcupadoException;
 import model.superficies.*;
 import model.algoformers.*;
 

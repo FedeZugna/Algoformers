@@ -1,5 +1,6 @@
 package primerEntrega;
 
+import model.excepciones.CasilleroOcupadoException;
 import java.util.ArrayList;
 
 import model.*;
