@@ -55,12 +55,12 @@ public class PrimerEntregaTests {
 		assertTrue(algof1.getUbicacion() == tablero1.devolverCasillero(coord2));
 	}
 
-	@Test//(expected = NoPuedeMoverseException.class)
+	@Test (expected = NoPuedeMoverseException.class)
 	public void test02agregarAlgoformerHumanoideYIntentaMoverloFueraDeRango() {
 		String NOMBRE_ALGOF1 = "Autobot1";
 		int ANCHO = 100, LARGO = 100, VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2, VELOCIDAD_DESP1 = 10;
 		int HORIZ1 = 10, HORIZ2 = 11, VERT1 = 19, VERT2 = 20;
-/*
+
 		Coordenada coord1 = new Coordenada(HORIZ1, VERT1);
 		Coordenada coord2 = new Coordenada(HORIZ2, VERT2);
 		Tablero tablero1 = Tablero.getInstancia();
@@ -68,7 +68,7 @@ public class PrimerEntregaTests {
 		Algoformer algof1 = new Optimus();
 		jug1.ubicarElemento(algof1, coord1);
 		jug1.mover(algof1, tablero1.devolverCasillero(coord2));
-*/
+
 		Coordenada posicionInicial= new Coordenada(1,1);
 		Coordenada destino1= new Coordenada(1,2);
 		Coordenada destino2= new Coordenada(1,3);
@@ -82,10 +82,13 @@ public class PrimerEntregaTests {
 		System.out.println(optimus.getMovimientosRestantes());
 		jugador.mover(optimus, tablero.devolverCasillero(destino1));
 		System.out.println(optimus.getMovimientosRestantes());
-//		jugador.mover(optimus, tablero.devolverCasillero(destino2));
-//		jugador.mover(optimus, tablero.devolverCasillero(destino3));
-//		jugador.mover(optimus, tablero.devolverCasillero(destino4));
-//		jugador.mover(optimus, tablero.devolverCasillero(destino5));
+		jugador.mover(optimus, tablero.devolverCasillero(destino2));
+		System.out.println(optimus.getMovimientosRestantes());
+		jugador.mover(optimus, tablero.devolverCasillero(destino3));
+		System.out.println(optimus.getMovimientosRestantes());
+		jugador.mover(optimus, tablero.devolverCasillero(destino4));
+		System.out.println(optimus.getMovimientosRestantes());
+		jugador.mover(optimus, tablero.devolverCasillero(destino5));
 
 	}
 

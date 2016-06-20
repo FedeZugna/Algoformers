@@ -321,7 +321,7 @@ public class LucasTests {
 		Assert.assertTrue(ratchet.getUbicacion().getUbicacion().getAlto()== 1);
 	}
 	
-	@Test
+	@Test 
 	public void test14SuperionSeDescombinaEnLaEsquinaConCasillerosVecinosOcupados () {
 		//crea las coordenadas
 		Coordenada coordenada1= new Coordenada(16,1);

@@ -73,7 +73,7 @@ public class Algoformer implements Interactuable {
 		}
 		destino.ubicarElemento(this);
 		this.ubicacion = destino;
-		this.movimientosRestantes =- pasosAMoverse;
+		this.movimientosRestantes -= pasosAMoverse;
 	}
 	
 	/*
