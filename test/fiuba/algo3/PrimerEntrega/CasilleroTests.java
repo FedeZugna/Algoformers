@@ -20,7 +20,7 @@ public class CasilleroTests {
 		Casillero cas = new Casillero(new TerrenoRocoso());
 		Assert.assertFalse(cas.casilleroOcupado());
 		Algoformer algo1 = new Optimus();
-		algo1.ubicarEn(cas);
+		cas.ubicarElemento(algo1);
 		Assert.assertTrue(cas.casilleroOcupado());
 	}
 	
@@ -29,9 +29,9 @@ public class CasilleroTests {
 		Casillero cas = new Casillero(new TerrenoRocoso());
 		Assert.assertFalse(cas.casilleroOcupado());
 		Algoformer algo1 = new Optimus();
-		algo1.ubicarEn(cas);
+		cas.ubicarElemento(algo1);
 		Assert.assertTrue(algo1.getUbicacion()==cas);
-		algo1.ubicarEn(cas);
+		cas.ubicarElemento(algo1);
 	}
 	
 	@Test
@@ -39,7 +39,7 @@ public class CasilleroTests {
 		Casillero cas = new Casillero(new TerrenoRocoso());
 		Assert.assertFalse(cas.casilleroOcupado());
 		Algoformer algo1 = new Optimus();
-		algo1.ubicarEn(cas);
+		cas.ubicarElemento(algo1);
 		Assert.assertTrue(cas.casilleroOcupado());
 		cas.removerElemento();
 		Assert.assertFalse(cas.casilleroOcupado());

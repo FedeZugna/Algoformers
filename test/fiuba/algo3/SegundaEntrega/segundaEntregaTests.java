@@ -6,6 +6,7 @@
 package segundaEntrega;
 
 import model.*;
+import model.algoformers.*;
 import model.superficies.*;
 import org.junit.After;
 import org.junit.Assert;
@@ -23,6 +24,7 @@ public class segundaEntregaTests {
     @Before
 	public void before(){
 		Tablero tablero= Tablero.getInstancia();
+		tablero.reiniciarTablero();
 	}
 	
         @Test (expected = NoPuedeMoverseException.class)
@@ -112,11 +114,11 @@ public class segundaEntregaTests {
         } 
         
         */
-        
+/*
 	@After
 	public void after(){
 		Tablero tablero= Tablero.getInstancia();
 		tablero.reiniciarTablero();
 	}	
-	
+*/
 }

@@ -9,6 +9,7 @@ import model.*;
 import model.algoformers.*;
 import model.bonus.*;
 
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -20,6 +21,12 @@ public class tercerEntregaTests {
    
     public tercerEntregaTests(){}
    
+    @Before
+   	public void before(){
+   		Tablero tablero= Tablero.getInstancia();
+   		tablero.reiniciarTablero();
+   	}
+    
     @Test
     public void DobleCanionDuplicaDanioPor3TurnosPropiosAHumanoide(){
         

@@ -1,6 +1,7 @@
 package segundaEntrega;
 
 import model.*;
+import model.algoformers.*;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
