@@ -12,22 +12,24 @@ import java.util.LinkedList;
  *
  * @author Martin
  */
-public class StatContainer {
+public class Stat {
 	private LinkedList<StatModifier> modificadores;
 	private final int stat_base;
 
-	public StatContainer(int stat_base) {
+	public Stat(int stat_base) {
 		this.stat_base = stat_base;
 		this.modificadores = new LinkedList<>();
 	}
         /**
-         * Agrega el modificador recibido a los modificadores del contenedor.
+         * Agrega el modificador recibido a los modificadores del stat.
          * IMPORTANTE:
-         * @param modificador no debe pertenecer ya al contenedor.
+         * @param modificador no debe ser el mismo efecto que un efecto existente en el stat.
          */
 	public void agregarModificador(StatModifier modificador) {
-                if (this.modificadores.contains(modificador)){
-                    return;
+                for (StatModifier modif_existente : this.modificadores){
+                    if (modif_existente.sonElMismoEfecto(modificador)){
+                        return;
+                    }
                 }
 		modificador.cambiarDuenio(this);
 		this.modificadores.add(modificador);

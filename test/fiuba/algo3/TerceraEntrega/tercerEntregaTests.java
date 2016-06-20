@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tercerEntrega;
+package terceraEntrega;
 
 import model.*;
 import model.algoformers.*;

@@ -54,4 +54,27 @@ public class StatModifierTests {
         assertTrue(contenedor.devolverStat()==VALOR);
     }
 */
+    
+    @Test
+    public void UnEfectoEsElMismoEfectoQueSiMismo(){
+        int PORCENTAJE = 10;
+        StatModifier porcentual1 = new ModificadorPorcentualPermanente(PORCENTAJE);
+        assertTrue(porcentual1.sonElMismoEfecto(porcentual1));
+    }
+    
+    @Test
+    public void DosEfectosSonLoMismoAPesarDeSerDistintasInstancias(){
+        int PORCENTAJE = 10;
+        StatModifier porcentual1 = new ModificadorPorcentualPermanente(PORCENTAJE);
+        StatModifier porcentual2 = new ModificadorPorcentualPermanente(PORCENTAJE);
+        assertTrue(porcentual1.sonElMismoEfecto(porcentual2));
+    }
+    
+    @Test
+    public void DosEfectosNoSonLoMismoSiNoSonElMismoEfectoExacto(){
+        int PORCENTAJE = 10, DURACION = 3;
+        StatModifier porcentual = new ModificadorPorcentualPermanente(PORCENTAJE);
+        StatModifier inmobilizador = new Inmobilizador(DURACION);
+        assertFalse(porcentual.sonElMismoEfecto(inmobilizador));
+    }
 }

@@ -10,9 +10,9 @@ package model.bonus;
  * @author Martin
  */
 public abstract class StatModifier {
-	private StatContainer duenio;
+	private Stat duenio;
 
-	public void cambiarDuenio(StatContainer duenio_nuevo) {
+	public void cambiarDuenio(Stat duenio_nuevo) {
 		this.duenio = duenio_nuevo;
 	}
 
@@ -22,4 +22,7 @@ public abstract class StatModifier {
 		this.duenio.quitarModificador(this);
 	}
 
+        public boolean sonElMismoEfecto(StatModifier otro){
+            return (this.getClass().equals(otro.getClass()));
+        }
 }

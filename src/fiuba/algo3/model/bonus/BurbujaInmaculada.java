@@ -3,15 +3,14 @@ package model.bonus;
 
 public class BurbujaInmaculada extends Bonus {
 	
-	public BurbujaInmaculada(int duracion){
-		super(duracion);
-	}
+    public BurbujaInmaculada(int duracion){
+	super(duracion);
+    }
 	
-	@Override
-	public int aplicarBonus(int factor) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public int aplicarModificador(int stat) {
+        return 0;
+    }
 
 	
 

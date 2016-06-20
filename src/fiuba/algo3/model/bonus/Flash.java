@@ -7,9 +7,10 @@ public class Flash extends Bonus {
 		super(duracion);
 	}
 
-	@Override
-	public int aplicarBonus(int stat) {
-		return stat * 3;
-	}
+    @Override
+    public int aplicarModificador(int stat) {
+        return stat * 3;
+    }
+
 
 }
