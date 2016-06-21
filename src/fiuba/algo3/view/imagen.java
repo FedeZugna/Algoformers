@@ -12,6 +12,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import model.Juego;
+import view.eventos.AplicacionOnKeyPressEventHandler;
 
 public class imagen extends Application{
 	
@@ -20,20 +22,28 @@ public class imagen extends Application{
         launch(args);
     }
 	
-	public void start(Stage primaryStage) {
-        primaryStage.setTitle("Load Image");
-               
-        StackPane sp = new StackPane();
-        Image img = new Image("optimus.jpeg");
-        ImageView imgView = new ImageView(img);
-        sp.getChildren().add(imgView);
-       
-        //Adding HBox to the scene
-        Scene scene = new Scene(sp);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+	public void start(Stage stage) {
+        stage.setTitle("Algoformers");
+
+        Juego juego = new Juego();
+        juego.inicializarTablero();
+        
+        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, juego);
+        Scene escenaJuego = new Scene(contenedorPrincipal, 640, 480);
+
+        AplicacionOnKeyPressEventHandler AplicacionOnKeyPressEventHandler = new AplicacionOnKeyPressEventHandler(stage, contenedorPrincipal.getBarraDeMenu());
+        escenaJuego.setOnKeyPressed(AplicacionOnKeyPressEventHandler);
+
+        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego);
+        Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 640, 480);
+
+        
+        
+        stage.setScene(escenaBienvenidos);
+        stage.show();
 	}
 }
+//stage.setOnCloseRequest()
 	
 	
 	/*public void start(Stage theStage) 

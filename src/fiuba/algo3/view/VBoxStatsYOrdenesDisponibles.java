@@ -76,6 +76,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
         
         hbox.getChildren().addAll(buttonCurrent, buttonProjected);
         this.getChildren().add(hbox);
+        actualizarStatsObjetivo(0, 0, 0, 0, 0);
     }
     
     public void actualizarStatsObjetivo(int vida,int atk,int rng, int vel, int movsRes){   //esto en un futuro recibe un algoformerView o algo así
