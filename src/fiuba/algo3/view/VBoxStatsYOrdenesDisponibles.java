@@ -5,7 +5,11 @@
  */
 package view;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -48,7 +52,30 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
             // Add offset to left side to indent from title
             VBox.setMargin(this.stats[i], new Insets(0, 0, 0, 8));
             this.getChildren().add(this.stats[i]);
-        }     
+        } 
+        EventHandler<ActionEvent> handler0 = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	actualizarStatsObjetivo(0, 0, 0, 0, 0);
+            }
+        };
+        EventHandler<ActionEvent> handler1 = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	actualizarStatsObjetivo(1, 1, 1, 1, 1);
+            }
+        };
+        HBox hbox = new HBox();
+        Button buttonCurrent = new Button("Valores en 0");
+        buttonCurrent.setPrefSize(100, 20);
+        buttonCurrent.setOnAction(handler0);
+        
+        Button buttonProjected = new Button("Valores en 1");
+        buttonProjected.setPrefSize(100, 20);
+        buttonProjected.setOnAction(handler1);
+        
+        hbox.getChildren().addAll(buttonCurrent, buttonProjected);
+        this.getChildren().add(hbox);
     }
     
     public void actualizarStatsObjetivo(int vida,int atk,int rng, int vel, int movsRes){   //esto en un futuro recibe un algoformerView o algo así

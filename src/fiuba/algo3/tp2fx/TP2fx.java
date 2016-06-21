@@ -36,28 +36,20 @@ public class TP2fx extends Application {
     private static final String TITULO_JUEGO = "Algoformers";
     private static final String RUTA_IMG1 = "fotos/prueba1.png";
     
+    public static void main(String[] args) {
+        launch(args);
+    }
+    
+    
     @Override
     public void start(Stage primaryStage) {
-        /*Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
         
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
-        */
         BorderPane border = new BorderPane();
         VBoxStatsYOrdenesDisponibles statsYOrdenes = new VBoxStatsYOrdenesDisponibles();
-        HBox hbox = addHBox(statsYOrdenes);
-        border.setTop(hbox);
-        border.setRight(agregarTile());
-        border.setLeft(addVBox());
-        border.setBottom(statsYOrdenes);
+        
+        border.setCenter(agregarTile());
+        //border.setBottom(addVBox());
+        border.setRight(statsYOrdenes);
         
         
         statsYOrdenes.actualizarStatsObjetivo(0, 0, 0, 0, 0);//prueba de actualizacion de valores
@@ -74,14 +66,6 @@ public class TP2fx extends Application {
         
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
-    }
- 
-
     /*
     * Creates an HBox with two buttons for the top region
     */
@@ -93,28 +77,7 @@ public class TP2fx extends Application {
         hbox.setSpacing(10);   // Gap between nodes
         hbox.setStyle("-fx-background-color: #336699;");
 
-        Button buttonCurrent = new Button("Valores en 0");
-        buttonCurrent.setPrefSize(100, 20);
         
-        EventHandler<ActionEvent> handler0 = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-               asd.actualizarStatsObjetivo(0, 0, 0, 0, 0);
-            }
-        };
-        EventHandler<ActionEvent> handler1 = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-               asd.actualizarStatsObjetivo(1, 1, 1, 1, 1);
-            }
-        };
-        
-        buttonCurrent.setOnAction(handler0);
-        Button buttonProjected = new Button("Valores en 1");
-        buttonProjected.setPrefSize(100, 20);
-        buttonProjected.setOnAction(handler1);
-        
-        hbox.getChildren().addAll(buttonCurrent, buttonProjected);
         
         return hbox;
     }
