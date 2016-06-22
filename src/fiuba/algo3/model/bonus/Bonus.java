@@ -43,11 +43,11 @@ public abstract class Bonus extends StatModifierConDuracion implements Notificab
 	public void cambiarDuenio(Algoformer duenio){
 		this.duenio = duenio;
 	}
-        
+        /*
 	public void destruir() {
 		this.duenio.quitarBonus(this);
 	}
-	
+	*/
 	@Override
 	public boolean estaVivo() {
 		throw new AccionInvalidaException();
@@ -58,4 +58,7 @@ public abstract class Bonus extends StatModifierConDuracion implements Notificab
 		
 	}
 	
+        public void serCapturadoPor(Algoformer a){
+            this.cambiarDuenio(a);
+        }
 }

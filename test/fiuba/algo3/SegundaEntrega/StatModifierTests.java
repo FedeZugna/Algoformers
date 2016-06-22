@@ -14,6 +14,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import model.algoformers.*;
+import model.bonus.Stat;
+import model.bonus.StatModifierConDuracion;
 /**
  *
  * @author Martin
@@ -44,16 +46,17 @@ public class StatModifierTests {
         inmobilizador.aplicarModificador(VALOR);
     }
     
-    /*
+    
     @Test
     public void InmobilizadorSeDestruyePasadaSuDuracion(){
         int VALOR = 15, DURACION = 1;
-        StatContainer contenedor = new StatContainer(VALOR);
+        Stat stat_prueba = new Stat(VALOR);
         StatModifierConDuracion inmobilizador = new Inmobilizador(DURACION);
+        stat_prueba.agregarModificador(inmobilizador);
         inmobilizador.notificar();
-        assertTrue(contenedor.devolverStat()==VALOR);
+        assertTrue(stat_prueba.devolverStat()==VALOR);
     }
-*/
+
     
     @Test
     public void UnEfectoEsElMismoEfectoQueSiMismo(){

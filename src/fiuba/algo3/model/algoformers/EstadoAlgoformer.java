@@ -7,29 +7,31 @@ package model.algoformers;
 
 import model.superficies.*;
 import model.*;
+import model.bonus.Stat;
+import model.bonus.StatModifier;
 /**
  *
  * @author Martin
  */
 public abstract class EstadoAlgoformer {
 
-	private int ataque;
-	private int distanciaAtaque;
-	private int velocidadDespl;
+	private Stat ataque;
+	private Stat distanciaAtaque;
+	private Stat velocidadDespl;
 	private int distanciaDeCombinacion = 3;
 
 	public EstadoAlgoformer(int ataque, int distanciaAtaque, int velocidadDespl) {
-		this.ataque = ataque;
-		this.distanciaAtaque = distanciaAtaque;
-		this.velocidadDespl = velocidadDespl;
+		this.ataque = new Stat(ataque);
+		this.distanciaAtaque = new Stat(distanciaAtaque);
+		this.velocidadDespl = new Stat(velocidadDespl);
 	}
 
 	public int getVelocidadDespl() {
-		return velocidadDespl;
+		return this.velocidadDespl.devolverStat();
 	}
 	
 	public void setVelocidadDespl(int nuevaVelocidad){
-		this.velocidadDespl = nuevaVelocidad;
+		this.velocidadDespl.cambiarValorBase(nuevaVelocidad);
 	}
 
 	// SIN COMMAND
@@ -39,11 +41,11 @@ public abstract class EstadoAlgoformer {
 	}
 
 	boolean esMovimientoPosible(Coordenada coordOrigen, Coordenada coordObjetivo) {
-		return esAlcanzable(coordOrigen, coordObjetivo, this.velocidadDespl);
+		return esAlcanzable(coordOrigen, coordObjetivo, this.velocidadDespl.devolverStat());
 	}
 
 	boolean esAtaquePosible(Coordenada coordOrigen, Coordenada coordObjetivo) {
-		return esAlcanzable(coordOrigen, coordObjetivo, this.distanciaAtaque);
+		return esAlcanzable(coordOrigen, coordObjetivo, this.distanciaAtaque.devolverStat());
 	}
 
 	public boolean esCombinacionPosible(Coordenada coordenadaOrigen, Coordenada coordenadaAmiga) {
@@ -51,11 +53,11 @@ public abstract class EstadoAlgoformer {
 	}
 
 	public int getAtaque() {
-		return this.ataque;
+		return this.ataque.devolverStat();
 	}
 	
 	public void setAtaque(int nuevoAtaque){
-		this.ataque = nuevoAtaque;
+		this.ataque.cambiarValorBase(nuevoAtaque);
 	}
 
 	public abstract int devolverPasosPara(Terreno terreno);
@@ -64,4 +66,15 @@ public abstract class EstadoAlgoformer {
 		return devolverPasosPara(destino.getTerreno());
 	}
 
+        public void agregarModificadorAtaque(StatModifier modificador){
+            this.ataque.agregarModificador(modificador);
+        }
+        
+        public void agregarModificadorDistanciaAtaque(StatModifier modificador){
+            this.distanciaAtaque.agregarModificador(modificador);
+        }
+        
+        public void agregarModificadorVelocidadDesplazamiento(StatModifier modificador){
+            this.velocidadDespl.agregarModificador(modificador);
+        }
 }

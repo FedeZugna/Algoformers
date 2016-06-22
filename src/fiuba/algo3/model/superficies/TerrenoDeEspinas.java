@@ -6,16 +6,17 @@ import model.superficies.Terreno;
 
 public class TerrenoDeEspinas extends Terreno {
 
+    private static int DANIO_PORCENTUAL_ESPINAS = 5;
+
 	public TerrenoDeEspinas() {
 		super();
 		super.setPasos_alterno(VELOCIDAD_ESPINAS);
 		super.setPasos_humanoide(VELOCIDAD_ESPINAS);
 	}
 
-	public void aplicarEfectosSuperficieAlgoformer(Algoformer a){	
-		double vidaAux= a.getVida()*0.05;
-		int vidaARestar= (int) vidaAux;
-		a.recibirAtaque(vidaARestar);
+	public void aplicarEfectosSuperficieAlgoformer(Algoformer a){
+                Ataque ataqueEspinas = new AtaquePorcentual(DANIO_PORCENTUAL_ESPINAS);
+                ataqueEspinas.ataqueEjecutar(a);
 	}
 	
 

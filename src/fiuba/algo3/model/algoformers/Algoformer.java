@@ -158,13 +158,14 @@ public class Algoformer implements Interactuable {
 	}
 	
 	public void capturarBonus(Bonus bonus){
-		
+                //agregar algo mas?
+		bonus.serCapturadoPor(this);
 	}
-	
+	/*
 	public void quitarBonus(Bonus bonus){
 		
 	}
-
+        */
 	@Override
 	public void setUbicacion(Casillero ubicacion) {
 		// TODO Auto-generated method stub

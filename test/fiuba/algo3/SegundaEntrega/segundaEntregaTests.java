@@ -44,7 +44,7 @@ public class segundaEntregaTests {
                 //no va a poder moverse
 	}
 	
-	/*
+	
         @Test
         public void AlgoformerAlternoPuedeCaminarEnPantano() {
                 Coordenada coord1 = new Coordenada(10, 10);
@@ -114,12 +114,12 @@ public class segundaEntregaTests {
                 Assert.assertTrue(algof1.getUbicacion()==cas1); 
         } 
         
-        */
-/*
+        
+
 	@After
 	public void after(){
 		Tablero tablero= Tablero.getInstancia();
 		tablero.reiniciarTablero();
 	}	
-*/
+
 }

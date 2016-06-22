@@ -14,7 +14,7 @@ import java.util.LinkedList;
  */
 public class Stat {
 	private LinkedList<StatModifier> modificadores;
-	private final int stat_base;
+	private int stat_base;
 
 	public Stat(int stat_base) {
 		this.stat_base = stat_base;
@@ -48,4 +48,7 @@ public class Stat {
 		this.modificadores.remove(modificador);
 	}
 
+        public void cambiarValorBase(int valor_base_nuevo){
+            this.stat_base = valor_base_nuevo;
+        }
 }

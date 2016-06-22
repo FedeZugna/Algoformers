@@ -138,7 +138,7 @@ public class AplicarEfectosDeSuperficiesTest {
         //pasarTurno
         Assert.assertTrue(ratchet1.getVelocidad_despl() == ratchet2.getVelocidad_despl());
     }
-    
+    */
     @Test
     public void TormentaConAlternoBajaAtaque(){
         Algoformer ratchet1 = new Ratchet();
@@ -147,9 +147,9 @@ public class AplicarEfectosDeSuperficiesTest {
         ratchet2.transformar();
         Superficie tormenta1 = new TormentaPsionica();
         tormenta1.aplicarEfectosSuperficie(ratchet1);
-        Assert.assertTrue(ratchet1.getVelocidad_despl() == 0);
-        Assert.assertTrue(ratchet1.getAtaque() == ratchet2.getAtaque() - ratchet2.getAtaque()*0.4);
+        Assert.assertTrue(ratchet1.getVelocidad_despl() == ratchet2.getVelocidad_despl());
+        Assert.assertTrue(ratchet1.getAtaque() == (ratchet2.getAtaque()*0.6));
         Assert.assertTrue(ratchet1.getVida() == ratchet2.getVida());
     }
-    */
+    
 }

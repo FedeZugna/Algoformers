@@ -13,18 +13,18 @@ import model.Notificable;
  */
 public abstract class StatModifierConDuracion extends StatModifier implements Notificable {
 
-	private int duracion;
+	private int turnosRestantes;
 
 	@Override
 	public void notificar() {
-		this.duracion--;
-		if (this.duracion == 0) {
+		this.turnosRestantes--;
+		if (this.turnosRestantes < 0) {
 			this.destruir();
 		}
 	}
 
     public StatModifierConDuracion(int duracion) {
-        this.duracion = duracion;
+        this.turnosRestantes = duracion;
     }
         
         

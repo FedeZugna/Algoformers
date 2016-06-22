@@ -6,6 +6,8 @@
 package model.superficies;
 
 import model.algoformers.*;
+import model.bonus.ModificadorPorcentualPermanente;
+import model.bonus.StatModifier;
 
 /**
  *
@@ -13,13 +15,16 @@ import model.algoformers.*;
  */
 public class TormentaPsionica extends EspacioAereo {
 
+    private static int PORCENTAJE_DANIO = -40;
+
 	@Override
 	public int getPasos_alterno() {
 		return EspacioAereo.CantidadMovimientosEstandarAereo;
 	}
 	
 	public void aplicarEfectosSuperficieAlgoformer(Algoformer a){	
-		// to do
+            StatModifier modificadorTormentaPsionica = new ModificadorPorcentualPermanente(PORCENTAJE_DANIO);
+            a.getEstadoActual().agregarModificadorAtaque(modificadorTormentaPsionica);
 	}
 
 }

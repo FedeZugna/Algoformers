@@ -36,7 +36,7 @@ public class tercerEntregaTests {
         Tablero tablero = Tablero.getInstancia();
         Algoformer optimus = new Optimus();
         Algoformer megatron = new Megatron();
-        DobleCanion dobleCanion = new DobleCanion(3); //DEVNOTE: Falta hardcodear el 3
+        DobleCanion dobleCanion = new DobleCanion(); 
         tablero.ubicarElemento(optimus, coord1);
         tablero.ubicarElemento(megatron, coord2);
         tablero.ubicarElemento(dobleCanion, coord3);
@@ -44,6 +44,8 @@ public class tercerEntregaTests {
         int danio_base = optimus.getAtaque();
         int vidaEsperadaEnemigo = megatron.getVida();
         optimus.capturarBonus(dobleCanion); //capturar toma 1 turno
+        dobleCanion.notificar();//termino el turno ese
+        
         optimus.atacar(megatron);   //primer turno con buff
         vidaEsperadaEnemigo = vidaEsperadaEnemigo - 2*danio_base;
         assertTrue(vidaEsperadaEnemigo == megatron.getVida());
@@ -73,7 +75,7 @@ public class tercerEntregaTests {
         Tablero tablero = Tablero.getInstancia();
         Algoformer optimus = new Optimus();
         Algoformer megatron = new Megatron();
-        DobleCanion dobleCanion = new DobleCanion(3); //DEVNOTE: Falta hardcodear el 3
+        DobleCanion dobleCanion = new DobleCanion();
         tablero.ubicarElemento(optimus, coord1);
         tablero.ubicarElemento(megatron, coord2);
         tablero.ubicarElemento(dobleCanion, coord3);
@@ -83,6 +85,8 @@ public class tercerEntregaTests {
         int danio_base = optimus.getAtaque();
         int vidaEsperadaEnemigo = megatron.getVida();
         optimus.capturarBonus(dobleCanion); //capturar toma 1 turno
+        dobleCanion.notificar();//termino el turno ese
+        
         optimus.atacar(megatron);   //primer turno con buff
         vidaEsperadaEnemigo = vidaEsperadaEnemigo - 2*danio_base;
         assertTrue(vidaEsperadaEnemigo == megatron.getVida());
@@ -100,8 +104,7 @@ public class tercerEntregaTests {
         
         optimus.atacar(megatron);   //ya no tiene buff
         vidaEsperadaEnemigo = vidaEsperadaEnemigo - danio_base;//ya no saca el doble
-        assertTrue(vidaEsperadaEnemigo == megatron.getVida());
-    }
+        assertTrue(vidaEsperadaEnemigo == megatron.getVida());}
    
     @Test
     public void BurbujaAnulaDanioPor2TurnosPropiosAHumanoide(){
@@ -111,7 +114,7 @@ public class tercerEntregaTests {
         Tablero tablero = Tablero.getInstancia();
         Algoformer optimus = new Optimus();
         Algoformer megatron = new Megatron();
-        BurbujaInmaculada burbuja = new BurbujaInmaculada(2); //DEVNOTE: Falta hardcodear el 2
+        BurbujaInmaculada burbuja = new BurbujaInmaculada();
         tablero.ubicarElemento(optimus, coord1);
         tablero.ubicarElemento(megatron, coord2);
         tablero.ubicarElemento(burbuja, coord3);
@@ -141,7 +144,7 @@ public class tercerEntregaTests {
         Tablero tablero = Tablero.getInstancia();
         Algoformer optimus = new Optimus();
         Algoformer megatron = new Megatron();
-        BurbujaInmaculada burbuja = new BurbujaInmaculada(2); //DEVNOTE: Falta hardcodear el 2
+        BurbujaInmaculada burbuja = new BurbujaInmaculada();
         tablero.ubicarElemento(optimus, coord1);
         tablero.ubicarElemento(megatron, coord2);
         tablero.ubicarElemento(burbuja, coord3);
@@ -171,7 +174,7 @@ public class tercerEntregaTests {
         Coordenada coord2 = new Coordenada(10, 9);
         Tablero tablero = Tablero.getInstancia();
         Algoformer optimus = new Optimus();
-        Flash flash = new Flash(3); //DEVNOTE: Falta hardcodear el 3
+        Flash flash = new Flash();
         tablero.ubicarElemento(optimus, coord1);
         tablero.ubicarElemento(flash, coord2);
         //antes de capturar el bonus
@@ -188,7 +191,7 @@ public class tercerEntregaTests {
         Coordenada coord2 = new Coordenada(10, 9);
         Tablero tablero = Tablero.getInstancia();
         Algoformer optimus = new Optimus();
-        Flash flash = new Flash(3); //DEVNOTE: Falta hardcodear el 3
+        Flash flash = new Flash();
         tablero.ubicarElemento(optimus, coord1);
         tablero.ubicarElemento(flash, coord2);
         //transformo a optimus
