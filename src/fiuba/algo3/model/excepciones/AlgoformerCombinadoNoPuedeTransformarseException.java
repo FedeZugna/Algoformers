@@ -1,5 +1,5 @@
 package model.excepciones;
 
-public class AlgoformerCombinadoNoPuedeTransformarseException extends Exception {
+public class AlgoformerCombinadoNoPuedeTransformarseException extends RuntimeException {
 
 }
