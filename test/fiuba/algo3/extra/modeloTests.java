@@ -22,6 +22,5 @@ public class modeloTests {
     @Test
     public void inicializacionNoDevuelveExcepciones(){
         Juego juego = new Juego();
-        juego.inicializarTablero();
     }
 }
