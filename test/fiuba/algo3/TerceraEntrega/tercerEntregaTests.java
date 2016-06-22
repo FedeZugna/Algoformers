@@ -123,12 +123,16 @@ public class tercerEntregaTests {
         int vidaEsperadaEnemigo = megatron.getVida();
         
         megatron.capturarBonus(burbuja); //capturar toma 1 turno
-        optimus.atacar(megatron);   //primer turno con buff
+        burbuja.notificar();//termino el turno ese
+        
+        optimus.atacar(megatron);   
         assertTrue(vidaEsperadaEnemigo == megatron.getVida());
+        //primer turno con buff
         burbuja.notificar(); //pasa el primer turno
         
-        optimus.atacar(megatron);   //segundo turno con buff
+        optimus.atacar(megatron);   
         assertTrue(vidaEsperadaEnemigo == megatron.getVida());
+        //segundo turno con buff
         burbuja.notificar(); //pasa el segundo turno
         
         optimus.atacar(megatron);   //ya no tiene buff
@@ -155,12 +159,16 @@ public class tercerEntregaTests {
         int vidaEsperadaEnemigo = megatron.getVida();
         
         megatron.capturarBonus(burbuja); //capturar toma 1 turno
-        optimus.atacar(megatron);   //primer turno con buff
+        burbuja.notificar();//termino el turno ese
+        
+        optimus.atacar(megatron);   
         assertTrue(vidaEsperadaEnemigo == megatron.getVida());
+        //primer turno con buff
         burbuja.notificar(); //pasa el primer turno
         
-        optimus.atacar(megatron);   //segundo turno con buff
+        optimus.atacar(megatron);   
         assertTrue(vidaEsperadaEnemigo == megatron.getVida());
+        //segundo turno con buff
         burbuja.notificar(); //pasa el segundo turno
         
         optimus.atacar(megatron);   //ya no tiene buff

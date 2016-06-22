@@ -24,7 +24,7 @@ public class TormentaPsionica extends EspacioAereo {
 	
 	public void aplicarEfectosSuperficieAlgoformer(Algoformer a){	
             StatModifier modificadorTormentaPsionica = new ModificadorPorcentualPermanente(PORCENTAJE_DANIO);
-            a.getEstadoActual().agregarModificadorAtaque(modificadorTormentaPsionica);
+            a.agregarModificadorAtaque(modificadorTormentaPsionica);
 	}
 
 }

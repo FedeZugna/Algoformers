@@ -18,7 +18,7 @@ public class Flash extends Bonus {
 
     @Override
     public void serCapturadoPor(Algoformer a) {
-        a.getEstadoActual().agregarModificadorVelocidadDesplazamiento(this);
+        a.agregarModificadorVelocidadDesplazamiento(this);
         super.serCapturadoPor(a);
     }
 

@@ -22,7 +22,7 @@ public class NebulosaDeAndromeda extends EspacioAereo {
 	
 	public void aplicarEfectosSuperficieAlgoformer(Algoformer a){
             StatModifier inmobilizadorNebulosa = new Inmobilizador(DURACION_TURNOS_INMOBILIZADO);
-            a.getEstadoActual().agregarModificadorVelocidadDesplazamiento(inmobilizadorNebulosa);
+            a.agregarModificadorVelocidadDesplazamiento(inmobilizadorNebulosa);
 	}
 
 }

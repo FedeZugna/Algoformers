@@ -20,7 +20,7 @@ public class Inmobilizador extends StatModifierConDuracion {
 
 	@Override
 	public int aplicarModificador(int stat) {
-		throw new NoPuedeMoverseException();
+		return 0;
 	}
 
 }

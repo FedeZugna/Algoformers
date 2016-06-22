@@ -39,11 +39,11 @@ public class StatModifierTests {
         assertTrue(porcentual.aplicarModificador(VALOR)==(VALOR*(100+PORCENTAJE)/100));
     }
     
-    @Test (expected = NoPuedeMoverseException.class)
+    @Test
     public void InmobilizadorLevantaNoPuedeMoverseException(){
         int VALOR = 15, DURACION = 50;
         StatModifier inmobilizador = new Inmobilizador(DURACION);
-        inmobilizador.aplicarModificador(VALOR);
+        assertTrue(inmobilizador.aplicarModificador(VALOR)==0);
     }
     
     
@@ -53,6 +53,7 @@ public class StatModifierTests {
         Stat stat_prueba = new Stat(VALOR);
         StatModifierConDuracion inmobilizador = new Inmobilizador(DURACION);
         stat_prueba.agregarModificador(inmobilizador);
+        inmobilizador.notificar();//el turno que queda ahi atrapado
         inmobilizador.notificar();
         assertTrue(stat_prueba.devolverStat()==VALOR);
     }

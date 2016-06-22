@@ -71,7 +71,7 @@ public class StatTests {
         assertTrue(stat1.devolverStat()==(STAT_BASE*(100+PORCENTAJE1)/100));
     }
     
-    @Test (expected = NoPuedeMoverseException.class)
+    @Test
     public void QuitarModificadoresNoAfectaLosRestantes(){
         int STAT_BASE = 10, PORCENTAJE1 = 20, DURACION = 30;
         Stat stat1 = new Stat(STAT_BASE);
@@ -80,6 +80,6 @@ public class StatTests {
         stat1.agregarModificador(porcentual1);
         stat1.agregarModificador(inmobilizador);
         stat1.quitarModificador(porcentual1);
-        stat1.devolverStat();
+        assertTrue(0==stat1.devolverStat());
     }
 }

@@ -22,6 +22,7 @@ public class Algoformer implements Interactuable {
 	protected String nombre;
 	protected int vida;
 	protected int movimientosRestantes;
+        protected Stat armadura;
 
 	public void inicializarAlgoformer(String nombre, int vidaPropia, int ataqueHumanoide, int distanciaAtaqueHumanoide,
 		int velocidadHumanoide, int ataqueAlterno, int distanciaAtaqueAlterno, int velocidadAlterno) {
@@ -36,6 +37,7 @@ public class Algoformer implements Interactuable {
 		this.estados = estados;
 		this.estadoActual = this.estados.get();
 		this.movimientosRestantes = estadoActual.getVelocidadDespl();
+                this.armadura = new Stat(0);
 	}
 
 	@Override
@@ -52,7 +54,9 @@ public class Algoformer implements Interactuable {
 	}
 
 	public void recibirAtaque(int danio) {
-		this.vida -= danio;
+                this.armadura.cambiarValorBase(danio);
+                int danio_efectivo = this.armadura.devolverStat();
+		this.vida -= danio_efectivo;
 		if (this.vida < 0) {
 			this.morir(); // para avisarle al Tablero que lo borre, etc
 		}
@@ -172,4 +176,22 @@ public class Algoformer implements Interactuable {
 		
 	}
 
+        
+        public void agregarModificadorArmadura(StatModifier modificador){
+            this.armadura.agregarModificador(modificador);
+        }
+        
+        public void agregarModificadorAtaque(StatModifier modificador){
+            this.estadoActual.agregarModificadorAtaque(modificador);
+        }
+        
+        public void agregarModificadorDistanciaAtaque(StatModifier modificador){
+            this.estadoActual.agregarModificadorDistanciaAtaque(modificador);
+        }
+        
+        public void agregarModificadorVelocidadDesplazamiento(StatModifier modificador){
+            this.estadoActual.agregarModificadorVelocidadDesplazamiento(modificador);
+        }
+        
+        
 }

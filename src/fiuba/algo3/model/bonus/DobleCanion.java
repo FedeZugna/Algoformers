@@ -16,7 +16,7 @@ public class DobleCanion extends Bonus {
 
     @Override
     public void serCapturadoPor(Algoformer a) {
-        a.getEstadoActual().agregarModificadorAtaque(this);
+        a.agregarModificadorAtaque(this);
         super.serCapturadoPor(a);
     }
 

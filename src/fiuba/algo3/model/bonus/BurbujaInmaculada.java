@@ -17,9 +17,7 @@ public class BurbujaInmaculada extends Bonus {
     }
 @Override
     public void serCapturadoPor(Algoformer a) {
-        //a.agregarModificadorArmadura
-        //ó
-        //a.agregarModificadorVida
+        a.agregarModificadorArmadura(this);
         super.serCapturadoPor(a);
     }
 	

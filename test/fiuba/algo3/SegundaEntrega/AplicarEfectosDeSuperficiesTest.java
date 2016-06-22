@@ -106,7 +106,7 @@ public class AplicarEfectosDeSuperficiesTest {
      }
 
     @Test
-    public void NebulosaConAlternoBajaVelocidad(){
+    public void NebulosaConAlternoQuitaLaVelocidad(){
         //Tal vez para este haga falta meter todo en un contexto de tablero (a confirmar)
         Algoformer ratchet1 = new Ratchet();
         ratchet1.transformar();
@@ -114,13 +114,13 @@ public class AplicarEfectosDeSuperficiesTest {
         ratchet2.transformar();
         Superficie nebulosa1 = new NebulosaDeAndromeda();
         nebulosa1.aplicarEfectosSuperficie(ratchet1);
-        //Assert.assertTrue(ratchet1.getVelocidad_despl() == 0);
+        Assert.assertTrue(ratchet1.getVelocidad_despl() == 0);
         //Assert.assertTrue(ratchet1.getAtaque() == ratchet2.getAtaque());
         //Assert.assertTrue(ratchet1.getVida() == ratchet2.getVida());
 
     }
 
-/*
+    /*
     @Test
     public void EfectoNebulosaDura3Turnos(){
         //Tal vez para este haga falta meter todo en un contexto de tablero (a confirmar)
