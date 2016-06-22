@@ -140,14 +140,17 @@ public class Jugador {
 		try{
 			this.tablero.ubicarElemento(algoformer, coordenada);
 		}catch (CasilleroOcupadoException e){
-			Coordenada coordenadaSiguiente= new Coordenada(coordenada.getLargo()+1, coordenada.getAlto());
+			Coordenada coordenadaSiguiente= new Coordenada(coordenada.getLargo()+1, coordenada.getAlto()); //inverti estos
 			this.ubicarPorSeparacion(algoformer, coordenadaSiguiente);
 		}catch (NullPointerException e){
-			Coordenada coordenadaSiguiente= new Coordenada(coordenada.getLargo()-3, coordenada.getAlto());
+			Coordenada coordenadaSiguiente= new Coordenada(coordenada.getLargo()-7, coordenada.getAlto());//inverti estos
+//			Coordenada coordenadaSiguiente= new Coordenada(coordenada.getLargo()-3, coordenada.getAlto());//inverti estos
 			this.ubicarPorSeparacion(algoformer, coordenadaSiguiente);
+/*
 		}catch (StackOverflowError e){
-			Coordenada coordenadaSiguiente= new Coordenada(coordenada.getLargo()-7, coordenada.getAlto());
+			Coordenada coordenadaSiguiente= new Coordenada(coordenada.getLargo()-7, coordenada.getAlto());//inverti estos
 			this.ubicarPorSeparacion(algoformer, coordenadaSiguiente);
+*/
 		}
 	}
 }
