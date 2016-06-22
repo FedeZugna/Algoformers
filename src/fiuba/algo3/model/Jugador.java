@@ -75,11 +75,12 @@ public class Jugador {
 	}
 
 	public ArrayList<Algoformer> devolverAlgoformersVivos() {
-		ArrayList<Algoformer> algoformersVivos = new ArrayList<Algoformer>();
+		ArrayList<Algoformer> algoformersVivos = new ArrayList<>();
 		Iterator<Algoformer> iterador = equipo.iterator();
 		while (iterador.hasNext()) {
-			if (iterador.next().estaVivo()) {
-				algoformersVivos.add(iterador.next());
+			Algoformer actual = iterador.next();
+                        if (actual.estaVivo()) {
+				algoformersVivos.add(actual);
 			}
 		}
 		return algoformersVivos;

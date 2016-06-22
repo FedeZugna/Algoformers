@@ -18,7 +18,6 @@ public class Aplicacion extends Application {
         stage.setTitle("Algoformers");
 
         Juego juego = new Juego();
-        juego.inicializarTablero();
         
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, juego);
         Scene escenaJuego = new Scene(contenedorPrincipal, 640, 480);

@@ -107,7 +107,7 @@ public class Juego {
 		this.posicionar(jugador2, coord1, coord2, coord3);
 	}
 
-	public void inicializarTablero() {
+	private void inicializarTablero() {
 		this.agregarJugador("AUTOBOTS");
 		this.posicionarAutobots();
 		this.agregarJugador("DECEPTICONS");
