@@ -9,19 +9,20 @@ import java.util.Iterator;
 
 public class Jugador {
 
-	Tablero tablero;
-	ArrayList<Algoformer> equipo;
+	private Tablero tablero;
+	private ArrayList<Algoformer> equipo;
+	public String nombreEquipo;
 
-	public Jugador(Tablero tablero, String equipo) {
-
+	public Jugador(Tablero tablero, String Nomequipo) {
+		this.nombreEquipo = Nomequipo;
 		this.tablero = tablero;
 		this.equipo = new ArrayList<Algoformer>();
-		if (equipo == "AUTOBOTS") {
+		if (Nomequipo== "AUTOBOTS") {
 			this.equipo.add(new Optimus());
 			this.equipo.add(new Bumblebee());
 			this.equipo.add(new Ratchet());
 		}
-		if (equipo == "DECEPTICONS") { // else
+		if (Nomequipo== "DECEPTICONS") { // else
 			this.equipo.add(new Megatron());
 			this.equipo.add(new Bonecrusher());
 			this.equipo.add(new Frenzy());

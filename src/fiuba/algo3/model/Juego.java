@@ -45,6 +45,14 @@ public class Juego {
 		}
 	}
 
+	public ArrayList<Algoformer> devolverAlgoformersVivosDeJugador1(){
+		return devolverAlgoformersVivosDe(this.jugador1.nombreEquipo);
+	}
+	
+	public ArrayList<Algoformer> devolverAlgoformersVivosDeJugador2(){
+		return devolverAlgoformersVivosDe(this.jugador2.nombreEquipo);
+	}
+	
 	public ArrayList<Algoformer> devolverAlgoformersVivosDe(String nombreDeEquipo) {
 		if (nombreDeEquipo == "AUTOBOTS") {
 			return jugador1.devolverAlgoformersVivos();

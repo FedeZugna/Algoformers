@@ -73,9 +73,6 @@ public class ContenedorPrincipal extends BorderPane {
         sp.getChildren().add(imgView);
         //Adding HBox to the scene
     	*/
-    	
-    	
-    	
     }
     
     public BarraDeMenu getBarraDeMenu() {
