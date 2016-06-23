@@ -79,7 +79,7 @@ public class PruebasGeneralesSegEntrega {
 		
 		Algoformer algof1 = new Megatron();
 		tablero.ubicarElemento(algof1, coord1);
-		Casillero cas1 = tablero.devolverCasillero(new Coordenada (10,11));
+		Casillero cas1 = tablero.devolverCasillero(new Coordenada (9,10));
 		cas1.setEspacioAereo(new Nube());
 		algof1.transformar();
 		algof1.mover(cas1);
