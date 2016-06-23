@@ -21,7 +21,9 @@ public class VistaCasilleros {
 	public void dibujar() {
 		for (Coordenada coordHash : casilleros.keySet()){
 			//dibujarCont(tablero.devolverCasillero(coordHash));
-			String ruta = "file:src/fiuba/algo3/fotos/pueba1.png";//cas.devuelveRutaImgCont();
+			String ruta = "file:src/fotos/Algoformers/Megatron.png";
+			Casillero cas = tablero.devolverCasillero(coordHash);
+			ruta = cas.devuelveRutaImgCont(); 
 			Image imagen = new Image(ruta);
 			casilleros.get(coordHash).getGraphicsContext2D().drawImage(imagen, 1, 1, 100, 100);
 		}

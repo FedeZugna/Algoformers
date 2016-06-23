@@ -6,6 +6,7 @@ public class Chispa implements Interactuable {
 
 	protected Casillero ubicacion;
 	protected String nombre = "Chispa";
+	final private String rutaImg = "file:src/fotos/Chispa/Chispa.png";
 
 	@Override
 	public Casillero getUbicacion() {
@@ -39,7 +40,7 @@ public class Chispa implements Interactuable {
 
 	@Override
 	public String devuelveNombreCont() {
-		return nombre;
+		return this.rutaImg ;
 	}
 
 }
