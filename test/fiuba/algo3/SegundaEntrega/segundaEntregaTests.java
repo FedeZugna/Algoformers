@@ -31,8 +31,8 @@ public class segundaEntregaTests {
         @Test (expected = NoPuedeMoverseException.class)
 	public void AlgoformerHumanoideNoPuedeCaminarEnPantano() {
 		
-		Coordenada coord1 = new Coordenada(10, 10);
-                Coordenada coord2 = new Coordenada(10, 11);
+		Coordenada coord1 = new Coordenada(9, 10);
+                Coordenada coord2 = new Coordenada(10, 10);
 		Tablero tablero = Tablero.getInstancia();
 		
 		Algoformer algof1 = new Optimus();
@@ -47,8 +47,8 @@ public class segundaEntregaTests {
 	
         @Test
         public void AlgoformerAlternoPuedeCaminarEnPantano() {
-                Coordenada coord1 = new Coordenada(10, 10);
-                Coordenada coord2 = new Coordenada(10, 11);
+                Coordenada coord1 = new Coordenada(9, 10);
+                Coordenada coord2 = new Coordenada(10, 10);
 		Tablero tablero = Tablero.getInstancia();
 		
 		Algoformer algof1 = new Optimus();
@@ -66,8 +66,8 @@ public class segundaEntregaTests {
         @Test
         public void AlgoformerHumanoidePuedeCaminarRoca(){
             
-                Coordenada coord1 = new Coordenada(10, 10);
-                Coordenada coord2 = new Coordenada(10, 11);
+                Coordenada coord1 = new Coordenada(9, 10);
+                Coordenada coord2 = new Coordenada(10, 10);
 		Tablero tablero = Tablero.getInstancia();
 		
 		Algoformer algof1 = new Optimus();
@@ -82,8 +82,8 @@ public class segundaEntregaTests {
 	
         @Test 
 	public void AlgoformerAlternoPuedeCaminarRoca(){
-                Coordenada coord1 = new Coordenada(10, 10);
-                Coordenada coord2 = new Coordenada(10, 11);
+                Coordenada coord1 = new Coordenada(9, 10);
+                Coordenada coord2 = new Coordenada(10, 10);
 		Tablero tablero = Tablero.getInstancia();
 		
 		Algoformer algof1 = new Optimus();
@@ -100,8 +100,8 @@ public class segundaEntregaTests {
         @Test
         public void AlgoformerAlternoAereoPuedePasarPorNube(){
                 
-                Coordenada coord1 = new Coordenada(10, 10);
-                Coordenada coord2 = new Coordenada(10, 11);
+                Coordenada coord1 = new Coordenada(9, 10);
+                Coordenada coord2 = new Coordenada(10, 10);
 		Tablero tablero = Tablero.getInstancia();
 		
 		Algoformer algof1 = new Megatron();
