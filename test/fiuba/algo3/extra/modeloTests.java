@@ -11,6 +11,8 @@ import model.algoformers.*;
 import model.superficies.*;
 import model.bonus.*;
 import model.excepciones.*;
+
+import org.junit.Before;
 import org.junit.Test;
 /**
  *
@@ -18,6 +20,11 @@ import org.junit.Test;
  */
 public class modeloTests {
     public modeloTests(){}
+    
+    @Before
+	public void before(){
+		Tablero.getInstancia().reiniciarTablero();
+	}
     
     @Test
     public void inicializacionNoDevuelveExcepciones(){

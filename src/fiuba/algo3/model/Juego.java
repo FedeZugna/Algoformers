@@ -80,6 +80,7 @@ public class Juego {
 		Iterator<Algoformer> iterador = equipo.iterator();
 		while (iterador.hasNext()) {
 			Algoformer algoformerParaAgregar = iterador.next();
+			System.out.println(algoformerParaAgregar.getNombre());
 			jugador.ubicarElemento(algoformerParaAgregar, coordenadas.get(indice));
 			indice++;
 		}
