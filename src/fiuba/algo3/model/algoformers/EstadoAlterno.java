@@ -21,4 +21,9 @@ public class EstadoAlterno extends EstadoAlgoformer {
 	public int devolverPasosPara(Terreno terreno) {
 		return terreno.getPasos_alterno();
 	}
+
+	@Override
+	public String devuelveRutaImg(Algoformer a) {
+		return a.devuelveNombreContAlterno();
+	}
 }

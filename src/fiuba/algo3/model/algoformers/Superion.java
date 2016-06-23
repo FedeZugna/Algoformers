@@ -7,6 +7,7 @@ public class Superion extends AlgoformerGroso {
 	int ataque = 100;
 	int distancia = 2;
 	int velocidad = 3;
+	final static private String rutaImgHum = "file:/src/fiuba/algo3/fotos/Algoformers/Superion.png";
 	
 	public Superion(Algoformer algo1, Algoformer algo2, Algoformer algo3){
 		this.agregarVidaCorrespondienteAAlgoformer(algo1);

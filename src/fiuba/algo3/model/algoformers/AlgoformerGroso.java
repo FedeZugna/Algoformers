@@ -8,6 +8,9 @@ public abstract class AlgoformerGroso extends Algoformer{
 	protected int correspondenciaDe1;
 	protected int correspondenciaDe2;
 	protected int correspondenciaDe3;
+	private String rutaImgHum;
+
+	
 	
 	protected void calcularCorrespondenciaDeVidaDeCadaUno() {
 		this.correspondenciaDe1= vidaDe1*100/vida;
@@ -25,5 +28,9 @@ public abstract class AlgoformerGroso extends Algoformer{
 	
 	public int getVida3() {
 		return (this.getVida()*correspondenciaDe3/100);
+	}
+	@Override
+	public String devuelveNombreCont(){
+		return rutaImgHum;
 	}
 }

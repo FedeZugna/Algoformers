@@ -44,7 +44,7 @@ public class PrimerEntregaTests {
 	public void test01agregarAlgoformerHumanoideYMoverlo() {
 		String NOMBRE_ALGOF1 = "Autobot1";
 		int ANCHO = 100, LARGO = 100, VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2, VELOCIDAD_DESP1 = 10;
-		int HORIZ1 = 10, VERT1 = 10, HORIZ2 = 11, VERT2 = 11;
+		int HORIZ1 = 9, VERT1 = 9, HORIZ2 = 10, VERT2 = 10;
 		Coordenada coord1 = new Coordenada(HORIZ1, VERT1);
 		Coordenada coord2 = new Coordenada(HORIZ2, VERT2);
 		Tablero tablero1 = Tablero.getInstancia();
@@ -59,7 +59,7 @@ public class PrimerEntregaTests {
 	public void test02agregarAlgoformerHumanoideYIntentaMoverloFueraDeRango() {
 		String NOMBRE_ALGOF1 = "Autobot1";
 		int ANCHO = 100, LARGO = 100, VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2, VELOCIDAD_DESP1 = 10;
-		int HORIZ1 = 10, HORIZ2 = 11, VERT1 = 19, VERT2 = 20;
+		int HORIZ1 = 1, HORIZ2 = 2, VERT1 = 10, VERT2 = 10;
 
 		Coordenada coord1 = new Coordenada(HORIZ1, VERT1);
 		Coordenada coord2 = new Coordenada(HORIZ2, VERT2);
@@ -79,15 +79,10 @@ public class PrimerEntregaTests {
 		Jugador jugador= new Jugador(tablero, "AUTOBOTS");
 		Algoformer optimus= jugador.devolverEquipo().get(0);
 		jugador.ubicarElemento(optimus, posicionInicial);
-		System.out.println(optimus.getMovimientosRestantes());
 		jugador.mover(optimus, tablero.devolverCasillero(destino1));
-		System.out.println(optimus.getMovimientosRestantes());
 		jugador.mover(optimus, tablero.devolverCasillero(destino2));
-		System.out.println(optimus.getMovimientosRestantes());
 		jugador.mover(optimus, tablero.devolverCasillero(destino3));
-		System.out.println(optimus.getMovimientosRestantes());
 		jugador.mover(optimus, tablero.devolverCasillero(destino4));
-		System.out.println(optimus.getMovimientosRestantes());
 		jugador.mover(optimus, tablero.devolverCasillero(destino5));
 
 	}
@@ -109,7 +104,7 @@ public class PrimerEntregaTests {
 	public void test04agregarAlgoformerAlternoYMoverlo() {
 		String NOMBRE_ALGOF1 = "Autobot1";
 		int ANCHO = 100, LARGO = 100, VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2, VELOCIDAD_DESP1 = 10;
-		int HORIZ1 = 10, HORIZ2 = 11, VERT1 = 10, VERT2 = 12;
+		int HORIZ1 = 9, HORIZ2 = 10, VERT1 = 10, VERT2 = 10;
 		Coordenada coord1 = new Coordenada(HORIZ1, VERT1);
 		Coordenada coord2 = new Coordenada(HORIZ2, VERT2);
 		Tablero tablero1 = Tablero.getInstancia();
@@ -164,7 +159,7 @@ public class PrimerEntregaTests {
 
 	@Test(expected = AtaqueInvalidoException.class)
 	public void test07algoformerNoPuedeAtacarCompaniero() {
-		int HORIZ1 = 10, HORIZ2 = 13, VERT1 = 10, VERT2 = 13;
+		int HORIZ1 = 7, HORIZ2 = 10, VERT1 = 7, VERT2 = 10;
 		Coordenada coord1 = new Coordenada(HORIZ1, VERT1);
 		Coordenada coord2 = new Coordenada(HORIZ2, VERT2);
 		Tablero tablero1 = Tablero.getInstancia();
@@ -178,7 +173,7 @@ public class PrimerEntregaTests {
 	@Test
 	public void test08atacarEnemigoYVerificarDistanciaYDanio1() {
 
-		int HORIZ1 = 10, HORIZ2 = 13, VERT1 = 10, VERT2 = 13;
+		int HORIZ1 = 7, HORIZ2 = 10, VERT1 = 7, VERT2 = 10;
 		Coordenada coord1 = new Coordenada(HORIZ1, VERT1);
 		Coordenada coord2 = new Coordenada(HORIZ2, VERT2);
 		Tablero tablero1 = Tablero.getInstancia();
@@ -200,7 +195,7 @@ public class PrimerEntregaTests {
 		String NOMBRE_ALGOF1 = "Autobot1", NOMBRE_ALGOF2 = "Decepticon1";
 		int ANCHO = 100, LARGO = 100, VIDA = 10, ATAQUE = 1, DISTANCIA_ATK1 = 1, VELOCIDAD_DESP = 10;
 		int DISTANCIA_ATK2 = 10;
-		int HORIZ1 = 10, HORIZ2 = 13, VERT1 = 10, VERT2 = 13;
+		int HORIZ1 = 7, HORIZ2 = 10, VERT1 = 7, VERT2 = 10;
 		Coordenada coord1 = new Coordenada(HORIZ1, VERT1);
 		Coordenada coord2 = new Coordenada(HORIZ2, VERT2);
 		Tablero tablero1 = Tablero.getInstancia();

@@ -79,7 +79,5 @@ public abstract class EstadoAlgoformer {
             this.velocidadDespl.agregarModificador(modificador);
         }
 
-		public String getNombreEstado() {
-			return nombreEstado;
-		}
+		public abstract String devuelveRutaImg(Algoformer a); 
 }

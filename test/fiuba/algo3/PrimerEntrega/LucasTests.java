@@ -35,8 +35,8 @@ public class LucasTests {
 	@Test
 	public void test02CrearJuegoYCreaUnMapa() {
 
-		Assert.assertTrue(Tablero.getInstancia().devolverLargo() == 20);
-		Assert.assertTrue(Tablero.getInstancia().devolverAlto() == 20);
+		Assert.assertTrue(Tablero.getInstancia().devolverLargo() == 15);
+		Assert.assertTrue(Tablero.getInstancia().devolverAlto() == 10);
 	}
 
 	@Test
@@ -94,11 +94,11 @@ public class LucasTests {
 
 //		juego.agregarJugador("DECEPTICONS");
 //		juego.posicionarDecepticons();
-		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO, Tablero.LIMITEALTO))
+		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO -1, Tablero.LIMITEALTO-1))
 				.getNombre() == "Megatron");
-		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO, Tablero.LIMITEALTO - 1))
+		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO -1, Tablero.LIMITEALTO - 2))
 				.getNombre() == "Bonecrusher");
-		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO, Tablero.LIMITEALTO - 2))
+		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO -1, Tablero.LIMITEALTO - 3))
 				.getNombre() == "Frenzy");
 	}
 
@@ -110,7 +110,7 @@ public class LucasTests {
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO / 2, Tablero.LIMITEALTO / 2))
 				.getNombre() == "Chispa");
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(1, 1)).getNombre() == "Optimus");
-		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO, Tablero.LIMITEALTO))
+		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO -1, Tablero.LIMITEALTO -1))
 				.getNombre() == "Megatron");
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(1, 2)).estaVivo());
 	}
@@ -256,9 +256,9 @@ public class LucasTests {
 		//crea el terreno
 		TerrenoRocoso terreno= new TerrenoRocoso();
 		//crea las coordenadas
-		Coordenada coordenada1= new Coordenada(20,1);
-		Coordenada coordenada2= new Coordenada(20,2);
-		Coordenada coordenada3= new Coordenada(20,3);
+		Coordenada coordenada1= new Coordenada(10,1);
+		Coordenada coordenada2= new Coordenada(10,2);
+		Coordenada coordenada3= new Coordenada(10,3);
 		//crea los casilleros y les da una ubicacion
 		Casillero casillero1= new Casillero(terreno);
 		casillero1.setUbicacion(coordenada1);
@@ -288,24 +288,24 @@ public class LucasTests {
 		Assert.assertTrue(bumblebee.getVida()== 350);
 		Assert.assertTrue(ratchet.getVida()== 150);
 		Assert.assertFalse(listaDeAlgoformers.size()==4);//verifica que elimina el Superion
-		Assert.assertTrue(optimus.getUbicacion().getUbicacion().getLargo()== 20);
+		Assert.assertTrue(optimus.getUbicacion().getUbicacion().getLargo()== 10);
 		Assert.assertTrue(optimus.getUbicacion().getUbicacion().getAlto()== 1);
-		Assert.assertTrue(bumblebee.getUbicacion().getUbicacion().getLargo()== 14);
+		Assert.assertTrue(bumblebee.getUbicacion().getUbicacion().getLargo()== 11);
 		Assert.assertTrue(bumblebee.getUbicacion().getUbicacion().getAlto()== 1);
-		Assert.assertTrue(ratchet.getUbicacion().getUbicacion().getLargo()== 15);
+		Assert.assertTrue(ratchet.getUbicacion().getUbicacion().getLargo()== 12);
 		Assert.assertTrue(ratchet.getUbicacion().getUbicacion().getAlto()== 1);
 	}
 	
 	@Test 
 	public void test14SuperionSeDescombinaEnLaEsquinaConCasillerosVecinosOcupados () {
 		//crea las coordenadas
-		Coordenada coordenada1= new Coordenada(16,1);
-		Coordenada coordenada2= new Coordenada(16,2);
-		Coordenada coordenada3= new Coordenada(16,3);
-		Coordenada coordenada4= new Coordenada(17,1);
-		Coordenada coordenada5= new Coordenada(18,1);
-		Coordenada coordenada6= new Coordenada(19,1);
-		Coordenada coordenada7= new Coordenada(20,1);
+		Coordenada coordenada1= new Coordenada(6,1);
+		Coordenada coordenada2= new Coordenada(6,2);
+		Coordenada coordenada3= new Coordenada(6,3);
+		Coordenada coordenada4= new Coordenada(7,1);
+		Coordenada coordenada5= new Coordenada(8,1);
+		Coordenada coordenada6= new Coordenada(9,1);
+		Coordenada coordenada7= new Coordenada(1,1);
 		//crea el jugador
 		Tablero tablero =  Tablero.getInstancia();
 		Jugador jugador = new Jugador(tablero, "AUTOBOTS");
@@ -330,11 +330,11 @@ public class LucasTests {
 		jugador.combinarAlgoformers(optimus, bumblebee, ratchet);
 		//separa los algoformers
 		jugador.separarAlgoformers();
-		Assert.assertTrue(optimus.getUbicacion().getUbicacion().getLargo()== 16);
+		Assert.assertTrue(optimus.getUbicacion().getUbicacion().getLargo()== 6);
 		Assert.assertTrue(optimus.getUbicacion().getUbicacion().getAlto()== 1);
-		Assert.assertTrue(bumblebee.getUbicacion().getUbicacion().getLargo()== 14);
+		Assert.assertTrue(bumblebee.getUbicacion().getUbicacion().getLargo()== 10);
 		Assert.assertTrue(bumblebee.getUbicacion().getUbicacion().getAlto()== 1);
-		Assert.assertTrue(ratchet.getUbicacion().getUbicacion().getLargo()== 15);
+		Assert.assertTrue(ratchet.getUbicacion().getUbicacion().getLargo()== 11);
 		Assert.assertTrue(ratchet.getUbicacion().getUbicacion().getAlto()== 1);
 	}
 	
