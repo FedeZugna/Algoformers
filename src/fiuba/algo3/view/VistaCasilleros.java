@@ -20,15 +20,21 @@ public class VistaCasilleros {
 
 	public void dibujar() {
 		for (Coordenada coordHash : casilleros.keySet()){
-			dibujarCont(tablero.devolverCasillero(coordHash));
+			//dibujarCont(tablero.devolverCasillero(coordHash));
+			String ruta = "file:src/fiuba/algo3/fotos/pueba1.png";//cas.devuelveRutaImgCont();
+			Image imagen = new Image(ruta);
+			casilleros.get(coordHash).getGraphicsContext2D().drawImage(imagen, 1, 1, 100, 100);
 		}
 	}
 
-	private void dibujarCont(Casillero cas) {
+	/*
+	 * private void dibujarCont(Casillero cas) {
+	 
 		String ruta = "file:src/fiuba/algo3/fotos/pueba1.png";//cas.devuelveRutaImgCont();
 		Image imagen = new Image(ruta);
 		casilleros.get(cas.getUbicacion()).getGraphicsContext2D().drawImage(imagen, 1, 1, 100, 100);
 	}
+	*/
 	public void update(){
 		dibujar();
 	}
