@@ -93,7 +93,7 @@ public class Casillero {
 		//this.terreno.aplicarEfectosSuperficie(this);
 		
 	}
-	public String devuelveNombreCont() {
+	public String devuelveRutaImgCont() {
 		if (ocupante!=null){
 			return ocupante.devuelveNombreCont();
 		}

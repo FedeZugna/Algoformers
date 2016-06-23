@@ -22,7 +22,9 @@ public class Algoformer implements Interactuable {
 	protected String nombre;
 	protected int vida;
 	protected int movimientosRestantes;
-        protected Stat armadura;
+    protected Stat armadura;
+	private String rutaImgAlt;
+	private String rutaImgHum;
 
 	public void inicializarAlgoformer(String nombre, int vidaPropia, int ataqueHumanoide, int distanciaAtaqueHumanoide,
 		int velocidadHumanoide, int ataqueAlterno, int distanciaAtaqueAlterno, int velocidadAlterno) {
@@ -195,11 +197,15 @@ public class Algoformer implements Interactuable {
 
 		@Override
 		public String devuelveNombreCont() {
-			return nombre+"-"+devuelveNombreEstado();
+			return estadoActual.devuelveRutaImg(this);
 		}
 
-		private String devuelveNombreEstado() {
-			return this.estadoActual.getNombreEstado();
+		public String devuelveNombreContAlterno() {
+			return this.rutaImgAlt;
+		}
+
+		public String devuelveNombreContHumanoide() {
+			return this.rutaImgHum;
 		}
         
         

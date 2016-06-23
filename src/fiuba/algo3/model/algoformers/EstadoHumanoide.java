@@ -21,5 +21,10 @@ public class EstadoHumanoide extends EstadoAlgoformer {
 	public int devolverPasosPara(Terreno terreno) {
 		return terreno.getPasos_humanoide();
 	}
+	
+	@Override
+	public String devuelveRutaImg(Algoformer a) {
+		return a.devuelveNombreContHumanoide();
+	}
 
 }

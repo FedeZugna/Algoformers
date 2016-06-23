@@ -8,6 +8,8 @@ public class Ratchet extends Algoformer {
 	private int ataqueAlterno = 35;
 	private int distanciaAtaqueAlterno = 2;
 	private int velocidadAlterno = 8;
+	final static private String rutaImgAlt = "file:/src/fiuba/algo3/fotos/Algoformers/Ratchet.png";
+	final static private String rutaImgHum = "file:/src/fiuba/algo3/fotos/Algoformers/RatchetA.png";
 
 	public Ratchet() {
 		this.nombre = "Ratchet";

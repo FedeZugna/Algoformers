@@ -10,6 +10,8 @@ public class Megatron extends Algoformer {
 	int ataqueAlterno = 55;
 	int distanciaAtaqueAlterno = 2;
 	int velocidadAlterno = 8;
+	final static private String rutaImgAlt = "file:/src/fiuba/algo3/fotos/Algoformers/Megatron.png";
+	final static private String rutaImgHum = "file:/src/fiuba/algo3/fotos/Algoformers/MegatronA.png";
 
 	public Megatron() {
 

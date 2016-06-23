@@ -25,8 +25,7 @@ public class VistaCasilleros {
 	}
 
 	private void dibujarCont(Casillero cas) {
-    	String contCas = cas.devuelveNombreCont();
-		Image imagen = new Image("file:src/vista/imagenes/"+ contCas +".jpeg");
+		Image imagen = new Image(cas.devuelveRutaImgCont()); //"file:src/vista/imagenes/"+ contCas +".jpeg");
 		casilleros.get(cas.getUbicacion()).getGraphicsContext2D().drawImage(imagen, 1, 1, 100, 100);
 	}
 	public void update(){

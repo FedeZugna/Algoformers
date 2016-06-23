@@ -6,6 +6,7 @@ public class Menasor extends AlgoformerGroso {
 	int ataque = 115;
 	int distancia = 2;
 	int velocidad = 2;
+	final static private String rutaImgHum = "file:/src/fiuba/algo3/fotos/Algoformers/Superion.png";
 
 	public Menasor(Algoformer algo1, Algoformer algo2, Algoformer algo3){
 		this.agregarVidaCorrespondienteAAlgoformer(algo1);
