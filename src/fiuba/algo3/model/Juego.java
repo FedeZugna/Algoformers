@@ -2,6 +2,8 @@ package model;
 
 import model.excepciones.NombreDeEquipoNoExisteException;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import model.algoformers.*;
 import java.util.Iterator;
 
@@ -13,13 +15,17 @@ public class Juego {
 	public Interactuable chispa = new Chispa();
 	private int jugadas;
 	public Jugador[] turnos= new Jugador[2];
+	private HashMap<Jugador, ArrayList<Notificable>> aNotificar;
 	
 	public Juego(){
-                this.tableroGeneral = Tablero.getInstancia();
+        this.tableroGeneral = Tablero.getInstancia();
 		this.inicializarTablero();
 		jugadas= 0;
 		turnos[0]= this.jugador1;
 		turnos[1]= this.jugador2;
+		this.aNotificar = new HashMap<>();
+		this.aNotificar.put(turnos[0], new ArrayList<>());
+		this.aNotificar.put(turnos[1], new ArrayList<>());
 	}
 
 	public void posicionarChispaEnElMedio() {
@@ -109,6 +115,7 @@ public class Juego {
 	}
 
 	private void inicializarTablero() {
+		Tablero.getInstancia().definirJuego(this);
 		this.agregarJugador("AUTOBOTS");
 		this.posicionarAutobots();
 		this.agregarJugador("DECEPTICONS");
@@ -116,11 +123,26 @@ public class Juego {
 		this.posicionarChispaEnElMedio();
 	}
 	
+	public Jugador obtenerJugadorActual(){
+		return turnos[jugadas%2];
+	}
+	
 	public Jugador pasarTurno() {
-		
-		Jugador jugadorADevolver= turnos[jugadas%2];
+		this.notificarJugadorActual();
 		this.jugadas++;
-		return jugadorADevolver;
+		return turnos[jugadas%2];
 	}
 
+	private void notificarJugadorActual(){
+		Jugador actual = this.obtenerJugadorActual();
+		for (Notificable n : this.aNotificar.get(actual)){
+			n.notificar();
+		}	
+	}
+
+	public void agregarNotificable(Notificable n) {
+		Jugador actual = this.obtenerJugadorActual();
+		this.aNotificar.get(actual).add(n);
+		
+	}
 }

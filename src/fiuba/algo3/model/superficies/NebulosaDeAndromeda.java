@@ -5,9 +5,11 @@
  */
 package model.superficies;
 
+import model.Tablero;
 import model.algoformers.*;
 import model.bonus.Inmobilizador;
 import model.bonus.StatModifier;
+import model.bonus.StatModifierConDuracion;
 
 /**
  *
@@ -22,8 +24,9 @@ public class NebulosaDeAndromeda extends EspacioAereo {
 	}
 	
 	public void aplicarEfectosSuperficieAlgoformer(Algoformer a){
-            StatModifier inmobilizadorNebulosa = new Inmobilizador(DURACION_TURNOS_INMOBILIZADO);
+            StatModifierConDuracion inmobilizadorNebulosa = new Inmobilizador(DURACION_TURNOS_INMOBILIZADO);
             a.agregarModificadorVelocidadDesplazamiento(inmobilizadorNebulosa);
+            Tablero.getInstancia().agregarNotificable(inmobilizadorNebulosa);
 	}
 
 }

@@ -18,6 +18,7 @@ public class Tablero {
 	public static final int LIMITEALTO = 10;
 	public static final int LIMITELARGO = 15;
 	private HashMap<Coordenada, Casillero> casilleros;
+	private Juego JuegoActual;
 	private static Tablero instancia = new Tablero();
 
 	private Tablero() {
@@ -69,4 +70,11 @@ public class Tablero {
 		instancia= new Tablero();
 	}
 
+	public void agregarNotificable(Notificable n) {
+		this.JuegoActual.agregarNotificable(n);
+	}
+	
+	public void definirJuego(Juego juego){
+		this.JuegoActual = juego;
+	}
 }
