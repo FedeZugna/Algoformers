@@ -2,11 +2,11 @@ package view;
 
 import java.util.HashMap;
 
+
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import model.Casillero;
 import model.Coordenada;
-import model.Interactuable;
 import model.Tablero;
 
 public class VistaCasilleros {
@@ -25,7 +25,8 @@ public class VistaCasilleros {
 	}
 
 	private void dibujarCont(Casillero cas) {
-		Image imagen = new Image(cas.devuelveRutaImgCont()); //"file:src/vista/imagenes/"+ contCas +".jpeg");
+		String ruta = "file:src/fiuba/algo3/fotos/pueba1.png";//cas.devuelveRutaImgCont();
+		Image imagen = new Image(ruta);
 		casilleros.get(cas.getUbicacion()).getGraphicsContext2D().drawImage(imagen, 1, 1, 100, 100);
 	}
 	public void update(){

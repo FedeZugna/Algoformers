@@ -23,8 +23,8 @@ public class Algoformer implements Interactuable {
 	protected int vida;
 	protected int movimientosRestantes;
     protected Stat armadura;
-	private String rutaImgAlt;
-	private String rutaImgHum;
+	private String rutaImgAlt = "file:src/fiuba/algo3/fotos/pueba1.png";
+	private String rutaImgHum = "file:src/fiuba/algo3/fotos/pueba1.png";;
 
 	public void inicializarAlgoformer(String nombre, int vidaPropia, int ataqueHumanoide, int distanciaAtaqueHumanoide,
 		int velocidadHumanoide, int ataqueAlterno, int distanciaAtaqueAlterno, int velocidadAlterno) {

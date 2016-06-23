@@ -3,6 +3,7 @@ package view;
 import java.util.HashMap;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -47,9 +48,6 @@ public class ContenedorPrincipal extends BorderPane {
 			for (int j = 1; j <= 10; j++) {
 				casilleros.put(new Coordenada(i,j), new Canvas(100,100));
 				vbox.getChildren().add(casilleros.get((new Coordenada(i,j))));
-		    	//Image imagenOpt = new Image("file:src/vista/imagenes/megatron.jpeg");
-		    	//casilleros.get(new Coordenada(i,j)).getGraphicsContext2D().drawImage(imagenOpt, 1, 1, 100, 100);
- 
 			}
 			hbox.getChildren().add(vbox);
 		}
