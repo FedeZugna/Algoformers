@@ -4,7 +4,7 @@ public abstract class Terreno /* implements */ extends Superficie {
 
 	public static final int VELOCIDAD_ROCOSO = 1;
 	public static final int VELOCIDAD_ESPINAS = VELOCIDAD_ROCOSO; // POR
-																	// SUPUESTO
+	private String nombre;																// SUPUESTO
 
 	private int pasos_humanoide;
 	private int pasos_alterno;
@@ -25,6 +25,10 @@ public abstract class Terreno /* implements */ extends Superficie {
 
 	protected void setPasos_alterno(int pasos) {
 		this.pasos_alterno = pasos;
+	}
+	
+	public String devuelveNombreCont() {
+		return nombre;
 	}
 				
 

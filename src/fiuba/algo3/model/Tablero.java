@@ -15,8 +15,8 @@ import model.superficies.*;
  */
 public class Tablero {
 
-	public static final int LIMITEALTO = 20;
-	public static final int LIMITELARGO = 20;
+	public static final int LIMITEALTO = 10;
+	public static final int LIMITELARGO = 15;
 	private HashMap<Coordenada, Casillero> casilleros;
 	private static Tablero instancia = new Tablero();
 

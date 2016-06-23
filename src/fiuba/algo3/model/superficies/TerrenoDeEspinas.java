@@ -7,7 +7,7 @@ import model.superficies.Terreno;
 public class TerrenoDeEspinas extends Terreno {
 
     private static int DANIO_PORCENTUAL_ESPINAS = 5;
-
+    private String nombre = "TerrenoDeEspinas"; 
 	public TerrenoDeEspinas() {
 		super();
 		super.setPasos_alterno(VELOCIDAD_ESPINAS);

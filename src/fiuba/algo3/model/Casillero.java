@@ -93,5 +93,11 @@ public class Casillero {
 		//this.terreno.aplicarEfectosSuperficie(this);
 		
 	}
+	public String devuelveNombreCont() {
+		if (ocupante!=null){
+			return ocupante.getNombre();
+		}
+		return terreno.devuelveNombreCont();
+	}
 
 }

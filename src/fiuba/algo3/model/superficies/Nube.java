@@ -13,6 +13,7 @@ import model.algoformers.*;
  */
 public class Nube extends EspacioAereo {
 
+	public String nombre = "Nube";
 	@Override
 	public int getPasos_alterno() {
 		return EspacioAereo.CantidadMovimientosEstandarAereo;

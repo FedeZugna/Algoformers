@@ -5,7 +5,7 @@ import model.algoformers.*;
 import model.superficies.Terreno;
 
 public class TerrenoPantanoso extends Terreno {
-
+	private String nombre = "TerrenoPantanoso";
 	public TerrenoPantanoso() {
 		super();
 		super.setPasos_alterno(2 * VELOCIDAD_ROCOSO);

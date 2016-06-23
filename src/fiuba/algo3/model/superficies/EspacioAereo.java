@@ -14,10 +14,14 @@ import model.algoformers.*;
 public abstract class EspacioAereo extends Superficie {
 
 	protected static int CantidadMovimientosEstandarAereo = 1;
-
+	private String nombre;
+	
 	@Override
 	public int getPasos_humanoide() {
 		throw new NoPuedeMoverseException();
+	}
+	public String devuelveNombreCont(){
+		return nombre;
 	}
 
 

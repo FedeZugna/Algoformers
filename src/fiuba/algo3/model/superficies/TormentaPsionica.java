@@ -14,7 +14,7 @@ import model.bonus.StatModifier;
  * @author Martin
  */
 public class TormentaPsionica extends EspacioAereo {
-
+	private String nombre = "TormentaPsionica";
     private static int PORCENTAJE_DANIO = -40;
 
 	@Override
