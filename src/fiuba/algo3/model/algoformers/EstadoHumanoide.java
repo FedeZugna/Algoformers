@@ -12,7 +12,7 @@ import model.superficies.*;
  * @author Martin
  */
 public class EstadoHumanoide extends EstadoAlgoformer {
-
+	private String nombreEstado;
 	public EstadoHumanoide(int ataque, int distancia_ataque, int velocidad_despl) {
 		super(ataque, distancia_ataque, velocidad_despl);
 	}

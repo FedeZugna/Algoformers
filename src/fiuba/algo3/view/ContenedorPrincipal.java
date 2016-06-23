@@ -14,7 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Coordenada;
-import view.VistaCasillero;
+import view.VistaCasilleros;
 
 public class ContenedorPrincipal extends BorderPane {
 
@@ -58,7 +58,7 @@ public class ContenedorPrincipal extends BorderPane {
     	Image imagen = new Image("file:src/vista/imagenes/fondo.jpeg");
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         contenedorCentral.setBackground(new Background(imagenDeFondo));
-        VistaCasillero vistaCasillero = new VistaCasillero(casilleros);
+        VistaCasilleros vistaCasillero = new VistaCasilleros(casilleros);
         vistaCasillero.dibujar();
         this.setCenter(contenedorCentral);
     }

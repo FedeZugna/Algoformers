@@ -9,12 +9,12 @@ import model.Coordenada;
 import model.Interactuable;
 import model.Tablero;
 
-public class VistaCasillero {
+public class VistaCasilleros {
 
 	private HashMap<Coordenada, Canvas> casilleros;
 	private Tablero tablero = Tablero.getInstancia();
 	
-	public VistaCasillero(HashMap<Coordenada, Canvas> casilleros) {
+	public VistaCasilleros(HashMap<Coordenada, Canvas> casilleros) {
 		this.casilleros = casilleros ;
 	}
 

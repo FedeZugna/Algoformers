@@ -20,6 +20,4 @@ public class BurbujaInmaculada extends Bonus {
         a.agregarModificadorArmadura(this);
         super.serCapturadoPor(a);
     }
-	
-
 }

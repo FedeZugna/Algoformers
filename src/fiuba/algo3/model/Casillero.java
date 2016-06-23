@@ -95,7 +95,7 @@ public class Casillero {
 	}
 	public String devuelveNombreCont() {
 		if (ocupante!=null){
-			return ocupante.getNombre();
+			return ocupante.devuelveNombreCont();
 		}
 		return terreno.devuelveNombreCont();
 	}

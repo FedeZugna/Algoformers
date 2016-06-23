@@ -15,4 +15,6 @@ public interface Interactuable {
 	public void ubicarEn(Casillero casillero);
 
 	public void aplicarseEfectosSuperficie(Superficie superficie);
+
+	public String devuelveNombreCont();
 }

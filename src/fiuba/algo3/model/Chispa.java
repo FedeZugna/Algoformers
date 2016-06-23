@@ -37,4 +37,9 @@ public class Chispa implements Interactuable {
 		this.ubicacion = ubicacion;
 	}
 
+	@Override
+	public String devuelveNombreCont() {
+		return nombre;
+	}
+
 }

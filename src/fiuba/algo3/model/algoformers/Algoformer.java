@@ -192,6 +192,15 @@ public class Algoformer implements Interactuable {
         public void agregarModificadorVelocidadDesplazamiento(StatModifier modificador){
             this.estadoActual.agregarModificadorVelocidadDesplazamiento(modificador);
         }
+
+		@Override
+		public String devuelveNombreCont() {
+			return nombre+"-"+devuelveNombreEstado();
+		}
+
+		private String devuelveNombreEstado() {
+			return this.estadoActual.getNombreEstado();
+		}
         
         
 }

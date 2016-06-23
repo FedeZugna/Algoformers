@@ -58,7 +58,11 @@ public abstract class Bonus extends StatModifierConDuracion implements Notificab
 		
 	}
 	
-        public void serCapturadoPor(Algoformer a){
-            this.cambiarDuenio(a);
-        }
+    public void serCapturadoPor(Algoformer a){
+        this.cambiarDuenio(a);
+    }
+    @Override
+    public String devuelveNombreCont() {
+    	return nombre;
+    }
 }

@@ -19,6 +19,7 @@ public abstract class EstadoAlgoformer {
 	private Stat distanciaAtaque;
 	private Stat velocidadDespl;
 	private int distanciaDeCombinacion = 3;
+	private String nombreEstado;
 
 	public EstadoAlgoformer(int ataque, int distanciaAtaque, int velocidadDespl) {
 		this.ataque = new Stat(ataque);
@@ -77,4 +78,8 @@ public abstract class EstadoAlgoformer {
         public void agregarModificadorVelocidadDesplazamiento(StatModifier modificador){
             this.velocidadDespl.agregarModificador(modificador);
         }
+
+		public String getNombreEstado() {
+			return nombreEstado;
+		}
 }
