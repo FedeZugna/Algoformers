@@ -27,16 +27,6 @@ public class Jugador {
 			this.equipo.add(new Bonecrusher());
 			this.equipo.add(new Frenzy());
 		}
-		/*
-		 * System.out.println(
-		 * "Ingresar ubicacion primero el largo luego el alto");
-		 * Iterator<Algoformer> iterador = this.equipo.iterator(); while
-		 * (iterador.hasNext()) { Algoformer current = iterador.next();
-		 * System.out.println("Donde ubicar " + current.getNombre()); int largo,
-		 * alto; try( Scanner reader = new Scanner(System.in) ){ largo =
-		 * reader.nextInt(); alto = reader.nextInt(); }
-		 * this.tablero.ubicarElemento( current, new Coordenada(largo,alto)); }
-		 */
 	}
 
 	public void mover(Algoformer algoTransf, Casillero destino) {

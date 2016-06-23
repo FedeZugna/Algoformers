@@ -15,6 +15,7 @@ public class Juego {
 	public Jugador[] turnos= new Jugador[2];
 	
 	public Juego(){
+                this.tableroGeneral = Tablero.getInstancia();
 		this.inicializarTablero();
 		jugadas= 0;
 		turnos[0]= this.jugador1;
@@ -80,7 +81,6 @@ public class Juego {
 		Iterator<Algoformer> iterador = equipo.iterator();
 		while (iterador.hasNext()) {
 			Algoformer algoformerParaAgregar = iterador.next();
-			System.out.println(algoformerParaAgregar.getNombre());
 			jugador.ubicarElemento(algoformerParaAgregar, coordenadas.get(indice));
 			indice++;
 		}
@@ -100,8 +100,8 @@ public class Juego {
 	}
 
 	public void posicionarDecepticons() {
-		int i = Tablero.LIMITELARGO;
-		int j = Tablero.LIMITEALTO;
+		int i = Tablero.LIMITELARGO - 1;
+		int j = Tablero.LIMITEALTO - 1;
 		Coordenada coord1 = new Coordenada(i, j); // Seria imposible
 		Coordenada coord2 = new Coordenada(i, j - 1); // testearlo con
 		Coordenada coord3 = new Coordenada(i, j - 2); // un random

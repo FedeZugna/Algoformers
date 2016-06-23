@@ -26,7 +26,7 @@ public class Tablero {
 		for (int i = 1; i <= Tablero.LIMITEALTO; i++) {
 			for (int j = 1; j <= Tablero.LIMITELARGO; j++) {
 				Casillero cas = new Casillero(new TerrenoRocoso());
-				cas.setUbicacion(new Coordenada(i, j));
+				cas.setUbicacion(new Coordenada(j, i));
 				casilleros.put(cas.getUbicacion(), cas);
 			}
 		}

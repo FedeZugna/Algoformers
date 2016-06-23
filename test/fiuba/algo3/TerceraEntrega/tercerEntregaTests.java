@@ -30,9 +30,9 @@ public class tercerEntregaTests {
     @Test
     public void DobleCanionDuplicaDanioPor3TurnosPropiosAHumanoide(){
         
-        Coordenada coord1 = new Coordenada(10, 10);
-        Coordenada coord2 = new Coordenada(10, 11);
-        Coordenada coord3 = new Coordenada(10, 9);
+        Coordenada coord1 = new Coordenada(3, 3);
+        Coordenada coord2 = new Coordenada(3, 4);
+        Coordenada coord3 = new Coordenada(3, 2);
         Tablero tablero = Tablero.getInstancia();
         Algoformer optimus = new Optimus();
         Algoformer megatron = new Megatron();
@@ -69,9 +69,9 @@ public class tercerEntregaTests {
     @Test
     public void DobleCanionDuplicaDanioPor3TurnosPropiosAAlterno(){
         
-        Coordenada coord1 = new Coordenada(10, 10);
-        Coordenada coord2 = new Coordenada(10, 11);
-        Coordenada coord3 = new Coordenada(10, 9);
+        Coordenada coord1 = new Coordenada(3, 3);
+        Coordenada coord2 = new Coordenada(3, 4);
+        Coordenada coord3 = new Coordenada(3, 2);
         Tablero tablero = Tablero.getInstancia();
         Algoformer optimus = new Optimus();
         Algoformer megatron = new Megatron();
@@ -108,9 +108,9 @@ public class tercerEntregaTests {
    
     @Test
     public void BurbujaAnulaDanioPor2TurnosPropiosAHumanoide(){
-        Coordenada coord1 = new Coordenada(10, 10);
-        Coordenada coord2 = new Coordenada(10, 11);
-        Coordenada coord3 = new Coordenada(10, 9);
+        Coordenada coord1 = new Coordenada(3, 3);
+        Coordenada coord2 = new Coordenada(3, 4);
+        Coordenada coord3 = new Coordenada(3, 2);
         Tablero tablero = Tablero.getInstancia();
         Algoformer optimus = new Optimus();
         Algoformer megatron = new Megatron();
@@ -142,9 +142,9 @@ public class tercerEntregaTests {
     
     @Test
     public void BurbujaAnulaDanioPor2TurnosPropiosAAlterno(){
-        Coordenada coord1 = new Coordenada(10, 10);
-        Coordenada coord2 = new Coordenada(10, 11);
-        Coordenada coord3 = new Coordenada(10, 9);
+        Coordenada coord1 = new Coordenada(3, 3);
+        Coordenada coord2 = new Coordenada(3, 4);
+        Coordenada coord3 = new Coordenada(3, 2);
         Tablero tablero = Tablero.getInstancia();
         Algoformer optimus = new Optimus();
         Algoformer megatron = new Megatron();
@@ -178,8 +178,8 @@ public class tercerEntregaTests {
     
     @Test
     public void FlashTriplicaVelocidadPor3TurnosPropiosAHumanoide(){
-        Coordenada coord1 = new Coordenada(10, 10);
-        Coordenada coord2 = new Coordenada(10, 9);
+        Coordenada coord1 = new Coordenada(3, 3);
+        Coordenada coord2 = new Coordenada(3, 4);
         Tablero tablero = Tablero.getInstancia();
         Algoformer optimus = new Optimus();
         Flash flash = new Flash();
@@ -195,8 +195,8 @@ public class tercerEntregaTests {
     
     @Test
     public void FlashTriplicaVelocidadPor3TurnosPropiosAAlterno(){
-        Coordenada coord1 = new Coordenada(10, 10);
-        Coordenada coord2 = new Coordenada(10, 9);
+        Coordenada coord1 = new Coordenada(3, 3);
+        Coordenada coord2 = new Coordenada(3, 4);
         Tablero tablero = Tablero.getInstancia();
         Algoformer optimus = new Optimus();
         Flash flash = new Flash();
