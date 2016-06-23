@@ -7,6 +7,8 @@ public class Flash extends Bonus {
     
     private static final int DURACION_FLASH = 3;
     
+    private String rutaImg = "file:src/fotos/Bonus/Flash.png";
+    
 	public Flash() {
 		super(DURACION_FLASH);
 	}

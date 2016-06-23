@@ -7,6 +7,8 @@ public class BurbujaInmaculada extends Bonus {
     
     private static final int DURACION_BURBUJA = 2;
     
+    private String rutaImg = "file:src/fotos/Bonus/Burbuja.png";
+    
     public BurbujaInmaculada(){
 	super(DURACION_BURBUJA);
     }

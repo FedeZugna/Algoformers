@@ -23,7 +23,6 @@ public class ContenedorPrincipal extends BorderPane {
     private static final String TITULO_JUEGO = "Algoformers";
 
     BarraDeMenu menuBar;
-    Canvas canvasCentral;
     HBox contenedorCentral;
     HashMap<Coordenada, Canvas> casilleros;
 
@@ -47,14 +46,17 @@ public class ContenedorPrincipal extends BorderPane {
 		for (int i = 1; i <= Tablero.LIMITELARGO; i++) {
 			vbox = new VBox();
 			for (int j = 1; j <= Tablero.LIMITEALTO; j++) {
-				casilleros.put(new Coordenada(i,j), new Canvas(100,100));
-				vbox.getChildren().add(casilleros.get((new Coordenada(i,j))));
+				Coordenada coord = new Coordenada(i,j);
+				casilleros.put(coord, new Canvas(100,100));
+				vbox.getChildren().add(casilleros.get(coord));
+				Image imagen = new Image("file:src\fondo.jpg");
+				casilleros.get(coord).getGraphicsContext2D().drawImage(imagen, 1, 1, 100, 100);
 			}
 			hbox.getChildren().add(vbox);
 		}
     	contenedorCentral=hbox;
     	contenedorCentral.setAlignment(Pos.CENTER);
-    	Image imagen = new Image("file:src/vista/fotos/fondo.jpg");
+    	Image imagen = new Image("file:file:src\fondo.jpg");
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         contenedorCentral.setBackground(new Background(imagenDeFondo));
         VistaCasilleros vistaCasillero = new VistaCasilleros(casilleros);

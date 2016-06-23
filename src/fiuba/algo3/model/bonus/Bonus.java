@@ -10,7 +10,9 @@ public abstract class Bonus extends StatModifierConDuracion implements Notificab
 	private String nombre;
 	private Casillero ubicacion;
 	private Algoformer duenio;
-
+	private String rutaImg = "file:src/fotos/pueba1.png";
+	
+	
     public Bonus(int duracion) {
         super(duracion);
     }
@@ -63,6 +65,6 @@ public abstract class Bonus extends StatModifierConDuracion implements Notificab
     }
     @Override
     public String devuelveNombreCont() {
-    	return nombre;
+    	return rutaImg;
     }
 }
