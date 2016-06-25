@@ -47,7 +47,7 @@ public class ContenedorPrincipal extends BorderPane {
 			vbox = new VBox();
 			for (int j = 1; j <= Tablero.LIMITEALTO; j++) {
 				Coordenada coord = new Coordenada(i,j);
-				casilleros.put(coord, new Canvas(100,100));
+				casilleros.put(coord, new Canvas(75,75));
 				vbox.getChildren().add(casilleros.get(coord));
 				Image imagen = new Image("file:src\fondo.jpg");
 				casilleros.get(coord).getGraphicsContext2D().drawImage(imagen, 1, 1, 100, 100);

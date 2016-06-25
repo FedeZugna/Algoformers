@@ -31,5 +31,7 @@ public abstract class Terreno /* implements */ extends Superficie {
 		return nombre;
 	}
 				
-
+	protected void agregarRutaDeImagen (String nombreDeRuta){
+		this.nombre= nombreDeRuta;
+	}
 }

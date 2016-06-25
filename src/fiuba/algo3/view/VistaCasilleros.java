@@ -23,7 +23,7 @@ public class VistaCasilleros {
 			//dibujarCont(tablero.devolverCasillero(coordHash));
 			String ruta = tablero.devolverCasillero(coordHash).devuelveRutaImgCont(); //"file:src/fotos/Bonus/Burbuja.png";
 			Image imagen = new Image(ruta);
-			casilleros.get(coordHash).getGraphicsContext2D().drawImage(imagen, 1, 1, 100, 100);
+			casilleros.get(coordHash).getGraphicsContext2D().drawImage(imagen, 1, 1, 75, 75);
 		}
 	}
 
