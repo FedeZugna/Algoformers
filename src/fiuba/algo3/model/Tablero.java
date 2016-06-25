@@ -6,6 +6,7 @@
 package model;
 
 import java.util.HashMap;
+import java.util.Random;
 
 import model.superficies.*;
 
@@ -26,11 +27,25 @@ public class Tablero {
 		this.casilleros = new HashMap<Coordenada, Casillero>();
 		for (int i = 1; i <= Tablero.LIMITEALTO; i++) {
 			for (int j = 1; j <= Tablero.LIMITELARGO; j++) {
-				Casillero cas = new Casillero(new TerrenoRocoso());
+//				Casillero cas = new Casillero(new TerrenoRocoso());
+				Casillero cas= this.sortearTerreno();
 				cas.setUbicacion(new Coordenada(j, i));
 				casilleros.put(cas.getUbicacion(), cas);
 			}
 		}
+	}
+
+	private Casillero sortearTerreno() {
+		int numeroAleatorio= (int) (Math.random()*25+1);
+		switch (numeroAleatorio) {
+			case 1: return new Casillero (new TerrenoRocoso());
+			case 2: return new Casillero (new TerrenoPantanoso());
+			case 3: return new Casillero (new TerrenoDeEspinas());
+	//		case 4: return new Casillero (new Nube());
+	//		case 5: return new Casillero (new NebulosaDeAndromeda());
+	//		case 6: return new Casillero (new TormentaPsionica());	
+		}
+		return new Casillero (new TerrenoRocoso());
 	}
 
 	public void ubicarElemento(Interactuable algof1, Coordenada coord1) {
