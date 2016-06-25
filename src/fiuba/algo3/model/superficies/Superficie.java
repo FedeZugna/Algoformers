@@ -17,4 +17,6 @@ public abstract class Superficie {
 	public void aplicarEfectosSuperficieAlgoformer(Algoformer a) {
 		
 	}
+
+	public abstract String devuelveNombreCont();
 }

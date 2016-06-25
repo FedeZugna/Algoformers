@@ -61,7 +61,7 @@ public abstract class EstadoAlgoformer {
 		this.ataque.cambiarValorBase(nuevoAtaque);
 	}
 
-	public abstract int devolverPasosPara(Terreno terreno);
+	public abstract int devolverPasosPara(Superficie terreno);
 
 	public int devolverPasosPara(Casillero destino) {
 		return devolverPasosPara(destino.getTerreno());

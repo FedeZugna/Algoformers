@@ -18,7 +18,7 @@ public class EstadoHumanoide extends EstadoAlgoformer {
 	}
 
 	@Override
-	public int devolverPasosPara(Terreno terreno) {
+	public int devolverPasosPara(Superficie terreno) {
 		return terreno.getPasos_humanoide();
 	}
 	

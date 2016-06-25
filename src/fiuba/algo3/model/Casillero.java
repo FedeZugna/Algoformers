@@ -16,11 +16,12 @@ import model.algoformers.*;
 public class Casillero {
 
 	private Coordenada ubicacion;
-	private Terreno terreno;
+//	private Terreno terreno;
+	private Superficie terreno;
 	private EspacioAereo espacioAereo;
 	private Interactuable ocupante = null;
 
-	public Casillero(Terreno terreno/* TerrenoAire aire, TerrenoTierra tierra */) {
+	public Casillero(Superficie terreno/* Terreno terreno */) {
 		this.terreno = terreno;
 		/*
 		 * this.aire = aire; this.tierra = tierra;
@@ -85,7 +86,7 @@ public class Casillero {
 	}
 
 //agregue esto
-	public Terreno getTerreno() {
+	public Superficie getTerreno() {
 		return this.terreno;
 	}
 

@@ -18,7 +18,7 @@ public class EstadoAlterno extends EstadoAlgoformer {
 	}
 
 	@Override
-	public int devolverPasosPara(Terreno terreno) {
+	public int devolverPasosPara(Superficie terreno) {
 		return terreno.getPasos_alterno();
 	}
 

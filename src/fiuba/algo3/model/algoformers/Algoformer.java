@@ -138,7 +138,7 @@ public class Algoformer implements Interactuable {
 		return this.vida;
 	}
 
-	public int devolverPasosPara(Terreno terreno) {
+	public int devolverPasosPara(Superficie terreno) {
 		return this.estadoActual.devolverPasosPara(terreno);
 	}
 

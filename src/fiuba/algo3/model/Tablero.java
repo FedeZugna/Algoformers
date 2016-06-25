@@ -36,14 +36,18 @@ public class Tablero {
 	}
 
 	private Casillero sortearTerreno() {
-		int numeroAleatorio= (int) (Math.random()*25+1);
+		int numeroAleatorio= (int) (Math.random()*50+1);
 		switch (numeroAleatorio) {
-			case 1: return new Casillero (new TerrenoRocoso());
+			case 1: return new Casillero (new TerrenoPantanoso());
 			case 2: return new Casillero (new TerrenoPantanoso());
-			case 3: return new Casillero (new TerrenoDeEspinas());
-	//		case 4: return new Casillero (new Nube());
-	//		case 5: return new Casillero (new NebulosaDeAndromeda());
-	//		case 6: return new Casillero (new TormentaPsionica());	
+			case 3: return new Casillero (new TerrenoPantanoso());
+			case 4: return new Casillero (new TerrenoPantanoso());
+			case 5: return new Casillero (new TerrenoDeEspinas());
+			case 6: return new Casillero (new TerrenoDeEspinas());
+			case 8: return new Casillero (new Nube());
+			case 9: return new Casillero (new Nube());
+			case 10: return new Casillero (new NebulosaDeAndromeda());
+			case 11: return new Casillero (new TormentaPsionica());	
 		}
 		return new Casillero (new TerrenoRocoso());
 	}
