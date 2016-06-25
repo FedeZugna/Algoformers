@@ -1,7 +1,6 @@
 package model.superficies;
 
 import model.excepciones.NoPuedeMoverseException;
-import model.algoformers.*;
 import model.superficies.Terreno;
 
 public class TerrenoPantanoso extends Terreno {

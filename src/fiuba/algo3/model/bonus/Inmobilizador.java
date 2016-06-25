@@ -5,7 +5,6 @@
  */
 package model.bonus;
 
-import model.excepciones.NoPuedeMoverseException;
 import model.bonus.StatModifierConDuracion;
 
 /**

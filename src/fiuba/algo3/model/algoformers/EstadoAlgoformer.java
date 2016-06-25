@@ -19,7 +19,6 @@ public abstract class EstadoAlgoformer {
 	private Stat distanciaAtaque;
 	private Stat velocidadDespl;
 	private int distanciaDeCombinacion = 3;
-	private String nombreEstado;
 
 	public EstadoAlgoformer(int ataque, int distanciaAtaque, int velocidadDespl) {
 		this.ataque = new Stat(ataque);
@@ -29,6 +28,10 @@ public abstract class EstadoAlgoformer {
 
 	public int getVelocidadDespl() {
 		return this.velocidadDespl.devolverStat();
+	}
+	
+	public int getDistanciaAtaque(){
+		return this.distanciaAtaque.devolverStat();
 	}
 	
 	public void setVelocidadDespl(int nuevaVelocidad){

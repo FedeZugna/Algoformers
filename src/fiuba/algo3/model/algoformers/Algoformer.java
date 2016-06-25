@@ -85,13 +85,6 @@ public class Algoformer implements Interactuable {
 		this.ubicacion = destino;
 		this.movimientosRestantes -= pasosAMoverse;
 	}
-	
-	/*
-	 private boolean puedeMoverseA(Casillero destino) {
-		return ( ( destino.puedeMoverseAca(this, this.ubicacion) )  );
-	} // (this.estadoActual.devolverPasosPara(destino)<= this.movimientosRestantes) && 
-	 */
-	 
 
 	@Override
 	public String getNombre() {
@@ -161,54 +154,50 @@ public class Algoformer implements Interactuable {
 		return this.movimientosRestantes;
 	}
 	
+	public int getAlcance() {
+		return estadoActual.getDistanciaAtaque();
+	}
+	
 	public void aplicarseEfectosSuperficie(Superficie superficie){
 		superficie.aplicarEfectosSuperficieAlgoformer(this);
 	}
 	
 	public void capturarBonus(Bonus bonus){
-                //agregar algo mas?
 		bonus.serCapturadoPor(this);
 	}
-	/*
-	public void quitarBonus(Bonus bonus){
-		
-	}
-        */
+
 	@Override
 	public void setUbicacion(Casillero ubicacion) {
 		// TODO Auto-generated method stub
 		
 	}
+  
+    public void agregarModificadorArmadura(StatModifier modificador){
+        this.armadura.agregarModificador(modificador);
+    }
+    
+    public void agregarModificadorAtaque(StatModifier modificador){
+        this.estadoActual.agregarModificadorAtaque(modificador);
+    }
+    
+    public void agregarModificadorDistanciaAtaque(StatModifier modificador){
+        this.estadoActual.agregarModificadorDistanciaAtaque(modificador);
+    }
+    
+    public void agregarModificadorVelocidadDesplazamiento(StatModifier modificador){
+        this.estadoActual.agregarModificadorVelocidadDesplazamiento(modificador);
+    }
 
-        
-        public void agregarModificadorArmadura(StatModifier modificador){
-            this.armadura.agregarModificador(modificador);
-        }
-        
-        public void agregarModificadorAtaque(StatModifier modificador){
-            this.estadoActual.agregarModificadorAtaque(modificador);
-        }
-        
-        public void agregarModificadorDistanciaAtaque(StatModifier modificador){
-            this.estadoActual.agregarModificadorDistanciaAtaque(modificador);
-        }
-        
-        public void agregarModificadorVelocidadDesplazamiento(StatModifier modificador){
-            this.estadoActual.agregarModificadorVelocidadDesplazamiento(modificador);
-        }
+	@Override
+	public String devuelveNombreCont() {
+		return estadoActual.devuelveRutaImg(this);
+	}
 
-		@Override
-		public String devuelveNombreCont() {
-			return estadoActual.devuelveRutaImg(this);
-		}
+	public String devuelveNombreContAlterno() {
+		return this.rutaImgAlt;
+	}
 
-		public String devuelveNombreContAlterno() {
-			return this.rutaImgAlt;
-		}
-
-		public String devuelveNombreContHumanoide() {
-			return this.rutaImgHum;
-		}
-        
-        
+	public String devuelveNombreContHumanoide() {
+		return this.rutaImgHum;
+	}
 }

@@ -5,12 +5,10 @@
  */
 package controller.acciones;
 
-import controller.Master;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import model.Casillero;
-import model.algoformers.Algoformer;
+
 
 /**
  *

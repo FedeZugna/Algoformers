@@ -8,7 +8,6 @@ package model.superficies;
 import model.Tablero;
 import model.algoformers.*;
 import model.bonus.Inmobilizador;
-import model.bonus.StatModifier;
 import model.bonus.StatModifierConDuracion;
 
 /**

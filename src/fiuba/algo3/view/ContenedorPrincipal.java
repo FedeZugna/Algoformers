@@ -3,7 +3,6 @@ package view;
 import java.util.HashMap;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -25,13 +24,15 @@ public class ContenedorPrincipal extends BorderPane {
     BarraDeMenu menuBar;
     HBox contenedorCentral;
     HashMap<Coordenada, Canvas> casilleros;
+    VBoxStatsYOrdenesDisponibles barraDerecha;
 
     public ContenedorPrincipal(Stage stage) {
     	stage.setTitle(TITULO_JUEGO);
-        this.setRight(new VBoxStatsYOrdenesDisponibles());
+        this.barraDerecha = new VBoxStatsYOrdenesDisponibles();
+    	this.setRight(this.barraDerecha);
         this.setMenu(stage);
         this.setCentro();
-    }
+        }
 
     private void setMenu(Stage stage) {
         this.menuBar = new BarraDeMenu(stage);
@@ -47,18 +48,19 @@ public class ContenedorPrincipal extends BorderPane {
 			vbox = new VBox();
 			for (int j = 1; j <= Tablero.LIMITEALTO; j++) {
 				Coordenada coord = new Coordenada(i,j);
-				casilleros.put(coord, new Canvas(75,75));
+				CanvasImagenCasillero canvas = new CanvasImagenCasillero(75,75,this.barraDerecha);
+				casilleros.put(coord, canvas);
 				vbox.getChildren().add(casilleros.get(coord));
-				Image imagen = new Image("file:src\fondo.jpg");
-				casilleros.get(coord).getGraphicsContext2D().drawImage(imagen, 1, 1, 100, 100);
 			}
 			hbox.getChildren().add(vbox);
 		}
     	contenedorCentral=hbox;
     	contenedorCentral.setAlignment(Pos.CENTER);
-    	Image imagen = new Image("file:file:src\fondo.jpg");
-        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+    	Image imagen = new Image("file:src/fotos/fondo-juego.jpg");
+        //BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         contenedorCentral.setBackground(new Background(imagenDeFondo));
+        
         VistaCasilleros vistaCasillero = new VistaCasilleros(casilleros);
         vistaCasillero.dibujar();
         this.setCenter(contenedorCentral);
@@ -75,6 +77,5 @@ public class ContenedorPrincipal extends BorderPane {
         HBox hbox = new HBox();
         // actualizar
         return hbox;
-    }
-   
+    } 
 }

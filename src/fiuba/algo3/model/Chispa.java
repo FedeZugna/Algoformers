@@ -1,5 +1,6 @@
 package model;
 
+import model.excepciones.AccionInvalidaException;
 import model.superficies.Superficie;
 
 public class Chispa implements Interactuable {
@@ -25,7 +26,7 @@ public class Chispa implements Interactuable {
 
 	@Override
 	public boolean estaVivo() {
-		return true;
+		throw new AccionInvalidaException();
 	}
 
 	@Override

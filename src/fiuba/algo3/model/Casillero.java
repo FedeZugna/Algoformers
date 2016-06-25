@@ -16,18 +16,14 @@ import model.algoformers.*;
 public class Casillero {
 
 	private Coordenada ubicacion;
-//	private Terreno terreno;
-	private Superficie terreno;
+	private Terreno terreno;
 	private EspacioAereo espacioAereo;
 	private Interactuable ocupante = null;
 
-	public Casillero(Superficie terreno/* Terreno terreno */) {
+	public Casillero(Terreno terreno,EspacioAereo aire) {
 		this.terreno = terreno;
-		/*
-		 * this.aire = aire; this.tierra = tierra;
-		 */
-		// this.ocupante = new CasilleroVacio();
-		// this.ocupante= null;
+		this.espacioAereo= aire;
+		this.ocupante= null;
 	}
 
 	public void setUbicacion(Coordenada ubicacion) {

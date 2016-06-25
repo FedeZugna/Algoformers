@@ -14,6 +14,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import model.Casillero;
+import model.Interactuable;
+import model.algoformers.Algoformer;
 
 /**
  *
@@ -36,7 +39,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
         this.setSpacing(8);              // Gap between nodes
         this.setStyle("-fx-background-color: #336699;");    //color de fondo
         
-        Text title = new Text("Data");
+        Text title = new Text(" ");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         this.getChildren().add(title);
         
@@ -79,6 +82,17 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
         actualizarStatsObjetivo(0, 0, 0, 0, 0);
     }
     
+    public void actualizarStatsConCasillero(Casillero cas) {
+    	if (cas.casilleroOcupado()){
+    		Interactuable ocupante = cas.devolverElemento();
+    		if (ocupante.estaVivo()){
+    			Algoformer ocupanteA = (Algoformer) cas.devolverElemento(); 
+    			actualizarStatsObjetivo(ocupanteA.getVida(), ocupanteA.getAtaque(), ocupanteA.getAlcance() , ocupanteA.getVelocidad_despl(), ocupanteA.getMovimientosRestantes());
+    		}
+    		
+    	}
+	}
+    
     public void actualizarStatsObjetivo(int vida,int atk,int rng, int vel, int movsRes){   //esto en un futuro recibe un algoformerView o algo así
         this.stats[0].setText(stringVida+vida);
         this.stats[1].setText(stringAtaque+atk);
@@ -102,4 +116,6 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
         catch(NullPointerException casillero_vacio){}   //A reemplazar por CasilleroVacioException
         
     }
+
+	
 }

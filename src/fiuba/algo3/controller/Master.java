@@ -7,8 +7,6 @@ package controller;
 
 import model.*;
 import model.algoformers.*;
-import model.bonus.*;
-import model.superficies.*;
 
 /**
  *
