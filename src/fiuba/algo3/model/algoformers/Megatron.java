@@ -10,13 +10,13 @@ public class Megatron extends Algoformer {
 	int ataqueAlterno = 55;
 	int distanciaAtaqueAlterno = 2;
 	int velocidadAlterno = 8;
-	final static private String rutaImgAlt = "file:/src/fiuba/algo3/fotos/Algoformers/Megatron.png";
-	final static private String rutaImgHum = "file:/src/fiuba/algo3/fotos/Algoformers/MegatronA.png";
+	final static private String rutaImgAlt = "file:src/fotos/Algoformers/MegatronA.png";
+	final static private String rutaImgHum = "file:src/fotos/Algoformers/Megatron.png";
 
 	public Megatron() {
 
 		inicializarAlgoformer(nombre, vidaMegatron, ataqueHumanoide, distanciaAtaqueHumanoide, velocidadHumanoide,
-				ataqueAlterno, distanciaAtaqueAlterno, velocidadAlterno);
+				ataqueAlterno, distanciaAtaqueAlterno, velocidadAlterno, rutaImgHum, rutaImgAlt);
 	}
 	public String devuelveNombreContAlterno() {
 		return this.rutaImgAlt;

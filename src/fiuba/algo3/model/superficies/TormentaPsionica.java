@@ -14,9 +14,13 @@ import model.bonus.StatModifier;
  * @author Martin
  */
 public class TormentaPsionica extends EspacioAereo {
-	private String nombre = "TormentaPsionica";
+	private String nombre= "file:src/fotos/Terrenos/Tormenta.png";
     private static int PORCENTAJE_DANIO = -40;
 
+    public TormentaPsionica() {
+		agregarRutaDeImagen(nombre);
+	}
+    
 	@Override
 	public int getPasos_alterno() {
 		return EspacioAereo.CantidadMovimientosEstandarAereo;

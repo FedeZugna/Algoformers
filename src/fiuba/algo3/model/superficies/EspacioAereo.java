@@ -23,6 +23,10 @@ public abstract class EspacioAereo extends Superficie {
 	public String devuelveNombreCont(){
 		return nombre;
 	}
+	
+	protected void agregarRutaDeImagen (String nombreDeRuta){
+		this.nombre= nombreDeRuta;
+	}
 
 
 }

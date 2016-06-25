@@ -7,9 +7,10 @@ import model.superficies.Terreno;
 public class TerrenoDeEspinas extends Terreno {
 
     private static int DANIO_PORCENTUAL_ESPINAS = 5;
-    private String nombre = "TerrenoDeEspinas"; 
+    private String nombre = "file:src/fotos/Terrenos/Pantano.png"; 
 	public TerrenoDeEspinas() {
 		super();
+		agregarRutaDeImagen(nombre);
 		super.setPasos_alterno(VELOCIDAD_ESPINAS);
 		super.setPasos_humanoide(VELOCIDAD_ESPINAS);
 	}

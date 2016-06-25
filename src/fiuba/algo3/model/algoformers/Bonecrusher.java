@@ -10,12 +10,12 @@ public class Bonecrusher extends Algoformer {
 	int ataqueAlterno = 30;
 	int distanciaAtaqueAlterno = 3;
 	int velocidadAlterno = 8;
-	final static private String rutaImgAlt = "file:/src/fiuba/algo3/fotos/Algoformers/Bonecrusher.png";
-	final static private String rutaImgHum = "file:/src/fiuba/algo3/fotos/Algoformers/BonecrusherA.png";
+	final static private String rutaImgAlt = "file:src/fotos/Algoformers/BonecrusherA.png";
+	final static private String rutaImgHum = "file:src/fotos/Algoformers/Bonecrusher.png";
 
 	public Bonecrusher() {
 		this.inicializarAlgoformer(nombreDeBonecrusher, vidaDeBonecrusher, ataqueHumanoide, distanciaAtaqueHumanoide, velocidadHumanoide,
-						ataqueAlterno, distanciaAtaqueAlterno, velocidadAlterno);
+						ataqueAlterno, distanciaAtaqueAlterno, velocidadAlterno, rutaImgHum, rutaImgAlt);
 
 	}
 }

@@ -94,10 +94,10 @@ public class Casillero {
 		
 	}
 	public String devuelveRutaImgCont() {
-		if (ocupante!=null){
-			return ocupante.devuelveNombreCont();
+		if (ocupante==null){
+			return terreno.devuelveNombreCont();
 		}
-		return terreno.devuelveNombreCont();
+		return ocupante.devuelveNombreCont();
 	}
 
 }

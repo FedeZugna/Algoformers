@@ -6,14 +6,14 @@ public class Menasor extends AlgoformerGroso {
 	int ataque = 115;
 	int distancia = 2;
 	int velocidad = 2;
-	final static private String rutaImgHum = "file:/src/fiuba/algo3/fotos/Algoformers/Superion.png";
+	final static private String rutaImgHum = "file:src/fotos/Algoformers/Menasor.png";
 
 	public Menasor(Algoformer algo1, Algoformer algo2, Algoformer algo3){
 		this.agregarVidaCorrespondienteAAlgoformer(algo1);
 		this.agregarVidaCorrespondienteAAlgoformer(algo2);
 		this.agregarVidaCorrespondienteAAlgoformer(algo3);
 		int vidaTotal= vidaDe1+ vidaDe2+ vidaDe3;
-		this.inicializarAlgoformer(nombreDeMenasor, vidaTotal, ataque, distancia, velocidad, ataque, distancia, velocidad);
+		this.inicializarAlgoformer(nombreDeMenasor, vidaTotal, ataque, distancia, velocidad, ataque, distancia, velocidad, rutaImgHum, rutaImgHum);
 		this.calcularCorrespondenciaDeVidaDeCadaUno();
 	}
 

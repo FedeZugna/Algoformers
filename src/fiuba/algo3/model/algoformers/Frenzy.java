@@ -10,12 +10,12 @@ public class Frenzy extends Algoformer {
 	int ataqueAlterno = 25;
 	int distanciaAtaqueAlterno = 2;
 	int velocidadAlterno = 6;
-	final static private String rutaImgAlt = "file:/src/fiuba/algo3/fotos/Algoformers/Frenzy.png";
-	final static private String rutaImgHum = "file:/src/fiuba/algo3/fotos/Algoformers/FrenzyA.png";
+	final static private String rutaImgAlt = "file:src/fotos/Algoformers/FrenzyA.png";
+	final static private String rutaImgHum = "file:src/fotos/Algoformers/Frenzy.png";
 
 	public Frenzy() {
 
 		inicializarAlgoformer(nombre, vidaFrenzy, ataqueHumanoide, distanciaAtaqueHumanoide, velocidadHumanoide,
-				ataqueAlterno, distanciaAtaqueAlterno, velocidadAlterno);
+				ataqueAlterno, distanciaAtaqueAlterno, velocidadAlterno, rutaImgHum, rutaImgAlt);
 	}
 }

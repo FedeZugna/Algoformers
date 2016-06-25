@@ -23,11 +23,11 @@ public class Algoformer implements Interactuable {
 	protected int vida;
 	protected int movimientosRestantes;
     protected Stat armadura;
-	private String rutaImgAlt = "file:src/fiuba/algo3/fotos/pueba1.png";
-	private String rutaImgHum = "file:src/fiuba/algo3/fotos/pueba1.png";
-
+	private String rutaImgAlt;
+	private String rutaImgHum;
+	
 	public void inicializarAlgoformer(String nombre, int vidaPropia, int ataqueHumanoide, int distanciaAtaqueHumanoide,
-		int velocidadHumanoide, int ataqueAlterno, int distanciaAtaqueAlterno, int velocidadAlterno) {
+		int velocidadHumanoide, int ataqueAlterno, int distanciaAtaqueAlterno, int velocidadAlterno, String rutaHumanoide, String rutaAlterno) {
 		this.nombre = nombre;
 		this.vida = vidaPropia;
 		EstadoAlgoformer estadoHumanoide = new EstadoHumanoide(ataqueHumanoide, distanciaAtaqueHumanoide, velocidadHumanoide);
@@ -40,6 +40,8 @@ public class Algoformer implements Interactuable {
 		this.estadoActual = this.estados.get();
 		this.movimientosRestantes = estadoActual.getVelocidadDespl();
                 this.armadura = new Stat(0);
+        this.rutaImgHum= rutaHumanoide;
+        this.rutaImgAlt= rutaAlterno;
 	}
 
 	@Override

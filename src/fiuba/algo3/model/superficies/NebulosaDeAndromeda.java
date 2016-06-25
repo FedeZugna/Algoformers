@@ -17,7 +17,11 @@ import model.bonus.StatModifierConDuracion;
  */
 public class NebulosaDeAndromeda extends EspacioAereo {
         private static int DURACION_TURNOS_INMOBILIZADO = 3;
-        private String nombre = "NebulosaDeAndromeda";
+        private String nombre = "file:src/fotos/Terrenos/Nebulosa.png";
+
+    public NebulosaDeAndromeda() {
+    	agregarRutaDeImagen(nombre);
+    }
 	@Override
 	public int getPasos_alterno() {
 		return EspacioAereo.CantidadMovimientosEstandarAereo;

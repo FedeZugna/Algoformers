@@ -5,9 +5,10 @@ import model.algoformers.*;
 import model.superficies.Terreno;
 
 public class TerrenoPantanoso extends Terreno {
-	private String nombre = "TerrenoPantanoso";
+	private String nombre = "file:src/fotos/Terrenos/Pantano.png";
 	public TerrenoPantanoso() {
 		super();
+		agregarRutaDeImagen(nombre);
 		super.setPasos_alterno(2 * VELOCIDAD_ROCOSO);
 	}
 
