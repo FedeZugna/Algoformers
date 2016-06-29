@@ -21,6 +21,7 @@ import model.Interactuable;
 import model.Juego;
 import model.Jugador;
 import model.algoformers.Algoformer;
+import view.eventos.OpcionSalirEventHandler;
 
 /**
  *
@@ -33,6 +34,8 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
     private static final String stringVelocidad = "Velocidad: ";
     private static final String stringCantMovsRestantes = "Cantidad de movimientos restantes: ";
     Jugador jugador;
+    ArrayList<Algoformer> algoformers;
+    Algoformer algoformerActual;
     
     
     
@@ -41,6 +44,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
     public VBoxStatsYOrdenesDisponibles(Jugador jugador){
         super();
         this.jugador= jugador;
+        algoformers= jugador.devolverAlgoformersVivos();
         this.setPadding(new Insets(10));
         this.setSpacing(8);              // Gap between nodes
         this.setStyle("-fx-background-color: #336699;");    //color de fondo
@@ -61,47 +65,90 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
             // Add offset to left side to indent from title
             VBox.setMargin(this.stats[i], new Insets(0, 0, 0, 8));
             this.getChildren().add(this.stats[i]);
-        } 
-        EventHandler<ActionEvent> handler0 = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            	actualizarStatsObjetivo(0, 0, 0, 0, 0);
-            }
-        };
-        EventHandler<ActionEvent> handler1 = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            	actualizarStatsObjetivo(1, 1, 1, 1, 1);
-            }
-        };
-/**/
-        EventHandler<ActionEvent> handler3 = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-//            	Jugador jugador= juego.pasarTurno();
-//            	ArrayList<Algoformer> lista= jugador.devolverAlgoformersVivos();
-//            	Algoformer algo= lista.get(0);
-            	Algoformer algo= jugador.devolverEquipo().get(0);
-            	actualizarStatsObjetivo(algo.getVida(), algo.getAtaque(), algo.getAlcance(), algo.getVelocidad_despl(), algo.getMovimientosRestantes());
-            }
-        };
-/**/
-        HBox hbox = new HBox();
-        Button buttonCurrent = new Button("Valores en 0");
-        buttonCurrent.setPrefSize(80, 20);
-        buttonCurrent.setOnAction(handler0);
+        }
         
-        Button buttonProjected = new Button("Valores en 1");
-        buttonProjected.setPrefSize(80, 20);
-        buttonProjected.setOnAction(handler1);
-/**/
-        Button buttonAlgo = new Button("Valores en 3");
-        buttonAlgo.setPrefSize(80, 20);
-        buttonAlgo.setOnAction(handler3);
-/**/
+        EventHandler<ActionEvent> seleccionarPrimero = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	algoformerActual= algoformers.get(0);
+              	actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(), algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(), algoformerActual.getMovimientosRestantes());				
+            }
+        };
+
+        EventHandler<ActionEvent> seleccionarSegundo = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	algoformerActual= algoformers.get(1);
+              	actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(), algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(), algoformerActual.getMovimientosRestantes());				
+            }
+        };
         
-        hbox.getChildren().addAll(buttonCurrent, buttonProjected, buttonAlgo);
-        this.getChildren().add(hbox);
+        EventHandler<ActionEvent> seleccionarTercero = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	algoformerActual= algoformers.get(2);
+              	actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(), algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(), algoformerActual.getMovimientosRestantes());				
+            }
+        };
+        
+        EventHandler<ActionEvent> botonTransformarHandler = new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle (ActionEvent event) {
+        		algoformerActual.transformar();
+        	}
+    	};
+    	
+        EventHandler<ActionEvent> botonMoverNorteHandler = new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle (ActionEvent event) {
+        		//algoformerActual.mover(algoformerActual.getUbicacion().);;
+        	}
+    	};
+
+        HBox botonesParaSeleccionarLosAlgoformers = new HBox();
+        Button primerAlgoformer = new Button(algoformers.get(0).getNombre());
+        primerAlgoformer.setPrefSize(80, 20);
+        primerAlgoformer.setOnAction(seleccionarPrimero);
+        
+        Button segundoAlgoformer = new Button(algoformers.get(1).getNombre());
+        segundoAlgoformer.setPrefSize(80, 20);
+        segundoAlgoformer.setOnAction(seleccionarSegundo);
+
+        Button tercerAlgoformer = new Button(algoformers.get(2).getNombre());
+        tercerAlgoformer.setPrefSize(80, 20);
+        tercerAlgoformer.setOnAction(seleccionarTercero);
+
+        Button transformar = new Button();
+        transformar.setText("Transformar");
+        transformar.setOnAction(botonTransformarHandler);
+        
+        Button moverNorte = new Button();
+        moverNorte.setPrefSize(50, 10);
+        moverNorte.setText("Norte");
+        moverNorte.setOnAction(botonMoverNorteHandler);
+        
+        Button moverOeste = new Button();
+        moverOeste.setPrefSize(50, 10);
+        moverOeste.setText("Oeste");
+//        moverOeste.setOnAction(botonMoverOesteHandler);
+        
+        Button moverSur = new Button();
+        moverSur.setPrefSize(50, 10);
+        moverSur.setText("Sur");
+//        moverSur.setOnAction(botonMoverSurHandler);
+        
+        Button moverEste = new Button();
+        moverEste.setPrefSize(50, 10);
+        moverEste.setText("Este");
+//        moverEste.setOnAction(botonMoverEsteHandler);
+
+        HBox botonesParaMoverse = new HBox();
+        botonesParaMoverse.getChildren().addAll(moverNorte, moverOeste, moverSur, moverEste);
+
+        
+        botonesParaSeleccionarLosAlgoformers.getChildren().addAll(primerAlgoformer, segundoAlgoformer, tercerAlgoformer);
+        this.getChildren().addAll(botonesParaSeleccionarLosAlgoformers, transformar, botonesParaMoverse);
+
         actualizarStatsObjetivo(0, 0, 0, 0, 0);
     }
     
@@ -139,6 +186,5 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
         catch(NullPointerException casillero_vacio){}   //A reemplazar por CasilleroVacioException
         
     }
-
 	
 }
