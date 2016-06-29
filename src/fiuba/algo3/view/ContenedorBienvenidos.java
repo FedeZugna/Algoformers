@@ -16,6 +16,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import model.Juego;
+import model.Jugador;
 import view.eventos.BotonEntrarEventHandler;
 import view.eventos.OpcionSalirEventHandler;
 
@@ -23,7 +25,7 @@ public class ContenedorBienvenidos extends VBox {
 
     Stage stage;
 
-    public ContenedorBienvenidos(Stage stage, Scene proximaEscena) {
+    public ContenedorBienvenidos(Stage stage, Scene proximaEscena, Jugador jugador) {
 
         super();
 
@@ -39,7 +41,7 @@ public class ContenedorBienvenidos extends VBox {
         Button botonEntrar = new Button();
         botonEntrar.setText("Iniciar Partida");
 
-        BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(stage, proximaEscena);
+        BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(stage, proximaEscena, jugador);///////////////////
         botonEntrar.setOnAction(botonEntrarHandler);
 
         

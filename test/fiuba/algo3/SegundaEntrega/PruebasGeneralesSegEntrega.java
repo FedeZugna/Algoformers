@@ -24,7 +24,7 @@ public class PruebasGeneralesSegEntrega {
 		
 		Algoformer algof1 = new Optimus();
 		tablero.ubicarElemento(algof1, coord1);
-		Casillero cas1 = new Casillero(new TerrenoPantanoso());
+		Casillero cas1 = new Casillero(new TerrenoPantanoso(), new Nube());
 		cas1.setUbicacion(new Coordenada (10,11));
 		
 		algof1.mover(cas1);
@@ -38,7 +38,7 @@ public class PruebasGeneralesSegEntrega {
 		
 		Algoformer algof1 = new Optimus();
 		tablero.ubicarElemento(algof1, coord1);
-		Casillero cas1 = new Casillero(new TerrenoPantanoso());
+		Casillero cas1 = new Casillero(new TerrenoPantanoso(), new Nube());
 		cas1.setUbicacion(new Coordenada (10,11));
 		algof1.transformar();
 		algof1.mover(cas1);	}
@@ -51,7 +51,7 @@ public class PruebasGeneralesSegEntrega {
 		
 		Algoformer algof1 = new Optimus();
 		tablero.ubicarElemento(algof1, coord1);
-		Casillero cas1 = new Casillero(new TerrenoRocoso());
+		Casillero cas1 = new Casillero(new TerrenoRocoso(), new Nube());
 		cas1.setUbicacion(new Coordenada (10,11));
 		
 		algof1.mover(cas1);
@@ -65,7 +65,7 @@ public class PruebasGeneralesSegEntrega {
 		
 		Algoformer algof1 = new Optimus();
 		tablero.ubicarElemento(algof1, coord1);
-		Casillero cas1 = new Casillero(new TerrenoRocoso());
+		Casillero cas1 = new Casillero(new TerrenoRocoso(), new Nube());
 		cas1.setUbicacion(new Coordenada (10,11));
 		algof1.transformar();
 		algof1.mover(cas1);

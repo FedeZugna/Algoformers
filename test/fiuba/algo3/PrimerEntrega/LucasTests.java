@@ -119,16 +119,17 @@ public class LucasTests {
 	public void test09AutobotsSeCombinanEnUnSuperion() {
 		// crea el terreno
 		TerrenoRocoso terreno = new TerrenoRocoso();
+		Nube cielo= new Nube();
 		// crea las coordenadas
 		Coordenada coordenada1 = new Coordenada(1, 1);
 		Coordenada coordenada2 = new Coordenada(1, 2);
 		Coordenada coordenada3 = new Coordenada(1, 3);
 		// crea los casilleros y les da una ubicacion
-		Casillero casillero1 = new Casillero(terreno);
+		Casillero casillero1 = new Casillero(terreno, cielo);
 		casillero1.setUbicacion(coordenada1);
-		Casillero casillero2 = new Casillero(terreno);
+		Casillero casillero2 = new Casillero(terreno, cielo);
 		casillero2.setUbicacion(coordenada2);
-		Casillero casillero3 = new Casillero(terreno);
+		Casillero casillero3 = new Casillero(terreno, cielo);
 		casillero3.setUbicacion(coordenada3);
 		// crea el jugador
 		Tablero tablero = Tablero.getInstancia();
@@ -157,16 +158,17 @@ public class LucasTests {
 	public void test10DecepticonsSeCombinanEnUnMenasor() {
 		// crea el terreno
 		TerrenoRocoso terreno = new TerrenoRocoso();
+		Nube cielo= new Nube();
 		// crea las coordenadas
 		Coordenada coordenada1 = new Coordenada(1, 4);
 		Coordenada coordenada2 = new Coordenada(1, 5);
 		Coordenada coordenada3 = new Coordenada(1, 3);
 		// crea los casilleros y les da una ubicacion
-		Casillero casillero1 = new Casillero(terreno);
+		Casillero casillero1 = new Casillero(terreno, cielo);
 		casillero1.setUbicacion(coordenada1);
-		Casillero casillero2 = new Casillero(terreno);
+		Casillero casillero2 = new Casillero(terreno, cielo);
 		casillero2.setUbicacion(coordenada2);
-		Casillero casillero3 = new Casillero(terreno);
+		Casillero casillero3 = new Casillero(terreno, cielo);
 		casillero3.setUbicacion(coordenada3);
 		// crea el jugador
 		Tablero tablero = Tablero.getInstancia();
@@ -190,16 +192,17 @@ public class LucasTests {
 	public void test11SuperionSeDescombina () {
 		//crea el terreno
 		TerrenoRocoso terreno= new TerrenoRocoso();
+		Nube cielo= new Nube();
 		//crea las coordenadas
 		Coordenada coordenada1= new Coordenada(1,1);
 		Coordenada coordenada2= new Coordenada(1,2);
 		Coordenada coordenada3= new Coordenada(1,3);
 		//crea los casilleros y les da una ubicacion
-		Casillero casillero1= new Casillero(terreno);
+		Casillero casillero1= new Casillero(terreno, cielo);
 		casillero1.setUbicacion(coordenada1);
-		Casillero casillero2= new Casillero(terreno);
+		Casillero casillero2= new Casillero(terreno, cielo);
 		casillero2.setUbicacion(coordenada2);
-		Casillero casillero3= new Casillero(terreno);
+		Casillero casillero3= new Casillero(terreno, cielo);
 		casillero3.setUbicacion(coordenada3);
 		//crea el jugador
 		Tablero tablero =  Tablero.getInstancia();
@@ -232,13 +235,14 @@ public class LucasTests {
 	public void test12SeIntentaPosicionarAlgoformerEnCasilleroOcupadoLanzaExcepcion() {
 		//crea el terreno
 		TerrenoRocoso terreno= new TerrenoRocoso();
+		Nube cielo= new Nube();
 		//crea las coordenadas
 		Coordenada coordenada1= new Coordenada(1,1);
 		Coordenada coordenada2= new Coordenada(1,1);
 		//crea los casilleros y les da una ubicacion
-		Casillero casillero1= new Casillero(terreno);
+		Casillero casillero1= new Casillero(terreno, cielo);
 		casillero1.setUbicacion(coordenada1);
-		Casillero casillero2= new Casillero(terreno);
+		Casillero casillero2= new Casillero(terreno, cielo);
 		casillero2.setUbicacion(coordenada2);
 		//crea el tablero
 		Tablero tablero= Tablero.getInstancia();
@@ -255,16 +259,17 @@ public class LucasTests {
 	public void test13SuperionSeDescombinaEnLaEsquinaYNoRompeElPrograma () {
 		//crea el terreno
 		TerrenoRocoso terreno= new TerrenoRocoso();
+		Nube cielo= new Nube();
 		//crea las coordenadas
 		Coordenada coordenada1= new Coordenada(10,1);
 		Coordenada coordenada2= new Coordenada(10,2);
 		Coordenada coordenada3= new Coordenada(10,3);
 		//crea los casilleros y les da una ubicacion
-		Casillero casillero1= new Casillero(terreno);
+		Casillero casillero1= new Casillero(terreno, cielo);
 		casillero1.setUbicacion(coordenada1);
-		Casillero casillero2= new Casillero(terreno);
+		Casillero casillero2= new Casillero(terreno, cielo);
 		casillero2.setUbicacion(coordenada2);
-		Casillero casillero3= new Casillero(terreno);
+		Casillero casillero3= new Casillero(terreno, cielo);
 		casillero3.setUbicacion(coordenada3);
 		//crea el jugador
 		Tablero tablero =  Tablero.getInstancia();
@@ -341,6 +346,9 @@ public class LucasTests {
 	@Test
 	public void test15PasarTurno() {
 		Juego juego= new Juego();
+		System.out.println(juego.pasarTurno().devolverEquipo().get(0).getNombre());
+		System.out.println(juego.pasarTurno().devolverEquipo().get(0).getNombre());
+		System.out.println(juego.pasarTurno().devolverEquipo().get(0).getNombre());
 
 		Assert.assertTrue(juego.pasarTurno().devolverEquipo().get(0).getNombre()== "Optimus");
 		Assert.assertTrue(juego.pasarTurno().devolverEquipo().get(0).getNombre()== "Megatron");

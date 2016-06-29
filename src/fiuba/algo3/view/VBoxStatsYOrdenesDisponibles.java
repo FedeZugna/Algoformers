@@ -5,6 +5,8 @@
  */
 package view;
 
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -16,6 +18,8 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import model.Casillero;
 import model.Interactuable;
+import model.Juego;
+import model.Jugador;
 import model.algoformers.Algoformer;
 
 /**
@@ -28,13 +32,15 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
     private static final String stringAlcance = "Alcance: ";
     private static final String stringVelocidad = "Velocidad: ";
     private static final String stringCantMovsRestantes = "Cantidad de movimientos restantes: ";
+    Jugador jugador;
     
     
     
     private Text stats[];
     
-    public VBoxStatsYOrdenesDisponibles(){
+    public VBoxStatsYOrdenesDisponibles(Jugador jugador){
         super();
+        this.jugador= jugador;
         this.setPadding(new Insets(10));
         this.setSpacing(8);              // Gap between nodes
         this.setStyle("-fx-background-color: #336699;");    //color de fondo
@@ -68,16 +74,33 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
             	actualizarStatsObjetivo(1, 1, 1, 1, 1);
             }
         };
+/**/
+        EventHandler<ActionEvent> handler3 = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+//            	Jugador jugador= juego.pasarTurno();
+//            	ArrayList<Algoformer> lista= jugador.devolverAlgoformersVivos();
+//            	Algoformer algo= lista.get(0);
+            	Algoformer algo= jugador.devolverEquipo().get(0);
+            	actualizarStatsObjetivo(algo.getVida(), algo.getAtaque(), algo.getAlcance(), algo.getVelocidad_despl(), algo.getMovimientosRestantes());
+            }
+        };
+/**/
         HBox hbox = new HBox();
         Button buttonCurrent = new Button("Valores en 0");
-        buttonCurrent.setPrefSize(100, 20);
+        buttonCurrent.setPrefSize(80, 20);
         buttonCurrent.setOnAction(handler0);
         
         Button buttonProjected = new Button("Valores en 1");
-        buttonProjected.setPrefSize(100, 20);
+        buttonProjected.setPrefSize(80, 20);
         buttonProjected.setOnAction(handler1);
+/**/
+        Button buttonAlgo = new Button("Valores en 3");
+        buttonAlgo.setPrefSize(80, 20);
+        buttonAlgo.setOnAction(handler3);
+/**/
         
-        hbox.getChildren().addAll(buttonCurrent, buttonProjected);
+        hbox.getChildren().addAll(buttonCurrent, buttonProjected, buttonAlgo);
         this.getChildren().add(hbox);
         actualizarStatsObjetivo(0, 0, 0, 0, 0);
     }

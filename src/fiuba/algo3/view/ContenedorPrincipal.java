@@ -14,21 +14,24 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Coordenada;
+import model.Juego;
+import model.Jugador;
 import model.Tablero;
 import view.VistaCasilleros;
 
 public class ContenedorPrincipal extends BorderPane {
 
     private static final String TITULO_JUEGO = "Algoformers";
+    Juego juego;
 
     BarraDeMenu menuBar;
     HBox contenedorCentral;
     HashMap<Coordenada, Canvas> casilleros;
     VBoxStatsYOrdenesDisponibles barraDerecha;
 
-    public ContenedorPrincipal(Stage stage) {
+    public ContenedorPrincipal(Stage stage, Jugador jugador) {
     	stage.setTitle(TITULO_JUEGO);
-        this.barraDerecha = new VBoxStatsYOrdenesDisponibles();
+        this.barraDerecha = new VBoxStatsYOrdenesDisponibles(jugador);
     	this.setRight(this.barraDerecha);
         this.setMenu(stage);
         this.setCentro();
@@ -56,7 +59,8 @@ public class ContenedorPrincipal extends BorderPane {
 		}
     	contenedorCentral=hbox;
     	contenedorCentral.setAlignment(Pos.CENTER);
-    	Image imagen = new Image("file:src/fotos/fondo-juego.jpg");
+
+       	Image imagen = new Image("file:src/fotos/fondo-juego.jpg");
         //BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         contenedorCentral.setBackground(new Background(imagenDeFondo));

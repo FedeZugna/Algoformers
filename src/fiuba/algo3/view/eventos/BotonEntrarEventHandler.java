@@ -4,13 +4,15 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Juego;
+import model.Jugador;
 
 public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 
     Stage stage;
     Scene proximaEscena;
 
-    public BotonEntrarEventHandler(Stage stage, Scene proximaEscena) {
+    public BotonEntrarEventHandler(Stage stage, Scene proximaEscena, Jugador jugador) {////////////////
         this.stage = stage;
         this.proximaEscena = proximaEscena;
     }
