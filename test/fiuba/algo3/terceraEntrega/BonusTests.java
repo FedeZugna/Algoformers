@@ -5,6 +5,9 @@
  */
 package terceraEntrega;
 
+import model.Coordenada;
+import model.Juego;
+import model.Tablero;
 import model.algoformers.Algoformer;
 import model.algoformers.Ataque;
 import model.algoformers.AtaqueEstandar;
@@ -27,6 +30,11 @@ public class BonusTests {
     @Test
     public void DobleCanionDuplicaElDanio(){
         int danio_base, danio_bonificado;
+        Coordenada coord1 = new Coordenada(3, 3);
+        Coordenada coord2 = new Coordenada(3, 4);
+        Tablero tablero = Tablero.getInstancia();
+        Juego juego = new Juego();
+        tablero.definirJuego(juego);
         Algoformer optimus = new Optimus();
         danio_base = optimus.getAtaque();
         DobleCanion dobleCanion = new DobleCanion();

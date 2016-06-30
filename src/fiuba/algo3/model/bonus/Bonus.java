@@ -61,8 +61,10 @@ public abstract class Bonus extends StatModifierConDuracion implements Notificab
 	}
 	
     public void serCapturadoPor(Algoformer a){
-        this.cambiarDuenio(a);
+    	this.cambiarDuenio(a);
         Tablero.getInstancia().agregarNotificable(this);
+        //System.out.println("HOLIS");
+        
     }
     @Override
     public String devuelveNombreCont() {

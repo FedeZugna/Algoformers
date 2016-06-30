@@ -34,6 +34,8 @@ public class tercerEntregaTests {
         Coordenada coord2 = new Coordenada(3, 4);
         Coordenada coord3 = new Coordenada(3, 2);
         Tablero tablero = Tablero.getInstancia();
+        Juego juego = new Juego();
+        tablero.definirJuego(juego);
         Algoformer optimus = new Optimus();
         Algoformer megatron = new Megatron();
         DobleCanion dobleCanion = new DobleCanion(); 
@@ -73,6 +75,8 @@ public class tercerEntregaTests {
         Coordenada coord2 = new Coordenada(3, 4);
         Coordenada coord3 = new Coordenada(3, 2);
         Tablero tablero = Tablero.getInstancia();
+        Juego juego = new Juego();
+        tablero.definirJuego(juego);
         Algoformer optimus = new Optimus();
         Algoformer megatron = new Megatron();
         DobleCanion dobleCanion = new DobleCanion();
@@ -112,6 +116,8 @@ public class tercerEntregaTests {
         Coordenada coord2 = new Coordenada(3, 4);
         Coordenada coord3 = new Coordenada(3, 2);
         Tablero tablero = Tablero.getInstancia();
+        Juego juego = new Juego();
+        tablero.definirJuego(juego);
         Algoformer optimus = new Optimus();
         Algoformer megatron = new Megatron();
         BurbujaInmaculada burbuja = new BurbujaInmaculada();
@@ -146,6 +152,8 @@ public class tercerEntregaTests {
         Coordenada coord2 = new Coordenada(3, 4);
         Coordenada coord3 = new Coordenada(3, 2);
         Tablero tablero = Tablero.getInstancia();
+        Juego juego = new Juego();
+        tablero.definirJuego(juego);
         Algoformer optimus = new Optimus();
         Algoformer megatron = new Megatron();
         BurbujaInmaculada burbuja = new BurbujaInmaculada();
@@ -181,6 +189,8 @@ public class tercerEntregaTests {
         Coordenada coord1 = new Coordenada(3, 3);
         Coordenada coord2 = new Coordenada(3, 4);
         Tablero tablero = Tablero.getInstancia();
+        Juego juego = new Juego();
+        tablero.definirJuego(juego);
         Algoformer optimus = new Optimus();
         Flash flash = new Flash();
         tablero.ubicarElemento(optimus, coord1);
@@ -198,6 +208,8 @@ public class tercerEntregaTests {
         Coordenada coord1 = new Coordenada(3, 3);
         Coordenada coord2 = new Coordenada(3, 4);
         Tablero tablero = Tablero.getInstancia();
+        Juego juego = new Juego();
+        tablero.definirJuego(juego);
         Algoformer optimus = new Optimus();
         Flash flash = new Flash();
         tablero.ubicarElemento(optimus, coord1);
