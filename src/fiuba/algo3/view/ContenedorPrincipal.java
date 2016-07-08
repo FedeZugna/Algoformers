@@ -13,6 +13,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.Casillero;
 import model.Coordenada;
 import model.Juego;
 import model.Jugador;
@@ -51,7 +52,8 @@ public class ContenedorPrincipal extends BorderPane {
 			vbox = new VBox();
 			for (int j = 1; j <= Tablero.LIMITEALTO; j++) {
 				Coordenada coord = new Coordenada(i,j);
-				CanvasImagenCasillero canvas = new CanvasImagenCasillero(75,75,this.barraDerecha);
+                                Casillero casillero = Tablero.getInstancia().devolverCasillero(coord);
+				CanvasImagenCasillero canvas = new CanvasImagenCasillero(75,75,casillero, this.barraDerecha);
 				casilleros.put(coord, canvas);
 				vbox.getChildren().add(casilleros.get(coord));
 			}

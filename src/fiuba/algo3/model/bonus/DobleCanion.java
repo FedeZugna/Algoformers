@@ -4,11 +4,11 @@ import model.algoformers.Algoformer;
 
 public class DobleCanion extends Bonus {
     private static final int DURACION_DOBLECANION = 3;
-    
+    private static final String nombreDobleCanion = "Doble Canion";
     private String rutaImg = "file:src/fotos/Bonus/DobleC.png";
     
     public DobleCanion() {
-        super(DURACION_DOBLECANION);
+        super(DURACION_DOBLECANION, nombreDobleCanion);
     }
 
     @Override

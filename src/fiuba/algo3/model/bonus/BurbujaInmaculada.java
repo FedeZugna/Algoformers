@@ -6,11 +6,11 @@ import model.algoformers.Algoformer;
 public class BurbujaInmaculada extends Bonus {
     
     private static final int DURACION_BURBUJA = 2;
-    
+    private static final String nombreBurbujaInmaculada = "Burbuja Inmaculada";
     private String rutaImg = "file:src/fotos/Bonus/Burbuja.png";
     
     public BurbujaInmaculada(){
-	super(DURACION_BURBUJA);
+	super(DURACION_BURBUJA,nombreBurbujaInmaculada);
     }
 	
     @Override

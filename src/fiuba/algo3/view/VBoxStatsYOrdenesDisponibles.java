@@ -21,6 +21,7 @@ import model.Interactuable;
 import model.Juego;
 import model.Jugador;
 import model.algoformers.Algoformer;
+import model.excepciones.AccionInvalidaException;
 import view.eventos.OpcionSalirEventHandler;
 
 /**
@@ -40,6 +41,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
     
     
     private Text stats[];
+    private Text nombreObjetivo;
     
     public VBoxStatsYOrdenesDisponibles(Jugador jugador){
         super();
@@ -49,9 +51,9 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
         this.setSpacing(8);              // Gap between nodes
         this.setStyle("-fx-background-color: #336699;");    //color de fondo
         
-        Text title = new Text(" ");
-        title.setFont(Font.font("Arial", FontWeight.BOLD, 14));
-        this.getChildren().add(title);
+        this.nombreObjetivo = new Text("");
+        this.nombreObjetivo.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        this.getChildren().add(this.nombreObjetivo);
         
         
         this.stats = new Text[]{
@@ -71,6 +73,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
             @Override
             public void handle(ActionEvent event) {
             	algoformerActual= algoformers.get(0);
+                actualizarNombreObjetivo(algoformerActual.getNombre());
               	actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(), algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(), algoformerActual.getMovimientosRestantes());				
             }
         };
@@ -79,7 +82,8 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
             @Override
             public void handle(ActionEvent event) {
             	algoformerActual= algoformers.get(1);
-              	actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(), algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(), algoformerActual.getMovimientosRestantes());				
+              	actualizarNombreObjetivo(algoformerActual.getNombre());
+                actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(), algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(), algoformerActual.getMovimientosRestantes());				
             }
         };
         
@@ -87,7 +91,8 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
             @Override
             public void handle(ActionEvent event) {
             	algoformerActual= algoformers.get(2);
-              	actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(), algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(), algoformerActual.getMovimientosRestantes());				
+              	actualizarNombreObjetivo(algoformerActual.getNombre());
+                actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(), algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(), algoformerActual.getMovimientosRestantes());				
             }
         };
         
@@ -149,21 +154,31 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
         botonesParaSeleccionarLosAlgoformers.getChildren().addAll(primerAlgoformer, segundoAlgoformer, tercerAlgoformer);
         this.getChildren().addAll(botonesParaSeleccionarLosAlgoformers, transformar, botonesParaMoverse);
 
-        actualizarStatsObjetivo(0, 0, 0, 0, 0);
+        actualizarStatsVacio();
     }
     
     public void actualizarStatsConCasillero(Casillero cas) {
-    	if (cas.casilleroOcupado()){
+        //if (cas.casilleroOcupado()){
     		Interactuable ocupante = cas.devolverElemento();
-    		if (ocupante.estaVivo()){
-    			Algoformer ocupanteA = (Algoformer) cas.devolverElemento(); 
-    			actualizarStatsObjetivo(ocupanteA.getVida(), ocupanteA.getAtaque(), ocupanteA.getAlcance() , ocupanteA.getVelocidad_despl(), ocupanteA.getMovimientosRestantes());
-    		}
-    		
-    	}
-	}
+                try{
+                    if (ocupante.estaVivo()){
+                            Algoformer ocupanteA = (Algoformer) cas.devolverElemento(); 
+                            actualizarStatsObjetivo(ocupanteA.getVida(), ocupanteA.getAtaque(), ocupanteA.getAlcance() , ocupanteA.getVelocidad_despl(), ocupanteA.getMovimientosRestantes());
+                            actualizarNombreObjetivo(ocupanteA.getNombre());
+                    }
+                }
+                catch(AccionInvalidaException a){
+                    actualizarStatsVacio();
+                    actualizarNombreObjetivo(ocupante.getNombre());
+                }
+                catch(NullPointerException a){
+                    actualizarStatsVacio();
+                    actualizarNombreObjetivo("");
+                }
+    	//} 
+    }
     
-    public void actualizarStatsObjetivo(int vida,int atk,int rng, int vel, int movsRes){   //esto en un futuro recibe un algoformerView o algo así
+    private void actualizarStatsObjetivo(int vida,int atk,int rng, int vel, int movsRes){   //esto en un futuro recibe un algoformerView o algo así
         this.stats[0].setText(stringVida+vida);
         this.stats[1].setText(stringAtaque+atk);
         this.stats[2].setText(stringAlcance+rng);
@@ -185,6 +200,18 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
         }
         catch(NullPointerException casillero_vacio){}   //A reemplazar por CasilleroVacioException
         
+    }
+
+    private void actualizarStatsVacio() {
+        this.stats[0].setText(stringVida);
+        this.stats[1].setText(stringAtaque);
+        this.stats[2].setText(stringAlcance);
+        this.stats[3].setText(stringVelocidad);
+        this.stats[4].setText(stringCantMovsRestantes);
+    }
+
+    private void actualizarNombreObjetivo(String nombre) {
+        this.nombreObjetivo.setText(nombre);
     }
 	
 }
