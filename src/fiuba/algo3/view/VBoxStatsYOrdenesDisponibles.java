@@ -100,6 +100,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
         	@Override
         	public void handle (ActionEvent event) {
         		algoformerActual.transformar();
+                actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(), algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(), algoformerActual.getMovimientosRestantes());				
         	}
     	};
     	

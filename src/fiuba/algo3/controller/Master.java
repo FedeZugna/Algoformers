@@ -20,10 +20,7 @@ public class Master {
         return instancia;
     }
     
-    private Algoformer algofActual;
-    
-    
-    
+    private Algoformer algofActual;    
     
     public Algoformer devolverAlgoformerActual(){
         return this.algofActual;

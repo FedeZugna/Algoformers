@@ -52,7 +52,7 @@ public class ContenedorPrincipal extends BorderPane {
 			vbox = new VBox();
 			for (int j = 1; j <= Tablero.LIMITEALTO; j++) {
 				Coordenada coord = new Coordenada(i,j);
-                                Casillero casillero = Tablero.getInstancia().devolverCasillero(coord);
+                Casillero casillero = Tablero.getInstancia().devolverCasillero(coord);
 				CanvasImagenCasillero canvas = new CanvasImagenCasillero(75,75,casillero, this.barraDerecha);
 				casilleros.put(coord, canvas);
 				vbox.getChildren().add(casilleros.get(coord));

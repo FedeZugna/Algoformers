@@ -40,7 +40,10 @@ public class ContenedorBienvenidos extends VBox {
 
         Button botonEntrar = new Button();
         botonEntrar.setText("Iniciar Partida");
-
+        botonEntrar.setMinHeight(50);
+        botonEntrar.setMinWidth(100);
+        
+        
         BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(stage, proximaEscena, jugador);///////////////////
         botonEntrar.setOnAction(botonEntrarHandler);
 
@@ -50,6 +53,9 @@ public class ContenedorBienvenidos extends VBox {
 
         Button botonSalir = new Button();
         botonSalir.setText("Salir");
+        botonSalir.setMinHeight(50);
+        botonSalir.setMinWidth(100);
+
         
         OpcionSalirEventHandler botonSalirHandler = new OpcionSalirEventHandler();
         botonSalir.setOnAction(botonSalirHandler);

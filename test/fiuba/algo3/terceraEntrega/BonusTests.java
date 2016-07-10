@@ -46,15 +46,15 @@ public class BonusTests {
     @Test
     public void DobleCanionDura3Turnos(){
         int danio_base, danio_bonificado;
-        Algoformer optimus = new Optimus();
-        danio_base = optimus.getAtaque();
-        DobleCanion dobleCanion = new DobleCanion();
-        optimus.capturarBonus(dobleCanion);
-        dobleCanion.notificar();//el turno que pasa capturando
-        dobleCanion.notificar();
-        dobleCanion.notificar();
-        dobleCanion.notificar();        
-        danio_bonificado = optimus.getAtaque();
+        Algoformer optimuss = new Optimus();
+        danio_base = optimuss.getAtaque();
+        DobleCanion dobleCanionn = new DobleCanion();
+        optimuss.capturarBonus(dobleCanionn);
+        dobleCanionn.notificar();//el turno que pasa capturando
+        dobleCanionn.notificar();
+        dobleCanionn.notificar();
+        dobleCanionn.notificar();        
+        danio_bonificado = optimuss.getAtaque();
         Assert.assertTrue(danio_base==danio_bonificado);
     }
     
