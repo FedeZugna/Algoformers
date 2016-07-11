@@ -17,11 +17,15 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import model.Casillero;
+import model.Coordenada;
 import model.Interactuable;
 import model.Juego;
 import model.Jugador;
+import model.Tablero;
 import model.algoformers.Algoformer;
 import model.excepciones.AccionInvalidaException;
+import model.excepciones.CasilleroOcupadoException;
+import model.excepciones.NoPuedeMoverseException;
 import view.eventos.OpcionSalirEventHandler;
 
 /**
@@ -34,19 +38,24 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
     private static final String stringAlcance = "Alcance: ";
     private static final String stringVelocidad = "Velocidad: ";
     private static final String stringCantMovsRestantes = "Cantidad de movimientos restantes: ";
-    Jugador jugador;
+    Jugador jugadorActual;
     ArrayList<Algoformer> algoformers;
     Algoformer algoformerActual;
+    Tablero tablero;
+    Juego juegoGeneral;
+    Boolean atacar= false;
     
     
     
     private Text stats[];
     private Text nombreObjetivo;
     
-    public VBoxStatsYOrdenesDisponibles(Jugador jugador){
+    public VBoxStatsYOrdenesDisponibles(Jugador jugador, Juego juego){
         super();
-        this.jugador= jugador;
-        algoformers= jugador.devolverAlgoformersVivos();
+        this.jugadorActual= jugador;
+        this.algoformers= jugadorActual.devolverAlgoformersVivos();
+        this.tablero= jugador.devolverTablero();
+        this.juegoGeneral= juego;
         this.setPadding(new Insets(10));
         this.setSpacing(8);              // Gap between nodes
         this.setStyle("-fx-background-color: #336699;");    //color de fondo
@@ -107,10 +116,87 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
         EventHandler<ActionEvent> botonMoverNorteHandler = new EventHandler<ActionEvent>() {
         	@Override
         	public void handle (ActionEvent event) {
-        		//algoformerActual.mover(algoformerActual.getUbicacion().);;
+        		try{
+	        		Coordenada coordenadaNorte= new Coordenada(algoformerActual.getUbicacion().getUbicacion().getLargo(),algoformerActual.getUbicacion().getUbicacion().getAlto()+1);
+	        		Casillero casilleroNorte= tablero.devolverCasillero(coordenadaNorte);
+	        		algoformerActual.mover(casilleroNorte);
+        		}catch (NoPuedeMoverseException e){
+        			
+        		}catch (CasilleroOcupadoException ex){
+        			
+        		}catch (NullPointerException exc){
+        			
+        		}
+        	}
+    	};
+    	
+        EventHandler<ActionEvent> botonMoverOesteHandler = new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle (ActionEvent event) {
+        		try{
+	        		Coordenada coordenadaOeste= new Coordenada(algoformerActual.getUbicacion().getUbicacion().getLargo()-1,algoformerActual.getUbicacion().getUbicacion().getAlto());
+	        		Casillero casilleroOeste= tablero.devolverCasillero(coordenadaOeste);
+	        		algoformerActual.mover(casilleroOeste);
+    			}catch (NoPuedeMoverseException e){
+    				
+        		}catch (CasilleroOcupadoException ex){
+        			
+        		}catch (NullPointerException exc){
+        			
+        		}
+        	}
+    	};
+    	
+        EventHandler<ActionEvent> botonMoverSurHandler = new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle (ActionEvent event) {
+        		try{
+	        		Coordenada coordenadaSur= new Coordenada(algoformerActual.getUbicacion().getUbicacion().getLargo(),algoformerActual.getUbicacion().getUbicacion().getAlto()-1);
+	        		Casillero casilleroSur= tablero.devolverCasillero(coordenadaSur);
+	        		algoformerActual.mover(casilleroSur);
+        		}catch (NoPuedeMoverseException e){
+        			
+        		}catch (CasilleroOcupadoException ex){
+        			
+        		}catch (NullPointerException exc){
+
+        		}
+        	}
+    	};
+    	
+        EventHandler<ActionEvent> botonMoverEsteHandler = new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle (ActionEvent event) {
+        		try{
+	        		Coordenada coordenadaEste= new Coordenada(algoformerActual.getUbicacion().getUbicacion().getLargo()+1,algoformerActual.getUbicacion().getUbicacion().getAlto());
+	        		Casillero casilleroEste= tablero.devolverCasillero(coordenadaEste);
+	        		algoformerActual.mover(casilleroEste);
+        		}catch (NoPuedeMoverseException e){
+        			
+        		}catch (CasilleroOcupadoException ex){
+        			
+        		}catch (NullPointerException exc){
+        			
+        		}
         	}
     	};
 
+        EventHandler<ActionEvent> botonPasarTurnoHandler = new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle (ActionEvent event) {
+        		jugadorActual= juegoGeneral.pasarTurno();
+        		algoformers= jugadorActual.devolverAlgoformersVivos();
+        	}
+    	};
+    	
+        EventHandler<ActionEvent> botonAtacarHandler = new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle (ActionEvent event) {
+        		atacar= true;
+        	}
+    	};
+    	
+    	
         HBox botonesParaSeleccionarLosAlgoformers = new HBox();
         Button primerAlgoformer = new Button(algoformers.get(0).getNombre());
         primerAlgoformer.setPrefSize(80, 20);
@@ -136,25 +222,35 @@ public class VBoxStatsYOrdenesDisponibles extends VBox{
         Button moverOeste = new Button();
         moverOeste.setPrefSize(50, 10);
         moverOeste.setText("Oeste");
-//        moverOeste.setOnAction(botonMoverOesteHandler);
+        moverOeste.setOnAction(botonMoverOesteHandler);
         
         Button moverSur = new Button();
         moverSur.setPrefSize(50, 10);
         moverSur.setText("Sur");
-//        moverSur.setOnAction(botonMoverSurHandler);
+        moverSur.setOnAction(botonMoverSurHandler);
         
         Button moverEste = new Button();
         moverEste.setPrefSize(50, 10);
         moverEste.setText("Este");
-//        moverEste.setOnAction(botonMoverEsteHandler);
+        moverEste.setOnAction(botonMoverEsteHandler);
 
         HBox botonesParaMoverse = new HBox();
         botonesParaMoverse.getChildren().addAll(moverNorte, moverOeste, moverSur, moverEste);
+        
+        Button pasarTurno = new Button();
+        pasarTurno.setPrefSize(50, 10);
+        pasarTurno.setText("Pasar");
+        pasarTurno.setOnAction(botonPasarTurnoHandler);
 
+        Button botonAtacar = new Button();
+        botonAtacar.setPrefSize(50, 10);
+        botonAtacar.setText("Atacar");
+        botonAtacar.setOnAction(botonAtacarHandler);
         
         botonesParaSeleccionarLosAlgoformers.getChildren().addAll(primerAlgoformer, segundoAlgoformer, tercerAlgoformer);
-        this.getChildren().addAll(botonesParaSeleccionarLosAlgoformers, transformar, botonesParaMoverse);
+        this.getChildren().addAll(botonesParaSeleccionarLosAlgoformers, transformar, botonesParaMoverse, pasarTurno, botonAtacar);
 
+        
         actualizarStatsVacio();
     }
     

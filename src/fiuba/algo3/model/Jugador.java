@@ -145,4 +145,8 @@ public class Jugador {
 */
 		}
 	}
+
+	public Tablero devolverTablero() {
+		return this.tablero;
+	}
 }

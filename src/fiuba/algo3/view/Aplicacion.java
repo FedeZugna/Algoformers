@@ -19,7 +19,7 @@ public class Aplicacion extends Application {
 
         Juego juego = new Juego();
         
-        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, juego.obtenerJugadorActual());
+        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, juego.obtenerJugadorActual(), juego);
         Scene escenaJuego = new Scene(contenedorPrincipal, 640, 480);
 
         AplicacionOnKeyPressEventHandler AplicacionOnKeyPressEventHandler = new AplicacionOnKeyPressEventHandler(stage, contenedorPrincipal.getBarraDeMenu());

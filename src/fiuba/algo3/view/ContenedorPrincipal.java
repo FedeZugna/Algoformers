@@ -23,16 +23,16 @@ import view.VistaCasilleros;
 public class ContenedorPrincipal extends BorderPane {
 
     private static final String TITULO_JUEGO = "Algoformers";
-    Juego juego;
+//   Juego juego;
 
     BarraDeMenu menuBar;
     HBox contenedorCentral;
     HashMap<Coordenada, Canvas> casilleros;
     VBoxStatsYOrdenesDisponibles barraDerecha;
 
-    public ContenedorPrincipal(Stage stage, Jugador jugador) {
+    public ContenedorPrincipal(Stage stage, Jugador jugador, Juego juego) {
     	stage.setTitle(TITULO_JUEGO);
-        this.barraDerecha = new VBoxStatsYOrdenesDisponibles(jugador);
+        this.barraDerecha = new VBoxStatsYOrdenesDisponibles(jugador, juego);
     	this.setRight(this.barraDerecha);
         this.setMenu(stage);
         this.setCentro();
