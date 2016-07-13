@@ -32,9 +32,7 @@ public class Master {
     }
 
     public void terminarTurno() {
-        /*
         Tablero.getInstancia().pasarTurno();
-        */
     }
     
     

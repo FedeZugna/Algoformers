@@ -22,7 +22,7 @@ public class BotonAtacar extends Button{
         this.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-               /* 
+               /*
                 Casillero casilleroObjetivo = Master.getInstancia().pedirObjetivo();
                 Algoformer algofObjetivo = casilleroObjetivo.devolverElemento();
                 Algoformer algofActual = Master.getInstancia().devolverAlgoformerActual();

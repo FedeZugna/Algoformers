@@ -98,4 +98,9 @@ public class Tablero {
 	public void definirJuego(Juego juego){
 		this.JuegoActual = juego;
 	}
+	
+	public void pasarTurno(){
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+	}
 }

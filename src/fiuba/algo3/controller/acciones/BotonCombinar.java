@@ -26,7 +26,7 @@ public class BotonCombinar extends Button{
             @Override
             public void handle(ActionEvent event) {
                 /*
-                 * Algoformer algofActual = Master.getInstancia().devolverAlgoformerActual();
+                Algoformer algofActual = Master.getInstancia().devolverAlgoformerActual();
    
                 algofActual.combinar();
                 Master.getInstancia().terminarTurno();
