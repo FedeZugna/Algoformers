@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -226,13 +227,14 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				atacar = true;
 			}
 		};
-
+		
 		HBox botonesParaSeleccionarLosAlgoformers = new HBox();
 		
 		Button primerAlgoformer = new Button(algoformers.get(0).getNombre());
 		primerAlgoformer.setPrefSize(80, 20);
-		primerAlgoformer.setOnAction(seleccionarPrimero);
-
+		primerAlgoformer.setOnAction(seleccionarPrimero);		
+		
+		
 		Button segundoAlgoformer = new Button(algoformers.get(1).getNombre());
 		segundoAlgoformer.setPrefSize(80, 20);
 		segundoAlgoformer.setOnAction(seleccionarSegundo);
@@ -272,7 +274,12 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		pasarTurno.setPrefSize(80,15);
 		pasarTurno.setText("Pasar Turno");
 		pasarTurno.setOnAction(botonPasarTurnoHandler);
-
+		pasarTurno.setOnMouseClicked(e -> {
+			primerAlgoformer.setText(algoformers.get(0).getNombre());
+			segundoAlgoformer.setText(algoformers.get(1).getNombre());
+			tercerAlgoformer.setText(algoformers.get(2).getNombre());
+		});
+		
 		Button botonAtacar = new Button();
 		botonAtacar.setPrefSize(50, 10);
 		botonAtacar.setText("Atacar");
