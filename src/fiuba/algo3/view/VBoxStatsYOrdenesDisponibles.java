@@ -125,7 +125,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				try {
 					Coordenada coordenadaNorte = new Coordenada(
 							algoformerActual.getUbicacion().getUbicacion().getLargo(),
-							algoformerActual.getUbicacion().getUbicacion().getAlto() + 1);
+							algoformerActual.getUbicacion().getUbicacion().getAlto() - 1);
 					Casillero casilleroNorte = tablero.devolverCasillero(coordenadaNorte);
 					algoformerActual.mover(casilleroNorte);
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
@@ -174,7 +174,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			public void handle(ActionEvent event) {
 				try {
 					Coordenada coordenadaSur = new Coordenada(algoformerActual.getUbicacion().getUbicacion().getLargo(),
-							algoformerActual.getUbicacion().getUbicacion().getAlto() - 1);
+							algoformerActual.getUbicacion().getUbicacion().getAlto() + 1);
 					Casillero casilleroSur = tablero.devolverCasillero(coordenadaSur);
 					algoformerActual.mover(casilleroSur);
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
@@ -236,7 +236,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		EventHandler<ActionEvent> botonAtacarHandler = new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				atacar = true;
+				algoformerActual.morir();
 			}
 		};
 
