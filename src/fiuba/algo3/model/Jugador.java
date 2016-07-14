@@ -31,7 +31,7 @@ public class Jugador {
 
 	public void mover(Algoformer algoTransf, Casillero destino) {
 		algoTransf.mover(destino);
-		this.tablero.cambiar(algoTransf, algoTransf.getUbicacion(), destino);
+//		this.tablero.cambiar(algoTransf, algoTransf.getUbicacion(), destino); //eliminar ubicacion.removerElemento de mover en algoformer si se agrega esta linea
 
 	}
 

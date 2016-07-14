@@ -81,6 +81,7 @@ public class Algoformer implements Interactuable {
 		if ((this.movimientosRestantes - pasosAMoverse)<0){
 			throw new NoPuedeMoverseException();
 		}
+		this.ubicacion.removerElemento(); //eliminar esta linea si se usa el "cambiar" de jugador
 		destino.ubicarElemento(this);
 		this.ubicacion = destino;
 		this.movimientosRestantes -= pasosAMoverse;
