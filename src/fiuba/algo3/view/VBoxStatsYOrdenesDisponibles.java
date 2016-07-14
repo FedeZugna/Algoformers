@@ -44,17 +44,19 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 	Algoformer algoformerActual;
 	Tablero tablero;
 	Juego juegoGeneral;
+	ContenedorPrincipal contenedor;
 	Boolean atacar = false;
 
 	private Text stats[];
 	private Text nombreObjetivo;
 
-	public VBoxStatsYOrdenesDisponibles(Jugador jugador, Juego juego) {
+	public VBoxStatsYOrdenesDisponibles(Jugador jugador, Juego juego, ContenedorPrincipal cont) {
 		super();
 		this.jugadorActual = jugador;
 		this.algoformers = jugadorActual.devolverAlgoformersVivos();
 		this.tablero = jugador.devolverTablero();
 		this.juegoGeneral = juego;
+		this.contenedor = cont;
 		this.setPadding(new Insets(10));
 		this.setSpacing(8); // Gap between nodes
 		this.setStyle("-fx-background-color: #336699;"); // color de fondo
@@ -112,6 +114,8 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 						algoformerActual.getMovimientosRestantes());
+				contenedor.vistaCasillerosUpdate();
+
 			}
 		};
 
@@ -127,6 +131,8 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 							algoformerActual.getMovimientosRestantes());
+					contenedor.vistaCasillerosUpdate();
+					
 
 				} catch (NoPuedeMoverseException e) {
 
@@ -150,6 +156,8 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 							algoformerActual.getMovimientosRestantes());
+					contenedor.vistaCasillerosUpdate();
+
 
 				} catch (NoPuedeMoverseException e) {
 
@@ -172,6 +180,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 							algoformerActual.getMovimientosRestantes());
+					contenedor.vistaCasillerosUpdate();
 
 				} catch (NoPuedeMoverseException e) {
 
@@ -195,6 +204,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 							algoformerActual.getMovimientosRestantes());
+					contenedor.vistaCasillerosUpdate();
 
 				} catch (NoPuedeMoverseException e) {
 					System.out.println("1");
@@ -211,14 +221,16 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			public void handle(ActionEvent event) {
 				jugadorActual = juegoGeneral.pasarTurno();
 				algoformers = jugadorActual.devolverAlgoformersVivos();
-				actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
-						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
-						algoformerActual.getMovimientosRestantes());
+				if (algoformerActual != null) {
+					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
+							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
+							algoformerActual.getMovimientosRestantes());
+				}
 				actualizarStatsVacio();
 				actualizarNombreObjetivo("");
-			
+
 			}
-			
+
 		};
 
 		EventHandler<ActionEvent> botonAtacarHandler = new EventHandler<ActionEvent>() {
@@ -227,14 +239,13 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				atacar = true;
 			}
 		};
-		
+
 		HBox botonesParaSeleccionarLosAlgoformers = new HBox();
-		
+
 		Button primerAlgoformer = new Button(algoformers.get(0).getNombre());
 		primerAlgoformer.setPrefSize(80, 20);
-		primerAlgoformer.setOnAction(seleccionarPrimero);		
-		
-		
+		primerAlgoformer.setOnAction(seleccionarPrimero);
+
 		Button segundoAlgoformer = new Button(algoformers.get(1).getNombre());
 		segundoAlgoformer.setPrefSize(80, 20);
 		segundoAlgoformer.setOnAction(seleccionarSegundo);
@@ -271,7 +282,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		botonesParaMoverse.getChildren().addAll(moverNorte, moverOeste, moverSur, moverEste);
 
 		Button pasarTurno = new Button();
-		pasarTurno.setPrefSize(80,15);
+		pasarTurno.setPrefSize(80, 15);
 		pasarTurno.setText("Pasar Turno");
 		pasarTurno.setOnAction(botonPasarTurnoHandler);
 		pasarTurno.setOnMouseClicked(e -> {
@@ -279,7 +290,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			segundoAlgoformer.setText(algoformers.get(1).getNombre());
 			tercerAlgoformer.setText(algoformers.get(2).getNombre());
 		});
-		
+
 		Button botonAtacar = new Button();
 		botonAtacar.setPrefSize(50, 10);
 		botonAtacar.setText("Atacar");
@@ -357,9 +368,5 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 	private void actualizarNombreObjetivo(String nombre) {
 		this.nombreObjetivo.setText(nombre);
 	}
-
-	private void actualizarEquipo(Jugador jugadorActual){
-		
-    }
 
 }
