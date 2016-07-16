@@ -68,6 +68,7 @@ public class Algoformer implements Interactuable {
 
 	public void morir() {
 		this.vida = 0;
+		this.ubicacion.removerElemento();//
 		// avisar a la vista que mate al transformer
 	}
 

@@ -10,12 +10,13 @@ public abstract class Bonus extends StatModifierConDuracion implements Notificab
 	private String nombre;
 	private Casillero ubicacion;
 	private Algoformer duenio;
-	private String rutaImg = "file:src/fotos/pueba1.png";
+	private String rutaImg;
 	
 	
-    protected Bonus(int duracion, String nombre) {
+    protected Bonus(int duracion, String nombre, String rutaImg) {
         super(duracion);
         this.nombre = nombre;
+        this.rutaImg= rutaImg;
     }
 	
 	

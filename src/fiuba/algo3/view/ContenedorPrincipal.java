@@ -84,6 +84,10 @@ public class ContenedorPrincipal extends BorderPane {
 		this.vistaCasilleros.update();
 	}
 	
+	public void vistaCasillerosUpdateAereo(){
+		this.vistaCasilleros.updateAereo();
+	}
+	
 	/**
 	 * Agrega el borde de la pantalla indicando el estado del juego (DEVNOTE: DE
 	 * ALGUNA MANERA)

@@ -35,6 +35,36 @@ public class Tablero {
 	}
 
 	private Casillero sortearTerreno() {
+		
+		int numeroAleatorio= (int) (Math.random()*25+1);
+		Casillero casillero= new Casillero(new TerrenoRocoso(),new Nube());
+		switch (numeroAleatorio) {
+			case 1: casillero.setEspacioAereo(new NebulosaDeAndromeda());
+					break;
+			case 2: casillero.setEspacioAereo(new TormentaPsionica());
+					break;
+			case 3: casillero.setTerreno(new TerrenoPantanoso());
+					casillero.setEspacioAereo(new Nube());
+					break;
+			case 4: casillero.setTerreno(new TerrenoPantanoso());
+					casillero.setEspacioAereo(new NebulosaDeAndromeda());
+					break;
+			case 5: casillero.setTerreno(new TerrenoPantanoso());
+					casillero.setEspacioAereo(new TormentaPsionica());
+					break;
+			case 6: casillero.setTerreno(new TerrenoDeEspinas());
+					casillero.setEspacioAereo(new Nube());
+					break;
+			case 7: casillero.setTerreno(new TerrenoDeEspinas());
+					casillero.setEspacioAereo(new NebulosaDeAndromeda());
+					break;
+			case 8: casillero.setTerreno(new TerrenoDeEspinas());
+					casillero.setEspacioAereo(new TormentaPsionica());
+					break;
+		}
+		return casillero;
+		
+/*
 		int numeroAleatorio= (int) (Math.random()*100+1);
 		switch (numeroAleatorio) {
 			case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9: case 10: return new Casillero (new TerrenoPantanoso(), new Nube());
@@ -50,7 +80,7 @@ public class Tablero {
 			
 			default:return new Casillero (new TerrenoRocoso(),new Nube());
 		}
-		
+*/
 	}
 
 	public void ubicarElemento(Interactuable algof1, Coordenada coord1) {

@@ -97,4 +97,10 @@ public class Casillero {
 		return ocupante.devuelveNombreCont();
 	}
 
+	public String devuelveRutaImgContAereo() {
+		if (ocupante==null){
+			return espacioAereo.devuelveNombreCont();
+		}
+		return ocupante.devuelveNombreCont();
+	}
 }

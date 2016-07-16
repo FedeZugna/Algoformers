@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import model.algoformers.*;
+import model.bonus.Bonus;
+import model.bonus.BurbujaInmaculada;
+import model.bonus.DobleCanion;
+import model.bonus.Flash;
+
 import java.util.Iterator;
 
 public class Juego {
@@ -121,6 +126,16 @@ public class Juego {
 		this.agregarJugador("DECEPTICONS");
 		this.posicionarDecepticons();
 		this.posicionarChispaEnElMedio();
+		this.ubicarRandom(new DobleCanion());
+		this.ubicarRandom(new BurbujaInmaculada());
+		this.ubicarRandom(new Flash());
+	}
+	
+	private void ubicarRandom(Bonus bonus) {
+		int posicionX= (int) (Math.random()*7+1);
+		int posicionY= (int) (Math.random()*10+1);
+		Coordenada coordenada= new Coordenada (posicionX, posicionY);
+		tableroGeneral.ubicarElemento(bonus, coordenada);
 	}
 	
 	public Jugador obtenerJugadorActual(){
