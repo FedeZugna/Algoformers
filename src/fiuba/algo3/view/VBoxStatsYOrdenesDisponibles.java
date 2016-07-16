@@ -46,6 +46,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 	Jugador jugadorActual;
 	ArrayList<Algoformer> algoformers;
 	Algoformer algoformerActual;
+	Algoformer algoformerParaAtacar;
 	Tablero tablero;
 	Juego juegoGeneral;
 	ContenedorPrincipal contenedor;
@@ -167,6 +168,51 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			}
 		};
 
+		EventHandler<ActionEvent> seleccionarPrimeroParaAtacar = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				if (algoformerActual.getNombre()== "Optimus" || algoformerActual.getNombre()== "Bumblebee" || algoformerActual.getNombre()== "Ratchet" || algoformerActual.getNombre()== "Superion") {
+					algoformerParaAtacar = equipoDecepticons.get(0);
+				} else {
+					algoformerParaAtacar = equipoAutobots.get(0);
+				}
+			}
+		};
+
+		EventHandler<ActionEvent> seleccionarSegundoParaAtacar = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				if (algoformerActual.getNombre()== "Optimus" || algoformerActual.getNombre()== "Bumblebee" || algoformerActual.getNombre()== "Ratchet" || algoformerActual.getNombre()== "Superion") {
+					algoformerParaAtacar = equipoDecepticons.get(1);
+				} else {
+					algoformerParaAtacar = equipoAutobots.get(1);
+				}
+			}
+		};
+
+		EventHandler<ActionEvent> seleccionarTerceroParaAtacar = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				if (algoformerActual.getNombre()== "Optimus" || algoformerActual.getNombre()== "Bumblebee" || algoformerActual.getNombre()== "Ratchet" || algoformerActual.getNombre()== "Superion") {
+					algoformerParaAtacar = equipoDecepticons.get(2);
+				} else {
+					algoformerParaAtacar = equipoAutobots.get(2);
+				}
+			}
+		};
+		
+		EventHandler<ActionEvent> seleccionarGrosoParaAtacar = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				if (algoformerActual.getNombre()== "Optimus" || algoformerActual.getNombre()== "Bumblebee" || algoformerActual.getNombre()== "Ratchet" || algoformerActual.getNombre()== "Superion") {
+					algoformerParaAtacar = equipoDecepticons.get(3);
+				} else {
+					algoformerParaAtacar = equipoAutobots.get(3);
+				}
+			}
+		};
+
+		
 		EventHandler<ActionEvent> botonTransformarHandler = new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -403,6 +449,34 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		HBox botonesParaMoverse = new HBox();
 		botonesParaMoverse.getChildren().addAll(moverNorte, moverOeste, moverSur, moverEste);
 
+		Button botonAtacar = new Button();
+		botonAtacar.setPrefSize(50, 10);
+		botonAtacar.setText("Atacar");
+		botonAtacar.setOnAction(botonAtacarHandler);
+		
+		HBox botonesParaSeleccionarLosAlgoformersAAtacar = new HBox();
+
+		Button primerAlgoformerParaAtacar = new Button(algoformers.get(0).getNombre());
+		primerAlgoformerParaAtacar.setPrefSize(80, 20);
+		primerAlgoformerParaAtacar.setOnAction(seleccionarPrimeroParaAtacar);
+
+		Button segundoAlgoformerParaAtacar = new Button(algoformers.get(1).getNombre());
+		segundoAlgoformerParaAtacar.setPrefSize(80, 20);
+		segundoAlgoformerParaAtacar.setOnAction(seleccionarSegundoParaAtacar);
+
+		Button tercerAlgoformerParaAtacar = new Button(algoformers.get(2).getNombre());
+		tercerAlgoformerParaAtacar.setPrefSize(80, 20);
+		tercerAlgoformerParaAtacar.setOnAction(seleccionarTerceroParaAtacar);
+		
+		Button botonSeleccionarGrosoParaAtacar = new Button();
+		if (algoformers.size()== 4){
+			botonSeleccionarGrosoParaAtacar.setText(algoformers.get(3).getNombre());
+		}
+		botonSeleccionarGrosoParaAtacar.setPrefSize(80,  20);
+		botonSeleccionarGrosoParaAtacar.setOnAction(seleccionarGroso);
+		
+		botonesParaSeleccionarLosAlgoformersAAtacar.getChildren().addAll(primerAlgoformerParaAtacar, segundoAlgoformerParaAtacar, tercerAlgoformerParaAtacar);
+
 		Button pasarTurno = new Button();
 		pasarTurno.setPrefSize(80, 15);
 		pasarTurno.setText("Pasar Turno");
@@ -416,36 +490,16 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			} else {
 				botonSeleccionarGroso.setText("");
 			}
+			primerAlgoformerParaAtacar.setText(algoformers.get(0).getNombre());
+			segundoAlgoformerParaAtacar.setText(algoformers.get(1).getNombre());
+			tercerAlgoformerParaAtacar.setText(algoformers.get(2).getNombre());
+			if (algoformers.size()== 4) {
+				botonSeleccionarGrosoParaAtacar.setText(algoformers.get(3).getNombre());
+			} else {
+				botonSeleccionarGrosoParaAtacar.setText("");
+			}
 		});
-
-		Button botonAtacar = new Button();
-		botonAtacar.setPrefSize(50, 10);
-		botonAtacar.setText("Atacar");
-		botonAtacar.setOnAction(botonAtacarHandler);
 		
-		HBox botonesParaSeleccionarLosAlgoformersAAtacar = new HBox();
-
-		Button primerAlgoformerAAtacar = new Button(algoformers.get(0).getNombre());
-		primerAlgoformerAAtacar.setPrefSize(80, 20);
-		primerAlgoformerAAtacar.setOnAction(seleccionarPrimero);
-
-		Button segundoAlgoformerAAtacar = new Button(algoformers.get(1).getNombre());
-		segundoAlgoformerAAtacar.setPrefSize(80, 20);
-		segundoAlgoformerAAtacar.setOnAction(seleccionarSegundo);
-
-		Button tercerAlgoformerAAtacar = new Button(algoformers.get(2).getNombre());
-		tercerAlgoformerAAtacar.setPrefSize(80, 20);
-		tercerAlgoformerAAtacar.setOnAction(seleccionarTercero);
-		
-		Button botonSeleccionarGrosoAAtacar = new Button();
-		if (algoformers.size()== 4){
-			botonSeleccionarGrosoAAtacar.setText(algoformers.get(3).getNombre());
-		}
-		botonSeleccionarGrosoAAtacar.setPrefSize(80,  20);
-		botonSeleccionarGrosoAAtacar.setOnAction(seleccionarGroso);
-		
-		botonesParaSeleccionarLosAlgoformersAAtacar.getChildren().addAll(primerAlgoformerAAtacar, segundoAlgoformerAAtacar, tercerAlgoformerAAtacar);
-
 		botonesParaSeleccionarLosAlgoformers.getChildren().addAll(primerAlgoformer, segundoAlgoformer,
 				tercerAlgoformer);
 		this.getChildren().addAll(botonesParaSeleccionarLosAlgoformers, botonTransformar);
@@ -457,7 +511,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		this.getChildren().addAll(botonCombinar, botonSeleccionarGroso);
 		
 		this.getChildren().add(this.separadorParaAtacar);
-		this.getChildren().addAll(botonAtacar, botonesParaSeleccionarLosAlgoformersAAtacar, botonSeleccionarGrosoAAtacar);
+		this.getChildren().addAll(botonAtacar, botonesParaSeleccionarLosAlgoformersAAtacar, botonSeleccionarGrosoParaAtacar);
 		
 		this.getChildren().add(this.separadorPasarTurno);
 		this.getChildren().add(pasarTurno);
