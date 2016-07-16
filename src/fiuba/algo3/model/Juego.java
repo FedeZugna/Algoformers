@@ -132,7 +132,7 @@ public class Juego {
 	}
 	
 	private void ubicarRandom(Bonus bonus) {
-		int posicionX= (int) (Math.random()*7+1);
+		int posicionX= (int) (Math.random()*15+1);
 		int posicionY= (int) (Math.random()*10+1);
 		Coordenada coordenada= new Coordenada (posicionX, posicionY);
 		tableroGeneral.ubicarElemento(bonus, coordenada);

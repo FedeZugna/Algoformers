@@ -24,6 +24,7 @@ import model.Juego;
 import model.Jugador;
 import model.Tablero;
 import model.algoformers.Algoformer;
+import model.bonus.Bonus;
 import model.excepciones.AccionInvalidaException;
 import model.excepciones.CasilleroOcupadoException;
 import model.excepciones.NoPuedeMoverseException;
@@ -165,11 +166,11 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		EventHandler<ActionEvent> botonMoverNorteHandler = new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				Coordenada coordenadaNorte = new Coordenada(
+						algoformerActual.getUbicacion().getUbicacion().getLargo(),
+						algoformerActual.getUbicacion().getUbicacion().getAlto() - 1);
+				Casillero casilleroNorte = tablero.devolverCasillero(coordenadaNorte);
 				try {
-					Coordenada coordenadaNorte = new Coordenada(
-							algoformerActual.getUbicacion().getUbicacion().getLargo(),
-							algoformerActual.getUbicacion().getUbicacion().getAlto() - 1);
-					Casillero casilleroNorte = tablero.devolverCasillero(coordenadaNorte);
 					algoformerActual.mover(casilleroNorte);
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
@@ -197,11 +198,11 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		EventHandler<ActionEvent> botonMoverOesteHandler = new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				Coordenada coordenadaOeste = new Coordenada(
+						algoformerActual.getUbicacion().getUbicacion().getLargo() - 1,
+						algoformerActual.getUbicacion().getUbicacion().getAlto());
+				Casillero casilleroOeste = tablero.devolverCasillero(coordenadaOeste);
 				try {
-					Coordenada coordenadaOeste = new Coordenada(
-							algoformerActual.getUbicacion().getUbicacion().getLargo() - 1,
-							algoformerActual.getUbicacion().getUbicacion().getAlto());
-					Casillero casilleroOeste = tablero.devolverCasillero(coordenadaOeste);
 					algoformerActual.mover(casilleroOeste);
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
@@ -229,10 +230,10 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		EventHandler<ActionEvent> botonMoverSurHandler = new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				Coordenada coordenadaSur = new Coordenada(algoformerActual.getUbicacion().getUbicacion().getLargo(),
+						algoformerActual.getUbicacion().getUbicacion().getAlto() + 1);
+				Casillero casilleroSur = tablero.devolverCasillero(coordenadaSur);
 				try {
-					Coordenada coordenadaSur = new Coordenada(algoformerActual.getUbicacion().getUbicacion().getLargo(),
-							algoformerActual.getUbicacion().getUbicacion().getAlto() + 1);
-					Casillero casilleroSur = tablero.devolverCasillero(coordenadaSur);
 					algoformerActual.mover(casilleroSur);
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
@@ -260,11 +261,11 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		EventHandler<ActionEvent> botonMoverEsteHandler = new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				Coordenada coordenadaEste = new Coordenada(
+						algoformerActual.getUbicacion().getUbicacion().getLargo() + 1,
+						algoformerActual.getUbicacion().getUbicacion().getAlto());
+				Casillero casilleroEste = tablero.devolverCasillero(coordenadaEste);
 				try {
-					Coordenada coordenadaEste = new Coordenada(
-							algoformerActual.getUbicacion().getUbicacion().getLargo() + 1,
-							algoformerActual.getUbicacion().getUbicacion().getAlto());
-					Casillero casilleroEste = tablero.devolverCasillero(coordenadaEste);
 					algoformerActual.mover(casilleroEste);
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
