@@ -1,5 +1,6 @@
 package model;
 
+import model.excepciones.CasilleroOcupadoException;
 import model.excepciones.NombreDeEquipoNoExisteException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -134,8 +135,12 @@ public class Juego {
 	private void ubicarRandom(Bonus bonus) {
 		int posicionX= (int) (Math.random()*15+1);
 		int posicionY= (int) (Math.random()*10+1);
-		Coordenada coordenada= new Coordenada (posicionX, posicionY);
-		tableroGeneral.ubicarElemento(bonus, coordenada);
+		try {
+			Coordenada coordenada= new Coordenada (posicionX, posicionY);
+			tableroGeneral.ubicarElemento(bonus, coordenada);
+		} catch (CasilleroOcupadoException e) {
+			this.ubicarRandom(bonus);
+		}
 	}
 	
 	public Jugador obtenerJugadorActual(){

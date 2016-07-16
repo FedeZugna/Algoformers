@@ -25,6 +25,9 @@ import model.Jugador;
 import model.Tablero;
 import model.algoformers.Algoformer;
 import model.bonus.Bonus;
+import model.bonus.BurbujaInmaculada;
+import model.bonus.DobleCanion;
+import model.bonus.Flash;
 import model.excepciones.AccionInvalidaException;
 import model.excepciones.CasilleroOcupadoException;
 import model.excepciones.NoPuedeMoverseException;
@@ -47,9 +50,17 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 	Juego juegoGeneral;
 	ContenedorPrincipal contenedor;
 	Boolean atacar = false;
+	ArrayList<Algoformer> equipoAutobots;
+	ArrayList<Algoformer> equipoDecepticons;
+	ArrayList<Bonus> listaDeBonus;
 
 	private Text stats[];
 	private Text nombreObjetivo;
+	private Text separadorMovimientos= new Text("Mover:");
+	private Text separadorParaSeleccionarGroso= new Text("Combinacion:");
+	private Text separadorParaAtacar= new Text("Atacar:");
+	private Text separadorPasarTurno= new Text("Fin de turno:");
+
 
 	public VBoxStatsYOrdenesDisponibles(Jugador jugador, Juego juego, ContenedorPrincipal cont) {
 		super();
@@ -65,6 +76,12 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		this.nombreObjetivo = new Text("");
 		this.nombreObjetivo.setFont(Font.font("Arial", FontWeight.BOLD, 14));
 		this.getChildren().add(this.nombreObjetivo);
+		
+		this.separadorMovimientos.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+		this.separadorParaSeleccionarGroso.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+		this.separadorParaAtacar.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+		this.separadorPasarTurno.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+
 
 		this.stats = new Text[] { new Text(stringVida), new Text(stringAtaque), new Text(stringAlcance),
 				new Text(stringVelocidad), new Text(stringCantMovsRestantes) };
@@ -74,6 +91,9 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			VBox.setMargin(this.stats[i], new Insets(0, 0, 0, 8));
 			this.getChildren().add(this.stats[i]);
 		}
+		
+		equipoAutobots= jugador.devolverEquipo();
+		equipoDecepticons= juego.pasarTurno().devolverEquipo();
 
 		EventHandler<ActionEvent> seleccionarPrimero = new EventHandler<ActionEvent>() {
 			@Override
@@ -134,6 +154,18 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				}				
 			}
 		};
+		
+		EventHandler<ActionEvent> seleccionarGroso = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				algoformerActual = algoformers.get(3);
+				actualizarNombreObjetivo(algoformerActual.getNombre());
+				actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
+						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
+						algoformerActual.getMovimientosRestantes());
+				contenedor.vistaCasillerosUpdate();
+			}
+		};
 
 		EventHandler<ActionEvent> botonTransformarHandler = new EventHandler<ActionEvent>() {
 			@Override
@@ -159,6 +191,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			@Override
 			public void handle(ActionEvent event) {
 				jugadorActual.combinarAlgoformers(algoformers.get(0), algoformers.get(1), algoformers.get(2));
+				algoformers= jugadorActual.devolverEquipo();
 				contenedor.vistaCasillerosUpdate();
 			}
 		};
@@ -302,7 +335,8 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				}
 				actualizarStatsVacio();
 				actualizarNombreObjetivo("");
-
+				algoformerActual.transformar();
+				algoformerActual.transformar();//se reestablecen los valores de los movimientos
 			}
 
 		};
@@ -327,6 +361,13 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		Button tercerAlgoformer = new Button(algoformers.get(2).getNombre());
 		tercerAlgoformer.setPrefSize(80, 20);
 		tercerAlgoformer.setOnAction(seleccionarTercero);
+		
+		Button botonSeleccionarGroso = new Button();
+		if (algoformers.size()== 4){
+			botonSeleccionarGroso.setText(algoformers.get(3).getNombre());
+		}
+		botonSeleccionarGroso.setPrefSize(80,  20);
+		botonSeleccionarGroso.setOnAction(seleccionarGroso);
 
 		Button botonTransformar = new Button();
 		botonTransformar.setText("Transformar");
@@ -335,10 +376,10 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		Button botonCombinar = new Button();
 		botonCombinar.setText("Combinar");
 		botonCombinar.setOnAction(botonCombinarHandler);
+		botonCombinar.setOnMouseClicked(e -> {
+			botonSeleccionarGroso.setText(algoformers.get(3).getNombre());
+		});
 		
-		HBox botonesTransformaciones = new HBox();
-		botonesTransformaciones.getChildren().addAll(botonTransformar, botonCombinar);
-
 		Button moverNorte = new Button();
 		moverNorte.setPrefSize(50, 10);
 		moverNorte.setText("Norte");
@@ -370,17 +411,58 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			primerAlgoformer.setText(algoformers.get(0).getNombre());
 			segundoAlgoformer.setText(algoformers.get(1).getNombre());
 			tercerAlgoformer.setText(algoformers.get(2).getNombre());
+			if (algoformers.size()== 4) {
+				botonSeleccionarGroso.setText(algoformers.get(3).getNombre());
+			} else {
+				botonSeleccionarGroso.setText("");
+			}
 		});
 
 		Button botonAtacar = new Button();
 		botonAtacar.setPrefSize(50, 10);
 		botonAtacar.setText("Atacar");
 		botonAtacar.setOnAction(botonAtacarHandler);
+		
+		HBox botonesParaSeleccionarLosAlgoformersAAtacar = new HBox();
+
+		Button primerAlgoformerAAtacar = new Button(algoformers.get(0).getNombre());
+		primerAlgoformerAAtacar.setPrefSize(80, 20);
+		primerAlgoformerAAtacar.setOnAction(seleccionarPrimero);
+
+		Button segundoAlgoformerAAtacar = new Button(algoformers.get(1).getNombre());
+		segundoAlgoformerAAtacar.setPrefSize(80, 20);
+		segundoAlgoformerAAtacar.setOnAction(seleccionarSegundo);
+
+		Button tercerAlgoformerAAtacar = new Button(algoformers.get(2).getNombre());
+		tercerAlgoformerAAtacar.setPrefSize(80, 20);
+		tercerAlgoformerAAtacar.setOnAction(seleccionarTercero);
+		
+		Button botonSeleccionarGrosoAAtacar = new Button();
+		if (algoformers.size()== 4){
+			botonSeleccionarGrosoAAtacar.setText(algoformers.get(3).getNombre());
+		}
+		botonSeleccionarGrosoAAtacar.setPrefSize(80,  20);
+		botonSeleccionarGrosoAAtacar.setOnAction(seleccionarGroso);
+		
+		botonesParaSeleccionarLosAlgoformersAAtacar.getChildren().addAll(primerAlgoformerAAtacar, segundoAlgoformerAAtacar, tercerAlgoformerAAtacar);
 
 		botonesParaSeleccionarLosAlgoformers.getChildren().addAll(primerAlgoformer, segundoAlgoformer,
 				tercerAlgoformer);
-		this.getChildren().addAll(botonesParaSeleccionarLosAlgoformers, botonesTransformaciones, botonesParaMoverse, pasarTurno,
-				botonAtacar);
+		this.getChildren().addAll(botonesParaSeleccionarLosAlgoformers, botonTransformar);
+		
+		this.getChildren().add(this.separadorMovimientos);
+		this.getChildren().addAll(botonesParaMoverse);
+		
+		this.getChildren().add(this.separadorParaSeleccionarGroso);
+		this.getChildren().addAll(botonCombinar, botonSeleccionarGroso);
+		
+		this.getChildren().add(this.separadorParaAtacar);
+		this.getChildren().addAll(botonAtacar, botonesParaSeleccionarLosAlgoformersAAtacar, botonSeleccionarGrosoAAtacar);
+		
+		this.getChildren().add(this.separadorPasarTurno);
+		this.getChildren().add(pasarTurno);
+
+
 
 		actualizarStatsVacio();
 	}
