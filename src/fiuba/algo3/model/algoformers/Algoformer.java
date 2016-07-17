@@ -20,7 +20,7 @@ public class Algoformer implements Interactuable {
 	protected Casillero ubicacion;
 	protected String nombre;
 	protected int vida;
-	protected int movimientosRestantes;
+	protected int accionesRestantes;
 	protected Stat armadura;
 	private String rutaImgAlt;
 	private String rutaImgHum;
@@ -39,7 +39,7 @@ public class Algoformer implements Interactuable {
 		ListaCircularEstatica estados = new ListaCircularEstatica(lista);
 		this.estados = estados;
 		this.estadoActual = this.estados.get();
-		this.movimientosRestantes = estadoActual.getVelocidadDespl();
+		this.accionesRestantes = estadoActual.getVelocidadDespl();
 		this.armadura = new Stat(0);
 		this.rutaImgHum = rutaHumanoide;
 		this.rutaImgAlt = rutaAlterno;
@@ -80,7 +80,7 @@ public class Algoformer implements Interactuable {
 
 	public void mover(Casillero destino) {
 		int pasosAMoverse = this.estadoActual.devolverPasosPara(destino);
-		if ((this.movimientosRestantes - pasosAMoverse) < 0) {
+		if ((this.accionesRestantes - pasosAMoverse) < 0) {
 			throw new NoPuedeMoverseException();
 		}
 		this.ubicacion.removerElemento(); // eliminar esta linea si se usa el
@@ -93,7 +93,7 @@ public class Algoformer implements Interactuable {
 		} else {
 			this.aplicarseEfectosSuperficie(destino.getTerreno());
 		}
-		this.movimientosRestantes -= pasosAMoverse;
+		this.accionesRestantes -= pasosAMoverse;
 	}
 
 	@Override
@@ -103,7 +103,7 @@ public class Algoformer implements Interactuable {
 
 	public void transformar() {
 		this.estadoActual = this.estados.get();
-		this.movimientosRestantes = this.estadoActual.getVelocidadDespl();
+		this.accionesRestantes = this.estadoActual.getVelocidadDespl();
 		/*
 		 * Casillero ubicacionAux = this.getUbicacion();
 		 * this.ubicacion.removerElemento(); this.ubicarEn(ubicacionAux);
@@ -124,6 +124,7 @@ public class Algoformer implements Interactuable {
 			throw new AlcanceExcedidoException();
 		}
 		enemigo.recibirAtaque(this.getAtaque());
+		this.accionesRestantes--;
 
 	}
 
@@ -134,7 +135,7 @@ public class Algoformer implements Interactuable {
 
 	public boolean esAtaquePosible(Coordenada coordObjetivo) {
 		Coordenada coordOrigen = this.getUbicacion().getUbicacion();
-		return this.getEstadoActual().esAtaquePosible(coordOrigen, coordObjetivo);
+		return this.getEstadoActual().esAtaquePosible(coordOrigen, coordObjetivo) && this.accionesRestantes > 0;
 	}
 
 	private boolean esCombinacionPosible(Coordenada coordenadaAmiga) {
@@ -165,8 +166,8 @@ public class Algoformer implements Interactuable {
 		this.vida = vidaACambiar;
 	}
 
-	public int getMovimientosRestantes() {
-		return this.movimientosRestantes;
+	public int getaccionesRestantes() {
+		return this.accionesRestantes;
 	}
 
 	public int getAlcance() {

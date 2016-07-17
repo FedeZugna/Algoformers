@@ -104,7 +104,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				actualizarNombreObjetivo(algoformerActual.getNombre());
 				actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
-						algoformerActual.getMovimientosRestantes());
+						algoformerActual.getaccionesRestantes());
 				imprimirPantalla();
 			}
 		};
@@ -116,7 +116,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				actualizarNombreObjetivo(algoformerActual.getNombre());
 				actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
-						algoformerActual.getMovimientosRestantes());
+						algoformerActual.getaccionesRestantes());
 				imprimirPantalla();
 			}
 		};
@@ -128,7 +128,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				actualizarNombreObjetivo(algoformerActual.getNombre());
 				actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
-						algoformerActual.getMovimientosRestantes());
+						algoformerActual.getaccionesRestantes());
 				imprimirPantalla();
 			}
 		};
@@ -140,7 +140,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				actualizarNombreObjetivo(algoformerActual.getNombre());
 				actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
-						algoformerActual.getMovimientosRestantes());
+						algoformerActual.getaccionesRestantes());
 				imprimirPantalla();
 			}
 		};
@@ -207,7 +207,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				algoformerActual.transformar();
 				actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
-						algoformerActual.getMovimientosRestantes());
+						algoformerActual.getaccionesRestantes());
 				imprimirPantalla();
 			}
 		};
@@ -221,7 +221,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				actualizarNombreObjetivo(algoformerActual.getNombre());
 				actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
-						algoformerActual.getMovimientosRestantes());
+						algoformerActual.getaccionesRestantes());
 				System.out.println(algoformerActual.getUbicacion().devuelveRutaImgCont());
 				imprimirPantalla();
 			}
@@ -237,7 +237,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 					algoformerActual.mover(casilleroNorte);
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
-							algoformerActual.getMovimientosRestantes());
+							algoformerActual.getaccionesRestantes());
 					imprimirPantalla();
 
 				} catch (NoPuedeMoverseException e) {
@@ -263,7 +263,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 					algoformerActual.mover(casilleroOeste);
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
-							algoformerActual.getMovimientosRestantes());
+							algoformerActual.getaccionesRestantes());
 					imprimirPantalla();
 
 				} catch (NoPuedeMoverseException e) {
@@ -286,7 +286,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 					algoformerActual.mover(casilleroSur);
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
-							algoformerActual.getMovimientosRestantes());
+							algoformerActual.getaccionesRestantes());
 					imprimirPantalla();
 
 				} catch (NoPuedeMoverseException e) {
@@ -310,7 +310,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 					algoformerActual.mover(casilleroEste);
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
-							algoformerActual.getMovimientosRestantes());
+							algoformerActual.getaccionesRestantes());
 					imprimirPantalla();
 
 				} catch (NoPuedeMoverseException e) {
@@ -336,7 +336,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				if (algoformerActual != null) {
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
-							algoformerActual.getMovimientosRestantes());
+							algoformerActual.getaccionesRestantes());
 				}
 				actualizarStatsVacio();
 				actualizarNombreObjetivo("");
@@ -358,6 +358,9 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			public void handle(ActionEvent event) {
 				algoformerActual.atacar(algoformerParaAtacar);
 				actualizarStatsEnemigo(algoformerParaAtacar.getNombre(), algoformerParaAtacar.getVida());
+				actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
+						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
+						algoformerActual.getaccionesRestantes());
 				imprimirPantalla();
 			}
 		};
@@ -506,7 +509,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			if (ocupante.estaVivo()) {
 				Algoformer ocupanteA = (Algoformer) cas.devolverElemento();
 				actualizarStatsObjetivo(ocupanteA.getVida(), ocupanteA.getAtaque(), ocupanteA.getAlcance(),
-						ocupanteA.getVelocidad_despl(), ocupanteA.getMovimientosRestantes());
+						ocupanteA.getVelocidad_despl(), ocupanteA.getaccionesRestantes());
 				actualizarNombreObjetivo(ocupanteA.getNombre());
 			}
 		} catch (AccionInvalidaException a) {
