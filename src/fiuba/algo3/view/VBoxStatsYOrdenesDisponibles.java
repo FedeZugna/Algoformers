@@ -398,7 +398,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		EventHandler<ActionEvent> botonAtacarHandler = new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				algoformerActual.morir();
+				algoformerActual.atacar(algoformerParaAtacar);
 			}
 		};
 
