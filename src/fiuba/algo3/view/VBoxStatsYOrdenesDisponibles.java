@@ -414,22 +414,24 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 
 		HBox botonesParaSeleccionarLosAlgoformersParaAtacar = new HBox();
 
-		Button primerAlgoformerParaAtacar = new Button(algoformers.get(0).getNombre());
+		Button primerAlgoformerParaAtacar = new Button(equipoEnemigo.get(0).getNombre());
 		primerAlgoformerParaAtacar.setPrefSize(80, 20);
 		primerAlgoformerParaAtacar.setOnAction(seleccionarPrimeroParaAtacar);
 
-		Button segundoAlgoformerParaAtacar = new Button(algoformers.get(1).getNombre());
+		Button segundoAlgoformerParaAtacar = new Button(equipoEnemigo.get(1).getNombre());
 		segundoAlgoformerParaAtacar.setPrefSize(80, 20);
 		segundoAlgoformerParaAtacar.setOnAction(seleccionarSegundoParaAtacar);
 
-		Button tercerAlgoformerParaAtacar = new Button(algoformers.get(2).getNombre());
+		Button tercerAlgoformerParaAtacar = new Button(equipoEnemigo.get(2).getNombre());
 		tercerAlgoformerParaAtacar.setPrefSize(80, 20);
 		tercerAlgoformerParaAtacar.setOnAction(seleccionarTerceroParaAtacar);
 
 		Button botonSeleccionarGrosoParaAtacar = new Button();
 		if (algoformers.size() == 4) {
-			botonSeleccionarGrosoParaAtacar.setText(algoformers.get(3).getNombre());
-		}
+			botonSeleccionarGrosoParaAtacar.setText(equipoEnemigo.get(3).getNombre());
+		} /*else{
+			botonSeleccionarGrosoParaAtacar.setDisable(true);
+		}*/
 		botonSeleccionarGrosoParaAtacar.setPrefSize(80, 20);
 		botonSeleccionarGrosoParaAtacar.setOnAction(seleccionarGrosoParaAtacar);
 
