@@ -144,6 +144,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 						algoformerActual.getMovimientosRestantes());
 				contenedor.vistaCasillerosUpdate();
+				imprimirPantalla();
 			}
 		};
 
@@ -220,7 +221,13 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			public void handle(ActionEvent event) {
 				jugadorActual.combinarAlgoformers(algoformers.get(0), algoformers.get(1), algoformers.get(2));
 				algoformers = jugadorActual.devolverEquipo();
+				algoformerActual = algoformers.get(3);
+				actualizarNombreObjetivo(algoformerActual.getNombre());
+				actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
+						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
+						algoformerActual.getMovimientosRestantes());
 				contenedor.vistaCasillerosUpdate();
+				imprimirPantalla();
 			}
 		};
 

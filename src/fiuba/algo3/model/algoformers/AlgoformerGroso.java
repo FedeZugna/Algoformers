@@ -8,7 +8,7 @@ public abstract class AlgoformerGroso extends Algoformer{
 	protected int correspondenciaDe1;
 	protected int correspondenciaDe2;
 	protected int correspondenciaDe3;
-	private String rutaImgHum = "file:src/fiuba/algo3/fotos/pueba1.png";
+	private String rutaImgHum = "file:src/fiuba/algo3/fotos/algoformers/Superion.png";
 	
 	
 	protected void calcularCorrespondenciaDeVidaDeCadaUno() {
