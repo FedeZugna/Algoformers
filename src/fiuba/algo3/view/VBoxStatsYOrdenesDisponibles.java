@@ -43,6 +43,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 	private static final String stringAlcance = "Alcance: ";
 	private static final String stringVelocidad = "Velocidad: ";
 	private static final String stringCantMovsRestantes = "Cantidad de movimientos restantes: ";
+	private static final String stringEnemigo = "Enemigo: ";
 	Jugador jugadorActual;
 	ArrayList<Algoformer> algoformers;
 	Algoformer algoformerActual;
@@ -57,7 +58,9 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 	ArrayList<Bonus> listaDeBonus;
 
 	private Text stats[];
+	private Text enemigo[];
 	private Text nombreObjetivo;
+	private Text nombreEnemigo;
 	private Text separadorMovimientos= new Text("Mover:");
 	private Text separadorParaSeleccionarGroso= new Text("Combinacion:");
 	private Text separadorParaAtacar= new Text("Atacar:");
@@ -109,14 +112,6 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 						algoformerActual.getMovimientosRestantes());
 				imprimirPantalla();
 			}
-			
-			private void imprimirPantalla() {
-				if (algoformerActual.devuelveNombreCont()=="file:src/fotos/Algoformers/MegatronA.png"||algoformerActual.devuelveNombreCont()=="file:src/fotos/Algoformers/RatchetA.png"){
-					contenedor.vistaCasillerosUpdateAereo();
-				} else{
-					contenedor.vistaCasillerosUpdate();
-				}				
-			}
 		};
 
 		EventHandler<ActionEvent> seleccionarSegundo = new EventHandler<ActionEvent>() {
@@ -129,14 +124,6 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 						algoformerActual.getMovimientosRestantes());
 				imprimirPantalla();
 			}
-			
-			private void imprimirPantalla() {
-				if (algoformerActual.devuelveNombreCont()=="file:src/fotos/Algoformers/MegatronA.png"||algoformerActual.devuelveNombreCont()=="file:src/fotos/Algoformers/RatchetA.png"){
-					contenedor.vistaCasillerosUpdateAereo();
-				} else{
-					contenedor.vistaCasillerosUpdate();
-				}				
-			}
 		};
 
 		EventHandler<ActionEvent> seleccionarTercero = new EventHandler<ActionEvent>() {
@@ -148,14 +135,6 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 						algoformerActual.getMovimientosRestantes());
 				imprimirPantalla();
-			}
-			
-			private void imprimirPantalla() {
-				if (algoformerActual.devuelveNombreCont()=="file:src/fotos/Algoformers/MegatronA.png"||algoformerActual.devuelveNombreCont()=="file:src/fotos/Algoformers/RatchetA.png"){
-					contenedor.vistaCasillerosUpdateAereo();
-				} else{
-					contenedor.vistaCasillerosUpdate();
-				}				
 			}
 		};
 		
@@ -179,6 +158,8 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				} else {
 					algoformerParaAtacar = equipoAutobots.get(0);
 				}
+				actualizarStatsEnemigo(algoformerParaAtacar.getNombre(), algoformerParaAtacar.getVida());
+				imprimirPantalla();
 			}
 		};
 
@@ -190,6 +171,8 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				} else {
 					algoformerParaAtacar = equipoAutobots.get(1);
 				}
+				actualizarStatsEnemigo(algoformerParaAtacar.getNombre(), algoformerParaAtacar.getVida());
+				imprimirPantalla();
 			}
 		};
 
@@ -201,6 +184,8 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				} else {
 					algoformerParaAtacar = equipoAutobots.get(2);
 				}
+				actualizarStatsEnemigo(algoformerParaAtacar.getNombre(), algoformerParaAtacar.getVida());
+				imprimirPantalla();
 			}
 		};
 		
@@ -212,6 +197,8 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				} else {
 					algoformerParaAtacar = equipoAutobots.get(3);
 				}
+				actualizarStatsEnemigo(algoformerParaAtacar.getNombre(), algoformerParaAtacar.getVida());
+				imprimirPantalla();
 			}
 		};
 
@@ -225,14 +212,6 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 						algoformerActual.getMovimientosRestantes());
 				
 				imprimirPantalla();
-			}
-			
-			private void imprimirPantalla() {
-				if (algoformerActual.devuelveNombreCont()=="file:src/fotos/Algoformers/MegatronA.png"||algoformerActual.devuelveNombreCont()=="file:src/fotos/Algoformers/RatchetA.png"){
-					contenedor.vistaCasillerosUpdateAereo();
-				} else{
-					contenedor.vistaCasillerosUpdate();
-				}				
 			}
 		};
 		
@@ -267,14 +246,6 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 
 				}
 			}
-			
-			private void imprimirPantalla() {
-				if (algoformerActual.devuelveNombreCont()=="file:src/fotos/Algoformers/MegatronA.png"||algoformerActual.devuelveNombreCont()=="file:src/fotos/Algoformers/RatchetA.png"){
-					contenedor.vistaCasillerosUpdateAereo();
-				} else{
-					contenedor.vistaCasillerosUpdate();
-				}				
-			}
 		};
 
 		EventHandler<ActionEvent> botonMoverOesteHandler = new EventHandler<ActionEvent>() {
@@ -299,14 +270,6 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 
 				}
 			}
-			
-			private void imprimirPantalla() {
-				if (algoformerActual.devuelveNombreCont()=="file:src/fotos/Algoformers/MegatronA.png"||algoformerActual.devuelveNombreCont()=="file:src/fotos/Algoformers/RatchetA.png"){
-					contenedor.vistaCasillerosUpdateAereo();
-				} else{
-					contenedor.vistaCasillerosUpdate();
-				}				
-			}
 		};
 
 		EventHandler<ActionEvent> botonMoverSurHandler = new EventHandler<ActionEvent>() {
@@ -329,14 +292,6 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				} catch (NullPointerException exc) {
 
 				}
-			}
-
-			private void imprimirPantalla() {
-				if (algoformerActual.devuelveNombreCont()=="file:src/fotos/Algoformers/MegatronA.png"||algoformerActual.devuelveNombreCont()=="file:src/fotos/Algoformers/RatchetA.png"){
-					contenedor.vistaCasillerosUpdateAereo();
-				} else{
-					contenedor.vistaCasillerosUpdate();
-				}				
 			}
 		};
 
@@ -361,14 +316,6 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				} catch (NullPointerException exc) {
 					System.out.println("3");
 				}
-			}
-			
-			private void imprimirPantalla() {
-				if (algoformerActual.devuelveNombreCont()=="file:src/fotos/Algoformers/MegatronA.png"||algoformerActual.devuelveNombreCont()=="file:src/fotos/Algoformers/RatchetA.png"){
-					contenedor.vistaCasillerosUpdateAereo();
-				} else{
-					contenedor.vistaCasillerosUpdate();
-				}				
 			}
 		};
 
@@ -399,6 +346,8 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			@Override
 			public void handle(ActionEvent event) {
 				algoformerActual.atacar(algoformerParaAtacar);
+				actualizarStatsEnemigo(algoformerParaAtacar.getNombre(), algoformerParaAtacar.getVida());
+				imprimirPantalla();
 			}
 		};
 
@@ -524,7 +473,13 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		this.getChildren().add(this.separadorPasarTurno);
 		this.getChildren().add(pasarTurno);
 
+		this.enemigo = new Text[] { new Text(stringEnemigo), new Text (stringVida) };
 
+		for (int i = 0; i < this.enemigo.length; i++) {
+			// Add offset to left side to indent from title
+			VBox.setMargin(this.enemigo[i], new Insets(0, 0, 0, 8));
+			this.getChildren().add(this.enemigo[i]);
+		}
 
 		actualizarStatsVacio();
 	}
@@ -566,6 +521,11 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		this.stats[4].setText(stringCantMovsRestantes + movsRes);
 	}
 
+	private void actualizarStatsEnemigo(String nombre, int vida) {
+		this.enemigo[0].setText(stringEnemigo + nombre);
+		this.enemigo[1].setText(stringVida + vida);
+}
+	
 	private void actualizarOrdenesDisponiblesObjetivo() {
 		String BANDO_PRUEBA1 = "Autobots";
 		String BANDO_PRUEBA2 = "Decepticons";
@@ -593,5 +553,13 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 	private void actualizarNombreObjetivo(String nombre) {
 		this.nombreObjetivo.setText(nombre);
 	}
-
+	
+	private void imprimirPantalla() {
+		if (algoformerActual.devuelveNombreCont()=="file:src/fotos/Algoformers/MegatronA.png"||algoformerActual.devuelveNombreCont()=="file:src/fotos/Algoformers/RatchetA.png"){
+			contenedor.vistaCasillerosUpdateAereo();
+		} else{
+			contenedor.vistaCasillerosUpdate();
+		}				
+	}
+	
 }
