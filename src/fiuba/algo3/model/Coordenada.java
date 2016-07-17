@@ -9,6 +9,8 @@ package model;
  *
  * @author Martin
  */
+import java.math.*;
+
 public class Coordenada {
 
 	private final int largo;
@@ -62,11 +64,13 @@ public class Coordenada {
 	}
 
 	public boolean esAlcanzable(Coordenada destino, int alcance) {
+		System.out.println(destino.getLargo() - this.getLargo());
+		System.out.println(destino.getAlto() - this.getAlto()-1);
 
-		if (destino.getLargo() - this.getLargo() >= alcance) {
+		if (Math.abs(destino.getLargo() - this.getLargo()) >= alcance) {
 			return false;
 		}
-		if (destino.getAlto() - this.getAlto()-1 >= alcance) {
+		if (Math.abs(destino.getAlto() - this.getAlto()-1) >= alcance) {
 			return false;
 		}
 		return true;

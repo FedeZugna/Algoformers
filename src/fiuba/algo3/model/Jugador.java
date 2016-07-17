@@ -17,12 +17,12 @@ public class Jugador {
 		this.nombreEquipo = Nomequipo;
 		this.tablero = tablero;
 		this.equipo = new ArrayList<Algoformer>();
-		if (Nomequipo== "AUTOBOTS") {
+		if (Nomequipo == "AUTOBOTS") {
 			this.equipo.add(new Optimus());
 			this.equipo.add(new Bumblebee());
 			this.equipo.add(new Ratchet());
 		}
-		if (Nomequipo== "DECEPTICONS") { // else
+		if (Nomequipo == "DECEPTICONS") { // else
 			this.equipo.add(new Megatron());
 			this.equipo.add(new Bonecrusher());
 			this.equipo.add(new Frenzy());
@@ -31,14 +31,17 @@ public class Jugador {
 
 	public void mover(Algoformer algoTransf, Casillero destino) {
 		algoTransf.mover(destino);
-//		this.tablero.cambiar(algoTransf, algoTransf.getUbicacion(), destino); //eliminar ubicacion.removerElemento de mover en algoformer si se agrega esta linea
+		// this.tablero.cambiar(algoTransf, algoTransf.getUbicacion(), destino);
+		// //eliminar ubicacion.removerElemento de mover en algoformer si se
+		// agrega esta linea
 
 	}
 
 	public void atacar(Algoformer algoTransf, Coordenada objetivo) throws AtaqueInvalidoException {
 		if (this.equipo.contains(this.tablero.devolverElemento(
 				objetivo))) { /*
-								 * || objetivo.equals(algoTransf.getUbicacion()))
+								 * ||
+								 * objetivo.equals(algoTransf.getUbicacion()))
 								 */
 			throw new AtaqueInvalidoException();
 
@@ -69,7 +72,7 @@ public class Jugador {
 		Iterator<Algoformer> iterador = equipo.iterator();
 		while (iterador.hasNext()) {
 			Algoformer actual = iterador.next();
-                        if (actual.estaVivo()) {
+			if (actual.estaVivo()) {
 				algoformersVivos.add(actual);
 			}
 		}
@@ -80,13 +83,18 @@ public class Jugador {
 		return equipo;
 	}
 
+	public String devolverNombreEquipo() {
+		return nombreEquipo;
+	}
+
 	public void combinarAlgoformers(Algoformer algoformer1, Algoformer algoformer2, Algoformer algoformer3) {
 
 		if (algoformer1.esCombinableCon(algoformer2) && algoformer1.esCombinableCon(algoformer3)) {
-			if (algoformer1.getNombre() == "Optimus" || algoformer1.getNombre() == "Bumblebee" || algoformer1.getNombre() == "Ratchet") {
+			if (algoformer1.getNombre() == "Optimus" || algoformer1.getNombre() == "Bumblebee"
+					|| algoformer1.getNombre() == "Ratchet") {
 				equipo.add(new Superion(algoformer1, algoformer2, algoformer3));
 				this.posicionarAlgoformersPorCombinacion(algoformer1, algoformer2, algoformer3, equipo.get(3));
-			}else{
+			} else {
 				equipo.add(new Menasor(algoformer1, algoformer2, algoformer3));
 				this.posicionarAlgoformersPorCombinacion(algoformer1, algoformer2, algoformer3, equipo.get(3));
 
@@ -96,30 +104,29 @@ public class Jugador {
 
 	private void posicionarAlgoformersPorCombinacion(Algoformer algoformer1, Algoformer algoformer2,
 			Algoformer algoformer3, Algoformer algoformerCombinado) {
-		Casillero casilleroCentral= algoformer1.getUbicacion();
+		Casillero casilleroCentral = algoformer1.getUbicacion();
 		algoformer1.getUbicacion().removerElemento();
-//cambio aca		
+		// cambio aca
 		this.tablero.ubicarElemento(algoformerCombinado, casilleroCentral.getUbicacion());
 
-//		algoformerCombinado.ubicarEn(casilleroCentral);
+		// algoformerCombinado.ubicarEn(casilleroCentral);
 		algoformer2.getUbicacion().removerElemento();// no cambia la ubicacion
 		algoformer3.getUbicacion().removerElemento();// que conoce el algoformer
 	}
 
 	public void separarAlgoformers() {
-		
-		AlgoformerGroso algoformerCombinado= (AlgoformerGroso)equipo.get(3);
+
+		AlgoformerGroso algoformerCombinado = (AlgoformerGroso) equipo.get(3);
 		equipo.get(0).setVidaAlSeparar(algoformerCombinado.getVida1());
 		equipo.get(1).setVidaAlSeparar(algoformerCombinado.getVida2());
 		equipo.get(2).setVidaAlSeparar(algoformerCombinado.getVida3());
 		this.posicionarAlgoformersPostCombinacion(equipo.get(0), equipo.get(1), equipo.get(2), algoformerCombinado);
 	}
 
-	private void posicionarAlgoformersPostCombinacion(Algoformer algoformer1,
-			Algoformer algoformer2, Algoformer algoformer3,
-			AlgoformerGroso algoformerCombinado) {
+	private void posicionarAlgoformersPostCombinacion(Algoformer algoformer1, Algoformer algoformer2,
+			Algoformer algoformer3, AlgoformerGroso algoformerCombinado) {
 
-		Coordenada coordenadaCentral= algoformerCombinado.getUbicacion().getUbicacion();
+		Coordenada coordenadaCentral = algoformerCombinado.getUbicacion().getUbicacion();
 		algoformerCombinado.getUbicacion().removerElemento();
 		equipo.remove(equipo.get(3));
 		this.ubicarPorSeparacion(algoformer1, coordenadaCentral);
@@ -127,22 +134,26 @@ public class Jugador {
 		this.ubicarPorSeparacion(algoformer3, coordenadaCentral);
 	}
 
-	private void ubicarPorSeparacion(Algoformer algoformer,
-			Coordenada coordenada) {
-		try{
+	private void ubicarPorSeparacion(Algoformer algoformer, Coordenada coordenada) {
+		try {
 			this.tablero.ubicarElemento(algoformer, coordenada);
-		}catch (CasilleroOcupadoException e){
-			Coordenada coordenadaSiguiente= new Coordenada(coordenada.getLargo()+1, coordenada.getAlto()); //inverti estos
+		} catch (CasilleroOcupadoException e) {
+			Coordenada coordenadaSiguiente = new Coordenada(coordenada.getLargo() + 1, coordenada.getAlto()); // inverti
+																												// estos
 			this.ubicarPorSeparacion(algoformer, coordenadaSiguiente);
-		}catch (NullPointerException e){
-			Coordenada coordenadaSiguiente= new Coordenada(coordenada.getLargo()-7, coordenada.getAlto());//inverti estos
-//			Coordenada coordenadaSiguiente= new Coordenada(coordenada.getLargo()-3, coordenada.getAlto());//inverti estos
+		} catch (NullPointerException e) {
+			Coordenada coordenadaSiguiente = new Coordenada(coordenada.getLargo() - 7, coordenada.getAlto());// inverti
+																												// estos
+			// Coordenada coordenadaSiguiente= new
+			// Coordenada(coordenada.getLargo()-3,
+			// coordenada.getAlto());//inverti estos
 			this.ubicarPorSeparacion(algoformer, coordenadaSiguiente);
-/*
-		}catch (StackOverflowError e){
-			Coordenada coordenadaSiguiente= new Coordenada(coordenada.getLargo()-7, coordenada.getAlto());//inverti estos
-			this.ubicarPorSeparacion(algoformer, coordenadaSiguiente);
-*/
+			/*
+			 * }catch (StackOverflowError e){ Coordenada coordenadaSiguiente=
+			 * new Coordenada(coordenada.getLargo()-7,
+			 * coordenada.getAlto());//inverti estos
+			 * this.ubicarPorSeparacion(algoformer, coordenadaSiguiente);
+			 */
 		}
 	}
 
