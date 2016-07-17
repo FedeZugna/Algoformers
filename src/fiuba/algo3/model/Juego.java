@@ -1,11 +1,8 @@
 package model;
 
-<<<<<<< HEAD
 import model.excepciones.*;
-=======
 import model.excepciones.CasilleroOcupadoException;
 import model.excepciones.NombreDeEquipoNoExisteException;
->>>>>>> de27701a5b888384e606715b77fa4955f2394e17
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -138,7 +135,6 @@ public class Juego {
 	}
 	
 	private void ubicarRandom(Bonus bonus) {
-<<<<<<< HEAD
 		try{
 			int posicionX = (int) (Math.random()*15+1);
 			int posicionY = (int) (Math.random()*10+1);
@@ -146,17 +142,16 @@ public class Juego {
 			tableroGeneral.ubicarElemento(bonus, coordenada);
 		} catch (CasilleroOcupadoException e){
 			ubicarRandom(bonus);
-=======
 		int posicionX= (int) (Math.random()*15+1);
 		int posicionY= (int) (Math.random()*10+1);
 		try {
 			Coordenada coordenada= new Coordenada (posicionX, posicionY);
 			tableroGeneral.ubicarElemento(bonus, coordenada);
-		} catch (CasilleroOcupadoException e) {
+		} catch (CasilleroOcupadoException exc) {
 			this.ubicarRandom(bonus);
->>>>>>> de27701a5b888384e606715b77fa4955f2394e17
 		}
 	}
+}
 	
 	public Jugador obtenerJugadorActual(){
 		return turnos[jugadas%2];
