@@ -60,7 +60,6 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 	private Text stats[];
 	private Text enemigo[];
 	private Text nombreObjetivo;
-	private Text nombreEnemigo;
 	private Text separadorMovimientos= new Text("Mover:");
 	private Text separadorParaSeleccionarGroso= new Text("Combinacion:");
 	private Text separadorParaAtacar= new Text("Atacar:");
@@ -411,7 +410,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		botonAtacar.setText("Atacar");
 		botonAtacar.setOnAction(botonAtacarHandler);
 		
-		HBox botonesParaSeleccionarLosAlgoformersAAtacar = new HBox();
+		HBox botonesParaSeleccionarLosAlgoformersParaAtacar = new HBox();
 
 		Button primerAlgoformerParaAtacar = new Button(algoformers.get(0).getNombre());
 		primerAlgoformerParaAtacar.setPrefSize(80, 20);
@@ -430,9 +429,9 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			botonSeleccionarGrosoParaAtacar.setText(algoformers.get(3).getNombre());
 		}
 		botonSeleccionarGrosoParaAtacar.setPrefSize(80,  20);
-		botonSeleccionarGrosoParaAtacar.setOnAction(seleccionarGroso);
+		botonSeleccionarGrosoParaAtacar.setOnAction(seleccionarGrosoParaAtacar);
 		
-		botonesParaSeleccionarLosAlgoformersAAtacar.getChildren().addAll(primerAlgoformerParaAtacar, segundoAlgoformerParaAtacar, tercerAlgoformerParaAtacar);
+		botonesParaSeleccionarLosAlgoformersParaAtacar.getChildren().addAll(primerAlgoformerParaAtacar, segundoAlgoformerParaAtacar, tercerAlgoformerParaAtacar);
 
 		Button pasarTurno = new Button();
 		pasarTurno.setPrefSize(80, 15);
@@ -450,7 +449,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			primerAlgoformerParaAtacar.setText(equipoEnemigo.get(0).getNombre());
 			segundoAlgoformerParaAtacar.setText(equipoEnemigo.get(1).getNombre());
 			tercerAlgoformerParaAtacar.setText(equipoEnemigo.get(2).getNombre());
-			if (algoformers.size()== 4) {
+			if (equipoEnemigo.size()== 4) {
 				botonSeleccionarGrosoParaAtacar.setText(equipoEnemigo.get(3).getNombre());
 			} else {
 				botonSeleccionarGrosoParaAtacar.setText("");
@@ -468,7 +467,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		this.getChildren().addAll(botonCombinar, botonSeleccionarGroso);
 		
 		this.getChildren().add(this.separadorParaAtacar);
-		this.getChildren().addAll(botonesParaSeleccionarLosAlgoformersAAtacar, botonSeleccionarGrosoParaAtacar, botonAtacar);
+		this.getChildren().addAll(botonesParaSeleccionarLosAlgoformersParaAtacar, botonSeleccionarGrosoParaAtacar, botonAtacar);
 		
 		this.getChildren().add(this.separadorPasarTurno);
 		this.getChildren().add(pasarTurno);
