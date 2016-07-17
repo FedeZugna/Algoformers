@@ -8,55 +8,55 @@ import javafx.scene.paint.Color;
 
 public class CanvasAjustable extends Canvas {
 
-    public CanvasAjustable(double with, double height) {
+	public CanvasAjustable(double with, double height) {
 
-        super(with, height);
+		super(with, height);
 
-        InvalidationListener listener = (new InvalidationListener() {
-            @Override
-            public void invalidated(Observable o) {
-                draw();
-            }
-        });
+		InvalidationListener listener = (new InvalidationListener() {
+			@Override
+			public void invalidated(Observable o) {
+				draw();
+			}
+		});
 
-        widthProperty().addListener(new InvalidationListener() {
+		widthProperty().addListener(new InvalidationListener() {
 
-            @Override
-            public void invalidated(Observable arg0) {
-                draw();
+			@Override
+			public void invalidated(Observable arg0) {
+				draw();
 
-            }
-        });
+			}
+		});
 
-        heightProperty().addListener(listener);
-    }
+		heightProperty().addListener(listener);
+	}
 
-    private void draw() {
-        double width = getWidth();
-        double height = getHeight();
+	private void draw() {
+		double width = getWidth();
+		double height = getHeight();
 
-        System.out.println("width: " + width + "height: " + height);
+		System.out.println("width: " + width + "height: " + height);
 
-        GraphicsContext gc = getGraphicsContext2D();
-        gc.clearRect(0, 0, width, height);
+		GraphicsContext gc = getGraphicsContext2D();
+		gc.clearRect(0, 0, width, height);
 
-        gc.setStroke(Color.RED);
-        gc.strokeLine(0, 0, width, height);
-        gc.strokeLine(0, height, width, 0);
-    }
+		gc.setStroke(Color.RED);
+		gc.strokeLine(0, 0, width, height);
+		gc.strokeLine(0, height, width, 0);
+	}
 
-    @Override
-    public boolean isResizable() {
-        return true;
-    }
+	@Override
+	public boolean isResizable() {
+		return true;
+	}
 
-    @Override
-    public double prefWidth(double height) {
-        return getWidth();
-    }
+	@Override
+	public double prefWidth(double height) {
+		return getWidth();
+	}
 
-    @Override
-    public double prefHeight(double width) {
-        return getHeight();
-    }
+	@Override
+	public double prefHeight(double width) {
+		return getHeight();
+	}
 }

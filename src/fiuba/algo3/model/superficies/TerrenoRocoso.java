@@ -2,7 +2,8 @@ package model.superficies;
 
 public class TerrenoRocoso extends Terreno {
 
-	private String nombre= "file:src/fotos/Terrenos/Rocoso.png";
+	private String nombre = "file:src/fotos/Terrenos/Rocoso.png";
+
 	public TerrenoRocoso() {
 		super();
 		agregarRutaDeImagen(nombre);

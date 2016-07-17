@@ -22,7 +22,7 @@ public abstract class StatModifier {
 		this.duenio.quitarModificador(this);
 	}
 
-        public boolean sonElMismoEfecto(StatModifier otro){
-            return (this.getClass().equals(otro.getClass()));
-        }
+	public boolean sonElMismoEfecto(StatModifier otro) {
+		return (this.getClass().equals(otro.getClass()));
+	}
 }

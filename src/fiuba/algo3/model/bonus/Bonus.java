@@ -6,20 +6,18 @@ import model.algoformers.Algoformer;
 import model.superficies.Superficie;
 
 public abstract class Bonus extends StatModifierConDuracion implements Notificable, Interactuable {
-	
+
 	private String nombre;
 	private Casillero ubicacion;
 	private Algoformer duenio;
 	private String rutaImg;
-	
-	
-    protected Bonus(int duracion, String nombre, String rutaImg) {
-        super(duracion);
-        this.nombre = nombre;
-        this.rutaImg= rutaImg;
-    }
-	
-	
+
+	protected Bonus(int duracion, String nombre, String rutaImg) {
+		super(duracion);
+		this.nombre = nombre;
+		this.rutaImg = rutaImg;
+	}
+
 	@Override
 	public Casillero getUbicacion() {
 		return this.ubicacion;
@@ -28,8 +26,9 @@ public abstract class Bonus extends StatModifierConDuracion implements Notificab
 	@Override
 	public void setUbicacion(Casillero ubicacion) {
 		this.ubicacion = ubicacion;
-		
+
 	}
+
 	@Override
 	public String getNombre() {
 		return this.nombre;
@@ -39,37 +38,37 @@ public abstract class Bonus extends StatModifierConDuracion implements Notificab
 	public void ubicarEn(Casillero casillero) {
 		this.ubicacion = casillero;
 	}
-	
-	public boolean fueUbicadoEn(Casillero casillero){
+
+	public boolean fueUbicadoEn(Casillero casillero) {
 		return this.ubicacion == casillero;
 	}
 
-	public void cambiarDuenio(Algoformer duenio){
+	public void cambiarDuenio(Algoformer duenio) {
 		this.duenio = duenio;
 	}
-        /*
-	public void destruir() {
-		this.duenio.quitarBonus(this);
-	}
-	*/
+
+	/*
+	 * public void destruir() { this.duenio.quitarBonus(this); }
+	 */
 	@Override
 	public boolean estaVivo() {
 		throw new AccionInvalidaException();
 	}
-	
+
 	@Override
 	public void aplicarseEfectosSuperficie(Superficie superficie) {
-		
+
 	}
-	
-    public void serCapturadoPor(Algoformer a){
-    	this.cambiarDuenio(a);
-        Tablero.getInstancia().agregarNotificable(this);
-        //System.out.println("HOLIS");
-        
-    }
-    @Override
-    public String devuelveNombreCont() {
-    	return rutaImg;
-    }
+
+	public void serCapturadoPor(Algoformer a) {
+		this.cambiarDuenio(a);
+		Tablero.getInstancia().agregarNotificable(this);
+		// System.out.println("HOLIS");
+
+	}
+
+	@Override
+	public String devuelveNombreCont() {
+		return rutaImg;
+	}
 }

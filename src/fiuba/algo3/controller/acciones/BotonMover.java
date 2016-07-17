@@ -17,21 +17,21 @@ import model.algoformers.Algoformer;
  * @author Martin
  */
 public class BotonMover extends Button {
-    private static final String TEXTO_MOVER = "Mover";
-    
-    
-    public BotonMover(){
-        super(TEXTO_MOVER);
-        this.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                //se ocupa de mover (falta pedir algoformer y casillero objetivo)
-                
-                Casillero objetivo = Master.getInstancia().pedirObjetivo();
-                Algoformer algofActual = Master.getInstancia().devolverAlgoformerActual();
-                algofActual.mover(objetivo);
-                Master.getInstancia().terminarTurno();
-            }
-        });
-    }
+	private static final String TEXTO_MOVER = "Mover";
+
+	public BotonMover() {
+		super(TEXTO_MOVER);
+		this.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				// se ocupa de mover (falta pedir algoformer y casillero
+				// objetivo)
+
+				Casillero objetivo = Master.getInstancia().pedirObjetivo();
+				Algoformer algofActual = Master.getInstancia().devolverAlgoformerActual();
+				algofActual.mover(objetivo);
+				Master.getInstancia().terminarTurno();
+			}
+		});
+	}
 }

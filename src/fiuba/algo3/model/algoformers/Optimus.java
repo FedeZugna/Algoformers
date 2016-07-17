@@ -12,7 +12,7 @@ public class Optimus extends Algoformer {
 	int velocidadAlterno = 5;
 	final static private String rutaImgAlt = "file:src/fotos/Algoformers/OptimusA.png";
 	final static private String rutaImgHum = "file:src/fotos/Algoformers/Optimus.png";;
-												
+
 	public Optimus() {
 
 		inicializarAlgoformer(nombre, vidaOptimus, ataqueHumanoide, distanciaAtaqueHumanoide, velocidadHumanoide,

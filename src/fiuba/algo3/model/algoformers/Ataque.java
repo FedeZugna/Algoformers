@@ -15,8 +15,8 @@ public abstract class Ataque {
 	public int getDanio() {
 		return this.danio;
 	}
-	
-	public void setDanio(int danio){
+
+	public void setDanio(int danio) {
 		this.danio = danio;
 	}
 }

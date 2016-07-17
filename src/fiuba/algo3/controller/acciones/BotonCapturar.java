@@ -13,24 +13,24 @@ import javafx.scene.control.Button;
  *
  * @author Martin
  */
-public class BotonCapturar extends Button{
-    private static final String TEXTO_CAPTURAR = "Capturar";
-    
-    
-    public BotonCapturar(){
-        super(TEXTO_CAPTURAR);
-        this.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                /*
-                Casillero casilleroObjetivo = Master.getInstancia().pedirObjetivo();
-                Interactuable objetivo = casilleroObjetivo.devolverElemento();
-                Algoformer algofActual = Master.getInstancia().devolverAlgoformerActual();
-                algofActual.capturar(objetivo);
-                Master.getInstancia().terminarTurno();
-                */
-            }
-        });
-    }
-}
+public class BotonCapturar extends Button {
+	private static final String TEXTO_CAPTURAR = "Capturar";
 
+	public BotonCapturar() {
+		super(TEXTO_CAPTURAR);
+		this.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				/*
+				 * Casillero casilleroObjetivo =
+				 * Master.getInstancia().pedirObjetivo(); Interactuable objetivo
+				 * = casilleroObjetivo.devolverElemento(); Algoformer
+				 * algofActual =
+				 * Master.getInstancia().devolverAlgoformerActual();
+				 * algofActual.capturar(objetivo);
+				 * Master.getInstancia().terminarTurno();
+				 */
+			}
+		});
+	}
+}

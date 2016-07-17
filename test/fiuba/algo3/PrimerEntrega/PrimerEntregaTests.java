@@ -35,11 +35,11 @@ import model.algoformers.Optimus;
 public class PrimerEntregaTests {
 
 	@Before
-	public void before(){
-		Tablero tablero= Tablero.getInstancia();
+	public void before() {
+		Tablero tablero = Tablero.getInstancia();
 		tablero.reiniciarTablero();
 	}
-	
+
 	@Test
 	public void test01agregarAlgoformerHumanoideYMoverlo() {
 		String NOMBRE_ALGOF1 = "Autobot1";
@@ -57,7 +57,7 @@ public class PrimerEntregaTests {
 		assertFalse(tablero1.devolverCasillero(coord1).casilleroOcupado());
 	}
 
-	@Test (expected = NoPuedeMoverseException.class)
+	@Test(expected = NoPuedeMoverseException.class)
 	public void test02agregarAlgoformerHumanoideYIntentaMoverloFueraDeRango() {
 		String NOMBRE_ALGOF1 = "Autobot1";
 		int ANCHO = 100, LARGO = 100, VIDA1 = 10, ATAQUE1 = 1, DISTANCIA_ATK1 = 2, VELOCIDAD_DESP1 = 10;
@@ -71,15 +71,15 @@ public class PrimerEntregaTests {
 		jug1.ubicarElemento(algof1, coord1);
 		jug1.mover(algof1, tablero1.devolverCasillero(coord2));
 
-		Coordenada posicionInicial= new Coordenada(1,1);
-		Coordenada destino1= new Coordenada(1,2);
-		Coordenada destino2= new Coordenada(1,3);
-		Coordenada destino3= new Coordenada(1,4);
-		Coordenada destino4= new Coordenada(1,5);
-		Coordenada destino5= new Coordenada(1,6);
-		Tablero tablero= Tablero.getInstancia();
-		Jugador jugador= new Jugador(tablero, "AUTOBOTS");
-		Algoformer optimus= jugador.devolverEquipo().get(0);
+		Coordenada posicionInicial = new Coordenada(1, 1);
+		Coordenada destino1 = new Coordenada(1, 2);
+		Coordenada destino2 = new Coordenada(1, 3);
+		Coordenada destino3 = new Coordenada(1, 4);
+		Coordenada destino4 = new Coordenada(1, 5);
+		Coordenada destino5 = new Coordenada(1, 6);
+		Tablero tablero = Tablero.getInstancia();
+		Jugador jugador = new Jugador(tablero, "AUTOBOTS");
+		Algoformer optimus = jugador.devolverEquipo().get(0);
 		jugador.ubicarElemento(optimus, posicionInicial);
 		jugador.mover(optimus, tablero.devolverCasillero(destino1));
 		jugador.mover(optimus, tablero.devolverCasillero(destino2));
@@ -122,9 +122,9 @@ public class PrimerEntregaTests {
 	public void test05InicializacionDeJuego() {
 
 		Juego juego = new Juego();
-//		juego.agregarJugador("AUTOBOTS");
-//		juego.agregarJugador("DECEPTICONS");
-//		juego.inicializarTablero();
+		// juego.agregarJugador("AUTOBOTS");
+		// juego.agregarJugador("DECEPTICONS");
+		// juego.inicializarTablero();
 
 		ArrayList<Algoformer> equipoD = new ArrayList<Algoformer>();
 		equipoD = juego.devolverEquipoDe("DECEPTICONS");
@@ -212,9 +212,9 @@ public class PrimerEntregaTests {
 	}
 
 	@After
-	public void after(){
-		Tablero tablero= Tablero.getInstancia();
+	public void after() {
+		Tablero tablero = Tablero.getInstancia();
 		tablero.reiniciarTablero();
 	}
-	
+
 }

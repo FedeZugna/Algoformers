@@ -21,15 +21,15 @@ public class Juego {
 	public Jugador jugador2;
 	public Interactuable chispa = new Chispa();
 	private int jugadas;
-	public Jugador[] turnos= new Jugador[2];
+	public Jugador[] turnos = new Jugador[2];
 	private HashMap<Jugador, ArrayList<Notificable>> aNotificar;
-	
-	public Juego(){
-        this.tableroGeneral = Tablero.getInstancia();
+
+	public Juego() {
+		this.tableroGeneral = Tablero.getInstancia();
 		this.inicializarTablero();
-		jugadas= 0;
-		turnos[0]= this.jugador1;
-		turnos[1]= this.jugador2;
+		jugadas = 0;
+		turnos[0] = this.jugador1;
+		turnos[1] = this.jugador2;
 		this.aNotificar = new HashMap<>();
 		this.aNotificar.put(turnos[0], new ArrayList<>());
 		this.aNotificar.put(turnos[1], new ArrayList<>());
@@ -59,14 +59,14 @@ public class Juego {
 		}
 	}
 
-	public ArrayList<Algoformer> devolverAlgoformersVivosDeJugador1(){
+	public ArrayList<Algoformer> devolverAlgoformersVivosDeJugador1() {
 		return devolverAlgoformersVivosDe(this.jugador1.nombreEquipo);
 	}
-	
-	public ArrayList<Algoformer> devolverAlgoformersVivosDeJugador2(){
+
+	public ArrayList<Algoformer> devolverAlgoformersVivosDeJugador2() {
 		return devolverAlgoformersVivosDe(this.jugador2.nombreEquipo);
 	}
-	
+
 	public ArrayList<Algoformer> devolverAlgoformersVivosDe(String nombreDeEquipo) {
 		if (nombreDeEquipo == "AUTOBOTS") {
 			return jugador1.devolverAlgoformersVivos();
@@ -133,46 +133,46 @@ public class Juego {
 		this.ubicarRandom(new Flash());
 
 	}
-	
+
 	private void ubicarRandom(Bonus bonus) {
-		try{
-			int posicionX = (int) (Math.random()*15+1);
-			int posicionY = (int) (Math.random()*10+1);
-			Coordenada coordenada= new Coordenada (posicionX, posicionY);
-			tableroGeneral.ubicarElemento(bonus, coordenada);
-		} catch (CasilleroOcupadoException e){
-			ubicarRandom(bonus);
-		int posicionX= (int) (Math.random()*15+1);
-		int posicionY= (int) (Math.random()*10+1);
 		try {
-			Coordenada coordenada= new Coordenada (posicionX, posicionY);
+			int posicionX = (int) (Math.random() * 15 + 1);
+			int posicionY = (int) (Math.random() * 10 + 1);
+			Coordenada coordenada = new Coordenada(posicionX, posicionY);
 			tableroGeneral.ubicarElemento(bonus, coordenada);
-		} catch (CasilleroOcupadoException exc) {
-			this.ubicarRandom(bonus);
+		} catch (CasilleroOcupadoException e) {
+			ubicarRandom(bonus);
+			int posicionX = (int) (Math.random() * 15 + 1);
+			int posicionY = (int) (Math.random() * 10 + 1);
+			try {
+				Coordenada coordenada = new Coordenada(posicionX, posicionY);
+				tableroGeneral.ubicarElemento(bonus, coordenada);
+			} catch (CasilleroOcupadoException exc) {
+				this.ubicarRandom(bonus);
+			}
 		}
 	}
-}
-	
-	public Jugador obtenerJugadorActual(){
-		return turnos[jugadas%2];
+
+	public Jugador obtenerJugadorActual() {
+		return turnos[jugadas % 2];
 	}
-	
+
 	public Jugador pasarTurno() {
 		this.notificarJugadorActual();
 		this.jugadas++;
-		return turnos[jugadas%2];
+		return turnos[jugadas % 2];
 	}
 
-	private void notificarJugadorActual(){
+	private void notificarJugadorActual() {
 		Jugador actual = this.obtenerJugadorActual();
-		for (Notificable n : this.aNotificar.get(actual)){
+		for (Notificable n : this.aNotificar.get(actual)) {
 			n.notificar();
-		}	
+		}
 	}
 
 	public void agregarNotificable(Notificable n) {
 		Jugador actual = this.obtenerJugadorActual();
 		this.aNotificar.get(actual).add(n);
-		
+
 	}
 }

@@ -14,19 +14,17 @@ import javafx.scene.control.Button;
  *
  * @author Martin
  */
-public class BotonPasarTurno extends Button{
-    private static final String TEXTO_PASAR_TURNO = "Pasar Turno";
-    
-    
-    public BotonPasarTurno(){
-        super(TEXTO_PASAR_TURNO);
-        this.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                
-                Master.getInstancia().terminarTurno();
-            }
-        });
-    }
-}
+public class BotonPasarTurno extends Button {
+	private static final String TEXTO_PASAR_TURNO = "Pasar Turno";
 
+	public BotonPasarTurno() {
+		super(TEXTO_PASAR_TURNO);
+		this.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+
+				Master.getInstancia().terminarTurno();
+			}
+		});
+	}
+}

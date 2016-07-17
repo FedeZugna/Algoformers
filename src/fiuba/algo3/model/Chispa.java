@@ -2,6 +2,7 @@ package model;
 
 import model.excepciones.AccionInvalidaException;
 import model.superficies.Superficie;
+import model.algoformers.*;
 
 public class Chispa implements Interactuable {
 
@@ -31,7 +32,7 @@ public class Chispa implements Interactuable {
 
 	@Override
 	public void aplicarseEfectosSuperficie(Superficie superficie) {
-		
+
 	}
 
 	@Override
@@ -41,7 +42,11 @@ public class Chispa implements Interactuable {
 
 	@Override
 	public String devuelveNombreCont() {
-		return this.rutaImg ;
+		return this.rutaImg;
+	}
+
+	public void serCapturadaPor(Algoformer algoformer) {
+		// COMPLETAR
 	}
 
 }

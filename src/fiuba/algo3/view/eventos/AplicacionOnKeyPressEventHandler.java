@@ -8,20 +8,20 @@ import view.BarraDeMenu;
 
 public class AplicacionOnKeyPressEventHandler implements EventHandler<KeyEvent> {
 
-    private Stage stage;
-    private BarraDeMenu menuBar;
+	private Stage stage;
+	private BarraDeMenu menuBar;
 
-    public AplicacionOnKeyPressEventHandler(Stage stage, BarraDeMenu menuBar) {
-        this.stage = stage;
-        this.menuBar = menuBar;
-    }
+	public AplicacionOnKeyPressEventHandler(Stage stage, BarraDeMenu menuBar) {
+		this.stage = stage;
+		this.menuBar = menuBar;
+	}
 
-    @Override
-    public void handle(KeyEvent event) {
+	@Override
+	public void handle(KeyEvent event) {
 
-        if (event.getCode() == KeyCode.ESCAPE) {
-            stage.setMaximized(true);
-            menuBar.aplicacionMaximizada();
-        }
-    }
+		if (event.getCode() == KeyCode.ESCAPE) {
+			stage.setMaximized(true);
+			menuBar.aplicacionMaximizada();
+		}
+	}
 }

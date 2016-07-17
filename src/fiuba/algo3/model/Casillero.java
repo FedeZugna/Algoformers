@@ -5,10 +5,11 @@
  */
 package model;
 
-import model.excepciones.CasilleroOcupadoException;
+import model.excepciones.*;
 import model.superficies.*;
 import model.algoformers.*;
 import model.bonus.*;
+import model.*;
 
 /**
  *
@@ -21,10 +22,10 @@ public class Casillero {
 	private EspacioAereo espacioAereo;
 	private Interactuable ocupante = null;
 
-	public Casillero(Terreno terreno,EspacioAereo aire) {
+	public Casillero(Terreno terreno, EspacioAereo aire) {
 		this.terreno = terreno;
-		this.espacioAereo= aire;
-		this.ocupante= null;
+		this.espacioAereo = aire;
+		this.ocupante = null;
 	}
 
 	public void setUbicacion(Coordenada ubicacion) {
@@ -43,38 +44,40 @@ public class Casillero {
 		this.espacioAereo = espacioAereo;
 	}
 
-	public boolean casilleroOcupado(){
+	public boolean casilleroOcupado() {
 		return (this.ocupante != null);
 	}
-	
-	
+
 	public void ubicarElemento(Interactuable ocupanteAAgregar) {
-		if (this.casilleroOcupado()){
+		if (this.casilleroOcupado()) {
 			throw new CasilleroOcupadoException();
 		}
 		this.ocupante = ocupanteAAgregar;
-        ocupanteAAgregar.ubicarEn(this);
+		ocupanteAAgregar.ubicarEn(this);
 		this.aplicarEfectosSuperficie(ocupanteAAgregar);
 	}
 
-	public void trasladarAlgoformer(Algoformer algof){
-		if(this.casilleroOcupado()){
-			if(this.ocupante instanceof Algoformer){
+	public void trasladarAlgoformer(Algoformer algof) {
+		if (this.casilleroOcupado()) {
+			if (this.ocupante instanceof Algoformer) {
 				throw new CasilleroOcupadoException();
-			} else if(this.ocupante instanceof Bonus){
-				algof.capturarBonus((Bonus)this.ocupante);
+			} else if (this.ocupante instanceof Bonus) {
+				algof.capturarBonus((Bonus) this.ocupante);
+			} else if (this.ocupante instanceof Chispa) {
+				throw new ChispaCapturadaException();
 			}
 		}
 		this.ocupante = algof;
-        algof.ubicarEn(this);
+		algof.ubicarEn(this);
 		this.aplicarEfectosSuperficie(algof);
 	}
+
 	public Interactuable devolverElemento() {
 		return this.ocupante;
 	}
 
 	public void removerElemento() {
-		ocupante.setUbicacion( null);
+		ocupante.setUbicacion(null);
 		ocupante = null;
 		// this.ocupante = new CasilleroVacio();
 	}
@@ -93,24 +96,25 @@ public class Casillero {
 		return this.ubicacion;
 	}
 
-//agregue esto
+	// agregue esto
 	public Superficie getTerreno() {
 		return this.terreno;
 	}
 
 	public void aplicarEfectosSuperficie(Interactuable ocupanteAAgregar) {
-		//this.terreno.aplicarEfectosSuperficie(this);
-		
+		// this.terreno.aplicarEfectosSuperficie(this);
+
 	}
+
 	public String devuelveRutaImgCont() {
-		if (ocupante==null){
+		if (ocupante == null) {
 			return terreno.devuelveNombreCont();
 		}
 		return ocupante.devuelveNombreCont();
 	}
 
 	public String devuelveRutaImgContAereo() {
-		if (ocupante==null){
+		if (ocupante == null) {
 			return espacioAereo.devuelveNombreCont();
 		}
 		return ocupante.devuelveNombreCont();

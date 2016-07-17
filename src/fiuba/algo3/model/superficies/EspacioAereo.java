@@ -6,6 +6,7 @@
 package model.superficies;
 
 import model.excepciones.NoPuedeMoverseException;
+
 /**
  *
  * @author Martin
@@ -14,18 +15,18 @@ public abstract class EspacioAereo extends Superficie {
 
 	protected static int CantidadMovimientosEstandarAereo = 1;
 	private String nombre;
-	
+
 	@Override
 	public int getPasos_humanoide() {
 		throw new NoPuedeMoverseException();
 	}
-	public String devuelveNombreCont(){
+
+	public String devuelveNombreCont() {
 		return nombre;
 	}
-	
-	protected void agregarRutaDeImagen (String nombreDeRuta){
-		this.nombre= nombreDeRuta;
-	}
 
+	protected void agregarRutaDeImagen(String nombreDeRuta) {
+		this.nombre = nombreDeRuta;
+	}
 
 }

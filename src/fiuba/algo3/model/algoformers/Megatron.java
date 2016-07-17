@@ -18,6 +18,7 @@ public class Megatron extends Algoformer {
 		inicializarAlgoformer(nombre, vidaMegatron, ataqueHumanoide, distanciaAtaqueHumanoide, velocidadHumanoide,
 				ataqueAlterno, distanciaAtaqueAlterno, velocidadAlterno, rutaImgHum, rutaImgAlt);
 	}
+
 	public String devuelveNombreContAlterno() {
 		return this.rutaImgAlt;
 	}

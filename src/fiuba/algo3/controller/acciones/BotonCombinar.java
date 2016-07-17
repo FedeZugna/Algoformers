@@ -16,23 +16,22 @@ import model.algoformers.Algoformer;
  *
  * @author Martin
  */
-public class BotonCombinar extends Button{
-    private static final String TEXTO_COMBINAR = "Combinar";
-    
-    
-    public BotonCombinar(){
-        super(TEXTO_COMBINAR);
-        this.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                /*
-                Algoformer algofActual = Master.getInstancia().devolverAlgoformerActual();
-   
-                algofActual.combinar();
-                Master.getInstancia().terminarTurno();
-                */
-            }
-        });
-    }
-}
+public class BotonCombinar extends Button {
+	private static final String TEXTO_COMBINAR = "Combinar";
 
+	public BotonCombinar() {
+		super(TEXTO_COMBINAR);
+		this.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				/*
+				 * Algoformer algofActual =
+				 * Master.getInstancia().devolverAlgoformerActual();
+				 * 
+				 * algofActual.combinar();
+				 * Master.getInstancia().terminarTurno();
+				 */
+			}
+		});
+	}
+}

@@ -2,7 +2,6 @@ package view;
 
 import java.util.HashMap;
 
-
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import model.Coordenada;
@@ -12,34 +11,34 @@ public class VistaCasilleros {
 
 	private HashMap<Coordenada, Canvas> casilleros;
 	private Tablero tablero = Tablero.getInstancia();
-	
+
 	public VistaCasilleros(HashMap<Coordenada, Canvas> casilleros) {
-		this.casilleros = casilleros ;
+		this.casilleros = casilleros;
 	}
 
 	public void dibujar() {
-		for (Coordenada coordHash : casilleros.keySet()){
-			//dibujarCont(tablero.devolverCasillero(coordHash));
-			String ruta = tablero.devolverCasillero(coordHash).devuelveRutaImgCont(); //"file:src/fotos/Bonus/Burbuja.png";
+		for (Coordenada coordHash : casilleros.keySet()) {
+			// dibujarCont(tablero.devolverCasillero(coordHash));
+			String ruta = tablero.devolverCasillero(coordHash).devuelveRutaImgCont(); // "file:src/fotos/Bonus/Burbuja.png";
 			Image imagen = new Image(ruta);
 			casilleros.get(coordHash).getGraphicsContext2D().drawImage(imagen, 1, 1, 75, 75);
 		}
 	}
 
 	public void dibujarAereo() {
-		for (Coordenada coordHash : casilleros.keySet()){
-			//dibujarCont(tablero.devolverCasillero(coordHash));
-			String ruta = tablero.devolverCasillero(coordHash).devuelveRutaImgContAereo(); //"file:src/fotos/Bonus/Burbuja.png";
+		for (Coordenada coordHash : casilleros.keySet()) {
+			// dibujarCont(tablero.devolverCasillero(coordHash));
+			String ruta = tablero.devolverCasillero(coordHash).devuelveRutaImgContAereo(); // "file:src/fotos/Bonus/Burbuja.png";
 			Image imagen = new Image(ruta);
 			casilleros.get(coordHash).getGraphicsContext2D().drawImage(imagen, 1, 1, 75, 75);
 		}
 	}
-	
-	public void update(){
+
+	public void update() {
 		dibujar();
 	}
-	
-	public void updateAereo(){
+
+	public void updateAereo() {
 		dibujarAereo();
 	}
 

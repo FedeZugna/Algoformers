@@ -5,7 +5,6 @@
  */
 package segundaEntrega;
 
-
 import model.excepciones.NoPuedeMoverseException;
 import model.superficies.*;
 

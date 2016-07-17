@@ -1,5 +1,5 @@
 package model.excepciones;
 
-public class AccionInvalidaException extends RuntimeException{
+public class AccionInvalidaException extends RuntimeException {
 
 }

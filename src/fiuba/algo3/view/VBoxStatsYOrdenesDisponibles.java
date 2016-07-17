@@ -28,9 +28,7 @@ import model.bonus.Bonus;
 import model.bonus.BurbujaInmaculada;
 import model.bonus.DobleCanion;
 import model.bonus.Flash;
-import model.excepciones.AccionInvalidaException;
-import model.excepciones.CasilleroOcupadoException;
-import model.excepciones.NoPuedeMoverseException;
+import model.excepciones.*;
 import view.eventos.OpcionSalirEventHandler;
 
 /**
@@ -247,6 +245,8 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 
 				} catch (NullPointerException exc) {
 
+				} catch (ChispaCapturadaException win) {
+
 				}
 			}
 		};
@@ -313,11 +313,11 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 					imprimirPantalla();
 
 				} catch (NoPuedeMoverseException e) {
-					
+
 				} catch (CasilleroOcupadoException ex) {
-					
+
 				} catch (NullPointerException exc) {
-					
+
 				}
 			}
 		};
@@ -326,6 +326,11 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			@Override
 			public void handle(ActionEvent event) {
 				jugadorActual = juegoGeneral.pasarTurno();
+				if (jugadorActual.getTurnosCombinado() >= 2) {
+					jugadorActual.separarAlgoformers();
+				} else if (jugadorActual.getTurnosCombinado() != 0) {
+					jugadorActual.sumarTurnosCombinado();
+				}
 				algoformers = jugadorActual.devolverAlgoformersVivos();
 				if (algoformerActual != null) {
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
@@ -433,9 +438,9 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		Button botonSeleccionarGrosoParaAtacar = new Button();
 		if (algoformers.size() == 4) {
 			botonSeleccionarGrosoParaAtacar.setText(equipoEnemigo.get(3).getNombre());
-		} /*else{
-			botonSeleccionarGrosoParaAtacar.setDisable(true);
-		}*/
+		} /*
+			 * else{ botonSeleccionarGrosoParaAtacar.setDisable(true); }
+			 */
 		botonSeleccionarGrosoParaAtacar.setPrefSize(80, 20);
 		botonSeleccionarGrosoParaAtacar.setOnAction(seleccionarGrosoParaAtacar);
 
@@ -513,7 +518,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		// }
 	}
 
-	private void actualizarStatsObjetivo(int vida, int atk, int rng, int vel, int movsRes) { 
+	private void actualizarStatsObjetivo(int vida, int atk, int rng, int vel, int movsRes) {
 		this.stats[0].setText(stringVida + vida);
 		this.stats[1].setText(stringAtaque + atk);
 		this.stats[2].setText(stringAlcance + rng);

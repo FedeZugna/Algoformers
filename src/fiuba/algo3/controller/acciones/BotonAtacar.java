@@ -13,24 +13,24 @@ import javafx.scene.control.Button;
  *
  * @author Martin
  */
-public class BotonAtacar extends Button{
-    private static final String TEXTO_ATACAR = "Atacar";
-    
-    
-    public BotonAtacar(){
-        super(TEXTO_ATACAR);
-        this.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-               /*
-                Casillero casilleroObjetivo = Master.getInstancia().pedirObjetivo();
-                Algoformer algofObjetivo = casilleroObjetivo.devolverElemento();
-                Algoformer algofActual = Master.getInstancia().devolverAlgoformerActual();
-                algofActual.atacar(algofObjetivo);
-                Master.getInstancia().terminarTurno();
-               */ 
-            }
-        });
-    }
-}
+public class BotonAtacar extends Button {
+	private static final String TEXTO_ATACAR = "Atacar";
 
+	public BotonAtacar() {
+		super(TEXTO_ATACAR);
+		this.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				/*
+				 * Casillero casilleroObjetivo =
+				 * Master.getInstancia().pedirObjetivo(); Algoformer
+				 * algofObjetivo = casilleroObjetivo.devolverElemento();
+				 * Algoformer algofActual =
+				 * Master.getInstancia().devolverAlgoformerActual();
+				 * algofActual.atacar(algofObjetivo);
+				 * Master.getInstancia().terminarTurno();
+				 */
+			}
+		});
+	}
+}

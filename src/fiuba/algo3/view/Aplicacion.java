@@ -8,33 +8,35 @@ import model.*;
 
 public class Aplicacion extends Application {
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+	public static void main(String[] args) {
+		launch(args);
+	}
 
-    @Override
-    public void start(final Stage stage) throws Exception {
+	@Override
+	public void start(final Stage stage) throws Exception {
 
-        stage.setTitle("Algoformers");
+		stage.setTitle("Algoformers");
 
-        Juego juego = new Juego();
-        
-        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, juego.obtenerJugadorActual(), juego);
-        Scene escenaJuego = new Scene(contenedorPrincipal, 640, 480);
+		Juego juego = new Juego();
 
-        AplicacionOnKeyPressEventHandler AplicacionOnKeyPressEventHandler = new AplicacionOnKeyPressEventHandler(stage, contenedorPrincipal.getBarraDeMenu());
-        escenaJuego.setOnKeyPressed(AplicacionOnKeyPressEventHandler);
+		ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, juego.obtenerJugadorActual(), juego);
+		Scene escenaJuego = new Scene(contenedorPrincipal, 640, 480);
 
-        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego, juego.obtenerJugadorActual());
-        Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 640, 480);
+		AplicacionOnKeyPressEventHandler AplicacionOnKeyPressEventHandler = new AplicacionOnKeyPressEventHandler(stage,
+				contenedorPrincipal.getBarraDeMenu());
+		escenaJuego.setOnKeyPressed(AplicacionOnKeyPressEventHandler);
 
-        // add handler to this:
-        // stage.setOnCloseRequest()
+		ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego,
+				juego.obtenerJugadorActual());
+		Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 640, 480);
 
-        stage.setScene(escenaBienvenidos);
-        stage.setFullScreen(true);
+		// add handler to this:
+		// stage.setOnCloseRequest()
 
-        stage.show();
+		stage.setScene(escenaBienvenidos);
+		stage.setFullScreen(true);
 
-    }
+		stage.show();
+
+	}
 }

@@ -5,6 +5,7 @@ import model.superficies.Terreno;
 
 public class TerrenoPantanoso extends Terreno {
 	private String nombre = "file:src/fotos/Terrenos/Pantano.png";
+
 	public TerrenoPantanoso() {
 		super();
 		agregarRutaDeImagen(nombre);

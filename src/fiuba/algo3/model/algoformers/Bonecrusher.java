@@ -14,8 +14,8 @@ public class Bonecrusher extends Algoformer {
 	final static private String rutaImgHum = "file:src/fotos/Algoformers/Bonecrusher.png";
 
 	public Bonecrusher() {
-		this.inicializarAlgoformer(nombreDeBonecrusher, vidaDeBonecrusher, ataqueHumanoide, distanciaAtaqueHumanoide, velocidadHumanoide,
-						ataqueAlterno, distanciaAtaqueAlterno, velocidadAlterno, rutaImgHum, rutaImgAlt);
+		this.inicializarAlgoformer(nombreDeBonecrusher, vidaDeBonecrusher, ataqueHumanoide, distanciaAtaqueHumanoide,
+				velocidadHumanoide, ataqueAlterno, distanciaAtaqueAlterno, velocidadAlterno, rutaImgHum, rutaImgAlt);
 
 	}
 }

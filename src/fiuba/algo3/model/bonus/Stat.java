@@ -20,17 +20,20 @@ public class Stat {
 		this.stat_base = stat_base;
 		this.modificadores = new LinkedList<>();
 	}
-        /**
-         * Agrega el modificador recibido a los modificadores del stat.
-         * IMPORTANTE:
-         * @param modificador no debe ser el mismo efecto que un efecto existente en el stat.
-         */
+
+	/**
+	 * Agrega el modificador recibido a los modificadores del stat. IMPORTANTE:
+	 * 
+	 * @param modificador
+	 *            no debe ser el mismo efecto que un efecto existente en el
+	 *            stat.
+	 */
 	public void agregarModificador(StatModifier modificador) {
-                for (StatModifier modif_existente : this.modificadores){
-                    if (modif_existente.sonElMismoEfecto(modificador)){
-                        return;
-                    }
-                }
+		for (StatModifier modif_existente : this.modificadores) {
+			if (modif_existente.sonElMismoEfecto(modificador)) {
+				return;
+			}
+		}
 		modificador.cambiarDuenio(this);
 		this.modificadores.add(modificador);
 	}
@@ -48,7 +51,7 @@ public class Stat {
 		this.modificadores.remove(modificador);
 	}
 
-        public void cambiarValorBase(int valor_base_nuevo){
-            this.stat_base = valor_base_nuevo;
-        }
+	public void cambiarValorBase(int valor_base_nuevo) {
+		this.stat_base = valor_base_nuevo;
+	}
 }

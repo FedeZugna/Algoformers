@@ -16,6 +16,7 @@ public class CasilleroTests {
 		Casillero cas = new Casillero(new TerrenoRocoso(), new Nube());
 		Assert.assertFalse(cas.casilleroOcupado());
 	}
+
 	@Test
 	public void test02CasilleroSeLlenaCorrectamente() {
 		Casillero cas = new Casillero(new TerrenoRocoso(), new Nube());
@@ -24,17 +25,17 @@ public class CasilleroTests {
 		cas.ubicarElemento(algo1);
 		Assert.assertTrue(cas.casilleroOcupado());
 	}
-	
-	@Test (expected = CasilleroOcupadoException.class)
+
+	@Test(expected = CasilleroOcupadoException.class)
 	public void test03SiSeQuiereUbicarEnCasilleroUbicadoArrojaExcepcion() {
 		Casillero cas = new Casillero(new TerrenoRocoso(), new Nube());
 		Assert.assertFalse(cas.casilleroOcupado());
 		Algoformer algo1 = new Optimus();
 		cas.ubicarElemento(algo1);
-		Assert.assertTrue(algo1.getUbicacion()==cas);
+		Assert.assertTrue(algo1.getUbicacion() == cas);
 		cas.ubicarElemento(algo1);
 	}
-	
+
 	@Test
 	public void test04CasilleroSeVaciaCorrectamente() {
 		Casillero cas = new Casillero(new TerrenoRocoso(), new Nube());

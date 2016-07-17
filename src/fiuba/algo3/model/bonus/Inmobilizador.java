@@ -13,9 +13,9 @@ import model.bonus.StatModifierConDuracion;
  */
 public class Inmobilizador extends StatModifierConDuracion {
 
-    public Inmobilizador(int duracion) {
-        super(duracion);
-    }
+	public Inmobilizador(int duracion) {
+		super(duracion);
+	}
 
 	@Override
 	public int aplicarModificador(int stat) {

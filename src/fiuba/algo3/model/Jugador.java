@@ -12,6 +12,7 @@ public class Jugador {
 	private Tablero tablero;
 	private ArrayList<Algoformer> equipo;
 	public String nombreEquipo;
+	public int turnosCombinado = 0;
 
 	public Jugador(Tablero tablero, String Nomequipo) {
 		this.nombreEquipo = Nomequipo;
@@ -87,6 +88,14 @@ public class Jugador {
 		return nombreEquipo;
 	}
 
+	public int getTurnosCombinado() {
+		return turnosCombinado;
+	}
+
+	public void sumarTurnosCombinado() {
+		turnosCombinado++;
+	}
+
 	public void combinarAlgoformers(Algoformer algoformer1, Algoformer algoformer2, Algoformer algoformer3) {
 
 		if (algoformer1.esCombinableCon(algoformer2) && algoformer1.esCombinableCon(algoformer3)) {
@@ -97,9 +106,9 @@ public class Jugador {
 			} else {
 				equipo.add(new Menasor(algoformer1, algoformer2, algoformer3));
 				this.posicionarAlgoformersPorCombinacion(algoformer1, algoformer2, algoformer3, equipo.get(3));
-
 			}
 		}
+		turnosCombinado += 1;
 	}
 
 	private void posicionarAlgoformersPorCombinacion(Algoformer algoformer1, Algoformer algoformer2,
@@ -108,8 +117,7 @@ public class Jugador {
 		algoformer1.getUbicacion().removerElemento();
 		// cambio aca
 		this.tablero.ubicarElemento(algoformerCombinado, casilleroCentral.getUbicacion());
-
-		// algoformerCombinado.ubicarEn(casilleroCentral);
+		algoformerCombinado.ubicarEn(casilleroCentral);
 		algoformer2.getUbicacion().removerElemento();// no cambia la ubicacion
 		algoformer3.getUbicacion().removerElemento();// que conoce el algoformer
 	}
@@ -121,6 +129,7 @@ public class Jugador {
 		equipo.get(1).setVidaAlSeparar(algoformerCombinado.getVida2());
 		equipo.get(2).setVidaAlSeparar(algoformerCombinado.getVida3());
 		this.posicionarAlgoformersPostCombinacion(equipo.get(0), equipo.get(1), equipo.get(2), algoformerCombinado);
+		this.turnosCombinado = 0;
 	}
 
 	private void posicionarAlgoformersPostCombinacion(Algoformer algoformer1, Algoformer algoformer2,

@@ -15,22 +15,20 @@ import model.algoformers.Algoformer;
  *
  * @author Martin
  */
-public class BotonTransformar extends Button{
-    private static final String TEXTO_TRANSFORMAR = "Transformar";
-    
-    
-    public BotonTransformar(){
-        super(TEXTO_TRANSFORMAR);
-        this.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-             
-                Algoformer algofActual = Master.getInstancia().devolverAlgoformerActual();
-                algofActual.transformar();
-                Master.getInstancia().terminarTurno();
-                
-            }
-        });
-    }
-}
+public class BotonTransformar extends Button {
+	private static final String TEXTO_TRANSFORMAR = "Transformar";
 
+	public BotonTransformar() {
+		super(TEXTO_TRANSFORMAR);
+		this.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+
+				Algoformer algofActual = Master.getInstancia().devolverAlgoformerActual();
+				algofActual.transformar();
+				Master.getInstancia().terminarTurno();
+
+			}
+		});
+	}
+}

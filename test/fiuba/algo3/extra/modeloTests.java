@@ -5,7 +5,6 @@
  */
 package extra;
 
-
 import model.*;
 import model.algoformers.*;
 import model.superficies.*;
@@ -14,20 +13,22 @@ import model.excepciones.*;
 
 import org.junit.Before;
 import org.junit.Test;
+
 /**
  *
  * @author Martin
  */
 public class modeloTests {
-    public modeloTests(){}
-    
-    @Before
-	public void before(){
+	public modeloTests() {
+	}
+
+	@Before
+	public void before() {
 		Tablero.getInstancia().reiniciarTablero();
 	}
-    
-    @Test
-    public void inicializacionNoDevuelveExcepciones(){
-        Juego juego = new Juego();
-    }
+
+	@Test
+	public void inicializacionNoDevuelveExcepciones() {
+		Juego juego = new Juego();
+	}
 }

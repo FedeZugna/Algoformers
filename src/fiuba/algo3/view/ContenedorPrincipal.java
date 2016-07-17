@@ -80,14 +80,14 @@ public class ContenedorPrincipal extends BorderPane {
 		return menuBar;
 	}
 
-	public void vistaCasillerosUpdate(){
+	public void vistaCasillerosUpdate() {
 		this.vistaCasilleros.update();
 	}
-	
-	public void vistaCasillerosUpdateAereo(){
+
+	public void vistaCasillerosUpdateAereo() {
 		this.vistaCasilleros.updateAereo();
 	}
-	
+
 	/**
 	 * Agrega el borde de la pantalla indicando el estado del juego (DEVNOTE: DE
 	 * ALGUNA MANERA)
@@ -97,5 +97,5 @@ public class ContenedorPrincipal extends BorderPane {
 		// actualizar
 		return hbox;
 	}
-	
+
 }

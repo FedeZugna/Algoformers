@@ -9,7 +9,6 @@ import model.excepciones.NoPuedeMoverseException;
 import model.excepciones.AlcanceExcedidoException;
 import java.util.ArrayList;
 
-
 import model.*;
 
 import model.bonus.*;
@@ -22,15 +21,17 @@ public class Algoformer implements Interactuable {
 	protected String nombre;
 	protected int vida;
 	protected int movimientosRestantes;
-    protected Stat armadura;
+	protected Stat armadura;
 	private String rutaImgAlt;
 	private String rutaImgHum;
-	
+
 	public void inicializarAlgoformer(String nombre, int vidaPropia, int ataqueHumanoide, int distanciaAtaqueHumanoide,
-		int velocidadHumanoide, int ataqueAlterno, int distanciaAtaqueAlterno, int velocidadAlterno, String rutaHumanoide, String rutaAlterno) {
+			int velocidadHumanoide, int ataqueAlterno, int distanciaAtaqueAlterno, int velocidadAlterno,
+			String rutaHumanoide, String rutaAlterno) {
 		this.nombre = nombre;
 		this.vida = vidaPropia;
-		EstadoAlgoformer estadoHumanoide = new EstadoHumanoide(ataqueHumanoide, distanciaAtaqueHumanoide, velocidadHumanoide);
+		EstadoAlgoformer estadoHumanoide = new EstadoHumanoide(ataqueHumanoide, distanciaAtaqueHumanoide,
+				velocidadHumanoide);
 		EstadoAlgoformer estadoAlterno = new EstadoAlterno(ataqueAlterno, distanciaAtaqueAlterno, velocidadAlterno);
 		ArrayList<EstadoAlgoformer> lista = new ArrayList<EstadoAlgoformer>();
 		lista.add(estadoHumanoide);
@@ -39,9 +40,9 @@ public class Algoformer implements Interactuable {
 		this.estados = estados;
 		this.estadoActual = this.estados.get();
 		this.movimientosRestantes = estadoActual.getVelocidadDespl();
-                this.armadura = new Stat(0);
-        this.rutaImgHum= rutaHumanoide;
-        this.rutaImgAlt= rutaAlterno;
+		this.armadura = new Stat(0);
+		this.rutaImgHum = rutaHumanoide;
+		this.rutaImgAlt = rutaAlterno;
 	}
 
 	@Override
@@ -58,8 +59,8 @@ public class Algoformer implements Interactuable {
 	}
 
 	public void recibirAtaque(int danio) {
-                this.armadura.cambiarValorBase(danio);
-                int danio_efectivo = this.armadura.devolverStat();
+		this.armadura.cambiarValorBase(danio);
+		int danio_efectivo = this.armadura.devolverStat();
 		this.vida -= danio_efectivo;
 		if (this.vida < 0) {
 			this.morir(); // para avisarle al Tablero que lo borre, etc
@@ -77,19 +78,21 @@ public class Algoformer implements Interactuable {
 		return (this.vida > 0);
 	}
 
-	public void mover(Casillero destino) {		
+	public void mover(Casillero destino) {
 		int pasosAMoverse = this.estadoActual.devolverPasosPara(destino);
-		if ((this.movimientosRestantes - pasosAMoverse)<0){
+		if ((this.movimientosRestantes - pasosAMoverse) < 0) {
 			throw new NoPuedeMoverseException();
 		}
-		this.ubicacion.removerElemento(); //eliminar esta linea si se usa el "cambiar" de jugador
+		this.ubicacion.removerElemento(); // eliminar esta linea si se usa el
+											// "cambiar" de jugador
 		destino.trasladarAlgoformer(this);
 		this.ubicacion = destino;
-		if (this.devuelveNombreCont()=="file:src/fotos/Algoformers/MegatronA.png"||this.devuelveNombreCont()=="file:src/fotos/Algoformers/RatchetA.png"){
+		if (this.devuelveNombreCont() == "file:src/fotos/Algoformers/MegatronA.png"
+				|| this.devuelveNombreCont() == "file:src/fotos/Algoformers/RatchetA.png") {
 			this.aplicarseEfectosSuperficie(destino.getEspacioAereo());
 		} else {
 			this.aplicarseEfectosSuperficie(destino.getTerreno());
-		}		
+		}
 		this.movimientosRestantes -= pasosAMoverse;
 	}
 
@@ -101,9 +104,11 @@ public class Algoformer implements Interactuable {
 	public void transformar() {
 		this.estadoActual = this.estados.get();
 		this.movimientosRestantes = this.estadoActual.getVelocidadDespl();
-		/*Casillero ubicacionAux = this.getUbicacion();
-		this.ubicacion.removerElemento();
-		this.ubicarEn(ubicacionAux);	*/	
+		/*
+		 * Casillero ubicacionAux = this.getUbicacion();
+		 * this.ubicacion.removerElemento(); this.ubicarEn(ubicacionAux);
+		 * this.ubicacion.ubicarElemento(this);
+		 */
 	}
 
 	public int getAtaque() {
@@ -155,48 +160,52 @@ public class Algoformer implements Interactuable {
 		}
 		return true;
 	}
-	
+
 	public void setVidaAlSeparar(int vidaACambiar) {
-		this.vida= vidaACambiar;
+		this.vida = vidaACambiar;
 	}
 
 	public int getMovimientosRestantes() {
 		return this.movimientosRestantes;
 	}
-	
+
 	public int getAlcance() {
 		return estadoActual.getDistanciaAtaque();
 	}
-	
-	public void aplicarseEfectosSuperficie(Superficie superficie){
+
+	public void aplicarseEfectosSuperficie(Superficie superficie) {
 		superficie.aplicarEfectosSuperficieAlgoformer(this);
 	}
-	
-	public void capturarBonus(Bonus bonus){
+
+	public void capturarBonus(Bonus bonus) {
 		bonus.serCapturadoPor(this);
 	}
-	
+
+	public void capturarChispa(Chispa chispa) {
+		chispa.serCapturadaPor(this);
+	}
+
 	@Override
 	public void setUbicacion(Casillero ubicacion) {
 		// TODO Auto-generated method stub
-		
+
 	}
-  
-    public void agregarModificadorArmadura(StatModifier modificador){
-        this.armadura.agregarModificador(modificador);
-    }
-    
-    public void agregarModificadorAtaque(StatModifier modificador){
-        this.estadoActual.agregarModificadorAtaque(modificador);
-    }
-    
-    public void agregarModificadorDistanciaAtaque(StatModifier modificador){
-        this.estadoActual.agregarModificadorDistanciaAtaque(modificador);
-    }
-    
-    public void agregarModificadorVelocidadDesplazamiento(StatModifier modificador){
-        this.estadoActual.agregarModificadorVelocidadDesplazamiento(modificador);
-    }
+
+	public void agregarModificadorArmadura(StatModifier modificador) {
+		this.armadura.agregarModificador(modificador);
+	}
+
+	public void agregarModificadorAtaque(StatModifier modificador) {
+		this.estadoActual.agregarModificadorAtaque(modificador);
+	}
+
+	public void agregarModificadorDistanciaAtaque(StatModifier modificador) {
+		this.estadoActual.agregarModificadorDistanciaAtaque(modificador);
+	}
+
+	public void agregarModificadorVelocidadDesplazamiento(StatModifier modificador) {
+		this.estadoActual.agregarModificadorVelocidadDesplazamiento(modificador);
+	}
 
 	@Override
 	public String devuelveNombreCont() {
