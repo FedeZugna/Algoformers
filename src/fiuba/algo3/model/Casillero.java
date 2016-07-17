@@ -8,6 +8,7 @@ package model;
 import model.excepciones.CasilleroOcupadoException;
 import model.superficies.*;
 import model.algoformers.*;
+import model.bonus.*;
 
 /**
  *
@@ -56,6 +57,18 @@ public class Casillero {
 		this.aplicarEfectosSuperficie(ocupanteAAgregar);
 	}
 
+	public void trasladarAlgoformer(Algoformer algof){
+		if(this.casilleroOcupado()){
+			if(this.ocupante instanceof Algoformer){
+				throw new CasilleroOcupadoException();
+			} else if(this.ocupante instanceof Bonus){
+				algof.capturarBonus((Bonus)this.ocupante);
+			}
+		}
+		this.ocupante = algof;
+        algof.ubicarEn(this);
+		this.aplicarEfectosSuperficie(algof);
+	}
 	public Interactuable devolverElemento() {
 		return this.ocupante;
 	}

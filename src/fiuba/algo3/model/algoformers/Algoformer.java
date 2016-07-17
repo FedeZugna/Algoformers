@@ -83,14 +83,13 @@ public class Algoformer implements Interactuable {
 			throw new NoPuedeMoverseException();
 		}
 		this.ubicacion.removerElemento(); //eliminar esta linea si se usa el "cambiar" de jugador
-		destino.ubicarElemento(this);
+		destino.trasladarAlgoformer(this);
 		this.ubicacion = destino;
 		if (this.devuelveNombreCont()=="file:src/fotos/Algoformers/MegatronA.png"||this.devuelveNombreCont()=="file:src/fotos/Algoformers/RatchetA.png"){
 			this.aplicarseEfectosSuperficie(destino.getEspacioAereo());
 		} else {
 			this.aplicarseEfectosSuperficie(destino.getTerreno());
-		}
-		
+		}		
 		this.movimientosRestantes -= pasosAMoverse;
 	}
 
@@ -176,7 +175,7 @@ public class Algoformer implements Interactuable {
 	public void capturarBonus(Bonus bonus){
 		bonus.serCapturadoPor(this);
 	}
-
+	
 	@Override
 	public void setUbicacion(Casillero ubicacion) {
 		// TODO Auto-generated method stub

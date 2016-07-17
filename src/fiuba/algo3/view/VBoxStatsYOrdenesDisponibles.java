@@ -309,11 +309,11 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 					imprimirPantalla();
 
 				} catch (NoPuedeMoverseException e) {
-					System.out.println("1");
+					
 				} catch (CasilleroOcupadoException ex) {
-					System.out.println("2");
+					
 				} catch (NullPointerException exc) {
-					System.out.println("3");
+					
 				}
 			}
 		};
@@ -507,16 +507,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		// }
 	}
 
-	private void actualizarStatsObjetivo(int vida, int atk, int rng, int vel, int movsRes) { // esto
-																								// en
-																								// un
-																								// futuro
-																								// recibe
-																								// un
-																								// algoformerView
-																								// o
-																								// algo
-																								// así
+	private void actualizarStatsObjetivo(int vida, int atk, int rng, int vel, int movsRes) { 
 		this.stats[0].setText(stringVida + vida);
 		this.stats[1].setText(stringAtaque + atk);
 		this.stats[2].setText(stringAlcance + rng);
