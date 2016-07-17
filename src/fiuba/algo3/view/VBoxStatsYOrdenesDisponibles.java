@@ -337,6 +337,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				} else {
 					equipoEnemigo= equipoDecepticons;
 				}
+				imprimirPantalla();
 			}
 
 		};

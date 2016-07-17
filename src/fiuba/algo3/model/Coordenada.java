@@ -66,7 +66,7 @@ public class Coordenada {
 		if (destino.getLargo() - this.getLargo() >= alcance) {
 			return false;
 		}
-		if (destino.getAlto() - this.getAlto() >= alcance) {
+		if (destino.getAlto() - this.getAlto()-1 >= alcance) {
 			return false;
 		}
 		return true;
