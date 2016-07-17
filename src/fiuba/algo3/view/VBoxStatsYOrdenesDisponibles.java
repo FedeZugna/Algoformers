@@ -222,6 +222,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 						algoformerActual.getMovimientosRestantes());
+				System.out.println(algoformerActual.getUbicacion().devuelveRutaImgCont());
 				imprimirPantalla();
 			}
 		};

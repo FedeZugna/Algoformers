@@ -18,7 +18,6 @@ public class VistaCasilleros {
 
 	public void dibujar() {
 		for (Coordenada coordHash : casilleros.keySet()) {
-			// dibujarCont(tablero.devolverCasillero(coordHash));
 			String ruta = tablero.devolverCasillero(coordHash).devuelveRutaImgCont(); // "file:src/fotos/Bonus/Burbuja.png";
 			Image imagen = new Image(ruta);
 			casilleros.get(coordHash).getGraphicsContext2D().drawImage(imagen, 1, 1, 75, 75);
