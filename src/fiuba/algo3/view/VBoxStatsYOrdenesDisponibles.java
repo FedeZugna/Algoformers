@@ -53,6 +53,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 	Boolean atacar = false;
 	ArrayList<Algoformer> equipoAutobots;
 	ArrayList<Algoformer> equipoDecepticons;
+	ArrayList<Algoformer> equipoEnemigo;
 	ArrayList<Bonus> listaDeBonus;
 
 	private Text stats[];
@@ -95,6 +96,8 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		
 		equipoAutobots= jugador.devolverEquipo();
 		equipoDecepticons= juego.pasarTurno().devolverEquipo();
+		equipoEnemigo= equipoDecepticons;
+		juego.pasarTurno();
 
 		EventHandler<ActionEvent> seleccionarPrimero = new EventHandler<ActionEvent>() {
 			@Override
@@ -383,6 +386,11 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				actualizarNombreObjetivo("");
 				algoformerActual.transformar();
 				algoformerActual.transformar();//se reestablecen los valores de los movimientos
+				if (equipoEnemigo== equipoDecepticons) {
+					equipoEnemigo= equipoAutobots;
+				} else {
+					equipoEnemigo= equipoDecepticons;
+				}
 			}
 
 		};
@@ -490,11 +498,11 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			} else {
 				botonSeleccionarGroso.setText("");
 			}
-			primerAlgoformerParaAtacar.setText(algoformers.get(0).getNombre());
-			segundoAlgoformerParaAtacar.setText(algoformers.get(1).getNombre());
-			tercerAlgoformerParaAtacar.setText(algoformers.get(2).getNombre());
+			primerAlgoformerParaAtacar.setText(equipoEnemigo.get(0).getNombre());
+			segundoAlgoformerParaAtacar.setText(equipoEnemigo.get(1).getNombre());
+			tercerAlgoformerParaAtacar.setText(equipoEnemigo.get(2).getNombre());
 			if (algoformers.size()== 4) {
-				botonSeleccionarGrosoParaAtacar.setText(algoformers.get(3).getNombre());
+				botonSeleccionarGrosoParaAtacar.setText(equipoEnemigo.get(3).getNombre());
 			} else {
 				botonSeleccionarGrosoParaAtacar.setText("");
 			}
@@ -511,7 +519,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		this.getChildren().addAll(botonCombinar, botonSeleccionarGroso);
 		
 		this.getChildren().add(this.separadorParaAtacar);
-		this.getChildren().addAll(botonAtacar, botonesParaSeleccionarLosAlgoformersAAtacar, botonSeleccionarGrosoParaAtacar);
+		this.getChildren().addAll(botonesParaSeleccionarLosAlgoformersAAtacar, botonSeleccionarGrosoParaAtacar, botonAtacar);
 		
 		this.getChildren().add(this.separadorPasarTurno);
 		this.getChildren().add(pasarTurno);
