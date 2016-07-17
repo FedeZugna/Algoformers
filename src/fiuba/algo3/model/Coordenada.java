@@ -64,13 +64,11 @@ public class Coordenada {
 	}
 
 	public boolean esAlcanzable(Coordenada destino, int alcance) {
-		System.out.println(destino.getLargo() - this.getLargo());
-		System.out.println(destino.getAlto() - this.getAlto()-1);
 
-		if (Math.abs(destino.getLargo() - this.getLargo()) >= alcance) {
+		if (Math.abs(destino.getLargo() - this.getLargo()) > alcance) {
 			return false;
 		}
-		if (Math.abs(destino.getAlto() - this.getAlto()-1) >= alcance) {
+		if (Math.abs(destino.getAlto() - this.getAlto()) > alcance) {
 			return false;
 		}
 		return true;

@@ -143,7 +143,6 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 						algoformerActual.getMovimientosRestantes());
-				contenedor.vistaCasillerosUpdate();
 				imprimirPantalla();
 			}
 		};
@@ -211,7 +210,6 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 						algoformerActual.getMovimientosRestantes());
-
 				imprimirPantalla();
 			}
 		};
@@ -226,7 +224,6 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 						algoformerActual.getMovimientosRestantes());
-				contenedor.vistaCasillerosUpdate();
 				imprimirPantalla();
 			}
 		};

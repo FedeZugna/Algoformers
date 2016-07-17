@@ -23,48 +23,46 @@ import view.eventos.OpcionSalirEventHandler;
 
 public class ContenedorBienvenidos extends VBox {
 
-    Stage stage;
+	Stage stage;
 
-    public ContenedorBienvenidos(Stage stage, Scene proximaEscena, Jugador jugador) {
+	public ContenedorBienvenidos(Stage stage, Scene proximaEscena, Jugador jugador) {
 
-        super();
+		super();
 
-        this.stage = stage;
+		this.stage = stage;
 
-        this.setAlignment(Pos.CENTER);
-        this.setSpacing(20);
-        this.setPadding(new Insets(25));
-        Image imagen = new Image("file:src/fondo.jpg");
-        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-        this.setBackground(new Background(imagenDeFondo));
+		this.setAlignment(Pos.CENTER);
+		this.setSpacing(20);
+		this.setPadding(new Insets(25));
+		Image imagen = new Image("file:src/fondo.jpg");
+		BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,
+				BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+		this.setBackground(new Background(imagenDeFondo));
 
-        Button botonEntrar = new Button();
-        botonEntrar.setText("Iniciar Partida");
-        botonEntrar.setMinHeight(50);
-        botonEntrar.setMinWidth(100);
-        
-        
-        BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(stage, proximaEscena, jugador);///////////////////
-        botonEntrar.setOnAction(botonEntrarHandler);
+		Button botonEntrar = new Button();
+		botonEntrar.setText("Iniciar Partida");
+		botonEntrar.setMinHeight(50);
+		botonEntrar.setMinWidth(100);
 
-        
-        Label etiqueta = new Label();
-        etiqueta.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
+		BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(stage, proximaEscena, jugador);///////////////////
+		botonEntrar.setOnAction(botonEntrarHandler);
 
-        Button botonSalir = new Button();
-        botonSalir.setText("Salir");
-        botonSalir.setMinHeight(50);
-        botonSalir.setMinWidth(100);
+		Label etiqueta = new Label();
+		etiqueta.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
 
-        
-        OpcionSalirEventHandler botonSalirHandler = new OpcionSalirEventHandler();
-        botonSalir.setOnAction(botonSalirHandler);
-        
-        etiqueta.setText("Haga click en el boton para iniciar la partida. Jugador 1 es Autobots Jugador 2 es Decepticon");
-        etiqueta.setTextFill(Color.web("#66A7C5"));
+		Button botonSalir = new Button();
+		botonSalir.setText("Salir");
+		botonSalir.setMinHeight(50);
+		botonSalir.setMinWidth(100);
 
-        
-        this.getChildren().addAll(etiqueta, botonEntrar,botonSalir);
-    }
+		OpcionSalirEventHandler botonSalirHandler = new OpcionSalirEventHandler();
+		botonSalir.setOnAction(botonSalirHandler);
+
+		etiqueta.setText(
+				"Haga click en el boton para iniciar la partida. Jugador 1 es Autobots Jugador 2 es Decepticon");
+		etiqueta.setTextFill(Color.web("#66A7C5"));
+
+		this.getChildren().addAll(etiqueta, botonEntrar, botonSalir);
+	}
 
 }
