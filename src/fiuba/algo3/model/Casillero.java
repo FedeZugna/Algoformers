@@ -58,7 +58,6 @@ public class Casillero {
 
 	public Interactuable devolverElemento() {
 		return this.ocupante;
-
 	}
 
 	public void removerElemento() {

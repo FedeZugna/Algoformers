@@ -1,6 +1,6 @@
 package model;
 
-import model.excepciones.NombreDeEquipoNoExisteException;
+import model.excepciones.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -129,13 +129,18 @@ public class Juego {
 		this.ubicarRandom(new DobleCanion());
 		this.ubicarRandom(new BurbujaInmaculada());
 		this.ubicarRandom(new Flash());
+
 	}
 	
 	private void ubicarRandom(Bonus bonus) {
-		int posicionX= (int) (Math.random()*15+1);
-		int posicionY= (int) (Math.random()*10+1);
-		Coordenada coordenada= new Coordenada (posicionX, posicionY);
-		tableroGeneral.ubicarElemento(bonus, coordenada);
+		try{
+			int posicionX = (int) (Math.random()*15+1);
+			int posicionY = (int) (Math.random()*10+1);
+			Coordenada coordenada= new Coordenada (posicionX, posicionY);
+			tableroGeneral.ubicarElemento(bonus, coordenada);
+		} catch (CasilleroOcupadoException e){
+			ubicarRandom(bonus);
+		}
 	}
 	
 	public Jugador obtenerJugadorActual(){

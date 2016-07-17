@@ -121,7 +121,6 @@ public class Tablero {
 	}
 
 	public void agregarNotificable(Notificable n) {
-		System.out.println(JuegoActual);
 		this.JuegoActual.agregarNotificable(n);
 	}
 	
