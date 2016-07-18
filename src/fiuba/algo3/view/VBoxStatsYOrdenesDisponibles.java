@@ -7,6 +7,8 @@ package view;
 
 import controller.Master;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -49,11 +51,15 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 	Algoformer algoformerParaAtacar;
 	Juego juegoGeneral;
 	ContenedorPrincipal contenedor;
-	Boolean atacar = false;
+	Boolean atacando = false;
+	Boolean moviendose = false;
+	Boolean capturando = false;
+	Boolean combinando = false;
 	ArrayList<Algoformer> equipoAutobots;
 	ArrayList<Algoformer> equipoDecepticons;
 	ArrayList<Algoformer> equipoEnemigo;
 	ArrayList<Bonus> listaDeBonus;
+	Map<String, HBox> botoneras;
 
 	private Text stats[];
 	private Text enemigo[];
@@ -69,6 +75,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		this.algoformers = jugadorActual.devolverAlgoformersVivos();
 		this.juegoGeneral = juego;
 		this.contenedor = cont;
+		this.botoneras = new HashMap<String, HBox>();
 		this.setPadding(new Insets(10));
 		this.setSpacing(8); // Gap between nodes
 		this.setStyle("-fx-background-color: #336699;"); // color de fondo
@@ -207,6 +214,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 						algoformerActual.getMovimientosRestantes());
+				deshabilitarBotones("Transformar");
 				imprimirPantalla();
 			}
 		};
@@ -221,7 +229,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 						algoformerActual.getMovimientosRestantes());
-				System.out.println(algoformerActual.getUbicacion().devuelveRutaImgCont());
+				deshabilitarBotones("Combinar");
 				imprimirPantalla();
 			}
 		};
@@ -237,6 +245,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 							algoformerActual.getMovimientosRestantes());
+					deshabilitarBotones("BotonesParaMoverse");
 					imprimirPantalla();
 
 				} catch (NoPuedeMoverseException e) {
@@ -245,9 +254,11 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 
 				} catch (NullPointerException exc) {
 
-				} /*catch (ChispaCapturadaException win) {
-
-				}*/
+				} /*
+					 * catch (ChispaCapturadaException win) {
+					 * 
+					 * }
+					 */
 			}
 		};
 
@@ -263,6 +274,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 							algoformerActual.getMovimientosRestantes());
+					deshabilitarBotones("BotonesParaMoverse");
 					imprimirPantalla();
 
 				} catch (NoPuedeMoverseException e) {
@@ -286,6 +298,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 							algoformerActual.getMovimientosRestantes());
+					deshabilitarBotones("BotonesParaMoverse");
 					imprimirPantalla();
 
 				} catch (NoPuedeMoverseException e) {
@@ -310,6 +323,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 							algoformerActual.getMovimientosRestantes());
+					deshabilitarBotones("BotonesParaMoverse");
 					imprimirPantalla();
 
 				} catch (NoPuedeMoverseException e) {
@@ -326,7 +340,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			@Override
 			public void handle(ActionEvent event) {
 				jugadorActual = juegoGeneral.pasarTurno();
-                                Master.getInstancia().decidirSiHayGanador();
+				Master.getInstancia().decidirSiHayGanador();
 				if (jugadorActual.getTurnosCombinado() >= 2) {
 					jugadorActual.separarAlgoformers();
 				} else if (jugadorActual.getTurnosCombinado() != 0) {
@@ -361,6 +375,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 						algoformerActual.getMovimientosRestantes());
+				deshabilitarBotones("Atacar");
 				imprimirPantalla();
 			}
 		};
@@ -390,12 +405,18 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		botonTransformar.setText("Transformar");
 		botonTransformar.setOnAction(botonTransformarHandler);
 
+		HBox transformar = new HBox();
+		transformar.getChildren().addAll(botonTransformar);
+
 		Button botonCombinar = new Button();
 		botonCombinar.setText("Combinar");
 		botonCombinar.setOnAction(botonCombinarHandler);
 		botonCombinar.setOnMouseClicked(e -> {
 			botonSeleccionarGroso.setText(algoformers.get(3).getNombre());
 		});
+
+		HBox combinar = new HBox();
+		combinar.getChildren().addAll(botonCombinar);
 
 		Button moverNorte = new Button();
 		moverNorte.setPrefSize(50, 10);
@@ -425,6 +446,9 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		botonAtacar.setText("Atacar");
 		botonAtacar.setOnAction(botonAtacarHandler);
 
+		HBox botonesAtacar = new HBox();
+		botonesAtacar.getChildren().add(botonAtacar);
+
 		HBox botonesParaSeleccionarLosAlgoformersParaAtacar = new HBox();
 
 		Button primerAlgoformerParaAtacar = new Button(equipoEnemigo.get(0).getNombre());
@@ -442,14 +466,9 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		Button botonSeleccionarGrosoParaAtacar = new Button();
 		if (algoformers.size() == 4) {
 			botonSeleccionarGrosoParaAtacar.setText(equipoEnemigo.get(3).getNombre());
-		} /*
-			 * else{ botonSeleccionarGrosoParaAtacar.setDisable(true); }
-			 */
+		}
 		botonSeleccionarGrosoParaAtacar.setPrefSize(80, 20);
 		botonSeleccionarGrosoParaAtacar.setOnAction(seleccionarGrosoParaAtacar);
-
-		botonesParaSeleccionarLosAlgoformersParaAtacar.getChildren().addAll(primerAlgoformerParaAtacar,
-				segundoAlgoformerParaAtacar, tercerAlgoformerParaAtacar);
 
 		Button pasarTurno = new Button();
 		pasarTurno.setPrefSize(80, 15);
@@ -472,24 +491,37 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			} else {
 				botonSeleccionarGrosoParaAtacar.setText("");
 			}
+			habilitarBotones();
+			imprimirPantalla();
 		});
 
-		botonesParaSeleccionarLosAlgoformers.getChildren().addAll(primerAlgoformer, segundoAlgoformer,
-				tercerAlgoformer);
+		botonesParaSeleccionarLosAlgoformers.getChildren().addAll(primerAlgoformer, segundoAlgoformer, tercerAlgoformer,
+				botonSeleccionarGroso);
+
+		botonesParaSeleccionarLosAlgoformersParaAtacar.getChildren().addAll(primerAlgoformerParaAtacar,
+				segundoAlgoformerParaAtacar, tercerAlgoformerParaAtacar, botonSeleccionarGrosoParaAtacar);
+
 		this.getChildren().addAll(botonesParaSeleccionarLosAlgoformers, botonTransformar);
 
 		this.getChildren().add(this.separadorMovimientos);
 		this.getChildren().addAll(botonesParaMoverse);
 
 		this.getChildren().add(this.separadorParaSeleccionarGroso);
-		this.getChildren().addAll(botonCombinar, botonSeleccionarGroso);
+		this.getChildren().addAll(combinar, botonSeleccionarGroso);
 
 		this.getChildren().add(this.separadorParaAtacar);
 		this.getChildren().addAll(botonesParaSeleccionarLosAlgoformersParaAtacar, botonSeleccionarGrosoParaAtacar,
-				botonAtacar);
+				botonAtacar, botonesAtacar);
 
 		this.getChildren().add(this.separadorPasarTurno);
 		this.getChildren().add(pasarTurno);
+
+		botoneras.put("SeleccionarAlgoformers", botonesParaSeleccionarLosAlgoformers);
+		botoneras.put("BotonesParaMoverse", botonesParaMoverse);
+		botoneras.put("SeleccionarAlgoformersParaAtacar", botonesParaSeleccionarLosAlgoformersParaAtacar);
+		botoneras.put("Atacar", botonesAtacar);
+		botoneras.put("Transformar", transformar);
+		botoneras.put("Combinar", combinar);
 
 		this.enemigo = new Text[] { new Text(stringEnemigo), new Text(stringVida) };
 
@@ -500,6 +532,24 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		}
 
 		actualizarStatsVacio();
+	}
+
+	private void deshabilitarBotones(String claveBoton) {
+		for (String clave : botoneras.keySet()) {
+			if (clave != claveBoton) {
+				for (int index = 0; index < botoneras.get(clave).getChildren().size(); index++) {
+					botoneras.get(clave).getChildren().get(index).setDisable(true);
+				}
+			}
+		}
+	}
+	
+	private void habilitarBotones(){
+		for (HBox conjunto : botoneras.values()){
+			for (int index = 0; index < conjunto.getChildren().size(); index ++){
+				conjunto.getChildren().get(index).setDisable(false);
+			}
+		}
 	}
 
 	public void actualizarStatsConCasillero(Casillero cas) {
