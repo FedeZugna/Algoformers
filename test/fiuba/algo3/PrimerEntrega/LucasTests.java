@@ -70,8 +70,6 @@ public class LucasTests {
 	@Test
 	public void test05InicializarTableroParaUnJugador() {
 		Juego juego = new Juego();
-		// juego.agregarJugador("AUTOBOTS");
-		// juego.posicionarAutobots();
 
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(1, 1)).getNombre() == "Optimus");
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(1, 2)).getNombre() == "Bumblebee");
@@ -81,7 +79,6 @@ public class LucasTests {
 	@Test
 	public void test06CrearChispaEnMedioDelMapa() {
 		Juego juego = new Juego();
-		// juego.posicionarChispaEnElMedio();
 		int x = Tablero.LIMITELARGO / 2;
 		int y = Tablero.LIMITEALTO / 2;
 
@@ -92,8 +89,6 @@ public class LucasTests {
 	public void test07InicializarTableroParaUnJugadorD() {
 		Juego juego = new Juego();
 
-		// juego.agregarJugador("DECEPTICONS");
-		// juego.posicionarDecepticons();
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO - 1, Tablero.LIMITEALTO - 1))
 				.getNombre() == "Megatron");
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO - 1, Tablero.LIMITEALTO - 2))
@@ -105,7 +100,6 @@ public class LucasTests {
 	@Test
 	public void test08InicializarJuegoCompleto() {
 		Juego juego = new Juego();
-		// juego.inicializarTablero();
 
 		Assert.assertTrue((juego.devolverElementoEnCoordenada(Tablero.LIMITELARGO / 2, Tablero.LIMITEALTO / 2))
 				.getNombre() == "Chispa");

@@ -54,8 +54,6 @@ public class AtaqueTest {
 		ataque.ataqueEjecutar(algof1);
 		vida2 = algof1.getVida();
 		Assert.assertTrue(vida2 == (vida1 * (100 - porcentajeDescuento) / 100));
-		// (VALOR)==(VALOR*(100+PORCENTAJE)/100))
-
 	}
 
 }

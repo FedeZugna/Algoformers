@@ -626,13 +626,11 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		botoneras.put("SeleccionarAlgoformers", botonesParaSeleccionarLosAlgoformers);
 		botoneras.put("BotonesParaMoverse", botonesParaMoverse);
 		botoneras.put("SeleccionarBonus", botonesParaSeleccionarLosBonusParaCapturar);
-		botoneras.put("SeleccionarChispa", capturar);
+		botoneras.put("Capturar", capturar);
 		botoneras.put("SeleccionarAlgoformersParaAtacar", botonesParaSeleccionarLosAlgoformersParaAtacar);
 		botoneras.put("Atacar", atacar);
 		botoneras.put("Transformar", transformar);
 		botoneras.put("Combinar", combinar);
-		botoneras.put("SeleccionarBonus", botonesParaSeleccionarLosAlgoformers);
-		botoneras.put("SeleccionarChispa", capturar);
 
 		this.enemigo = new Text[] { new Text(stringEnemigo), new Text(stringVida) };
 
