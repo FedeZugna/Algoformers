@@ -625,6 +625,8 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 
 		botoneras.put("SeleccionarAlgoformers", botonesParaSeleccionarLosAlgoformers);
 		botoneras.put("BotonesParaMoverse", botonesParaMoverse);
+		botoneras.put("SeleccionarBonus", botonesParaSeleccionarLosBonusParaCapturar);
+		botoneras.put("SeleccionarChispa", capturar);
 		botoneras.put("SeleccionarAlgoformersParaAtacar", botonesParaSeleccionarLosAlgoformersParaAtacar);
 		botoneras.put("Atacar", atacar);
 		botoneras.put("Transformar", transformar);
