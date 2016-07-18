@@ -443,6 +443,10 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				} else {
 					algoformerActual.capturarBonus((Bonus)bonusParaCapturar);
 				}
+				actualizarNombreObjetivo(algoformerActual.getNombre());
+				actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
+						algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
+						algoformerActual.getMovimientosRestantes());
 				deshabilitarBotones("");
 				imprimirPantalla();
 			}
