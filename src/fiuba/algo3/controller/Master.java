@@ -29,20 +29,6 @@ public class Master {
 		return this.algofActual;
 	}
 
-	public Casillero pedirObjetivo() {
-		// Interfaz grafica para que pida un casillero objetivo
-		throw new UnsupportedOperationException("Not supported yet."); // To
-																		// change
-																		// body
-																		// of
-																		// generated
-																		// methods,
-																		// choose
-																		// Tools
-																		// |
-																		// Templates.
-	}
-
 	public void terminarTurno() {
 		Tablero.getInstancia().pasarTurno();
 	}
