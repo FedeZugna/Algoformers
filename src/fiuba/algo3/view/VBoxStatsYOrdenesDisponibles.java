@@ -446,8 +446,8 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		botonAtacar.setText("Atacar");
 		botonAtacar.setOnAction(botonAtacarHandler);
 
-		HBox botonesAtacar = new HBox();
-		botonesAtacar.getChildren().add(botonAtacar);
+		HBox atacar = new HBox();
+		atacar.getChildren().addAll(botonAtacar);
 
 		HBox botonesParaSeleccionarLosAlgoformersParaAtacar = new HBox();
 
@@ -501,7 +501,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		botonesParaSeleccionarLosAlgoformersParaAtacar.getChildren().addAll(primerAlgoformerParaAtacar,
 				segundoAlgoformerParaAtacar, tercerAlgoformerParaAtacar, botonSeleccionarGrosoParaAtacar);
 
-		this.getChildren().addAll(botonesParaSeleccionarLosAlgoformers, botonTransformar);
+		this.getChildren().addAll(botonesParaSeleccionarLosAlgoformers, transformar);
 
 		this.getChildren().add(this.separadorMovimientos);
 		this.getChildren().addAll(botonesParaMoverse);
@@ -511,7 +511,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 
 		this.getChildren().add(this.separadorParaAtacar);
 		this.getChildren().addAll(botonesParaSeleccionarLosAlgoformersParaAtacar, botonSeleccionarGrosoParaAtacar,
-				botonAtacar, botonesAtacar);
+				atacar);
 
 		this.getChildren().add(this.separadorPasarTurno);
 		this.getChildren().add(pasarTurno);
@@ -519,7 +519,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		botoneras.put("SeleccionarAlgoformers", botonesParaSeleccionarLosAlgoformers);
 		botoneras.put("BotonesParaMoverse", botonesParaMoverse);
 		botoneras.put("SeleccionarAlgoformersParaAtacar", botonesParaSeleccionarLosAlgoformersParaAtacar);
-		botoneras.put("Atacar", botonesAtacar);
+		botoneras.put("Atacar", atacar);
 		botoneras.put("Transformar", transformar);
 		botoneras.put("Combinar", combinar);
 
