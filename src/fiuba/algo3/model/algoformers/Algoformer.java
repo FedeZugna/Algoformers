@@ -104,11 +104,7 @@ public class Algoformer implements Interactuable {
 	public void transformar() {
 		this.estadoActual = this.estados.get();
 		this.movimientosRestantes = this.estadoActual.getVelocidadDespl();
-		/*
-		 * Casillero ubicacionAux = this.getUbicacion();
-		 * this.ubicacion.removerElemento(); this.ubicarEn(ubicacionAux);
-		 * this.ubicacion.ubicarElemento(this);
-		 */
+		
 	}
 
 	public int getAtaque() {

@@ -629,6 +629,8 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		botoneras.put("Atacar", atacar);
 		botoneras.put("Transformar", transformar);
 		botoneras.put("Combinar", combinar);
+		botoneras.put("SeleccionarBonus", botonesParaSeleccionarLosAlgoformers);
+		botoneras.put("SeleccionarChispa", capturar);
 
 		this.enemigo = new Text[] { new Text(stringEnemigo), new Text(stringVida) };
 
