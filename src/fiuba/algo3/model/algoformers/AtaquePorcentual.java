@@ -5,10 +5,6 @@ import model.algoformers.Ataque;
 
 public class AtaquePorcentual extends Ataque {
 
-	// public AtaquePorcentual(int danio, int descuento) {
-	// super((int) (danio - danio * ((float) descuento / 100)));
-	// }
-
 	public AtaquePorcentual(int danio) {
 		super(danio);
 	}

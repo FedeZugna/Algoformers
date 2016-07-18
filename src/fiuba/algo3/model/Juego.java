@@ -1,6 +1,5 @@
 package model;
 
-import model.excepciones.*;
 import model.excepciones.CasilleroOcupadoException;
 import model.excepciones.NombreDeEquipoNoExisteException;
 import java.util.ArrayList;
@@ -20,12 +19,12 @@ public class Juego {
 	public Jugador jugador1;
 	public Jugador jugador2;
 	public Interactuable chispa = new Chispa();
-	private ArrayList<Bonus> listaDeBonus= new ArrayList<>();
+	private ArrayList<Bonus> listaDeBonus = new ArrayList<>();
 	private int jugadas;
 	public Jugador[] turnos = new Jugador[2];
 	private HashMap<Jugador, ArrayList<Notificable>> aNotificar;
-        private Jugador ganador;
-        
+	private Jugador ganador;
+
 	public Juego() {
 
 		this.llenarListaDeBonus();
@@ -37,7 +36,7 @@ public class Juego {
 		this.aNotificar = new HashMap<>();
 		this.aNotificar.put(turnos[0], new ArrayList<>());
 		this.aNotificar.put(turnos[1], new ArrayList<>());
-                this.ganador = null;
+		this.ganador = null;
 	}
 
 	private void llenarListaDeBonus() {
@@ -159,23 +158,23 @@ public class Juego {
 		} catch (CasilleroOcupadoException e) {
 			ubicarRandom(bonus);
 		}
-}
+	}
 
 	public Jugador obtenerJugadorActual() {
 		return turnos[jugadas % 2];
 	}
-        
-        public Jugador obtenerJugadorEnemigo(){
-		return turnos[(jugadas+1) % 2];        
-        }
+
+	public Jugador obtenerJugadorEnemigo() {
+		return turnos[(jugadas + 1) % 2];
+	}
 
 	public Jugador pasarTurno() {
-                if (this.devolverAlgoformersVivosDeJugador1().isEmpty()){
-                    this.ganar(jugador2);
-                }
-                if (this.devolverAlgoformersVivosDeJugador2().isEmpty()){
-                    this.ganar(jugador1);
-                }
+		if (this.devolverAlgoformersVivosDeJugador1().isEmpty()) {
+			this.ganar(jugador2);
+		}
+		if (this.devolverAlgoformersVivosDeJugador2().isEmpty()) {
+			this.ganar(jugador1);
+		}
 		this.notificarJugadorActual();
 		this.jugadas++;
 		return turnos[jugadas % 2];
@@ -193,34 +192,33 @@ public class Juego {
 		this.aNotificar.get(actual).add(n);
 
 	}
-        
-        public void ganar(Jugador j){
-            this.ganador = j;
-        }       
 
-    public Jugador devolverGanador() {
-        return this.ganador;
-    }
+	public void ganar(Jugador j) {
+		this.ganador = j;
+	}
 
-    public void chispaFueCapturada(Algoformer algoformer) {
-        this.ganar(this.devolverDuenioDe(algoformer));
-    }
-     
-   
-    private Jugador devolverDuenioDe(Algoformer algoformer) {
-     for (Algoformer a : this.devolverAlgoformersVivosDeJugador1()){
-         if (a.getNombre().equals(algoformer.getNombre())){
-             return this.jugador1;
-         }
-     }
-     return this.jugador2;
-    }
+	public Jugador devolverGanador() {
+		return this.ganador;
+	}
 
-    public Chispa devolverChispa() {
-    	return (Chispa) this.chispa;
-    }
-    
-    public ArrayList<Bonus> devolverListaDeBonus() {
-    	return this.listaDeBonus;
-    }
+	public void chispaFueCapturada(Algoformer algoformer) {
+		this.ganar(this.devolverDuenioDe(algoformer));
+	}
+
+	private Jugador devolverDuenioDe(Algoformer algoformer) {
+		for (Algoformer a : this.devolverAlgoformersVivosDeJugador1()) {
+			if (a.getNombre().equals(algoformer.getNombre())) {
+				return this.jugador1;
+			}
+		}
+		return this.jugador2;
+	}
+
+	public Chispa devolverChispa() {
+		return (Chispa) this.chispa;
+	}
+
+	public ArrayList<Bonus> devolverListaDeBonus() {
+		return this.listaDeBonus;
+	}
 }

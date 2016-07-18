@@ -29,11 +29,11 @@ import view.eventos.OpcionSalirEventHandler;
  *
  * @author Martin
  */
-public class ContenedorGanador extends VBox{
+public class ContenedorGanador extends VBox {
 
-    public ContenedorGanador(Stage stage, Jugador ganador) {
-        
-                super();
+	public ContenedorGanador(Stage stage, Jugador ganador) {
+
+		super();
 		this.setAlignment(Pos.CENTER);
 		this.setSpacing(20);
 		this.setPadding(new Insets(25));
@@ -53,10 +53,10 @@ public class ContenedorGanador extends VBox{
 		OpcionSalirEventHandler botonSalirHandler = new OpcionSalirEventHandler();
 		botonSalir.setOnAction(botonSalirHandler);
 
-		etiqueta.setText("FELICITACIONES, GANARON LOS "+ganador.devolverNombreEquipo());
+		etiqueta.setText("FELICITACIONES, GANARON LOS " + ganador.devolverNombreEquipo());
 		etiqueta.setTextFill(Color.web("#66A7C5"));
 
 		this.getChildren().addAll(etiqueta, botonSalir);
-    }
-    
+	}
+
 }

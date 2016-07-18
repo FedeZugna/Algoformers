@@ -7,6 +7,8 @@ package model.algoformers;
 
 import model.excepciones.NoPuedeMoverseException;
 import model.excepciones.AlcanceExcedidoException;
+import model.excepciones.CasilleroOcupadoException;
+
 import java.util.ArrayList;
 
 import model.*;
@@ -69,8 +71,7 @@ public class Algoformer implements Interactuable {
 
 	public void morir() {
 		this.vida = 0;
-		this.ubicacion.removerElemento();//
-		// avisar a la vista que mate al transformer
+		this.ubicacion.removerElemento();
 	}
 
 	@Override
@@ -83,19 +84,21 @@ public class Algoformer implements Interactuable {
 		if ((this.movimientosRestantes - pasosAMoverse) < 0) {
 			throw new NoPuedeMoverseException();
 		}
-		this.ubicacion.removerElemento(); // eliminar esta linea si se usa el
-											// "cambiar" de jugador
-		this.ubicarEn(destino);
-		
-		destino.ubicarElemento(this);
-		this.ubicacion = destino;
-		if (this.devuelveNombreCont() == "file:src/fotos/Algoformers/MegatronA.png"
-				|| this.devuelveNombreCont() == "file:src/fotos/Algoformers/RatchetA.png") {
-			this.aplicarseEfectosSuperficie(destino.getEspacioAereo());
+		if (!destino.casilleroOcupado()) {
+			this.ubicacion.removerElemento();
+			this.ubicarEn(destino);
+			destino.ubicarElemento(this);
+			this.ubicacion = destino;
+			if (this.devuelveNombreCont() == "file:src/fotos/Algoformers/MegatronA.png"
+					|| this.devuelveNombreCont() == "file:src/fotos/Algoformers/RatchetA.png") {
+				this.aplicarseEfectosSuperficie(destino.getEspacioAereo());
+			} else {
+				this.aplicarseEfectosSuperficie(destino.getTerreno());
+			}
+			this.movimientosRestantes -= pasosAMoverse;
 		} else {
-			this.aplicarseEfectosSuperficie(destino.getTerreno());
+			throw new CasilleroOcupadoException();
 		}
-		this.movimientosRestantes -= pasosAMoverse;
 	}
 
 	@Override
@@ -106,7 +109,7 @@ public class Algoformer implements Interactuable {
 	public void transformar() {
 		this.estadoActual = this.estados.get();
 		this.movimientosRestantes = this.estadoActual.getVelocidadDespl();
-		
+
 	}
 
 	public int getAtaque() {
@@ -134,7 +137,7 @@ public class Algoformer implements Interactuable {
 		Coordenada coordOrigen = this.getUbicacion().getUbicacion();
 		return this.getEstadoActual().esAtaquePosible(coordOrigen, coordObjetivo);
 	}
-	
+
 	private boolean esCapturaPosible(Coordenada coordenadaDeBonus) {
 		Coordenada coordOrigen = this.getUbicacion().getUbicacion();
 		return this.getEstadoActual().esAlcanzable(coordOrigen, coordenadaDeBonus, 1);

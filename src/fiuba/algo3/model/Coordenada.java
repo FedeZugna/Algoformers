@@ -5,10 +5,6 @@
  */
 package model;
 
-/**
- *
- * @author Martin
- */
 import java.math.*;
 
 public class Coordenada {

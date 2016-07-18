@@ -46,7 +46,7 @@ public class Chispa implements Interactuable {
 	}
 
 	public void serCapturadoPor(Algoformer algoformer) {
-                Tablero.getInstancia().chispaFueCapturada(algoformer);
+		Tablero.getInstancia().chispaFueCapturada(algoformer);
 	}
 
 }

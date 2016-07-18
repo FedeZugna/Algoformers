@@ -57,21 +57,6 @@ public class Casillero {
 		this.aplicarEfectosSuperficie(ocupanteAAgregar);
 	}
 
-	public void trasladarAlgoformer(Algoformer algof) {
-		if (this.casilleroOcupado()) {
-			if (this.ocupante instanceof Algoformer) {
-				throw new CasilleroOcupadoException();
-			} else if (this.ocupante instanceof Bonus) {
-				algof.capturarBonus((Bonus) this.ocupante);
-			} else if (this.ocupante instanceof Chispa) {
-				//throw new ChispaCapturadaException();
-			}
-		}
-		this.ocupante = algof;
-		algof.ubicarEn(this);
-		this.aplicarEfectosSuperficie(algof);
-	}
-
 	public Interactuable devolverElemento() {
 		return this.ocupante;
 	}
@@ -79,13 +64,8 @@ public class Casillero {
 	public void removerElemento() {
 		ocupante.setUbicacion(null);
 		ocupante = null;
-		// this.ocupante = new CasilleroVacio();
+
 	}
-	/*
-	 * public bool/void? accederCasillero(Algoformer algof){ ->si esta ocupado
-	 * no dejar entrar ->aplicar condiciones de terreno //RECORDAR LIMPIAR EL
-	 * OTRO CASILLERO }
-	 */
 
 	public boolean puedeMoverseAca(Algoformer algo1, Casillero origen) {
 		int valorPasos = algo1.devolverPasosPara(this.terreno);
@@ -96,14 +76,12 @@ public class Casillero {
 		return this.ubicacion;
 	}
 
-	// agregue esto
 	public Superficie getTerreno() {
 		return this.terreno;
 	}
 
 	public void aplicarEfectosSuperficie(Interactuable ocupanteAAgregar) {
 		// this.terreno.aplicarEfectosSuperficie(this);
-
 	}
 
 	public String devuelveRutaImgCont() {

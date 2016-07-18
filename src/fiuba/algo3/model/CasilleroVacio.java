@@ -8,7 +8,4 @@ public class CasilleroVacio {
 		casillero = null;
 	}
 
-	/*
-	 * public String toString(){ return "casillero vacio"; }
-	 */
 }

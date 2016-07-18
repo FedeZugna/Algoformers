@@ -23,7 +23,6 @@ import view.VistaCasilleros;
 public class ContenedorPrincipal extends BorderPane {
 
 	private static final String TITULO_JUEGO = "Algoformers";
-	// Juego juego;
 
 	BarraDeMenu menuBar;
 	HBox contenedorCentral;
@@ -64,9 +63,6 @@ public class ContenedorPrincipal extends BorderPane {
 		contenedorCentral.setAlignment(Pos.CENTER);
 
 		Image imagen = new Image("file:src/fotos/fondo-juego.jpg");
-		// BackgroundImage imagenDeFondo = new BackgroundImage(imagen,
-		// BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,
-		// BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT,
 				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		contenedorCentral.setBackground(new Background(imagenDeFondo));

@@ -16,7 +16,7 @@ public class Aplicacion extends Application {
 	@Override
 	public void start(final Stage stage) throws Exception {
 
-                Master.getInstancia().crearNuevoJuego(stage);
-                Master.getInstancia().iniciarJuego();
+		Master.getInstancia().crearNuevoJuego(stage);
+		Master.getInstancia().iniciarJuego();
 	}
 }
