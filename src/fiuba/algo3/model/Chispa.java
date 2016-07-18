@@ -45,8 +45,8 @@ public class Chispa implements Interactuable {
 		return this.rutaImg;
 	}
 
-	public void serCapturadaPor(Algoformer algoformer) {
-		// COMPLETAR
+	public void serCapturadoPor(Algoformer algoformer) {
+                Tablero.getInstancia().chispaFueCapturada(algoformer);
 	}
 
 }

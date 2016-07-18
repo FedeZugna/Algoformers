@@ -196,5 +196,18 @@ public class Juego {
     public Jugador devolverGanador() {
         return this.ganador;
     }
-                
+
+    public void chispaFueCapturada(Algoformer algoformer) {
+        this.ganar(this.devolverDuenioDe(algoformer));
+    }
+     
+   
+    private Jugador devolverDuenioDe(Algoformer algoformer) {
+     for (Algoformer a : this.devolverAlgoformersVivosDeJugador1()){
+         if (a.getNombre().equals(algoformer.getNombre())){
+             return this.jugador1;
+         }
+     }
+     return this.jugador2;
+    }
 }

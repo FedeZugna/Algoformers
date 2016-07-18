@@ -6,6 +6,7 @@
 package model;
 
 import java.util.HashMap;
+import model.algoformers.Algoformer;
 
 import model.superficies.*;
 
@@ -146,4 +147,8 @@ public class Tablero {
 	public void definirJuego(Juego juego) {
 		this.JuegoActual = juego;
 	}
+
+    void chispaFueCapturada(Algoformer algoformer) {
+        this.JuegoActual.chispaFueCapturada(algoformer);
+    }
 }

@@ -182,7 +182,7 @@ public class Algoformer implements Interactuable {
 	}
 
 	public void capturarChispa(Chispa chispa) {
-		chispa.serCapturadaPor(this);
+		chispa.serCapturadoPor(this);
 	}
 
 	@Override
