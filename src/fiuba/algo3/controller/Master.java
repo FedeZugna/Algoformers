@@ -68,16 +68,18 @@ public class Master {
                 
                 this.escenarioJuego.setTitle("Algoformers");
                 
-                ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(this.escenarioJuego, this.escenaPrincipal);
-                this.escenaBienvenidos = new Scene(contenedorBienvenidos, 640, 480);
-                
                 ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(this.escenarioJuego, this.juego);
                 AplicacionOnKeyPressEventHandler AplicacionOnKeyPressEventHandler = new AplicacionOnKeyPressEventHandler(this.escenarioJuego,
 				contenedorPrincipal.getBarraDeMenu());
 		
                 this.escenaPrincipal = new Scene(contenedorPrincipal, 640, 480);
                 this.escenaPrincipal.setOnKeyPressed(AplicacionOnKeyPressEventHandler);
-              
+             
+                
+                ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(this.escenarioJuego, this.escenaPrincipal);
+                this.escenaBienvenidos = new Scene(contenedorBienvenidos, 640, 480);
+                
+                 
     }
     
     public void iniciarJuego(){
@@ -98,6 +100,8 @@ public class Master {
                 ContenedorGanador contenedorGanador = new ContenedorGanador(this.escenarioJuego, ganador);
                 
                 Scene escenaGanador = new Scene(contenedorGanador, 640, 480);
+                this.escenarioJuego.setScene(escenaGanador);
+                this.escenarioJuego.setFullScreen(true);
     }
         
 
