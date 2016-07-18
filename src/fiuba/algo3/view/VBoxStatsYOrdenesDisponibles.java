@@ -245,7 +245,11 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 							algoformerActual.getMovimientosRestantes());
-					deshabilitarBotones("BotonesParaMoverse");
+					String deshabilitar = "";
+					if(algoformerActual.getMovimientosRestantes() != 0){
+						deshabilitar = "BotonesParaMoverse";
+					}
+					deshabilitarBotones(deshabilitar);
 					imprimirPantalla();
 
 				} catch (NoPuedeMoverseException e) {
@@ -274,7 +278,11 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 							algoformerActual.getMovimientosRestantes());
-					deshabilitarBotones("BotonesParaMoverse");
+					String deshabilitar = "";
+					if(algoformerActual.getMovimientosRestantes() != 0){
+						deshabilitar = "BotonesParaMoverse";
+					}
+					deshabilitarBotones(deshabilitar);
 					imprimirPantalla();
 
 				} catch (NoPuedeMoverseException e) {
@@ -298,7 +306,11 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 							algoformerActual.getMovimientosRestantes());
-					deshabilitarBotones("BotonesParaMoverse");
+					String deshabilitar = "";
+					if(algoformerActual.getMovimientosRestantes() != 0){
+						deshabilitar = "BotonesParaMoverse";
+					}
+					deshabilitarBotones(deshabilitar);
 					imprimirPantalla();
 
 				} catch (NoPuedeMoverseException e) {
@@ -323,7 +335,11 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
 							algoformerActual.getAlcance(), algoformerActual.getVelocidad_despl(),
 							algoformerActual.getMovimientosRestantes());
-					deshabilitarBotones("BotonesParaMoverse");
+					String deshabilitar = "";
+					if(algoformerActual.getMovimientosRestantes() != 0){
+						deshabilitar = "BotonesParaMoverse";
+					}
+					deshabilitarBotones(deshabilitar);
 					imprimirPantalla();
 
 				} catch (NoPuedeMoverseException e) {
