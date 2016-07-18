@@ -1,6 +1,5 @@
 package model;
 
-import model.excepciones.*;
 import model.excepciones.CasilleroOcupadoException;
 import model.excepciones.NombreDeEquipoNoExisteException;
 import java.util.ArrayList;

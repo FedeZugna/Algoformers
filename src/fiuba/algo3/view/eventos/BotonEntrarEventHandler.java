@@ -12,7 +12,7 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 	Stage stage;
 	Scene proximaEscena;
 
-	public BotonEntrarEventHandler(Stage stage, Scene proximaEscena) {////////////////
+	public BotonEntrarEventHandler(Stage stage, Scene proximaEscena) {
 		this.stage = stage;
 		this.proximaEscena = proximaEscena;
 	}

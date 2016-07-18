@@ -31,10 +31,6 @@ public class Jugador {
 
 	public void mover(Algoformer algoTransf, Casillero destino) {
 		algoTransf.mover(destino);
-		// Tablero.getInstancia().cambiar(algoTransf, algoTransf.getUbicacion(), destino);
-		// //eliminar ubicacion.removerElemento de mover en algoformer si se
-		// agrega esta linea
-
 	}
 
 	public void atacar(Algoformer algoTransf, Coordenada objetivo) throws AtaqueInvalidoException {
@@ -146,22 +142,12 @@ public class Jugador {
 		try {
 			Tablero.getInstancia().ubicarElemento(algoformer, coordenada);
 		} catch (CasilleroOcupadoException e) {
-			Coordenada coordenadaSiguiente = new Coordenada(coordenada.getLargo() + 1, coordenada.getAlto()); // inverti
-																												// estos
+			Coordenada coordenadaSiguiente = new Coordenada(coordenada.getLargo() + 1, coordenada.getAlto());
 			this.ubicarPorSeparacion(algoformer, coordenadaSiguiente);
 		} catch (NullPointerException e) {
-			Coordenada coordenadaSiguiente = new Coordenada(coordenada.getLargo() - 7, coordenada.getAlto());// inverti
-																												// estos
-			// Coordenada coordenadaSiguiente= new
-			// Coordenada(coordenada.getLargo()-3,
-			// coordenada.getAlto());//inverti estos
+			Coordenada coordenadaSiguiente = new Coordenada(coordenada.getLargo() - 7, coordenada.getAlto());
 			this.ubicarPorSeparacion(algoformer, coordenadaSiguiente);
-			/*
-			 * }catch (StackOverflowError e){ Coordenada coordenadaSiguiente=
-			 * new Coordenada(coordenada.getLargo()-7,
-			 * coordenada.getAlto());//inverti estos
-			 * this.ubicarPorSeparacion(algoformer, coordenadaSiguiente);
-			 */
+
 		}
 	}
 

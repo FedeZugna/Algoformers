@@ -47,9 +47,6 @@ public abstract class Bonus extends StatModifierConDuracion implements Notificab
 		this.duenio = duenio;
 	}
 
-	/*
-	 * public void destruir() { this.duenio.quitarBonus(this); }
-	 */
 	@Override
 	public boolean estaVivo() {
 		throw new AccionInvalidaException();
