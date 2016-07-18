@@ -64,7 +64,6 @@ public abstract class Bonus extends StatModifierConDuracion implements Notificab
 		this.ubicacion.removerElemento();
 		this.cambiarDuenio(a);
 		Tablero.getInstancia().agregarNotificable(this);
-		// System.out.println("HOLIS");
 
 	}
 
