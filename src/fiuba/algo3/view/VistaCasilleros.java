@@ -26,7 +26,8 @@ public class VistaCasilleros {
 
 	public void dibujarAereo() {
 		for (Coordenada coordHash : casilleros.keySet()) {
-			String ruta = tablero.devolverCasillero(coordHash).devuelveRutaImgContAereo(); // "file:src/fotos/Bonus/Burbuja.png";
+			String ruta = tablero.devolverCasillero(coordHash).devuelveRutaImgContAereo();
+
 			Image imagen = new Image(ruta);
 			casilleros.get(coordHash).getGraphicsContext2D().drawImage(imagen, 1, 1, 75, 75);
 		}
