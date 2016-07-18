@@ -85,7 +85,9 @@ public class Algoformer implements Interactuable {
 		}
 		this.ubicacion.removerElemento(); // eliminar esta linea si se usa el
 											// "cambiar" de jugador
-		destino.trasladarAlgoformer(this);
+		this.ubicarEn(destino);
+		
+		destino.ubicarElemento(this);
 		this.ubicacion = destino;
 		if (this.devuelveNombreCont() == "file:src/fotos/Algoformers/MegatronA.png"
 				|| this.devuelveNombreCont() == "file:src/fotos/Algoformers/RatchetA.png") {
