@@ -20,13 +20,15 @@ public class Juego {
 	public Jugador jugador1;
 	public Jugador jugador2;
 	public Interactuable chispa = new Chispa();
+	private ArrayList<Bonus> listaDeBonus= new ArrayList<>();
 	private int jugadas;
 	public Jugador[] turnos = new Jugador[2];
 	private HashMap<Jugador, ArrayList<Notificable>> aNotificar;
         private Jugador ganador;
         
 	public Juego() {
-                
+
+		this.llenarListaDeBonus();
 		this.tableroGeneral = Tablero.getInstancia();
 		this.inicializarTablero();
 		jugadas = 0;
@@ -36,6 +38,12 @@ public class Juego {
 		this.aNotificar.put(turnos[0], new ArrayList<>());
 		this.aNotificar.put(turnos[1], new ArrayList<>());
                 this.ganador = null;
+	}
+
+	private void llenarListaDeBonus() {
+		this.listaDeBonus.add(new DobleCanion());
+		this.listaDeBonus.add(new BurbujaInmaculada());
+		this.listaDeBonus.add(new Flash());
 	}
 
 	public void posicionarChispaEnElMedio() {
@@ -131,30 +139,27 @@ public class Juego {
 		this.agregarJugador("DECEPTICONS");
 		this.posicionarDecepticons();
 		this.posicionarChispaEnElMedio();
-		this.ubicarRandom(new DobleCanion());
-		this.ubicarRandom(new BurbujaInmaculada());
-		this.ubicarRandom(new Flash());
+		this.ubicarBonus();
+	}
 
+	private void ubicarBonus() {
+		Iterator<Bonus> iterador = listaDeBonus.iterator();
+		while (iterador.hasNext()) {
+			Bonus bonusParaAgregar = iterador.next();
+			this.ubicarRandom(bonusParaAgregar);
+		}
 	}
 
 	private void ubicarRandom(Bonus bonus) {
+		int posicionX = (int) (Math.random() * 15 + 1);
+		int posicionY = (int) (Math.random() * 10 + 1);
+		Coordenada coordenada = new Coordenada(posicionX, posicionY);
 		try {
-			int posicionX = (int) (Math.random() * 15 + 1);
-			int posicionY = (int) (Math.random() * 10 + 1);
-			Coordenada coordenada = new Coordenada(posicionX, posicionY);
 			tableroGeneral.ubicarElemento(bonus, coordenada);
 		} catch (CasilleroOcupadoException e) {
 			ubicarRandom(bonus);
-			int posicionX = (int) (Math.random() * 15 + 1);
-			int posicionY = (int) (Math.random() * 10 + 1);
-			try {
-				Coordenada coordenada = new Coordenada(posicionX, posicionY);
-				tableroGeneral.ubicarElemento(bonus, coordenada);
-			} catch (CasilleroOcupadoException exc) {
-				this.ubicarRandom(bonus);
-			}
 		}
-	}
+}
 
 	public Jugador obtenerJugadorActual() {
 		return turnos[jugadas % 2];
@@ -209,5 +214,13 @@ public class Juego {
          }
      }
      return this.jugador2;
+    }
+
+    public Chispa devolverChispa() {
+    	return (Chispa) this.chispa;
+    }
+    
+    public ArrayList<Bonus> devolverListaDeBonus() {
+    	return this.listaDeBonus;
     }
 }

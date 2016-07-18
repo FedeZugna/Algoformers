@@ -21,6 +21,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import model.Casillero;
+import model.Chispa;
 import model.Coordenada;
 import model.Interactuable;
 import model.Juego;
@@ -49,6 +50,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 	ArrayList<Algoformer> algoformers;
 	Algoformer algoformerActual;
 	Algoformer algoformerParaAtacar;
+	Interactuable bonusParaCapturar;
 	Juego juegoGeneral;
 	ContenedorPrincipal contenedor;
 	Boolean atacando = false;
@@ -59,6 +61,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 	ArrayList<Algoformer> equipoDecepticons;
 	ArrayList<Algoformer> equipoEnemigo;
 	ArrayList<Bonus> listaDeBonus;
+	Chispa chispa;
 	Map<String, HBox> botoneras;
 
 	private Text stats[];
@@ -66,6 +69,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 	private Text nombreObjetivo;
 	private Text separadorMovimientos = new Text("Mover:");
 	private Text separadorParaSeleccionarGroso = new Text("Combinacion:");
+	private Text separadorCapturar = new Text("Capturar:");
 	private Text separadorParaAtacar = new Text("Atacar:");
 	private Text separadorPasarTurno = new Text("Fin de turno:");
 
@@ -74,6 +78,8 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		this.jugadorActual = juego.obtenerJugadorActual();
 		this.algoformers = jugadorActual.devolverAlgoformersVivos();
 		this.juegoGeneral = juego;
+		this.chispa= juego.devolverChispa();
+		this.listaDeBonus= juego.devolverListaDeBonus();
 		this.contenedor = cont;
 		this.botoneras = new HashMap<String, HBox>();
 		this.setPadding(new Insets(10));
@@ -86,6 +92,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 
 		this.separadorMovimientos.setFont(Font.font("Arial", FontWeight.BOLD, 14));
 		this.separadorParaSeleccionarGroso.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+		this.separadorCapturar.setFont(Font.font("Arial", FontWeight.BOLD, 14));
 		this.separadorParaAtacar.setFont(Font.font("Arial", FontWeight.BOLD, 14));
 		this.separadorPasarTurno.setFont(Font.font("Arial", FontWeight.BOLD, 14));
 
@@ -395,6 +402,51 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				imprimirPantalla();
 			}
 		};
+		
+		EventHandler<ActionEvent> seleccionarPrimeroParaCapturar = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				bonusParaCapturar= listaDeBonus.get(0);
+				imprimirPantalla();
+			}
+		};
+
+		EventHandler<ActionEvent> seleccionarSegundoParaCapturar = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				bonusParaCapturar= listaDeBonus.get(1);
+				imprimirPantalla();
+			}
+		};
+
+		EventHandler<ActionEvent> seleccionarTerceroParaCapturar = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				bonusParaCapturar= listaDeBonus.get(2);				
+				imprimirPantalla();
+			}
+		};
+
+		EventHandler<ActionEvent> seleccionarChispaParaCapturar = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				bonusParaCapturar= chispa;
+				imprimirPantalla();
+			}
+		};
+		
+		EventHandler<ActionEvent> botonCapturarHandler = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				if (bonusParaCapturar.getNombre()== "Chispa"){
+					algoformerActual.capturarChispa((Chispa)bonusParaCapturar);
+				} else {
+					algoformerActual.capturarBonus((Bonus)bonusParaCapturar);
+				}
+				deshabilitarBotones("");
+				imprimirPantalla();
+			}
+		};
 
 		HBox botonesParaSeleccionarLosAlgoformers = new HBox();
 
@@ -457,6 +509,34 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		HBox botonesParaMoverse = new HBox();
 		botonesParaMoverse.getChildren().addAll(moverNorte, moverOeste, moverSur, moverEste);
 
+/**/
+		Button botonCapturar = new Button();
+		botonCapturar.setPrefSize(80, 10);
+		botonCapturar.setText("Capturar");
+		botonCapturar.setOnAction(botonCapturarHandler);
+
+		HBox capturar = new HBox();
+		capturar.getChildren().addAll(botonCapturar);
+
+		HBox botonesParaSeleccionarLosBonusParaCapturar  = new HBox();
+
+		Button primerBonusParaCapturar = new Button(listaDeBonus.get(0).getNombre());
+		primerBonusParaCapturar.setPrefSize(80, 20);
+		primerBonusParaCapturar.setOnAction(seleccionarPrimeroParaCapturar);
+
+		Button segundoBonusParaCapturar = new Button(listaDeBonus.get(1).getNombre());
+		segundoBonusParaCapturar.setPrefSize(80, 20);
+		segundoBonusParaCapturar.setOnAction(seleccionarSegundoParaCapturar);
+
+		Button tercerBonusParaCapturar = new Button(listaDeBonus.get(2).getNombre());
+		tercerBonusParaCapturar.setPrefSize(80, 20);
+		tercerBonusParaCapturar.setOnAction(seleccionarTerceroParaCapturar);
+
+		Button botonChispaParaCapturar = new Button("Chispa");
+		botonChispaParaCapturar.setPrefSize(80, 20);
+		botonChispaParaCapturar.setOnAction(seleccionarChispaParaCapturar);	
+/**/
+		
 		Button botonAtacar = new Button();
 		botonAtacar.setPrefSize(50, 10);
 		botonAtacar.setText("Atacar");
@@ -513,6 +593,9 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 
 		botonesParaSeleccionarLosAlgoformers.getChildren().addAll(primerAlgoformer, segundoAlgoformer, tercerAlgoformer,
 				botonSeleccionarGroso);
+		
+		botonesParaSeleccionarLosBonusParaCapturar.getChildren().addAll(primerBonusParaCapturar, segundoBonusParaCapturar,
+				tercerBonusParaCapturar, botonChispaParaCapturar);
 
 		botonesParaSeleccionarLosAlgoformersParaAtacar.getChildren().addAll(primerAlgoformerParaAtacar,
 				segundoAlgoformerParaAtacar, tercerAlgoformerParaAtacar, botonSeleccionarGrosoParaAtacar);
@@ -525,9 +608,13 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 		this.getChildren().add(this.separadorParaSeleccionarGroso);
 		this.getChildren().addAll(combinar, botonSeleccionarGroso);
 
+		this.getChildren().add(this.separadorCapturar);
+		this.getChildren().addAll(botonesParaSeleccionarLosBonusParaCapturar, botonChispaParaCapturar,
+				capturar);
+		
 		this.getChildren().add(this.separadorParaAtacar);
 		this.getChildren().addAll(botonesParaSeleccionarLosAlgoformersParaAtacar, botonSeleccionarGrosoParaAtacar,
-				atacar);
+				atacar);	
 
 		this.getChildren().add(this.separadorPasarTurno);
 		this.getChildren().add(pasarTurno);
