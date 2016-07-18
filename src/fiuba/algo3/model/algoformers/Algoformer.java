@@ -136,6 +136,11 @@ public class Algoformer implements Interactuable {
 		Coordenada coordOrigen = this.getUbicacion().getUbicacion();
 		return this.getEstadoActual().esAtaquePosible(coordOrigen, coordObjetivo);
 	}
+	
+	private boolean esCapturaPosible(Coordenada coordenadaDeBonus) {
+		Coordenada coordOrigen = this.getUbicacion().getUbicacion();
+		return this.getEstadoActual().esAlcanzable(coordOrigen, coordenadaDeBonus, 1);
+	}
 
 	private boolean esCombinacionPosible(Coordenada coordenadaAmiga) {
 		Coordenada coordenadaOrigen = this.getUbicacion().getUbicacion();
@@ -178,10 +183,16 @@ public class Algoformer implements Interactuable {
 	}
 
 	public void capturarBonus(Bonus bonus) {
+		if (!esCapturaPosible(bonus.getUbicacion().getUbicacion())) {
+			throw new AlcanceExcedidoException();
+		}
 		bonus.serCapturadoPor(this);
 	}
 
 	public void capturarChispa(Chispa chispa) {
+		if (!esCapturaPosible(chispa.getUbicacion().getUbicacion())) {
+			throw new AlcanceExcedidoException();
+		}
 		chispa.serCapturadoPor(this);
 	}
 
