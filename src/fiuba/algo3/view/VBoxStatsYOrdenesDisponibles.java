@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.Master;
 import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
@@ -46,7 +47,6 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 	ArrayList<Algoformer> algoformers;
 	Algoformer algoformerActual;
 	Algoformer algoformerParaAtacar;
-	Tablero tablero;
 	Juego juegoGeneral;
 	ContenedorPrincipal contenedor;
 	Boolean atacar = false;
@@ -63,11 +63,10 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 	private Text separadorParaAtacar = new Text("Atacar:");
 	private Text separadorPasarTurno = new Text("Fin de turno:");
 
-	public VBoxStatsYOrdenesDisponibles(Jugador jugador, Juego juego, ContenedorPrincipal cont) {
+	public VBoxStatsYOrdenesDisponibles(Juego juego, ContenedorPrincipal cont) {
 		super();
-		this.jugadorActual = jugador;
+		this.jugadorActual = juego.obtenerJugadorActual();
 		this.algoformers = jugadorActual.devolverAlgoformersVivos();
-		this.tablero = jugador.devolverTablero();
 		this.juegoGeneral = juego;
 		this.contenedor = cont;
 		this.setPadding(new Insets(10));
@@ -92,7 +91,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			this.getChildren().add(this.stats[i]);
 		}
 
-		equipoAutobots = jugador.devolverEquipo();
+		equipoAutobots = this.jugadorActual.devolverEquipo();
 		equipoDecepticons = juego.pasarTurno().devolverEquipo();
 		equipoEnemigo = equipoDecepticons;
 		juego.pasarTurno();
@@ -232,7 +231,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			public void handle(ActionEvent event) {
 				Coordenada coordenadaNorte = new Coordenada(algoformerActual.getUbicacion().getUbicacion().getLargo(),
 						algoformerActual.getUbicacion().getUbicacion().getAlto() - 1);
-				Casillero casilleroNorte = tablero.devolverCasillero(coordenadaNorte);
+				Casillero casilleroNorte = Tablero.getInstancia().devolverCasillero(coordenadaNorte);
 				try {
 					algoformerActual.mover(casilleroNorte);
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
@@ -246,9 +245,9 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 
 				} catch (NullPointerException exc) {
 
-				} catch (ChispaCapturadaException win) {
+				} /*catch (ChispaCapturadaException win) {
 
-				}
+				}*/
 			}
 		};
 
@@ -258,7 +257,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				Coordenada coordenadaOeste = new Coordenada(
 						algoformerActual.getUbicacion().getUbicacion().getLargo() - 1,
 						algoformerActual.getUbicacion().getUbicacion().getAlto());
-				Casillero casilleroOeste = tablero.devolverCasillero(coordenadaOeste);
+				Casillero casilleroOeste = Tablero.getInstancia().devolverCasillero(coordenadaOeste);
 				try {
 					algoformerActual.mover(casilleroOeste);
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
@@ -281,7 +280,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			public void handle(ActionEvent event) {
 				Coordenada coordenadaSur = new Coordenada(algoformerActual.getUbicacion().getUbicacion().getLargo(),
 						algoformerActual.getUbicacion().getUbicacion().getAlto() + 1);
-				Casillero casilleroSur = tablero.devolverCasillero(coordenadaSur);
+				Casillero casilleroSur = Tablero.getInstancia().devolverCasillero(coordenadaSur);
 				try {
 					algoformerActual.mover(casilleroSur);
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
@@ -305,7 +304,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 				Coordenada coordenadaEste = new Coordenada(
 						algoformerActual.getUbicacion().getUbicacion().getLargo() + 1,
 						algoformerActual.getUbicacion().getUbicacion().getAlto());
-				Casillero casilleroEste = tablero.devolverCasillero(coordenadaEste);
+				Casillero casilleroEste = Tablero.getInstancia().devolverCasillero(coordenadaEste);
 				try {
 					algoformerActual.mover(casilleroEste);
 					actualizarStatsObjetivo(algoformerActual.getVida(), algoformerActual.getAtaque(),
@@ -327,6 +326,7 @@ public class VBoxStatsYOrdenesDisponibles extends VBox {
 			@Override
 			public void handle(ActionEvent event) {
 				jugadorActual = juegoGeneral.pasarTurno();
+                                Master.getInstancia().decidirSiHayGanador();
 				if (jugadorActual.getTurnosCombinado() >= 2) {
 					jugadorActual.separarAlgoformers();
 				} else if (jugadorActual.getTurnosCombinado() != 0) {

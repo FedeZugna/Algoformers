@@ -64,7 +64,7 @@ public class Casillero {
 			} else if (this.ocupante instanceof Bonus) {
 				algof.capturarBonus((Bonus) this.ocupante);
 			} else if (this.ocupante instanceof Chispa) {
-				throw new ChispaCapturadaException();
+				//throw new ChispaCapturadaException();
 			}
 		}
 		this.ocupante = algof;

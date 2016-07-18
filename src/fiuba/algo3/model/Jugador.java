@@ -11,12 +11,11 @@ public class Jugador {
 
 	private Tablero tablero;
 	private ArrayList<Algoformer> equipo;
-	public String nombreEquipo;
+	private String nombreEquipo;
 	public int turnosCombinado = 0;
 
 	public Jugador(Tablero tablero, String Nomequipo) {
 		this.nombreEquipo = Nomequipo;
-		this.tablero = tablero;
 		this.equipo = new ArrayList<Algoformer>();
 		if (Nomequipo == "AUTOBOTS") {
 			this.equipo.add(new Optimus());
@@ -32,14 +31,14 @@ public class Jugador {
 
 	public void mover(Algoformer algoTransf, Casillero destino) {
 		algoTransf.mover(destino);
-		// this.tablero.cambiar(algoTransf, algoTransf.getUbicacion(), destino);
+		// Tablero.getInstancia().cambiar(algoTransf, algoTransf.getUbicacion(), destino);
 		// //eliminar ubicacion.removerElemento de mover en algoformer si se
 		// agrega esta linea
 
 	}
 
 	public void atacar(Algoformer algoTransf, Coordenada objetivo) throws AtaqueInvalidoException {
-		if (this.equipo.contains(this.tablero.devolverElemento(
+		if (this.equipo.contains(Tablero.getInstancia().devolverElemento(
 				objetivo))) { /*
 								 * ||
 								 * objetivo.equals(algoTransf.getUbicacion()))
@@ -47,11 +46,11 @@ public class Jugador {
 			throw new AtaqueInvalidoException();
 
 		}
-		algoTransf.atacar((Algoformer) this.tablero.devolverElemento(objetivo));
+		algoTransf.atacar((Algoformer) Tablero.getInstancia().devolverElemento(objetivo));
 	}
 
 	public void ubicarElemento(Algoformer algoformer, Coordenada coord) {
-		this.tablero.ubicarElemento(algoformer, coord);
+		Tablero.getInstancia().ubicarElemento(algoformer, coord);
 	}
 
 	public void OrdenaQueSeTranforme(Algoformer algoformer) throws AlgoformerCombinadoNoPuedeTransformarseException {
@@ -116,7 +115,7 @@ public class Jugador {
 		Casillero casilleroCentral = algoformer1.getUbicacion();
 		algoformer1.getUbicacion().removerElemento();
 		// cambio aca
-		this.tablero.ubicarElemento(algoformerCombinado, casilleroCentral.getUbicacion());
+		Tablero.getInstancia().ubicarElemento(algoformerCombinado, casilleroCentral.getUbicacion());
 		algoformerCombinado.ubicarEn(casilleroCentral);
 		algoformer2.getUbicacion().removerElemento();// no cambia la ubicacion
 		algoformer3.getUbicacion().removerElemento();// que conoce el algoformer
@@ -145,7 +144,7 @@ public class Jugador {
 
 	private void ubicarPorSeparacion(Algoformer algoformer, Coordenada coordenada) {
 		try {
-			this.tablero.ubicarElemento(algoformer, coordenada);
+			Tablero.getInstancia().ubicarElemento(algoformer, coordenada);
 		} catch (CasilleroOcupadoException e) {
 			Coordenada coordenadaSiguiente = new Coordenada(coordenada.getLargo() + 1, coordenada.getAlto()); // inverti
 																												// estos
@@ -166,7 +165,4 @@ public class Jugador {
 		}
 	}
 
-	public Tablero devolverTablero() {
-		return this.tablero;
-	}
 }

@@ -1,8 +1,13 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package view;
 
+import controller.Master;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -16,21 +21,19 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import model.Juego;
 import model.Jugador;
 import view.eventos.BotonEntrarEventHandler;
 import view.eventos.OpcionSalirEventHandler;
 
-public class ContenedorBienvenidos extends VBox {
+/**
+ *
+ * @author Martin
+ */
+public class ContenedorGanador extends VBox{
 
-	private Stage stage;
-
-	public ContenedorBienvenidos(Stage stage, Scene proximaEscena) {
-
-		super();
-
-		this.stage = stage;
-
+    public ContenedorGanador(Stage stage, Jugador ganador) {
+        
+                super();
 		this.setAlignment(Pos.CENTER);
 		this.setSpacing(20);
 		this.setPadding(new Insets(25));
@@ -39,16 +42,8 @@ public class ContenedorBienvenidos extends VBox {
 				BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		this.setBackground(new Background(imagenDeFondo));
 
-		Button botonEntrar = new Button();
-		botonEntrar.setText("Iniciar Partida");
-		botonEntrar.setMinHeight(50);
-		botonEntrar.setMinWidth(100);
-
-		BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(stage, proximaEscena);///////////////////
-		botonEntrar.setOnAction(botonEntrarHandler);
-
 		Label etiqueta = new Label();
-		etiqueta.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
+		etiqueta.setFont(Font.font("Tahoma", FontWeight.BOLD, 24));
 
 		Button botonSalir = new Button();
 		botonSalir.setText("Salir");
@@ -58,11 +53,10 @@ public class ContenedorBienvenidos extends VBox {
 		OpcionSalirEventHandler botonSalirHandler = new OpcionSalirEventHandler();
 		botonSalir.setOnAction(botonSalirHandler);
 
-		etiqueta.setText(
-				"Haga click en el boton para iniciar la partida. Jugador 1 es Autobots Jugador 2 es Decepticon");
+		etiqueta.setText("FELICITACIONES, GANARON LOS "+ganador.devolverNombreEquipo());
 		etiqueta.setTextFill(Color.web("#66A7C5"));
 
-		this.getChildren().addAll(etiqueta, botonEntrar, botonSalir);
-	}
-
+		this.getChildren().addAll(etiqueta, botonSalir);
+    }
+    
 }

@@ -31,9 +31,9 @@ public class ContenedorPrincipal extends BorderPane {
 	VBoxStatsYOrdenesDisponibles barraDerecha;
 	VistaCasilleros vistaCasilleros;
 
-	public ContenedorPrincipal(Stage stage, Jugador jugador, Juego juego) {
+	public ContenedorPrincipal(Stage stage, Juego juego) {
 		stage.setTitle(TITULO_JUEGO);
-		this.barraDerecha = new VBoxStatsYOrdenesDisponibles(jugador, juego, this);
+		this.barraDerecha = new VBoxStatsYOrdenesDisponibles(juego, this);
 		this.setRight(this.barraDerecha);
 		this.setMenu(stage);
 		this.setCentro();

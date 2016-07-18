@@ -23,8 +23,10 @@ public class Juego {
 	private int jugadas;
 	public Jugador[] turnos = new Jugador[2];
 	private HashMap<Jugador, ArrayList<Notificable>> aNotificar;
-
+        private Jugador ganador;
+        
 	public Juego() {
+                
 		this.tableroGeneral = Tablero.getInstancia();
 		this.inicializarTablero();
 		jugadas = 0;
@@ -33,6 +35,7 @@ public class Juego {
 		this.aNotificar = new HashMap<>();
 		this.aNotificar.put(turnos[0], new ArrayList<>());
 		this.aNotificar.put(turnos[1], new ArrayList<>());
+                this.ganador = null;
 	}
 
 	public void posicionarChispaEnElMedio() {
@@ -60,11 +63,11 @@ public class Juego {
 	}
 
 	public ArrayList<Algoformer> devolverAlgoformersVivosDeJugador1() {
-		return devolverAlgoformersVivosDe(this.jugador1.nombreEquipo);
+		return devolverAlgoformersVivosDe(this.jugador1.devolverNombreEquipo());
 	}
 
 	public ArrayList<Algoformer> devolverAlgoformersVivosDeJugador2() {
-		return devolverAlgoformersVivosDe(this.jugador2.nombreEquipo);
+		return devolverAlgoformersVivosDe(this.jugador2.devolverNombreEquipo());
 	}
 
 	public ArrayList<Algoformer> devolverAlgoformersVivosDe(String nombreDeEquipo) {
@@ -156,8 +159,18 @@ public class Juego {
 	public Jugador obtenerJugadorActual() {
 		return turnos[jugadas % 2];
 	}
+        
+        public Jugador obtenerJugadorEnemigo(){
+		return turnos[(jugadas+1) % 2];        
+        }
 
 	public Jugador pasarTurno() {
+                if (this.devolverAlgoformersVivosDeJugador1().isEmpty()){
+                    this.ganar(jugador2);
+                }
+                if (this.devolverAlgoformersVivosDeJugador2().isEmpty()){
+                    this.ganar(jugador1);
+                }
 		this.notificarJugadorActual();
 		this.jugadas++;
 		return turnos[jugadas % 2];
@@ -175,4 +188,13 @@ public class Juego {
 		this.aNotificar.get(actual).add(n);
 
 	}
+        
+        public void ganar(Jugador j){
+            this.ganador = j;
+        }       
+
+    public Jugador devolverGanador() {
+        return this.ganador;
+    }
+                
 }
