@@ -117,7 +117,7 @@ public class tercerEntregaTests {
 	@Test
 	public void BurbujaAnulaDanioPor2TurnosPropiosAHumanoide() {
 		Coordenada coord1 = new Coordenada(3, 3);
-		Coordenada coord2 = new Coordenada(3, 4);
+		Coordenada coord2 = new Coordenada(3, 1);
 		Coordenada coord3 = new Coordenada(3, 2);
 		Tablero tablero = Tablero.getInstancia();
 		Juego juego = new Juego();
@@ -154,7 +154,7 @@ public class tercerEntregaTests {
 	@Test
 	public void BurbujaAnulaDanioPor2TurnosPropiosAAlterno() {
 		Coordenada coord1 = new Coordenada(3, 3);
-		Coordenada coord2 = new Coordenada(3, 4);
+		Coordenada coord2 = new Coordenada(3, 1);
 		Coordenada coord3 = new Coordenada(3, 2);
 		Tablero tablero = Tablero.getInstancia();
 		Juego juego = new Juego();
